@@ -1,6 +1,7 @@
 """
-#----This script does: ----
+#---- Functions----#
 
+# This script does: 
     # - define vocals/consonants and their frequencies
     # - create a function that generates random roots based on letter frequency
     # - create polymorphemic words using previously defined morphemes 
@@ -8,9 +9,9 @@
         on the polymorphemic words
     # - create function that generates random errors
     
-Date: 24.01.2023
+# Date: 24.01.2023
 
-Author: Deliane Bechar
+# Author: Deliane Bechar
 
 """
 
@@ -191,7 +192,7 @@ def generatePolymorphemes (prefixes, prefixes_weights, prefix_pos, roots, suffix
         index_p1 = prefixes.index (n_prefix1)
         
         # Make sure that prefix1 and prefix2 are different
-        while n_prefix1 == n_prefix2 and prefix_pos[index_p1] != prefix_pos[index_p2]: 
+        while n_prefix1 == n_prefix2 or prefix_pos[index_p1] != prefix_pos[index_p2]: 
             n_prefix2 = ("".join(random.choices (prefixes, weights = prefixes_weights, cum_weights=(None), k = 1)))
             index_p2 = prefixes.index (n_prefix2)
         
@@ -216,7 +217,7 @@ def generatePolymorphemes (prefixes, prefixes_weights, prefix_pos, roots, suffix
         index_s2 = suffixes.index (n_suffix2)
         
         # Make sure that suffix1 and suffix2 are different
-        while n_suffix1 == n_suffix2 and index_s1 != index_s2: 
+        while n_suffix1 == n_suffix2 or suffix_pos[index_s1] != suffix_pos[index_s2]: 
             n_suffix2 = ("".join(random.choices (suffixes, weights = suffixes_weights, cum_weights=(None), k = 1)))
             index_s2 = suffixes.index (n_suffix2)
         
@@ -241,7 +242,7 @@ def generatePolymorphemes (prefixes, prefixes_weights, prefix_pos, roots, suffix
         index_s2 = suffixes.index (n_suffix2)
         
         # Make sure that suffix1 and suffix2 are different
-        while n_suffix1 == n_suffix2 and index_s1 != index_s2: 
+        while n_suffix1 == n_suffix2 or suffix_pos[index_s1] != suffix_pos[index_s2]: 
             n_suffix2 = ("".join(random.choices (suffixes, weights = suffixes_weights, cum_weights=(None), k = 1)))
             index_s2 = suffixes.index (n_suffix2)
             
@@ -266,7 +267,7 @@ def generatePolymorphemes (prefixes, prefixes_weights, prefix_pos, roots, suffix
         index_p2 = prefixes.index (n_prefix2)
         
         # Make sure that prefix1 and prefix2 are different
-        while n_prefix1 == n_prefix2 and prefix_pos[index_p1] != prefix_pos[index_p2]: 
+        while n_prefix1 == n_prefix2 or prefix_pos[index_p1] != prefix_pos[index_p2]: 
             n_prefix2 = ("".join(random.choices (prefixes, weights = prefixes_weights, cum_weights=(None), k = 1)))
             index_p2 = prefixes.index (n_prefix2)
     
@@ -496,7 +497,7 @@ def generateError (prefix1, prefix2, root, suffix1, suffix2, df):
             esuffix2.append("")
         else: 
             randomlyChangeNChar(word = suffix2[i], value = 1, changed_index = changed_index_s2, error_word = esuffix2)
-            error_suffix2.append (prefix2[i] + prefix1[i] + root [i] + suffix1[i] + esuffix2[i])
+            error_suffix2.append (prefix2[i] + prefix1[i] + root[i] + suffix1[i] + esuffix2[i])
         
 
     df["ErrorPrefix2"] = error_prefix2

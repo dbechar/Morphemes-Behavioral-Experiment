@@ -1,5 +1,5 @@
 """
-#----Triallist creator script for all subject----#
+#----Stimuli Creator----#
 
 # This script does:
     # - read in stimulus lists
