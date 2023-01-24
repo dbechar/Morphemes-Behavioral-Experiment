@@ -300,7 +300,7 @@ def generatePolymorphemes (prefixes, prefixes_weights, prefix_pos, roots, suffix
     # - list in which new pseudowords are supposed to be saved in 
 
 
-def generatePseudowords (prefix2, prefix1, root, suffix1, suffix2, newword, condition):
+def generateMonomorphemes (prefix2, prefix1, root, suffix1, suffix2, newword, condition):
     for i in range(0, len (root)):
         pseudoprefix2 = prefix2[i]
         if prefix2[i] == "":
