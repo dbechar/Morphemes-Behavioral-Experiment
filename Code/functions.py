@@ -16,7 +16,7 @@ Author: Deliane Bechar
 
 #---- Load necessary libraries ----
 import random 
-
+import pandas as pd
 
 #---- Generate random roots based on letter frequency ----
 # source for weights: https://www.sttmedia.com/characterfrequency-english
@@ -125,7 +125,8 @@ def generateRoots (value):
     # - Output: Dataframe that includes infromation about the Polymorphemes
 
 
-def generatePolymorphemes (prefixes, prefixes_weights, prefix_pos, roots, suffixes, suffixes_weights, suffix_pos, value, df):
+def generatePolymorphemes (prefixes, prefixes_weights, prefix_pos, roots, suffixes, suffixes_weights, suffix_pos, value):
+    df = pd.DataFrame()
     newword = []
     num_of_conditions = 7
     prefix2 = []
@@ -290,8 +291,7 @@ def generatePolymorphemes (prefixes, prefixes_weights, prefix_pos, roots, suffix
     df["root"] = root 
     df["suffix1"] = suffix1
     df["suffix2"] = suffix2
-    df["wordlength"] = df["newword"].str.len()
-        
+    return df   
 
 #---- Generate random pseudowords ----
 
@@ -352,14 +352,26 @@ def generatePseudowords (prefix2, prefix1, root, suffix1, suffix2, newword, cond
                 pseudosuffix2 = random.sample (pseudosuffix2, k = len (pseudosuffix2))
                 pseudosuffix2 = "".join(pseudosuffix2)
         suffix2.append (pseudosuffix2)
+        
         condition.append ("r")
-
         newword.append (pseudoprefix2 + 
                         pseudoprefix1 + 
                         pseudoroot + 
                         pseudosuffix1 + 
                         pseudosuffix2)
-
+        
+    df = pd.DataFrame({
+        "Token": newword,
+        "Condition": condition, 
+        "Prefix2": prefix2, 
+        "Prefix1": prefix1, 
+        "Root": root, 
+        "Suffix1": suffix1, 
+        "Suffix2": suffix2
+        })
+    # df["Wordlength"] = df["Token"].str.len()
+        
+    return df
 
 #---- Generate random errors ----
 # Input: 
@@ -491,6 +503,8 @@ def generateError (prefix1, prefix2, root, suffix1, suffix2, df):
     df["ChangedIndexR"] = changed_index_r
     df["ChangedIndexS1"] = changed_index_s1
     df["ChangedIndexS2"] = changed_index_s2
+    
+    return df
 
     
 
