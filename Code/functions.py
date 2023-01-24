@@ -185,10 +185,10 @@ def generatePolymorphemes (prefixes, prefixes_weights, prefix_pos, roots, suffix
     
     # condition 4: prefix + prefix + root
     for x in range (0, end):
-        n_prefix1 = ("".join(random.choices (prefixes, weights = prefixes_weights, cum_weights=(None), k = 1)))
         n_prefix2 = ("".join(random.choices (prefixes, weights = prefixes_weights, cum_weights=(None), k = 1)))
-        index_p1 = prefixes.index (n_prefix1)
+        n_prefix1 = ("".join(random.choices (prefixes, weights = prefixes_weights, cum_weights=(None), k = 1)))
         index_p2 = prefixes.index (n_prefix2)
+        index_p1 = prefixes.index (n_prefix1)
         
         # Make sure that prefix1 and prefix2 are different
         while n_prefix1 == n_prefix2 and prefix_pos[index_p1] != prefix_pos[index_p2]: 
@@ -283,14 +283,15 @@ def generatePolymorphemes (prefixes, prefixes_weights, prefix_pos, roots, suffix
         num_of_mor.append (4)
         condition.append("pprs")
         
-    df["newword"] = newword
-    df["num_of_mor"] = num_of_mor
-    df["condition"] = condition
-    df["prefix2"] = prefix2
-    df["prefix1"] = prefix1
-    df["root"] = root 
-    df["suffix1"] = suffix1
-    df["suffix2"] = suffix2
+    df["Token"] = newword
+    # df["Num_of_mor"] = num_of_mor
+    df["Condition"] = condition
+    df["Prefix2"] = prefix2
+    df["Prefix1"] = prefix1
+    df["Root"] = root 
+    df["Suffix1"] = suffix1
+    df["Suffix2"] = suffix2
+    # df["Wordlength"] = df["Token"].str.len()
     return df   
 
 #---- Generate random pseudowords ----
@@ -300,76 +301,81 @@ def generatePolymorphemes (prefixes, prefixes_weights, prefix_pos, roots, suffix
     # - list in which new pseudowords are supposed to be saved in 
 
 
-def generateMonomorphemes (prefix2, prefix1, root, suffix1, suffix2, newword, condition):
+def generateMonomorphemes (prefix2, prefix1, root, suffix1, suffix2, df):
+    
+    monomorphemes = []
+    mono_prefix2 = []
+    mono_prefix1 = []
+    mono_root = []
+    mono_suffix1 = []
+    mono_suffix2 = []
+    
     for i in range(0, len (root)):
-        pseudoprefix2 = prefix2[i]
+        monoprefix2 = prefix2[i]
         if prefix2[i] == "":
-            pseudoprefix2 = ""
+            monoprefix2 = ""
             
         else: 
-            while pseudoprefix2 == prefix2[i]: 
-                pseudoprefix2 = list (prefix2[i])
-                pseudoprefix2 = random.sample (pseudoprefix2, k = len (pseudoprefix2))
-                pseudoprefix2 = "".join(pseudoprefix2)
-        prefix2.append (pseudoprefix2)
+            while monoprefix2 == prefix2[i]: 
+                monoprefix2 = list (prefix2[i])
+                monoprefix2 = random.sample (monoprefix2, k = len (monoprefix2))
+                monoprefix2 = "".join(monoprefix2)
+        mono_prefix2.append (monoprefix2)
 
-        pseudoprefix1 = prefix1[i]
+        monoprefix1 = prefix1[i]
         if prefix1 [i] == "":
-            pseudoprefix1 = ""
+            monoprefix1 = ""
         else:
-            while pseudoprefix1 == prefix1[i]:
-                pseudoprefix1 = list (prefix1[i])
-                pseudoprefix1 = random.sample (pseudoprefix1, k = len (pseudoprefix1))
-                pseudoprefix1 = "".join(pseudoprefix1)
-        prefix1.append (pseudoprefix1)
+            while monoprefix1 == prefix1[i]:
+                monoprefix1 = list (prefix1[i])
+                monoprefix1 = random.sample (monoprefix1, k = len (monoprefix1))
+                monoprefix1 = "".join(monoprefix1)
+        mono_prefix1.append (monoprefix1)
         
-        pseudoroot = root[i]
+        monoroot = root[i]
         if root[i] == "": 
-            pseudoroot = ""
+            monoroot = ""
         else: 
-            while pseudoroot == root[i]: 
-                pseudoroot = list (root[i])
-                pseudoroot = random.sample (pseudoroot, k = len (pseudoroot))
-                pseudoroot = "".join(pseudoroot)
-        root.append (pseudoroot)
+            while monoroot == root[i]: 
+                monoroot = list (root[i])
+                monoroot = random.sample (monoroot, k = len (monoroot))
+                monoroot = "".join(monoroot)
+        mono_root.append (monoroot)
         
-        pseudosuffix1 = suffix1[i]
+        monosuffix1 = suffix1[i]
         if suffix1 [i] == "": 
-            pseudosuffix1 = ""
+            monosuffix1 = ""
         else:  
-            while pseudosuffix1 == suffix1[i]: 
-                pseudosuffix1 = list (suffix1[i])
-                pseudosuffix1 = random.sample (pseudosuffix1, k = len (pseudosuffix1))
-                pseudosuffix1 = "".join(pseudosuffix1)
-        suffix1.append(pseudosuffix1)
+            while monosuffix1 == suffix1[i]: 
+                monosuffix1 = list (suffix1[i])
+                monosuffix1 = random.sample (monosuffix1, k = len (monosuffix1))
+                monosuffix1 = "".join(monosuffix1)
+        mono_suffix1.append(monosuffix1)
         
-        pseudosuffix2 = suffix2[i]
+        monosuffix2 = suffix2[i]
         if suffix2 [i] == "": 
-            pseudosuffix2 = ""
+            monosuffix2 = ""
         else:
-            while pseudosuffix2 == suffix2[i]:
-                pseudosuffix2 = list (suffix2[i])
-                pseudosuffix2 = random.sample (pseudosuffix2, k = len (pseudosuffix2))
-                pseudosuffix2 = "".join(pseudosuffix2)
-        suffix2.append (pseudosuffix2)
+            while monosuffix2 == suffix2[i]:
+                monosuffix2 = list (suffix2[i])
+                monosuffix2 = random.sample (monosuffix2, k = len (monosuffix2))
+                monosuffix2 = "".join(monosuffix2)
+        mono_suffix2.append (monosuffix2)
         
-        condition.append ("r")
-        newword.append (pseudoprefix2 + 
-                        pseudoprefix1 + 
-                        pseudoroot + 
-                        pseudosuffix1 + 
-                        pseudosuffix2)
+        # condition.append ("r")
+        monomorphemes.append (monoprefix2 + 
+                              monoprefix1 + 
+                              monoroot + 
+                              monosuffix1 + 
+                              monosuffix2)
         
-    df = pd.DataFrame({
-        "Token": newword,
-        "Condition": condition, 
-        "Prefix2": prefix2, 
-        "Prefix1": prefix1, 
-        "Root": root, 
-        "Suffix1": suffix1, 
-        "Suffix2": suffix2
-        })
-    # df["Wordlength"] = df["Token"].str.len()
+
+    df.insert(1, "Monomorpheme", monomorphemes)
+#    df["MonoPrefix2"] = mono_prefix2
+#    df["MonoPrefix1"] = mono_prefix1
+#    df["MonoRoot"] = mono_root
+#    df["MonoSuffix1"] = mono_suffix1
+#    df["MonoSuffix2"] = mono_suffix2
         
     return df
 
