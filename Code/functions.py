@@ -292,7 +292,7 @@ def generatePolymorphemes (prefixes, prefixes_weights, prefix_pos, roots, suffix
     df["Root"] = root 
     df["Suffix1"] = suffix1
     df["Suffix2"] = suffix2
-    # df["Wordlength"] = df["Token"].str.len()
+    df["Wordlength"] = df["Token"].str.len()
     return df   
 
 #---- Generate random pseudowords ----
@@ -372,11 +372,11 @@ def generateMonomorphemes (prefix2, prefix1, root, suffix1, suffix2, df):
         
 
     df.insert(1, "Monomorpheme", monomorphemes)
-#    df["MonoPrefix2"] = mono_prefix2
-#    df["MonoPrefix1"] = mono_prefix1
-#    df["MonoRoot"] = mono_root
-#    df["MonoSuffix1"] = mono_suffix1
-#    df["MonoSuffix2"] = mono_suffix2
+    df["MonoPrefix2"] = mono_prefix2
+    df["MonoPrefix1"] = mono_prefix1
+    df["MonoRoot"] = mono_root
+    df["MonoSuffix1"] = mono_suffix1
+    df["MonoSuffix2"] = mono_suffix2
         
     return df
 
@@ -416,22 +416,25 @@ def randomlyChangeNChar(word, value, changed_index, error_word):
         if char in vowels: 
             while char == word[index]:
                 char = random.choices(vowels, weights = vowel_weights, cum_weights=(None), k = value)
-                word[index] = "".join(char)
-            # Finally save the string in the modified format in a second list (second_word).
+                char = "".join(char)
+            word[index] = "".join(char)
+            # Finally save the string in the modified format in a second list (error_word).
             word = "".join(word)
             error_word.append (word)
         elif char in sonorants: 
             while char == word[index]:
                 char = random.choices(sonorants, weights = sonorants_weights, cum_weights=(None), k = value)
-                word[index] = "".join(char)
-            # Finally save the string in the modified format in a second list (second_word).
+                char = "".join(char)
+            word[index] = "".join(char)
+            # Finally save the string in the modified format in a second list (error_word).
             word = "".join(word)
             error_word.append (word)
         else: 
             while char == word[index]:
                 char = random.choices(consonants, weights = consonant_weights, cum_weights=(None), k = value)
-                word[index] = "".join(char)
-            # Finally save the string in the modified format in a second list (second_word).
+                char = "".join(char)
+            word[index] = "".join(char)
+            # Finally save the string in the modified format in a second list (error_word).
             word = "".join(word)
             error_word.append (word)  
             
@@ -514,5 +517,76 @@ def generateError (prefix1, prefix2, root, suffix1, suffix2, df):
     return df
 
     
+def generateErrorPoly (prefix1, prefix2, root, suffix1, suffix2, df): 
+       
+    eprefix1 = []
+    eprefix2 = []
+    eroot = []
+    esuffix1 = []
+    esuffix2 = []
+    error_prefix2 = []
+    error_prefix1 = []
+    error_root = []
+    error_suffix1 = []
+    error_suffix2 = []
+    changed_index_p2 = []
+    changed_index_p1 = []
+    changed_index_r = []
+    changed_index_s1 = []
+    changed_index_s2 = []
 
+    for i in range (0, len (root)):
+        if prefix2[i] == "": 
+            error_prefix2.append("")
+            changed_index_p2.append ("")
+            eprefix2.append ("")
+        else: 
+            randomlyChangeNChar(word = prefix2[i], value = 1, changed_index = changed_index_p2, error_word = eprefix2)
+            error_prefix2.append (eprefix2[i] + prefix1[i] + root [i] + suffix1[i] + suffix2[i])
+        
+        if prefix1[i] == "": 
+            error_prefix1.append("")
+            changed_index_p1.append("")
+            eprefix1.append("")
+        else: 
+            randomlyChangeNChar(word = prefix1[i], value = 1, changed_index = changed_index_p1, error_word = eprefix1)
+            error_prefix1.append (prefix2[i] + eprefix1[i] + root [i] + suffix1[i] + suffix2[i])
+            
+        if root[i] == "": 
+            error_root.append("")
+            changed_index_r.append ("")
+            eroot.append ("")
+        else: 
+            randomlyChangeNChar(word = root[i], value = 1, changed_index=changed_index_r, error_word = eroot)
+            error_root.append (prefix2[i] + prefix1[i] + eroot [i] + suffix1[i] + suffix2[i])
+        
+        if suffix1[i] == "": 
+            error_suffix1.append("")
+            changed_index_s1.append("")
+            esuffix1.append("")
+        else: 
+            randomlyChangeNChar(word = suffix1[i], value = 1, changed_index = changed_index_s1, error_word = esuffix1)
+            error_suffix1.append (prefix2[i] + prefix1[i] + root [i] + esuffix1[i] + suffix2[i])
+        
+        if suffix2[i] == "": 
+            error_suffix2.append("")
+            changed_index_s2.append("")
+            esuffix2.append("")
+        else: 
+            randomlyChangeNChar(word = suffix2[i], value = 1, changed_index = changed_index_s2, error_word = esuffix2)
+            error_suffix2.append (prefix2[i] + prefix1[i] + root[i] + suffix1[i] + esuffix2[i])
+        
+
+    df["MonoErrorPrefix2"] = error_prefix2
+    df["MonoErrorPrefix1"] = error_prefix1
+    df["MonoErrorRoot"] = error_root
+    df["MonoErrorSuffix1"] = error_suffix1
+    df["MonoErrorSuffix2"] = error_suffix2
+    df["MonoChangedIndexP2"] = changed_index_p2
+    df["MonoChangedIndexP1"] = changed_index_p1
+    df["MonoChangedIndexR"] = changed_index_r
+    df["MonoChangedIndexS1"] = changed_index_s1
+    df["MonoChangedIndexS2"] = changed_index_s2
+    
+    return df
 
