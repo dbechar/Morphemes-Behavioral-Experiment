@@ -38,13 +38,16 @@ from functions import (generateRoots, generatePolymorphemes, generateMonomorphem
 #---- Generate roots ----
 data["Roots"]["Root"] = generateRoots(value = 500)
 # Save generated roots to Excel File
-data["Roots"].to_excel("C:/Users/delia/OneDrive/Desktop/Morphemes/Morphemes/Experimental Design/Roots.xlsx", sheet_name="Roots", index=False)
+data["Roots"].to_excel("C:/Users/delia/OneDrive/Desktop/Morphemes/Morphemes/Experimental Design/TestRoots.xlsx", sheet_name="Roots", index=False)
+
+# Read in checked roots
+roots = pd.read_excel("C:/Users/delia/OneDrive/Desktop/Morphemes/Morphemes/Experimental Design/Roots.xlsx")
 
 #---- Generate morphologically complex pseudowords ----
 df = generatePolymorphemes(prefixes = data["Prefixes"]["Prefix"].tolist(), 
                            prefixes_weights = data["Prefixes"]["PrefixFrequency"].tolist(), 
                            prefix_pos = data["Prefixes"]["PrefixPOS"].tolist(), 
-                           roots = data["Roots"]["Root"], 
+                           roots = roots["Root"], 
                            suffixes = data["Suffixes"]["Suffix"].tolist(), 
                            suffixes_weights = data["Suffixes"]["SuffixFrequency"].tolist(), 
                            suffix_pos = data["Suffixes"]["SuffixPOS"].tolist(), 

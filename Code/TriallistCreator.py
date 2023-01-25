@@ -38,12 +38,14 @@ p_suffix2 = 0.2
 
 # Number of trials per condition that should be picked: 
 ncondition = round (trialnumber / 7)
-print (ncondition)
+
 # Define errortype distribution per condition
 errortype = ["NoErrorPoly"] * round (ncondition * p_polymor * (1-p_error)) + ["Prefix2"] * round (ncondition * ((p_polymor)*(p_error)*p_prefix2)) +  ["Prefix1"] * round (ncondition * ((p_polymor)*(p_error)*p_prefix1)) +  ["Root"] * round (ncondition * ((p_polymor)*(p_error)*p_root)) + ["Suffix1"] * round (ncondition * ((p_polymor)*(p_error)*p_suffix1)) + ["Suffix2"] * round (ncondition * ((p_polymor)*(p_error)*p_suffix2))+ ["NoErrorMono"] * round (ncondition * (1-p_polymor) * (1-p_error)) + ["MonoPrefix2"] * round (ncondition * (1-p_polymor) * (p_error) * p_prefix2) + ["MonoPrefix1"] * round (ncondition * (1-p_polymor) * (p_error) * p_prefix1) + ["MonoRoot"] * round (ncondition * (1-p_polymor) * (p_error) * p_root) + ["MonoSuffix1"] * round (ncondition * (1-p_polymor) * (p_error) * p_suffix1) + ["MonoSuffix2"]* round (ncondition * (1-p_polymor) * (p_error) * p_suffix2)
 
 
+
 for par in range (0, num_of_participants):
+    
     # randomly pick ncondition-times trials per condition and save in in a df
     pr = data.query("Condition == 'pr'").sample (n = ncondition)
     pr ["errortype"] = errortype
@@ -62,60 +64,62 @@ for par in range (0, num_of_participants):
     
     pardf= pd.concat ([pr,rs, prs, ppr, rss, prss, pprs])
     
-  
+    # Define necessary variables
+    word1 = []
+    word2 = []
+    worddf = pd.DataFrame()
+    token = pardf["Token"].tolist()
+    errortypefull = pardf["errortype"].tolist()
+    monomorpheme = pardf["Monomorpheme"].tolist()
+    errorprefix2 = pardf["ErrorPrefix2"].tolist()
+    errorprefix1 = pardf["ErrorPrefix1"].tolist()
+    errorroot = pardf["ErrorRoot"].tolist()
+    errorsuffix1 = pardf["ErrorSuffix1"].tolist()
+    errorsuffix2 = pardf["ErrorSuffix2"].tolist()
+    monoerrorprefix2 = pardf["MonoErrorPrefix2"].tolist()
+    monoerrorprefix1 = pardf["MonoErrorPrefix1"].tolist()
+    monoerrorroot = pardf["MonoErrorRoot"].tolist()
+    monoerrorsuffix1 = pardf["MonoErrorSuffix1"].tolist()
+    monoerrorsuffix2 = pardf["MonoErrorSuffix2"].tolist()
+    
+    
     for i in range (0, len (pardf)): 
-        word1 = []
-        word2 = []
-        token = pardf["Token"].tolist()
-        errortype = pardf["errortype"].tolist()
-        monomorpheme = pardf["Monomorpheme"].tolist()
-        errorprefix2 = pardf["ErrorPrefix2"].tolist()
-        errorprefix1 = pardf["ErrorPrefix1"].tolist()
-        errorroot = pardf["ErrorRoot"].tolist()
-        errorsuffix1 = pardf["ErrorSuffix1"].tolist()
-        errorsuffix2 = pardf["ErrorSuffix2"].tolist()
-        monoerrorprefix2 = pardf["MonoErrorPrefix2"].tolist()
-        monoerrorprefix1 = pardf["MonoErrorPrefix1"].tolist()
-        monoerrorroot = pardf["MonoErrorRoot"].tolist()
-        monoerrorsuffix1 = pardf["MonoErrorSuffix1"].tolist()
-        monoerrorsuffix2 = pardf["MonoErrorSuffix2"].tolist()
-        
         # In case of errortrial (Polymorpheme)
-        if errortype[i] == "Prefix2": 
+        if errortypefull[i] == "Prefix2": 
             word1.append (token[i])
             word2.append (errorprefix2[i])
-        elif errortype[i] == "Prefix1": 
+        elif errortypefull[i] == "Prefix1": 
             word1.append (token[i])
             word2.append (errorprefix1[i])
-        elif errortype[i] == "Root": 
+        elif errortypefull[i] == "Root": 
             word1.append (token[i])
             word2.append (errorroot[i])
-        elif errortype[i] == "Suffix1": 
+        elif errortypefull[i] == "Suffix1": 
             word1.append (token[i])
             word2.append (errorsuffix1[i])
-        elif errortype[i] == "Suffix2": 
+        elif errortypefull[i] == "Suffix2": 
             word1.append (token[i])
             word2.append (errorsuffix2[i])
             
         # In case of errortrial (Monomorpheme):
-        elif errortype[i] == "MonoPrefix2": 
+        elif errortypefull[i] == "MonoPrefix2": 
             word1.append (monomorpheme[i])
-            word2.append (pardf["MonoErrorPrefix2"][i])
-        elif errortype[i] == "MonoPrefix1": 
+            word2.append (monoerrorprefix2[i])
+        elif errortypefull[i] == "MonoPrefix1": 
             word1.append (monomorpheme[i])
-            word2.append (pardf["MonoErrorPrefix2"][i])
-        elif errortype[i] == "MonoRoot": 
+            word2.append (monoerrorprefix1[i])
+        elif errortypefull[i] == "MonoRoot": 
             word1.append (monomorpheme[i])
-            word2.append (pardf["MonoErrorRoot"][i])
-        elif errortype[i] == "MonoSuffix1": 
+            word2.append (monoerrorroot[i])
+        elif errortypefull[i] == "MonoSuffix1": 
             word1.append (monomorpheme[i])
-            word2.append (pardf["MonoErrorSuffix1"][i])
-        elif errortype[i] == "MonoPrefix2": 
+            word2.append (monoerrorsuffix1[i])
+        elif errortypefull[i] == "MonoPrefix2": 
             word1.append (monomorpheme[i])
-            word2.append (pardf["MonoErrorSuffix2"][i])
+            word2.append (monoerrorsuffix2[i])
         
         # In case of no errortrial (Monomorpheme):
-        elif errortype[i] == "NoErrorPoly":
+        elif errortypefull[i] == "NoErrorPoly":
             word1.append(token[i])
             word2.append(token[i])
         
@@ -124,10 +128,11 @@ for par in range (0, num_of_participants):
             word1.append(monomorpheme[i])
             word2.append(monomorpheme[i])
 
-    worddf = pd.DataFrame ({"Word1": word1,
-                            "Word2": word2})
+    worddf["Word1"] = word1
+    worddf["Word2"] = word2
+
 # randomize order
-    worddf = worddf.sample (frac = 1)
+    worddf = worddf.sample (frac=1)
 
 # Save one csv file per participant to Triallist folder
     path = "Triallists/" + str (par) + "-triallist.csv"
