@@ -43,6 +43,10 @@ def generateRoots (value):
         word = (random.choices(consonants, weights = consonant_weights, cum_weights=(None), k = 1) + 
                 random.choices(vowels, weights = vowel_weights, cum_weights=(None), k = 1) + 
                 random.choices(consonants, weights = consonant_weights, cum_weights=(None), k = 1))
+        while word in root: 
+            word = (random.choices(consonants, weights = consonant_weights, cum_weights=(None), k = 1) + 
+                    random.choices(vowels, weights = vowel_weights, cum_weights=(None), k = 1) + 
+                    random.choices(consonants, weights = consonant_weights, cum_weights=(None), k = 1))
         root.append ("".join(word))
     # pattern 2 = vcv
     for index in range (0, round (value/num_of_patterns)): 
@@ -50,6 +54,10 @@ def generateRoots (value):
         word = (random.choices(vowels, weights = vowel_weights, cum_weights=(None), k = 1) + 
                 random.choices(consonants, weights = consonant_weights, cum_weights=(None), k = 1) + 
                 random.choices(vowels, weights = vowel_weights, cum_weights=(None), k = 1))
+        while word in root: 
+            word = (random.choices(vowels, weights = vowel_weights, cum_weights=(None), k = 1) + 
+                    random.choices(consonants, weights = consonant_weights, cum_weights=(None), k = 1) + 
+                    random.choices(vowels, weights = vowel_weights, cum_weights=(None), k = 1))
         root.append ("".join(word))
     # pattern 3 = cvcv
     for index in range (0, round (value/num_of_patterns)): 
@@ -58,6 +66,11 @@ def generateRoots (value):
                 random.choices(vowels, weights = vowel_weights, cum_weights=(None), k = 1) + 
                 random.choices(consonants, weights = consonant_weights, cum_weights=(None), k = 1) +
                 random.choices(vowels, weights = vowel_weights, cum_weights=(None), k = 1))
+        while word in root: 
+            word = (random.choices(consonants, weights = consonant_weights, cum_weights=(None), k = 1) +
+                    random.choices(vowels, weights = vowel_weights, cum_weights=(None), k = 1) + 
+                    random.choices(consonants, weights = consonant_weights, cum_weights=(None), k = 1) +
+                    random.choices(vowels, weights = vowel_weights, cum_weights=(None), k = 1))
         root.append ("".join(word))
     # pattern 4: vcvc
     for index in range (0, round (value/num_of_patterns)): 
@@ -66,6 +79,11 @@ def generateRoots (value):
                 random.choices(consonants, weights = consonant_weights, cum_weights=(None), k = 1) +
                 random.choices(vowels, weights = vowel_weights, cum_weights=(None), k = 1) + 
                 random.choices(consonants, weights = consonant_weights, cum_weights=(None), k = 1))
+        while word in root: 
+            word = (random.choices(vowels, weights = vowel_weights, cum_weights=(None), k = 1) + 
+                    random.choices(consonants, weights = consonant_weights, cum_weights=(None), k = 1) +
+                    random.choices(vowels, weights = vowel_weights, cum_weights=(None), k = 1) + 
+                    random.choices(consonants, weights = consonant_weights, cum_weights=(None), k = 1))
         root.append ("".join(word))
     # pattern 5: cvcvc
     for index in range (0, round (value/num_of_patterns)): 
@@ -75,6 +93,12 @@ def generateRoots (value):
                 random.choices(consonants, weights = consonant_weights, cum_weights=(None), k = 1) +
                 random.choices(vowels, weights = vowel_weights, cum_weights=(None), k = 1) + 
                 random.choices(consonants, weights = consonant_weights, cum_weights=(None), k = 1))
+        while word in root: 
+            word = (random.choices(consonants, weights = consonant_weights, cum_weights=(None), k = 1) +
+                    random.choices(vowels, weights = vowel_weights, cum_weights=(None), k = 1) + 
+                    random.choices(consonants, weights = consonant_weights, cum_weights=(None), k = 1) +
+                    random.choices(vowels, weights = vowel_weights, cum_weights=(None), k = 1) + 
+                    random.choices(consonants, weights = consonant_weights, cum_weights=(None), k = 1))
         root.append ("".join(word))
     # pattern 6: vscv
     for index in range (0, round (value/num_of_patterns)): 
@@ -83,6 +107,11 @@ def generateRoots (value):
                 random.choices(sonorants, weights = sonorants_weights, cum_weights=(None), k = 1) + 
                 random.choices(consonants, weights = consonant_weights, cum_weights=(None), k = 1) +
                 random.choices(vowels, weights = vowel_weights, cum_weights=(None), k = 1))
+        while word in root: 
+            word = (random.choices(vowels, weights = vowel_weights, cum_weights=(None), k = 1) +
+                    random.choices(sonorants, weights = sonorants_weights, cum_weights=(None), k = 1) + 
+                    random.choices(consonants, weights = consonant_weights, cum_weights=(None), k = 1) +
+                    random.choices(vowels, weights = vowel_weights, cum_weights=(None), k = 1))
         root.append ("".join(word))
     # pattern 7: vsc
     for index in range (0, round (value/num_of_patterns)): 
@@ -90,6 +119,10 @@ def generateRoots (value):
          word = (random.choices(vowels, weights = vowel_weights, cum_weights=(None), k = 1) +
                  random.choices(sonorants, weights = sonorants_weights, cum_weights=(None), k = 1) + 
                  random.choices(consonants, weights = consonant_weights, cum_weights=(None), k = 1))
+         while word in root: 
+             word = (random.choices(vowels, weights = vowel_weights, cum_weights=(None), k = 1) +
+                     random.choices(sonorants, weights = sonorants_weights, cum_weights=(None), k = 1) + 
+                     random.choices(consonants, weights = consonant_weights, cum_weights=(None), k = 1))
          root.append ("".join(word))    
     # pattern 8: svsc
     for index in range (0, round (value/num_of_patterns)): 
@@ -98,6 +131,11 @@ def generateRoots (value):
                 random.choices(vowels, weights = vowel_weights, cum_weights=(None), k = 1) +
                 random.choices(sonorants, weights = sonorants_weights, cum_weights=(None), k = 1) + 
                 random.choices(consonants, weights = consonant_weights, cum_weights=(None), k = 1))
+        while word in root:
+            word = (random.choices(sonorants, weights = sonorants_weights, cum_weights=(None), k = 1) + 
+                    random.choices(vowels, weights = vowel_weights, cum_weights=(None), k = 1) +
+                    random.choices(sonorants, weights = sonorants_weights, cum_weights=(None), k = 1) + 
+                    random.choices(consonants, weights = consonant_weights, cum_weights=(None), k = 1))
         root.append ("".join(word))
     # pattern 9: svc
     for index in range (0, round (value/num_of_patterns)): 
@@ -105,6 +143,10 @@ def generateRoots (value):
         word = (random.choices(sonorants, weights = sonorants_weights, cum_weights=(None), k = 1) + 
                 random.choices(vowels, weights = vowel_weights, cum_weights=(None), k = 1) + 
                 random.choices(consonants, weights = consonant_weights, cum_weights=(None), k = 1))
+        while word in root:
+            word = (random.choices(sonorants, weights = sonorants_weights, cum_weights=(None), k = 1) + 
+                    random.choices(vowels, weights = vowel_weights, cum_weights=(None), k = 1) + 
+                    random.choices(consonants, weights = consonant_weights, cum_weights=(None), k = 1))
         root.append ("".join(word))
     # pattern 10: cvs
     for index in range (0, round (value/num_of_patterns)): 
@@ -112,6 +154,10 @@ def generateRoots (value):
         word = (random.choices(consonants, weights = consonant_weights, cum_weights=(None), k = 1) + 
                 random.choices(vowels, weights = vowel_weights, cum_weights=(None), k = 1) + 
                 random.choices(sonorants, weights = sonorants_weights, cum_weights=(None), k = 1))
+        while word in root:
+            word = (random.choices(consonants, weights = consonant_weights, cum_weights=(None), k = 1) + 
+                    random.choices(vowels, weights = vowel_weights, cum_weights=(None), k = 1) + 
+                    random.choices(sonorants, weights = sonorants_weights, cum_weights=(None), k = 1))
         root.append ("".join(word))
     return root
 

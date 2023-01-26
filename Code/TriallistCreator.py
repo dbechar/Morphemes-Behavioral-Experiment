@@ -16,7 +16,8 @@
 import pandas as pd
 import random
 import os
-os.chdir("C:/Users/delia/OneDrive/Desktop/Morphemes/Morphemes/Code")
+
+# os.chdir("C:/Users/delia/OneDrive/Desktop/Morphemes/Morphemes/Code")
 from Functions import (generateParticipantFile, generateTriallist)
 
 # Set working directory 
