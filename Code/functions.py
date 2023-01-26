@@ -126,8 +126,14 @@ def generateRoots (value):
     # - Output: Dataframe that includes infromation about the Polymorphemes
 
 
-def generatePolymorphemes (prefixes, prefixes_weights, prefix_pos, roots, suffixes, suffixes_weights, suffix_pos, value):
-    df = pd.DataFrame()
+def generatePolymorphemes (data, value):
+    prefixes = data["Prefixes"]["Prefix"].tolist() 
+    prefixes_weights = data["Prefixes"]["PrefixFrequency"].tolist()
+    prefix_pos = data["Prefixes"]["PrefixPOS"].tolist()
+    roots = data["Roots"]["Root"].tolist()
+    suffixes = data["Suffixes"]["Suffix"].tolist() 
+    suffixes_weights = data["Suffixes"]["SuffixFrequency"].tolist() 
+    suffix_pos = data["Suffixes"]["SuffixPOS"].tolist()
     newword = []
     num_of_conditions = 7
     prefix2 = []
@@ -283,7 +289,7 @@ def generatePolymorphemes (prefixes, prefixes_weights, prefix_pos, roots, suffix
                         suffix2[x + 6 * end])
         num_of_mor.append (4)
         condition.append("pprs")
-        
+    df = pd.DataFrame()  
     df["Token"] = newword
     # df["Num_of_mor"] = num_of_mor
     df["Condition"] = condition
@@ -292,18 +298,21 @@ def generatePolymorphemes (prefixes, prefixes_weights, prefix_pos, roots, suffix
     df["Root"] = root 
     df["Suffix1"] = suffix1
     df["Suffix2"] = suffix2
-    df["Wordlength"] = df["Token"].str.len()
+    #df["Wordlength"] = df["Token"].str.len()
     return df   
 
 #---- Generate random pseudowords ----
 
 # Input for function: 
-    # - list for each morpheme 
-    # - list in which new pseudowords are supposed to be saved in 
+    # - dataframe that has all of the necessary information
 
 
-def generateMonomorphemes (prefix2, prefix1, root, suffix1, suffix2, df):
-    
+def generateMonomorphemes (df):
+    prefix2 = df["Prefix2"].tolist()
+    prefix1 = df["Prefix1"].tolist()
+    root = df["Root"].tolist()                        
+    suffix1 = df["Suffix1"].tolist()
+    suffix2 = df["Suffix2"].tolist()
     monomorphemes = []
     mono_prefix2 = []
     mono_prefix1 = []
@@ -370,15 +379,15 @@ def generateMonomorphemes (prefix2, prefix1, root, suffix1, suffix2, df):
                               monosuffix1 + 
                               monosuffix2)
         
-
-    df.insert(1, "Monomorpheme", monomorphemes)
-    df["MonoPrefix2"] = mono_prefix2
-    df["MonoPrefix1"] = mono_prefix1
-    df["MonoRoot"] = mono_root
-    df["MonoSuffix1"] = mono_suffix1
-    df["MonoSuffix2"] = mono_suffix2
+    df_Monomorpheme = pd.DataFrame ()
+    df_Monomorpheme["Monomorpheme"] = monomorphemes
+    df_Monomorpheme["MonoPrefix2"] = mono_prefix2
+    df_Monomorpheme["MonoPrefix1"] = mono_prefix1
+    df_Monomorpheme["MonoRoot"] = mono_root
+    df_Monomorpheme["MonoSuffix1"] = mono_suffix1
+    df_Monomorpheme["MonoSuffix2"] = mono_suffix2
         
-    return df
+    return df_Monomorpheme
 
 #---- Generate random errors ----
 # Input: 
@@ -443,8 +452,12 @@ def randomlyChangeNChar(word, value, changed_index, error_word):
 
 # Input: either dataframe that includes all of that information OR list
     # - Dataframe in which information is supposed to be saved in 
-def generateError (prefix1, prefix2, root, suffix1, suffix2, df): 
-       
+def generateError (df): 
+    prefix2 = df["Prefix2"].tolist() 
+    prefix1 = df["Prefix1"].tolist()
+    root = df["Root"].tolist() 
+    suffix1 = df["Suffix1"].tolist()
+    suffix2 = df["Suffix2"].tolist()
     eprefix1 = []
     eprefix2 = []
     eroot = []
@@ -502,23 +515,27 @@ def generateError (prefix1, prefix2, root, suffix1, suffix2, df):
             randomlyChangeNChar(word = suffix2[i], value = 1, changed_index = changed_index_s2, error_word = esuffix2)
             error_suffix2.append (prefix2[i] + prefix1[i] + root[i] + suffix1[i] + esuffix2[i])
         
-
-    df["ErrorPrefix2"] = error_prefix2
-    df["ErrorPrefix1"] = error_prefix1
-    df["ErrorRoot"] = error_root
-    df["ErrorSuffix1"] = error_suffix1
-    df["ErrorSuffix2"] = error_suffix2
-    df["ChangedIndexP2"] = changed_index_p2
-    df["ChangedIndexP1"] = changed_index_p1
-    df["ChangedIndexR"] = changed_index_r
-    df["ChangedIndexS1"] = changed_index_s1
-    df["ChangedIndexS2"] = changed_index_s2
+    df_Error = pd.DataFrame()
+    df_Error["ErrorPrefix2"] = error_prefix2
+    df_Error["ErrorPrefix1"] = error_prefix1
+    df_Error["ErrorRoot"] = error_root
+    df_Error["ErrorSuffix1"] = error_suffix1
+    df_Error["ErrorSuffix2"] = error_suffix2
+    df_Error["ChangedIndexP2"] = changed_index_p2
+    df_Error["ChangedIndexP1"] = changed_index_p1
+    df_Error["ChangedIndexR"] = changed_index_r
+    df_Error["ChangedIndexS1"] = changed_index_s1
+    df_Error["ChangedIndexS2"] = changed_index_s2
     
-    return df
+    return df_Error
 
     
-def generateErrorPoly (prefix1, prefix2, root, suffix1, suffix2, df): 
-       
+def generateErrorPoly (df): 
+    prefix2 = df["MonoPrefix2"].tolist()
+    prefix1 = df["MonoPrefix1"].tolist()
+    root = df["MonoRoot"].tolist()
+    suffix1 = df["MonoSuffix1"].tolist()
+    suffix2 = df["MonoSuffix2"].tolist() 
     eprefix1 = []
     eprefix2 = []
     eroot = []
@@ -576,17 +593,16 @@ def generateErrorPoly (prefix1, prefix2, root, suffix1, suffix2, df):
             randomlyChangeNChar(word = suffix2[i], value = 1, changed_index = changed_index_s2, error_word = esuffix2)
             error_suffix2.append (prefix2[i] + prefix1[i] + root[i] + suffix1[i] + esuffix2[i])
         
-
-    df["MonoErrorPrefix2"] = error_prefix2
-    df["MonoErrorPrefix1"] = error_prefix1
-    df["MonoErrorRoot"] = error_root
-    df["MonoErrorSuffix1"] = error_suffix1
-    df["MonoErrorSuffix2"] = error_suffix2
-    df["MonoChangedIndexP2"] = changed_index_p2
-    df["MonoChangedIndexP1"] = changed_index_p1
-    df["MonoChangedIndexR"] = changed_index_r
-    df["MonoChangedIndexS1"] = changed_index_s1
-    df["MonoChangedIndexS2"] = changed_index_s2
+    df_MonoError = pd.DataFrame()
+    df_MonoError["MonoErrorPrefix2"] = error_prefix2
+    df_MonoError["MonoErrorPrefix1"] = error_prefix1
+    df_MonoError["MonoErrorRoot"] = error_root
+    df_MonoError["MonoErrorSuffix1"] = error_suffix1
+    df_MonoError["MonoErrorSuffix2"] = error_suffix2
+    df_MonoError["MonoChangedIndexP2"] = changed_index_p2
+    df_MonoError["MonoChangedIndexP1"] = changed_index_p1
+    df_MonoError["MonoChangedIndexR"] = changed_index_r
+    df_MonoError["MonoChangedIndexS1"] = changed_index_s1
+    df_MonoError["MonoChangedIndexS2"] = changed_index_s2
     
-    return df
-
+    return df_MonoError

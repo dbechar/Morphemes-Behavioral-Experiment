@@ -25,10 +25,10 @@ os.chdir("C:/Users/delia/OneDrive/Desktop/Morphemes/Morphemes")
 data = pd.read_csv("Experimental Design\Pseudoword_English_Pool.csv")
 
 # Define necessary variables
-num_of_participants = 3
+random.seed(19)
 trialnumber = 280
 p_error = 0.5
-p_polymor = 0.5 # probability of using 
+p_polymor = 0.5 # probability of using polymorphemes 
 
 # If error:
 #p_prefix1 = 0.2
@@ -59,98 +59,98 @@ random.shuffle (errortype_pprs)
 ncondition = len (errortype_pprs)
 
 
-for par in range (0, num_of_participants):
-    # randomly pick ncondition-times trials per condition and save in in a df
-    pr = data.query("Condition == 'pr'").sample (n = ncondition)
-    pr ["errortype"] = errortype_pr[0:ncondition]
-    rs = data.query("Condition == 'rs'").sample (n = ncondition)
-    rs ["errortype"] = errortype_rs[0:ncondition]
-    prs = data.query("Condition == 'pr'").sample (n = ncondition)
-    prs ["errortype"] = errortype_prs[0:ncondition]
-    ppr = data.query("Condition == 'ppr'").sample (n = ncondition)
-    ppr ["errortype"] = errortype_ppr[0:ncondition]
-    rss = data.query("Condition == 'rss'").sample (n = ncondition)
-    rss ["errortype"] = errortype_rss[0:ncondition]
-    prss = data.query("Condition == 'prss'").sample (n = ncondition)
-    prss ["errortype"] = errortype_prss[0:ncondition]
-    pprs = data.query("Condition == 'pprs'").sample (n = ncondition)   
-    pprs ["errortype"] = errortype_pprs[0:ncondition]
-                                        
 
-    pardf= pd.concat ([pr,rs, prs, ppr, rss, prss, pprs])
+    # randomly pick ncondition-times trials per condition and save in in a df
+pr = data.query("Condition == 'pr'").sample (n = ncondition)
+pr ["errortype"] = errortype_pr[0:ncondition]
+rs = data.query("Condition == 'rs'").sample (n = ncondition)
+rs ["errortype"] = errortype_rs[0:ncondition]
+prs = data.query("Condition == 'pr'").sample (n = ncondition)
+prs ["errortype"] = errortype_prs[0:ncondition]
+ppr = data.query("Condition == 'ppr'").sample (n = ncondition)
+ppr ["errortype"] = errortype_ppr[0:ncondition]
+rss = data.query("Condition == 'rss'").sample (n = ncondition)
+rss ["errortype"] = errortype_rss[0:ncondition]
+prss = data.query("Condition == 'prss'").sample (n = ncondition)
+prss ["errortype"] = errortype_prss[0:ncondition]
+pprs = data.query("Condition == 'pprs'").sample (n = ncondition)   
+pprs ["errortype"] = errortype_pprs[0:ncondition]
+                                    
+
+pardf= pd.concat ([pr,rs, prs, ppr, rss, prss, pprs])
     
     
-    # Define necessary variables
-    word1 = []
-    word2 = []
-    worddf = pd.DataFrame()
-    token = pardf["Token"].tolist()
-    errortypefull = pardf["errortype"].tolist()
-    monomorpheme = pardf["Monomorpheme"].tolist()
-    errorprefix2 = pardf["ErrorPrefix2"].tolist()
-    errorprefix1 = pardf["ErrorPrefix1"].tolist()
-    errorroot = pardf["ErrorRoot"].tolist()
-    errorsuffix1 = pardf["ErrorSuffix1"].tolist()
-    errorsuffix2 = pardf["ErrorSuffix2"].tolist()
-    monoerrorprefix2 = pardf["MonoErrorPrefix2"].tolist()
-    monoerrorprefix1 = pardf["MonoErrorPrefix1"].tolist()
-    monoerrorroot = pardf["MonoErrorRoot"].tolist()
-    monoerrorsuffix1 = pardf["MonoErrorSuffix1"].tolist()
-    monoerrorsuffix2 = pardf["MonoErrorSuffix2"].tolist()
-    
-    
-    for i in range (0, len (pardf)): 
-        # In case of errortrial (Polymorpheme)
-        if errortypefull[i] == "Prefix2": 
-            word1.append (token[i])
-            word2.append (errorprefix2[i])
-        elif errortypefull[i] == "Prefix1": 
-            word1.append (token[i])
-            word2.append (errorprefix1[i])
-        elif errortypefull[i] == "Root": 
-            word1.append (token[i])
-            word2.append (errorroot[i])
-        elif errortypefull[i] == "Suffix1": 
-            word1.append (token[i])
-            word2.append (errorsuffix1[i])
-        elif errortypefull[i] == "Suffix2": 
-            word1.append (token[i])
-            word2.append (errorsuffix2[i])
-            
-        # In case of errortrial (Monomorpheme):
-        elif errortypefull[i] == "MonoPrefix2": 
-            word1.append (monomorpheme[i])
-            word2.append (monoerrorprefix2[i])
-        elif errortypefull[i] == "MonoPrefix1": 
-            word1.append (monomorpheme[i])
-            word2.append (monoerrorprefix1[i])
-        elif errortypefull[i] == "MonoRoot": 
-            word1.append (monomorpheme[i])
-            word2.append (monoerrorroot[i])
-        elif errortypefull[i] == "MonoSuffix1": 
-            word1.append (monomorpheme[i])
-            word2.append (monoerrorsuffix1[i])
-        elif errortypefull[i] == "MonoPrefix2": 
-            word1.append (monomorpheme[i])
-            word2.append (monoerrorsuffix2[i])
+# Define necessary variables
+word1 = []
+word2 = []
+worddf = pd.DataFrame()
+token = pardf["Token"].tolist()
+errortypefull = pardf["errortype"].tolist()
+monomorpheme = pardf["Monomorpheme"].tolist()
+errorprefix2 = pardf["ErrorPrefix2"].tolist()
+errorprefix1 = pardf["ErrorPrefix1"].tolist()
+errorroot = pardf["ErrorRoot"].tolist()
+errorsuffix1 = pardf["ErrorSuffix1"].tolist()
+errorsuffix2 = pardf["ErrorSuffix2"].tolist()
+monoerrorprefix2 = pardf["MonoErrorPrefix2"].tolist()
+monoerrorprefix1 = pardf["MonoErrorPrefix1"].tolist()
+monoerrorroot = pardf["MonoErrorRoot"].tolist()
+monoerrorsuffix1 = pardf["MonoErrorSuffix1"].tolist()
+monoerrorsuffix2 = pardf["MonoErrorSuffix2"].tolist()
+
+
+for i in range (0, len (pardf)): 
+    # In case of errortrial (Polymorpheme)
+    if errortypefull[i] == "Prefix2": 
+        word1.append (token[i])
+        word2.append (errorprefix2[i])
+    elif errortypefull[i] == "Prefix1": 
+        word1.append (token[i])
+        word2.append (errorprefix1[i])
+    elif errortypefull[i] == "Root": 
+        word1.append (token[i])
+        word2.append (errorroot[i])
+    elif errortypefull[i] == "Suffix1": 
+        word1.append (token[i])
+        word2.append (errorsuffix1[i])
+    elif errortypefull[i] == "Suffix2": 
+        word1.append (token[i])
+        word2.append (errorsuffix2[i])
         
-        # In case of no errortrial (Monomorpheme):
-        elif errortypefull[i] == "NoErrorPoly":
-            word1.append(token[i])
-            word2.append(token[i])
-        
-        # In case of no errortrial (Polymorpheme):
-        else: 
-            word1.append(monomorpheme[i])
-            word2.append(monomorpheme[i])
-    pardf["Word1"] = word1
-    pardf["Word2"] = word2
-    worddf["Word1"] = word1
-    worddf["Word2"] = word2
+    # In case of errortrial (Monomorpheme):
+    elif errortypefull[i] == "MonoPrefix2": 
+        word1.append (monomorpheme[i])
+        word2.append (monoerrorprefix2[i])
+    elif errortypefull[i] == "MonoPrefix1": 
+        word1.append (monomorpheme[i])
+        word2.append (monoerrorprefix1[i])
+    elif errortypefull[i] == "MonoRoot": 
+        word1.append (monomorpheme[i])
+        word2.append (monoerrorroot[i])
+    elif errortypefull[i] == "MonoSuffix1": 
+        word1.append (monomorpheme[i])
+        word2.append (monoerrorsuffix1[i])
+    elif errortypefull[i] == "MonoPrefix2": 
+        word1.append (monomorpheme[i])
+        word2.append (monoerrorsuffix2[i])
+    
+    # In case of no errortrial (Monomorpheme):
+    elif errortypefull[i] == "NoErrorPoly":
+        word1.append(token[i])
+        word2.append(token[i])
+    
+    # In case of no errortrial (Polymorpheme):
+    else: 
+        word1.append(monomorpheme[i])
+        word2.append(monomorpheme[i])
+pardf["Word1"] = word1
+pardf["Word2"] = word2
+worddf["Word1"] = word1
+worddf["Word2"] = word2
 
 # randomize order
-    worddf = worddf.sample (frac=1)
+worddf = worddf.sample (frac=1)
 
 # Save one csv file per participant to Triallist folder
-    path = "Triallists/" + str (par) + "-triallist.csv"
-    worddf.to_csv (path, index = False)
+path = "Triallists/" + str (1) + "-triallist.csv"
+worddf.to_csv (path, index = False)
