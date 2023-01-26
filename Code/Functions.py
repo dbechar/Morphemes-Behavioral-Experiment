@@ -135,7 +135,7 @@ def generatePolymorphemes (data, value):
     suffixes_weights = data["Suffixes"]["SuffixFrequency"].tolist() 
     suffix_pos = data["Suffixes"]["SuffixPOS"].tolist()
     newword = []
-    num_of_conditions = 7
+    num_of_conditions = 8
     prefix2 = []
     prefix1 = []
     root = []
@@ -145,7 +145,22 @@ def generatePolymorphemes (data, value):
     condition = []
     end = round (value/num_of_conditions)
     
-    # condition 1: prefix + root (pr)
+    # condition 1: root
+    for x in range (0, end):
+        prefix2.append ("")
+        prefix1.append ("")
+        root.append ("".join(random.choices(roots)))
+        suffix1.append ("")
+        suffix2.append ("")
+        newword.append (prefix2[x] + 
+                        prefix1[x] + 
+                        root[x] + 
+                        suffix1[x] + 
+                        suffix2[x])
+        num_of_mor.append (1)
+        condition.append("r")
+        
+    # condition 2: prefix + root (pr)
     for x in range (0, end):
         prefix2.append ("")
         prefix1.append ("".join (random.choices (prefixes, weights = prefixes_weights, cum_weights=(None), k = 1)))
@@ -160,7 +175,7 @@ def generatePolymorphemes (data, value):
         num_of_mor.append (2)
         condition.append("pr")
     
-    # condition 2: root + suffix
+    # condition 3: root + suffix
     for x in range (0, end):
         prefix2.append ("")
         prefix1.append ("")
@@ -175,7 +190,7 @@ def generatePolymorphemes (data, value):
         num_of_mor.append (2)
         condition.append("rs")
         
-    # condition 3: prefix + root + suffix
+    # condition 4: prefix + root + suffix
     for x in range (0, end):
         prefix2.append ("")
         prefix1.append ("".join(random.choices (prefixes, weights = prefixes_weights, cum_weights=(None), k = 1)))
@@ -190,7 +205,7 @@ def generatePolymorphemes (data, value):
         num_of_mor.append (3)
         condition.append("prs")
     
-    # condition 4: prefix + prefix + root
+    # condition 5: prefix + prefix + root
     for x in range (0, end):
         n_prefix2 = ("".join(random.choices (prefixes, weights = prefixes_weights, cum_weights=(None), k = 1)))
         n_prefix1 = ("".join(random.choices (prefixes, weights = prefixes_weights, cum_weights=(None), k = 1)))
@@ -215,7 +230,7 @@ def generatePolymorphemes (data, value):
         num_of_mor.append (3)
         condition.append("ppr")
     
-    # condition 5: root + suffix + suffix
+    # condition 6: root + suffix + suffix
     for x in range (0, end):
         n_suffix1 = ("".join(random.choices (suffixes, weights = suffixes_weights, cum_weights=(None), k = 1)))
         n_suffix2 = ("".join(random.choices (suffixes, weights = suffixes_weights, cum_weights=(None), k = 1)))
@@ -240,7 +255,7 @@ def generatePolymorphemes (data, value):
         num_of_mor.append (3)
         condition.append("rss")
         
-    # condition 6: prefix + root + suffix + suffix
+    # condition 7: prefix + root + suffix + suffix
     for x in range (0, end):
         n_suffix1 = ("".join(random.choices (suffixes, weights = suffixes_weights, cum_weights=(None), k = 1)))
         n_suffix2 = ("".join(random.choices (suffixes, weights = suffixes_weights, cum_weights=(None), k = 1)))
@@ -265,7 +280,7 @@ def generatePolymorphemes (data, value):
         num_of_mor.append (4)
         condition.append("prss")
         
-    # condition 7: prefix + prefix + root + suffix
+    # condition 8: prefix + prefix + root + suffix
     for x in range (0, end):
         n_prefix1 = ("".join(random.choices (prefixes, weights = prefixes_weights, cum_weights=(None), k = 1)))
         n_prefix2 = ("".join(random.choices (prefixes, weights = prefixes_weights, cum_weights=(None), k = 1)))
@@ -289,6 +304,8 @@ def generatePolymorphemes (data, value):
                         suffix2[x + 6 * end])
         num_of_mor.append (4)
         condition.append("pprs")
+    
+            
     df = pd.DataFrame()  
     df["Token"] = newword
     # df["Num_of_mor"] = num_of_mor
@@ -298,7 +315,7 @@ def generatePolymorphemes (data, value):
     df["Root"] = root 
     df["Suffix1"] = suffix1
     df["Suffix2"] = suffix2
-    #df["Wordlength"] = df["Token"].str.len()
+    df["Wordlength"] = df["Token"].str.len()
     return df   
 
 #---- Generate random pseudowords ----
@@ -606,3 +623,120 @@ def generateErrorMono (df):
     df_MonoError["MonoChangedIndexS2"] = changed_index_s2
     
     return df_MonoError
+
+
+
+def generateParticipantFile (data, condition, p_error, p_polymor):
+    # Define error distribution per condition (create function and put that all into function)
+    errortype_r = ["NoErrorPoly"] * int (condition["r"] * 0.5) + ["Root"] * int (condition["r"] * 0.5)
+
+    errortype_pr = ["NoErrorPoly"] * int (condition["pr"] * (1-p_error) * p_polymor) + ["Prefix1"] * int (condition["pr"] * p_error * p_polymor * 0.5) + ["Root"] * int (condition["pr"] * p_error * p_polymor * 0.5) + ["NoErrorMono"] * int (condition["pr"] * (1-p_error) * (1-p_polymor)) +["MonoPrefix1"] * int (condition["pr"] * p_error * (1-p_polymor) * 0.5) + ["MonoRoot"] * int (condition["pr"] * p_error * (1-p_polymor) * 0.5) 
+
+    errortype_rs = ["NoErrorPoly"] * int (condition["rs"] * (1-p_error) * p_polymor) + ["Root"] * int (condition["rs"] * p_error * p_polymor * 0.5) +["Suffix1"] * int (condition["rs"] * p_error * p_polymor * 0.5) +  ["NoErrorMono"] * int (condition["rs"] * (1-p_error) * (1-p_polymor)) + ["MonoRoot"] * int (condition["rs"] * p_error * (1-p_polymor) * 0.5) + ["MonoSuffix1"] * int (condition["rs"] * p_error * (1-p_polymor) * 0.5) 
+
+    errortype_prs = ["NoErrorPoly"] * int (condition["prs"] * (1-p_error) * p_polymor) + ["Prefix1"] * int (condition["prs"] * p_error * p_polymor * (1/3)) + ["Root"] * int (condition["prs"] * p_error * p_polymor * (1/3)) + ["Suffix1"] * int (condition["prs"] * p_error * p_polymor * (1/3)) + ["NoErrorMono"] * int (condition["prs"] * (1-p_error) * (1-p_polymor)) + ["MonoPrefix1"] * int (condition["prs"] * p_error * (1-p_polymor) * (1/3)) + ["MonoRoot"] * int (condition["prs"] * p_error * (1-p_polymor) * (1/3)) + ["MonoSuffix1"] * int (condition["prs"] * p_error * (1-p_polymor) * (1/3))  
+
+    errortype_ppr = ["NoErrorPoly"] * int (condition["ppr"] * (1-p_error) * p_polymor) + ["Prefix2"] * int (condition["ppr"] * p_error * p_polymor * (1/3)) + ["Prefix1"] * int (condition["ppr"] * p_error * p_polymor * (1/3)) + ["Root"] * int (condition["ppr"] * p_error * p_polymor * (1/3)) + ["NoErrorMono"] * int (condition["ppr"] * (1-p_error) * (1-p_polymor)) + ["MonoPrefix2"] * int (condition["ppr"] * p_error * (1-p_polymor) * (1/3)) + ["MonoPrefix1"] * int (condition["ppr"] * p_error * (1-p_polymor) * (1/3)) + ["MonoRoot"] * int (condition["ppr"] * p_error * (1-p_polymor) * (1/3)) 
+
+    errortype_rss = ["NoErrorPoly"] * int (condition["rss"] * (1-p_error) * p_polymor)+ ["Root"] * int (condition["rss"] * p_error * p_polymor * (1/3)) + ["Suffix1"] * int (condition["rss"] * p_error * p_polymor * (1/3))  + ["Suffix2"] * int (condition["rss"] * p_error * p_polymor * (1/3)) + ["NoErrorMono"] * int (condition["rss"] * (1-p_error) * (1-p_polymor)) + ["MonoRoot"] * int (condition["rss"] * p_error * (1-p_polymor) * (1/3)) + ["MonoSuffix1"] * int (condition["rss"] * p_error * (1-p_polymor) * (1/3)) + ["MonoSuffix2"] * int (condition["rss"] * p_error * (1-p_polymor) * (1/3))
+
+    errortype_prss =["NoErrorPoly"] * int (condition["prss"] * (1-p_error) * p_polymor)+ ["Prefix1"] * int (condition["prss"] * p_error * p_polymor * (1/4)) + ["Root"] * int (condition["prss"] * p_error * p_polymor * (1/4)) + ["Suffix1"] * int (condition["prss"] * p_error * p_polymor * (1/4))  + ["Suffix2"] * int (condition["prss"] * p_error * p_polymor * (1/4)) + ["NoErrorMono"] * int (condition["prss"] * (1-p_error) * (1-p_polymor)) + ["MonoPrefix1"] * int (condition["prss"] * p_error * (1-p_polymor) * (1/4)) + ["MonoRoot"] * int (condition["prss"] * p_error * (1-p_polymor) * (1/4)) + ["MonoSuffix1"] * int (condition["prss"] * p_error * (1-p_polymor) * (1/4)) + ["MonoSuffix2"] * int (condition["prss"] * p_error * (1-p_polymor) * (1/4))
+
+    errortype_pprs = ["NoErrorPoly"] * int (condition["pprs"] * (1-p_error) * p_polymor)+ ["Prefix2"] * int (condition["pprs"] * p_error * p_polymor * (1/4)) + ["Prefix1"] * int (condition["pprs"] * p_error * p_polymor * (1/4)) +["Root"] * int (condition["pprs"] * p_error * p_polymor * (1/4)) + ["Suffix1"] * int (condition["pprs"] * p_error * p_polymor * (1/4))  + ["NoErrorMono"] * int (condition["pprs"] * (1-p_error) * (1-p_polymor)) + ["MonoPrefix2"] * int (condition["pprs"] * p_error * (1-p_polymor) * (1/4)) + ["MonoPrefix1"] * int (condition["pprs"] * p_error * (1-p_polymor) * (1/4)) + ["MonoRoot"] * int (condition["pprs"] * p_error * (1-p_polymor) * (1/4)) + ["MonoSuffix1"] * int (condition["pprs"] * p_error * (1-p_polymor) * (1/4)) 
+
+
+    # randomly pick ncondition-times trials per condition and save in in a df
+    r = data.query("Condition == 'r'").sample (n = condition["r"])
+    r ["errortype"] = errortype_r
+    pr = data.query("Condition == 'pr'").sample (n = condition["pr"])
+    pr ["errortype"] = errortype_pr
+    rs = data.query("Condition == 'rs'").sample (n = condition["rs"])
+    rs ["errortype"] = errortype_rs
+    prs = data.query("Condition == 'pr'").sample (n = condition["prs"])
+    prs ["errortype"] = errortype_prs
+    ppr = data.query("Condition == 'ppr'").sample (n = condition["ppr"])
+    ppr ["errortype"] = errortype_ppr
+    rss = data.query("Condition == 'rss'").sample (n = condition["rss"])
+    rss ["errortype"] = errortype_rss
+    prss = data.query("Condition == 'prss'").sample (n = condition["prss"])
+    prss ["errortype"] = errortype_prss
+    pprs = data.query("Condition == 'pprs'").sample (n = condition["pprs"])   
+    pprs ["errortype"] = errortype_pprs
+                                        
+
+    pardf= pd.concat ([r,pr,rs, prs, ppr, rss, prss, pprs])
+    return pardf
+
+
+
+def generateTriallist (df):
+    # Define necessary variables
+    word1 = []
+    word2 = []
+    triallist = pd.DataFrame()
+    token = df["Token"].tolist()
+    errortypefull = df["errortype"].tolist()
+    monomorpheme = df["Monomorpheme"].tolist()
+    errorprefix2 = df["ErrorPrefix2"].tolist()
+    errorprefix1 = df["ErrorPrefix1"].tolist()
+    errorroot = df["ErrorRoot"].tolist()
+    errorsuffix1 = df["ErrorSuffix1"].tolist()
+    errorsuffix2 = df["ErrorSuffix2"].tolist()
+    monoerrorprefix2 = df["MonoErrorPrefix2"].tolist()
+    monoerrorprefix1 = df["MonoErrorPrefix1"].tolist()
+    monoerrorroot = df["MonoErrorRoot"].tolist()
+    monoerrorsuffix1 = df["MonoErrorSuffix1"].tolist()
+    monoerrorsuffix2 = df["MonoErrorSuffix2"].tolist()
+    
+    
+    for i in range (0, len (df)): 
+        # In case of errortrial (Polymorpheme)
+        if errortypefull[i] == "Prefix2": 
+            word1.append (token[i])
+            word2.append (errorprefix2[i])
+        elif errortypefull[i] == "Prefix1": 
+            word1.append (token[i])
+            word2.append (errorprefix1[i])
+        elif errortypefull[i] == "Root": 
+            word1.append (token[i])
+            word2.append (errorroot[i])
+        elif errortypefull[i] == "Suffix1": 
+            word1.append (token[i])
+            word2.append (errorsuffix1[i])
+        elif errortypefull[i] == "Suffix2": 
+            word1.append (token[i])
+            word2.append (errorsuffix2[i])
+            
+        # In case of errortrial (Monomorpheme):
+        elif errortypefull[i] == "MonoPrefix2": 
+            word1.append (monomorpheme[i])
+            word2.append (monoerrorprefix2[i])
+        elif errortypefull[i] == "MonoPrefix1": 
+            word1.append (monomorpheme[i])
+            word2.append (monoerrorprefix1[i])
+        elif errortypefull[i] == "MonoRoot": 
+            word1.append (monomorpheme[i])
+            word2.append (monoerrorroot[i])
+        elif errortypefull[i] == "MonoSuffix1": 
+            word1.append (monomorpheme[i])
+            word2.append (monoerrorsuffix1[i])
+        elif errortypefull[i] == "MonoPrefix2": 
+            word1.append (monomorpheme[i])
+            word2.append (monoerrorsuffix2[i])
+        
+        # In case of no errortrial (Monomorpheme):
+        elif errortypefull[i] == "NoErrorPoly":
+            word1.append(token[i])
+            word2.append(token[i])
+        
+        # In case of no errortrial (Polymorpheme):
+        else: 
+            word1.append(monomorpheme[i])
+            word2.append(monomorpheme[i])
+    df["Word1"] = word1
+    df["Word2"] = word2
+    
+    # randomize order
+    df = df.sample (frac=1)
+    return df
+

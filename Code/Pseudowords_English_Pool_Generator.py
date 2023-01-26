@@ -30,11 +30,9 @@ data = pd.read_excel("C:/Users/delia/OneDrive/Desktop/Morphemes/Morphemes/Experi
 
 #---- Generate roots ----
 data["Roots"]["Root"] = generateRoots(value = 10)
-# Save generated roots to Excel File
-data["Roots"].to_excel("C:/Users/delia/OneDrive/Desktop/Morphemes/Morphemes/Experimental Design/Roots.xlsx", sheet_name="Roots", index=False)
 
 #---- Generate morphologically complex pseudowords ----
-df_Polymorphemes = generatePolymorphemes(data, value = 100)
+df_Polymorphemes = generatePolymorphemes(data, value = 5000)
 
 #---- Generate mono-morphemic pseudowords that are based on morphologically complex pseudowords ---- 
 df_Monomorphemes = generateMonomorphemes (df = df_Polymorphemes)
