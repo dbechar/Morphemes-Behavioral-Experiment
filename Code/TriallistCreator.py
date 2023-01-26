@@ -14,6 +14,7 @@
 #---- Preperation ----
 # load libraries
 import pandas as pd
+import random
 import os
 
 # Set working directory 
@@ -30,39 +31,54 @@ p_error = 0.5
 p_polymor = 0.5 # probability of using 
 
 # If error:
-p_prefix1 = 0.2
-p_prefix2 = 0.2
-p_root = 0.2
-p_suffix1 = 0.2
-p_suffix2 = 0.2
+#p_prefix1 = 0.2
+#p_prefix2 = 0.2
+#p_root = 0.2
+#p_suffix1 = 0.2
+#p_suffix2 = 0.2
 
 # Number of trials per condition that should be picked: 
 ncondition = round (trialnumber / 7)
 
 # Define errortype distribution per condition
-errortype = ["NoErrorPoly"] * round (ncondition * p_polymor * (1-p_error)) + ["Prefix2"] * round (ncondition * ((p_polymor)*(p_error)*p_prefix2)) +  ["Prefix1"] * round (ncondition * ((p_polymor)*(p_error)*p_prefix1)) +  ["Root"] * round (ncondition * ((p_polymor)*(p_error)*p_root)) + ["Suffix1"] * round (ncondition * ((p_polymor)*(p_error)*p_suffix1)) + ["Suffix2"] * round (ncondition * ((p_polymor)*(p_error)*p_suffix2))+ ["NoErrorMono"] * round (ncondition * (1-p_polymor) * (1-p_error)) + ["MonoPrefix2"] * round (ncondition * (1-p_polymor) * (p_error) * p_prefix2) + ["MonoPrefix1"] * round (ncondition * (1-p_polymor) * (p_error) * p_prefix1) + ["MonoRoot"] * round (ncondition * (1-p_polymor) * (p_error) * p_root) + ["MonoSuffix1"] * round (ncondition * (1-p_polymor) * (p_error) * p_suffix1) + ["MonoSuffix2"]* round (ncondition * (1-p_polymor) * (p_error) * p_suffix2)
-
+# Define errortype distribution per condition
+errortype_pr = ["NoErrorPoly"] * int (ncondition * p_polymor * (1-p_error)) + ["Prefix1"] * round (ncondition * ((p_polymor)*(p_error) * 0.5)) +  ["Root"] * round (ncondition * ((p_polymor)*(p_error) * 0.5)) + ["NoErrorMono"] * round (ncondition * (1-p_polymor) * (1-p_error)) + ["MonoPrefix1"] * round (ncondition * (1-p_polymor) * (p_error) * 0.5) + ["MonoRoot"] * round (ncondition * (1-p_polymor) * (p_error) * 0.5)  
+random.shuffle (errortype_pr)
+errortype_rs = ["NoErrorPoly"] * int (ncondition * p_polymor * (1-p_error)) + ["Suffix1"] * round (ncondition * ((p_polymor)*(p_error) * 0.5)) +  ["Root"] * round (ncondition * ((p_polymor)*(p_error) * 0.5)) + ["NoErrorMono"] * round (ncondition * (1-p_polymor) * (1-p_error)) + ["MonoSuffix1"] * round (ncondition * (1-p_polymor) * (p_error) * 0.5) + ["MonoRoot"] * round (ncondition * (1-p_polymor) * (p_error) * 0.5)  
+random.shuffle(errortype_rs)
+errortype_prs = ["NoErrorPoly"] * int (ncondition * p_polymor * (1-p_error)) + ["Prefix1"] * round (ncondition * ((p_polymor)*(p_error) * (1/3))) +  ["Root"] * round (ncondition * ((p_polymor)*(p_error) * (1/3))) + ["Suffix1"] * round (ncondition * ((p_polymor)*(p_error) * (1/3))) + ["NoErrorMono"] * round (ncondition * (1-p_polymor) * (1-p_error)) + ["MonoPrefix1"] * round (ncondition * (1-p_polymor) * (p_error) * (1/3)) + ["MonoRoot"] * round (ncondition * (1-p_polymor) * (p_error) * (1/3)) + ["MonoSuffix1"] * round (ncondition * ((p_polymor)*(p_error) * (1/3))) 
+random.shuffle (errortype_prs)
+errortype_ppr = ["NoErrorPoly"] * int (ncondition * p_polymor * (1-p_error)) + ["Prefix1"] * round (ncondition * ((p_polymor)*(p_error) * (1/3))) +  ["Root"] * round (ncondition * ((p_polymor)*(p_error) * (1/3))) + ["Prefix2"] * round (ncondition * ((p_polymor)*(p_error) * (1/3))) + ["NoErrorMono"] * round (ncondition * (1-p_polymor) * (1-p_error)) + ["MonoPrefix1"] * round (ncondition * (1-p_polymor) * (p_error) * (1/3)) + ["MonoRoot"] * round (ncondition * (1-p_polymor) * (p_error) * (1/3)) + ["MonoPrefix2"] * round (ncondition * ((p_polymor)*(p_error) * (1/3))) 
+random.shuffle (errortype_ppr)
+errortype_rss = ["NoErrorPoly"] * int (ncondition * p_polymor * (1-p_error)) + ["Suffix2"] * round (ncondition * ((p_polymor)*(p_error) * (1/3))) +  ["Root"] * round (ncondition * ((p_polymor)*(p_error) * (1/3))) + ["Suffix1"] * round (ncondition * ((p_polymor)*(p_error) * (1/3))) + ["NoErrorMono"] * round (ncondition * (1-p_polymor) * (1-p_error)) + ["MonoSuffix2"] * round (ncondition * (1-p_polymor) * (p_error) * (1/3)) + ["MonoRoot"] * round (ncondition * (1-p_polymor) * (p_error) * (1/3)) + ["MonoSuffix1"] * round (ncondition * ((p_polymor)*(p_error) * (1/3))) 
+random.shuffle (errortype_rss)
+errortype_prss = ["NoErrorPoly"] * round (ncondition * p_polymor * (1-p_error)) + ["Prefix1"] * round (ncondition * ((p_polymor)*(p_error) * (1/4))) +  ["Root"] * round (ncondition * ((p_polymor)*(p_error) * (1/4))) + ["Suffix1"] * round (ncondition * ((p_polymor)*(p_error) * (1/4))) +["Suffix2"] * round (ncondition * ((p_polymor)*(p_error) * (1/4))) + ["NoErrorMono"] * round (ncondition * (1-p_polymor) * (1-p_error)) + ["MonoPrefix1"] * round (ncondition * (1-p_polymor) * (p_error) * (1/4)) + ["MonoRoot"] * round (ncondition * (1-p_polymor) * (p_error) * (1/4)) + ["MonoSuffix1"] * round (ncondition * ((p_polymor)*(p_error) * (1/4))) +["MonoSuffix2"] * round (ncondition * ((p_polymor)*(p_error) * (1/4))) 
+random.shuffle (errortype_prss)
+errortype_pprs = ["NoErrorPoly"] * round (ncondition * p_polymor * (1-p_error)) + ["Prefix1"] * round (ncondition * ((p_polymor)*(p_error) * (1/4))) +  ["Root"] * round (ncondition * ((p_polymor)*(p_error) * (1/4))) + ["Suffix1"] * round (ncondition * ((p_polymor)*(p_error) * (1/4))) +["Prefix2"] * round (ncondition * ((p_polymor)*(p_error) * (1/4))) + ["NoErrorMono"] * round (ncondition * (1-p_polymor) * (1-p_error)) + ["MonoPrefix1"] * round (ncondition * (1-p_polymor) * (p_error) * (1/4)) + ["MonoRoot"] * round (ncondition * (1-p_polymor) * (p_error) * (1/4)) + ["MonoSuffix1"] * round (ncondition * ((p_polymor)*(p_error) * (1/4))) +["MonoPrefix2"] * round (ncondition * ((p_polymor)*(p_error) * (1/4))) 
+random.shuffle (errortype_pprs)
+ncondition = len (errortype_pprs)
 
 
 for par in range (0, num_of_participants):
-    
     # randomly pick ncondition-times trials per condition and save in in a df
     pr = data.query("Condition == 'pr'").sample (n = ncondition)
-    pr ["errortype"] = errortype
+    pr ["errortype"] = errortype_pr[0:ncondition]
     rs = data.query("Condition == 'rs'").sample (n = ncondition)
-    rs ["errortype"] = errortype
+    rs ["errortype"] = errortype_rs[0:ncondition]
     prs = data.query("Condition == 'pr'").sample (n = ncondition)
-    prs ["errortype"] = errortype
+    prs ["errortype"] = errortype_prs[0:ncondition]
     ppr = data.query("Condition == 'ppr'").sample (n = ncondition)
-    ppr ["errortype"] = errortype
+    ppr ["errortype"] = errortype_ppr[0:ncondition]
     rss = data.query("Condition == 'rss'").sample (n = ncondition)
-    rss ["errortype"] = errortype
+    rss ["errortype"] = errortype_rss[0:ncondition]
     prss = data.query("Condition == 'prss'").sample (n = ncondition)
-    prss ["errortype"] = errortype
+    prss ["errortype"] = errortype_prss[0:ncondition]
     pprs = data.query("Condition == 'pprs'").sample (n = ncondition)   
-    pprs ["errortype"] = errortype
-    
+    pprs ["errortype"] = errortype_pprs[0:ncondition]
+                                        
+
     pardf= pd.concat ([pr,rs, prs, ppr, rss, prss, pprs])
+    
     
     # Define necessary variables
     word1 = []
@@ -127,7 +143,8 @@ for par in range (0, num_of_participants):
         else: 
             word1.append(monomorpheme[i])
             word2.append(monomorpheme[i])
-
+    pardf["Word1"] = word1
+    pardf["Word2"] = word2
     worddf["Word1"] = word1
     worddf["Word2"] = word2
 
@@ -136,4 +153,4 @@ for par in range (0, num_of_participants):
 
 # Save one csv file per participant to Triallist folder
     path = "Triallists/" + str (par) + "-triallist.csv"
-    worddf.to_csv (path)
+    worddf.to_csv (path, index = False)
