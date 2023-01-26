@@ -13,19 +13,19 @@
 """
 #---- Preperation ----
 # load libraries
+from Functions import (generateParticipantFile, generateTriallist)
 import pandas as pd
 import random
 import os
 
-os.chdir("C:/Users/delia/OneDrive/Desktop/Morphemes/Morphemes/Code")
-from Functions import (generateParticipantFile, generateTriallist)
+#os.chdir("C:/Users/delia/OneDrive/Desktop/Morphemes/Morphemes/Code")
 
 # Set working directory 
-os.getcwd() # check working directory
+#os.getcwd() # check working directory
 #os.chdir("C:/Users/delia/OneDrive/Desktop/Morphemes/Morphemes")
 
 # Read in Stimuli Pool
-data = pd.read_csv("C:/Users/delia/OneDrive/Desktop/Morphemes/Morphemes/Experimental Design/Pseudoword_English_Pool.csv")
+data = pd.read_csv("../Experimental Design/Pseudoword_English_Pool.csv")
 
 # Set seed
 random.seed(19)
@@ -52,5 +52,5 @@ pardf = generateParticipantFile (data, condition, p_error, p_polymor)
 triallist = generateTriallist (df = pardf)
  
 # Save triallist as csv file in the Triallist folder
-triallist.to_csv ("C:/Users/delia/OneDrive/Desktop/Morphemes/Morphemes/Triallists/triallist.csv", index = False)
+triallist.to_csv ("../Triallists/triallist.csv", index = False)
 
