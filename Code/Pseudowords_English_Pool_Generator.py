@@ -22,7 +22,7 @@ Date: 24.01.2023
 #---- Preperation ----
 # load libraries
 import pandas as pd
-from functions import (generateRoots, generatePolymorphemes, generateMonomorphemes, generateError, generateErrorPoly)
+from Functions import (generateRoots, generatePolymorphemes, generateMonomorphemes, generateError, generateErrorMono)
 
 # Read in file 
 data = pd.read_excel("C:/Users/delia/OneDrive/Desktop/Morphemes/Morphemes/Experimental Design/ExperimentList.xlsx", 
@@ -41,13 +41,14 @@ df_Monomorphemes = generateMonomorphemes (df = df_Polymorphemes)
 
 # ---- Generate Errorwords for Monomorphemes ----
 # For polymorphemes
-df_Error = generateError(df = df_Monomorphemes)
-# For monomorpehmes: 
-df = generateErrorPoly (df = df_Monomorphemes)
+df_Error = generateError(df = df_Polymorphemes)
+
+# For polymorphemes: 
+df_ErrorPoly = generateErrorMono (df = df_Monomorphemes)
 
 #---- Concate all dataframes ----
-df_complete = pd.concat([df_Polymorphemes, df_Monomorphemes, df_Error])
+df_complete = pd.concat([df_Polymorphemes, df_Monomorphemes, df_Error, df_ErrorPoly], axis = 1)
 
 
 #---- Save experimental design as .xslx ----
-df.to_csv("C:/Users/delia/OneDrive/Desktop/Morphemes/Morphemes/Experimental Design/Pseudoword_English_Pool.csv", index = False)
+df_complete.to_csv("C:/Users/delia/OneDrive/Desktop/Morphemes/Morphemes/Experimental Design/Pseudoword_English_Pool.csv", index = False)

@@ -530,7 +530,7 @@ def generateError (df):
     return df_Error
 
     
-def generateErrorPoly (df): 
+def generateErrorMono (df): 
     prefix2 = df["MonoPrefix2"].tolist()
     prefix1 = df["MonoPrefix1"].tolist()
     root = df["MonoRoot"].tolist()

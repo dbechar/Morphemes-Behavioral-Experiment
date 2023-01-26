@@ -19,7 +19,9 @@
 #---- Preperation ----
 # load libraries
 import pandas as pd
-from functions import (generateRoots, generatePolymorphemes, generateMonomorphemes, generateError)
+import os
+os.chdir("C:/Users/delia/OneDrive/Desktop/Morphemes/Morphemes/Code")
+from Functions import (generateRoots, generatePolymorphemes, generateMonomorphemes, generateError)
 
 # Read in file 
 data = pd.read_excel("C:/Users/delia/OneDrive/Desktop/Morphemes/Morphemes/Experimental Design/ExperimentList.xlsx", 
@@ -36,11 +38,11 @@ df_Polymorphemes = generatePolymorphemes(data, value = 7)
 #---- Generate mono-morphemic pseudowords that are based on morphologically complex pseudowords ---- 
 df_Monomorphemes = generateMonomorphemes (df = df_Polymorphemes)
 
-# ---- Generate Errorwords for Monomorphemes ----
+# ---- Generate Errorwords for Polymorphemes ----
 df_Error = generateError(df = df_Polymorphemes)
 
 #---- Concate all dataframes ----
-df_complete = pd.concat([df_Polymorphemes, df_Monomorphemes, df_Error])
+df_complete = pd.concat([df_Polymorphemes, df_Monomorphemes, df_Error], axis = 1)
 
 #---- Save experimental design as .xslx ----
 df_complete.to_excel("C:/Users/delia/OneDrive/Desktop/Morphemes/Morphemes/Experimental Design/Design.xlsx", sheet_name="Design", index=False)
