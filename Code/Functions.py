@@ -685,23 +685,35 @@ def generateParticipantFile (data, condition, p_error, p_polymor):
 
     # randomly pick ncondition-times trials per condition and save in in a df
     r = data.query("Condition == 'r'").sample (n = condition["r"])
-    r ["errortype"] = errortype_r
+    r.insert(0, "errortype", errortype_r)
     pr = data.query("Condition == 'pr'").sample (n = condition["pr"])
-    pr ["errortype"] = errortype_pr
+    pr.insert(0, "errortype", errortype_pr)
     rs = data.query("Condition == 'rs'").sample (n = condition["rs"])
-    rs ["errortype"] = errortype_rs
+    rs.insert(0, "errortype", errortype_rs)
     prs = data.query("Condition == 'prs'").sample (n = condition["prs"])
-    prs ["errortype"] = errortype_prs
+    prs.insert(0, "errortype", errortype_prs)
     ppr = data.query("Condition == 'ppr'").sample (n = condition["ppr"])
-    ppr ["errortype"] = errortype_ppr
+    ppr.insert(0, "errortype", errortype_ppr)
     rss = data.query("Condition == 'rss'").sample (n = condition["rss"])
-    rss ["errortype"] = errortype_rss
+    rss.insert(0, "errortype", errortype_rss)
     prss = data.query("Condition == 'prss'").sample (n = condition["prss"])
-    prss ["errortype"] = errortype_prss
+    prss.insert(0, "errortype", errortype_prss)
     pprs = data.query("Condition == 'pprs'").sample (n = condition["pprs"])   
-    pprs ["errortype"] = errortype_pprs
+    pprs.insert(0, "errortype", errortype_pprs)
                                         
     pardf= pd.concat ([r,pr,rs, prs, ppr, rss, prss, pprs])
+    
+    # Add Information if it is an error trial: 1 = True; 0 = False
+    is_error = []
+    for i in range (0, len(pardf)):
+        errortype = pardf["errortype"].tolist()
+        if errortype [i] == "NoErrorMono" or  errortype [i] == "NoErrorPoly": 
+            is_error.append (0)
+        else: 
+            is_error.append (1)
+            
+    pardf.insert (1, "Is_Error", is_error)
+
     return pardf
 
 
@@ -710,7 +722,6 @@ def generateTriallist (df):
     # Define necessary variables
     word1 = []
     word2 = []
-    triallist = pd.DataFrame()
     token = df["Token"].tolist()
     errortype = df["errortype"].tolist()
     monomorpheme = df["Monomorpheme"].tolist()
@@ -770,10 +781,10 @@ def generateTriallist (df):
         else: 
             word1.append(monomorpheme[i])
             word2.append(monomorpheme[i])
-    df["Word1"] = word1
-    df["Word2"] = word2
+    df.insert(0, "Word1", word1)
+    df.insert(1, "Word2", word2)
     
     # randomize order
-    #df = df.sample (frac=1)
+    df = df.sample (frac=1)
     return df
 

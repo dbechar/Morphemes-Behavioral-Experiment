@@ -1,14 +1,14 @@
 """
 #---- Triallist Creator ----#
 
-# This script does: 
-        # - Creat individual triallists for all participants
-        # - save all triallists as .csv in the triallists folder
-
+# This script does:
+        # - Creat one triallists that is based on certain prerequisits that 
+            are set at the beginning 
+        # - save triallists as .csv in the triallists folder
 
 # Author: Deliane Bechar
 
-# Date: 24.01.2023
+# Date: 26.01.2023
 
 """
 #---- Preperation ----
@@ -17,7 +17,7 @@ import pandas as pd
 import random
 import os
 
-# os.chdir("C:/Users/delia/OneDrive/Desktop/Morphemes/Morphemes/Code")
+os.chdir("C:/Users/delia/OneDrive/Desktop/Morphemes/Morphemes/Code")
 from Functions import (generateParticipantFile, generateTriallist)
 
 # Set working directory 
