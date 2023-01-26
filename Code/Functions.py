@@ -675,12 +675,13 @@ def generateTriallist (df):
     word2 = []
     triallist = pd.DataFrame()
     token = df["Token"].tolist()
-    errortypefull = df["errortype"].tolist()
+    errortype = df["errortype"].tolist()
     monomorpheme = df["Monomorpheme"].tolist()
     errorprefix2 = df["ErrorPrefix2"].tolist()
     errorprefix1 = df["ErrorPrefix1"].tolist()
     errorroot = df["ErrorRoot"].tolist()
     errorsuffix1 = df["ErrorSuffix1"].tolist()
+    print (errorsuffix1)
     errorsuffix2 = df["ErrorSuffix2"].tolist()
     monoerrorprefix2 = df["MonoErrorPrefix2"].tolist()
     monoerrorprefix1 = df["MonoErrorPrefix1"].tolist()
@@ -691,41 +692,41 @@ def generateTriallist (df):
     
     for i in range (0, len (df)): 
         # In case of errortrial (Polymorpheme)
-        if errortypefull[i] == "Prefix2": 
+        if errortype[i] == "Prefix2": 
             word1.append (token[i])
             word2.append (errorprefix2[i])
-        elif errortypefull[i] == "Prefix1": 
+        elif errortype[i] == "Prefix1": 
             word1.append (token[i])
             word2.append (errorprefix1[i])
-        elif errortypefull[i] == "Root": 
+        elif errortype[i] == "Root": 
             word1.append (token[i])
             word2.append (errorroot[i])
-        elif errortypefull[i] == "Suffix1": 
+        elif errortype[i] == "Suffix1": 
             word1.append (token[i])
             word2.append (errorsuffix1[i])
-        elif errortypefull[i] == "Suffix2": 
+        elif errortype[i] == "Suffix2": 
             word1.append (token[i])
             word2.append (errorsuffix2[i])
             
         # In case of errortrial (Monomorpheme):
-        elif errortypefull[i] == "MonoPrefix2": 
+        elif errortype[i] == "MonoPrefix2": 
             word1.append (monomorpheme[i])
             word2.append (monoerrorprefix2[i])
-        elif errortypefull[i] == "MonoPrefix1": 
+        elif errortype[i] == "MonoPrefix1": 
             word1.append (monomorpheme[i])
             word2.append (monoerrorprefix1[i])
-        elif errortypefull[i] == "MonoRoot": 
+        elif errortype[i] == "MonoRoot": 
             word1.append (monomorpheme[i])
             word2.append (monoerrorroot[i])
-        elif errortypefull[i] == "MonoSuffix1": 
+        elif errortype[i] == "MonoSuffix1": 
             word1.append (monomorpheme[i])
             word2.append (monoerrorsuffix1[i])
-        elif errortypefull[i] == "MonoPrefix2": 
+        elif errortype[i] == "MonoPrefix2": 
             word1.append (monomorpheme[i])
             word2.append (monoerrorsuffix2[i])
         
         # In case of no errortrial (Monomorpheme):
-        elif errortypefull[i] == "NoErrorPoly":
+        elif errortype[i] == "NoErrorPoly":
             word1.append(token[i])
             word2.append(token[i])
         
