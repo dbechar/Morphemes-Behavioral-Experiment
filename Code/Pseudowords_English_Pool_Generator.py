@@ -25,16 +25,16 @@ import pandas as pd
 from Functions import (generateRoots, generatePolymorphemes, generateMonomorphemes, generateError, generateErrorMono)
 
 # Read in file 
-data = pd.read_excel("C:/Users/delia/OneDrive/Desktop/Morphemes/Morphemes/Experimental Design/ExperimentList.xlsx", 
+data = pd.read_excel("C:/Users/delia/OneDrive/Desktop/Morphemes/Morphemes/Experimental Design/Design.xlsx", 
                      sheet_name =["Design", "Prefixes", "Roots", "Suffixes"])
 
 #---- Generate roots ----
-data["Roots"]["Root"] = generateRoots(value = 200)
+data["Roots"]["Root"] = generateRoots(value = 10)
 # Save generated roots to Excel File
 data["Roots"].to_excel("C:/Users/delia/OneDrive/Desktop/Morphemes/Morphemes/Experimental Design/Roots.xlsx", sheet_name="Roots", index=False)
 
 #---- Generate morphologically complex pseudowords ----
-df_Polymorphemes = generatePolymorphemes(data, value = 1000)
+df_Polymorphemes = generatePolymorphemes(data, value = 100)
 
 #---- Generate mono-morphemic pseudowords that are based on morphologically complex pseudowords ---- 
 df_Monomorphemes = generateMonomorphemes (df = df_Polymorphemes)
