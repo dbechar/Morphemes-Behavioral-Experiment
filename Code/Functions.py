@@ -629,21 +629,13 @@ def generateErrorMono (df):
 def generateParticipantFile (data, condition, p_error, p_polymor):
     # Define error distribution per condition (create function and put that all into function)
     errortype_r = ["NoErrorPoly"] * int (condition["r"] * 0.5) + ["Root"] * int (condition["r"] * 0.5)
-
     errortype_pr = ["NoErrorPoly"] * int (condition["pr"] * (1-p_error) * p_polymor) + ["Prefix1"] * int (condition["pr"] * p_error * p_polymor * 0.5) + ["Root"] * int (condition["pr"] * p_error * p_polymor * 0.5) + ["NoErrorMono"] * int (condition["pr"] * (1-p_error) * (1-p_polymor)) +["MonoPrefix1"] * int (condition["pr"] * p_error * (1-p_polymor) * 0.5) + ["MonoRoot"] * int (condition["pr"] * p_error * (1-p_polymor) * 0.5) 
-
     errortype_rs = ["NoErrorPoly"] * int (condition["rs"] * (1-p_error) * p_polymor) + ["Root"] * int (condition["rs"] * p_error * p_polymor * 0.5) +["Suffix1"] * int (condition["rs"] * p_error * p_polymor * 0.5) +  ["NoErrorMono"] * int (condition["rs"] * (1-p_error) * (1-p_polymor)) + ["MonoRoot"] * int (condition["rs"] * p_error * (1-p_polymor) * 0.5) + ["MonoSuffix1"] * int (condition["rs"] * p_error * (1-p_polymor) * 0.5) 
-
     errortype_prs = ["NoErrorPoly"] * int (condition["prs"] * (1-p_error) * p_polymor) + ["Prefix1"] * int (condition["prs"] * p_error * p_polymor * (1/3)) + ["Root"] * int (condition["prs"] * p_error * p_polymor * (1/3)) + ["Suffix1"] * int (condition["prs"] * p_error * p_polymor * (1/3)) + ["NoErrorMono"] * int (condition["prs"] * (1-p_error) * (1-p_polymor)) + ["MonoPrefix1"] * int (condition["prs"] * p_error * (1-p_polymor) * (1/3)) + ["MonoRoot"] * int (condition["prs"] * p_error * (1-p_polymor) * (1/3)) + ["MonoSuffix1"] * int (condition["prs"] * p_error * (1-p_polymor) * (1/3))  
-
     errortype_ppr = ["NoErrorPoly"] * int (condition["ppr"] * (1-p_error) * p_polymor) + ["Prefix2"] * int (condition["ppr"] * p_error * p_polymor * (1/3)) + ["Prefix1"] * int (condition["ppr"] * p_error * p_polymor * (1/3)) + ["Root"] * int (condition["ppr"] * p_error * p_polymor * (1/3)) + ["NoErrorMono"] * int (condition["ppr"] * (1-p_error) * (1-p_polymor)) + ["MonoPrefix2"] * int (condition["ppr"] * p_error * (1-p_polymor) * (1/3)) + ["MonoPrefix1"] * int (condition["ppr"] * p_error * (1-p_polymor) * (1/3)) + ["MonoRoot"] * int (condition["ppr"] * p_error * (1-p_polymor) * (1/3)) 
-
     errortype_rss = ["NoErrorPoly"] * int (condition["rss"] * (1-p_error) * p_polymor)+ ["Root"] * int (condition["rss"] * p_error * p_polymor * (1/3)) + ["Suffix1"] * int (condition["rss"] * p_error * p_polymor * (1/3))  + ["Suffix2"] * int (condition["rss"] * p_error * p_polymor * (1/3)) + ["NoErrorMono"] * int (condition["rss"] * (1-p_error) * (1-p_polymor)) + ["MonoRoot"] * int (condition["rss"] * p_error * (1-p_polymor) * (1/3)) + ["MonoSuffix1"] * int (condition["rss"] * p_error * (1-p_polymor) * (1/3)) + ["MonoSuffix2"] * int (condition["rss"] * p_error * (1-p_polymor) * (1/3))
-
     errortype_prss =["NoErrorPoly"] * int (condition["prss"] * (1-p_error) * p_polymor)+ ["Prefix1"] * int (condition["prss"] * p_error * p_polymor * (1/4)) + ["Root"] * int (condition["prss"] * p_error * p_polymor * (1/4)) + ["Suffix1"] * int (condition["prss"] * p_error * p_polymor * (1/4))  + ["Suffix2"] * int (condition["prss"] * p_error * p_polymor * (1/4)) + ["NoErrorMono"] * int (condition["prss"] * (1-p_error) * (1-p_polymor)) + ["MonoPrefix1"] * int (condition["prss"] * p_error * (1-p_polymor) * (1/4)) + ["MonoRoot"] * int (condition["prss"] * p_error * (1-p_polymor) * (1/4)) + ["MonoSuffix1"] * int (condition["prss"] * p_error * (1-p_polymor) * (1/4)) + ["MonoSuffix2"] * int (condition["prss"] * p_error * (1-p_polymor) * (1/4))
-
     errortype_pprs = ["NoErrorPoly"] * int (condition["pprs"] * (1-p_error) * p_polymor)+ ["Prefix2"] * int (condition["pprs"] * p_error * p_polymor * (1/4)) + ["Prefix1"] * int (condition["pprs"] * p_error * p_polymor * (1/4)) +["Root"] * int (condition["pprs"] * p_error * p_polymor * (1/4)) + ["Suffix1"] * int (condition["pprs"] * p_error * p_polymor * (1/4))  + ["NoErrorMono"] * int (condition["pprs"] * (1-p_error) * (1-p_polymor)) + ["MonoPrefix2"] * int (condition["pprs"] * p_error * (1-p_polymor) * (1/4)) + ["MonoPrefix1"] * int (condition["pprs"] * p_error * (1-p_polymor) * (1/4)) + ["MonoRoot"] * int (condition["pprs"] * p_error * (1-p_polymor) * (1/4)) + ["MonoSuffix1"] * int (condition["pprs"] * p_error * (1-p_polymor) * (1/4)) 
-
 
     # randomly pick ncondition-times trials per condition and save in in a df
     r = data.query("Condition == 'r'").sample (n = condition["r"])
@@ -652,7 +644,7 @@ def generateParticipantFile (data, condition, p_error, p_polymor):
     pr ["errortype"] = errortype_pr
     rs = data.query("Condition == 'rs'").sample (n = condition["rs"])
     rs ["errortype"] = errortype_rs
-    prs = data.query("Condition == 'pr'").sample (n = condition["prs"])
+    prs = data.query("Condition == 'prs'").sample (n = condition["prs"])
     prs ["errortype"] = errortype_prs
     ppr = data.query("Condition == 'ppr'").sample (n = condition["ppr"])
     ppr ["errortype"] = errortype_ppr
@@ -663,7 +655,6 @@ def generateParticipantFile (data, condition, p_error, p_polymor):
     pprs = data.query("Condition == 'pprs'").sample (n = condition["pprs"])   
     pprs ["errortype"] = errortype_pprs
                                         
-
     pardf= pd.concat ([r,pr,rs, prs, ppr, rss, prss, pprs])
     return pardf
 
@@ -681,7 +672,6 @@ def generateTriallist (df):
     errorprefix1 = df["ErrorPrefix1"].tolist()
     errorroot = df["ErrorRoot"].tolist()
     errorsuffix1 = df["ErrorSuffix1"].tolist()
-    print (errorsuffix1)
     errorsuffix2 = df["ErrorSuffix2"].tolist()
     monoerrorprefix2 = df["MonoErrorPrefix2"].tolist()
     monoerrorprefix1 = df["MonoErrorPrefix1"].tolist()
@@ -738,6 +728,6 @@ def generateTriallist (df):
     df["Word2"] = word2
     
     # randomize order
-    df = df.sample (frac=1)
+    #df = df.sample (frac=1)
     return df
 
