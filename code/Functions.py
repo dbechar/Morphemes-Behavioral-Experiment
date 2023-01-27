@@ -392,8 +392,8 @@ def generateMonomorphemes (df):
         monoprefix2 = prefix2[i] [::-1]
         mono_prefix2.append (monoprefix2)
 
-        monoprefix1 = prefix1[i]
-        mono_prefix1.append (monoprefix1[::-1])
+        monoprefix1 = prefix1[i][::-1]
+        mono_prefix1.append (monoprefix1)
         
         monoroot = root[i]
         monoroot = monoroot [::-1]
