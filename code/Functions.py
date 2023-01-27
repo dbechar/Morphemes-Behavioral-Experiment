@@ -372,14 +372,11 @@ def generatePolymorphemes (data, value):
     df["Wordlength"] = df["Token"].str.len()
     return df   
 
-#---- Generate random pseudowords ----
+#---- Generate pseudowords (by reversing affixes) ----
 # Input for function: 
     # - dataframe that has all of the necessary information (Prefi2, Prefix1, Root, Suffix1, Suffix2)
 
 def generateMonomorphemes (df):
-    vowels=["a", "e", "i", "o", "u"]
-    consonants=["b", "c", "d", "f", "g", "h", "k",
-                "p", "q", "s", "t", "v", "x", "z"]
     prefix2 = df["Prefix2"].tolist()
     prefix1 = df["Prefix1"].tolist()
     root = df["Root"].tolist()                        
@@ -394,99 +391,27 @@ def generateMonomorphemes (df):
     
     for i in range(0, len (root)):
         monoprefix2 = prefix2[i]
-        if prefix2[i] == "":
-            monoprefix2 = ""
-        else: 
-            while monoprefix2 == prefix2[i]: 
-                monoprefix2 = list (prefix2[i])
-                monoprefix2 = random.sample (monoprefix2, k = len (monoprefix2))
-                monoprefix2 = "".join(monoprefix2)
-        mono_prefix2.append (monoprefix2)
+        mono_prefix2.append (monoprefix2 [::-1])
 
         monoprefix1 = prefix1[i]
-        if prefix1 [i] == "":
-            monoprefix1 = ""
-        else:
-            while monoprefix1 == prefix1[i]:
-                monoprefix1 = list (prefix1[i])
-                monoprefix1 = random.sample (monoprefix1, k = len (monoprefix1))
-                monoprefix1 = "".join(monoprefix1)
-        mono_prefix1.append (monoprefix1)
+        mono_prefix1.append (monoprefix1[::-1])
         
         monoroot = root[i]
-        if root[i] == "": 
-            monoroot = ""
-        else: 
-            wordtype = []
-            for index in range (0, len(monoroot)): 
-                if monoroot[index] in vowels: 
-                    wordtype.append ("vowel")
-                elif monoroot[index] in consonants: 
-                    wordtype.append ("consonant")
-                else: 
-                    wordtype.append ("sonorant")
-        
-            if len(root[i]) == 3: 
-                while monoroot == root[i] or monoroot[0] == monoroot[1] or monoroot[1] == monoroot[2] or wordtype[0] == wordtype[1] or wordtype[1] == wordtype[2]: 
-                    monoroot = list (root[i])
-                    monoroot = random.sample (monoroot, k = len (monoroot))
-                    monoroot = "".join(monoroot)
-                    for index in range (0, len(monoroot)): 
-                        if monoroot[index] in vowels: 
-                            wordtype.append ("vowel")
-                        elif monoroot[index] in consonants: 
-                            wordtype.append ("consonant")
-                        else: 
-                            wordtype.append ("sonorant")
-                            
-            elif len(root[i]) == 4: 
-                while monoroot == root[i] or monoroot[0] == monoroot[1] or monoroot[1] == monoroot[2] or monoroot[2] == monoroot[3] or wordtype[0] == wordtype[1] or wordtype[1] == wordtype[2] or wordtype [2] == wordtype [3]: 
-                    monoroot = list (root[i])
-                    monoroot = random.sample (monoroot, k = len (monoroot))
-                    monoroot = "".join(monoroot)
-                    for index in range (0, len(monoroot)): 
-                        if monoroot[index] in vowels: 
-                            wordtype.append ("vowel")
-                        elif monoroot[index] in consonants: 
-                            wordtype.append ("consonant")
-                        else: 
-                            wordtype.append ("sonorant")
-                            
-            elif len(root[i]) == 5: 
-                while monoroot == root[i] or monoroot[0] == monoroot[1] or monoroot[1] == monoroot[2] or monoroot[2] == monoroot[3] or monoroot[3] == monoroot[4] or wordtype[0] == wordtype[1] or wordtype[1] == wordtype[2] or wordtype [2] == wordtype [3] or wordtype [3] == wordtype [4]: 
-                    monoroot = list (root[i])
-                    monoroot = random.sample (monoroot, k = len (monoroot))
-                    monoroot = "".join(monoroot)
-                    for index in range (0, len(monoroot)): 
-                        if monoroot[index] in vowels: 
-                            wordtype.append ("vowel")
-                        elif monoroot[index] in consonants: 
-                            wordtype.append ("consonant")
-                        else: 
-                            wordtype.append ("sonorant")            
-            else: 
-                print ("check wordlength")
+        monoroot = monoroot [::-1]
+        while monoroot == root[i]: 
+            monoroot = list (root[i])
+            monoroot = random.sample (monoroot, k = len (monoroot))
+            monoroot = "".join(monoroot)
+    
         mono_root.append (monoroot)
 
         monosuffix1 = suffix1[i]
-        if suffix1 [i] == "": 
-            monosuffix1 = ""
-        else:  
-            while monosuffix1 == suffix1[i]: 
-                monosuffix1 = list (suffix1[i])
-                monosuffix1 = random.sample (monosuffix1, k = len (monosuffix1))
-                monosuffix1 = "".join(monosuffix1)
-        mono_suffix1.append(monosuffix1)
+        mono_suffix1.append(monosuffix1[::-1])
         
         monosuffix2 = suffix2[i]
-        if suffix2 [i] == "": 
-            monosuffix2 = ""
-        else:
-            while monosuffix2 == suffix2[i]:
-                monosuffix2 = list (suffix2[i])
-                monosuffix2 = random.sample (monosuffix2, k = len (monosuffix2))
-                monosuffix2 = "".join(monosuffix2)
-        mono_suffix2.append (monosuffix2)
+        mono_suffix2.append (monosuffix2[::-1])
+        
+        
         monomorphemes.append (monoprefix2 + 
                               monoprefix1 + 
                               monoroot + 
