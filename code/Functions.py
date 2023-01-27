@@ -2,12 +2,15 @@
 #---- Functions----#
 
 # This script does: 
-    # - define vocals/consonants and their frequencies
+    # - define vocals/consonants/sonorants and their frequencies
     # - create a function that generates random roots based on letter frequency
     # - create polymorphemic words using previously defined morphemes 
-    # - create a function that generates pseudowords (mono-morphemic words) based 
+    # - create a function that generates mono-morphemic words based 
         on the polymorphemic words
-    # - create function that generates random errors
+    # - create a function that generates random errors for monomorphemes
+    # - create a function that generates random errors for polymorphemes
+    # - create a function that checks all words 
+    
     
 # Date: 24.01.2023
 
@@ -19,12 +22,15 @@
 import random 
 import pandas as pd
 
+# Set seed
+random.seed(19)
+
 #---- Generate random roots based on letter frequency ----
 # source for weights: https://www.sttmedia.com/characterfrequency-english
 
 # Input: List in which words are supposed to be saved and number of new words that are supposed to be created (only creates a multiples of 10)
-# Output: List full of words
-    
+# Output: List full of words   
+
 def generateRoots (value):
     root = []
     vowels=["a", "e", "i", "o", "u"]
@@ -788,3 +794,106 @@ def generateTriallist (df):
     df = df.sample (frac=1)
     return df
 
+def verifyWords (df):
+    # See if end of prefix1 and beginning of root make sense (Poylmorpheme)
+    prefixroot = []
+    verification = pd.DataFrame ()
+    prefix1 = df["Prefix1"].tolist()
+    root = df["Root"].tolist()
+    token = df["Token"].tolist()
+    
+    for i in range (0, len(df)): 
+        # if there is a prefix 1 check how well it goes with the root 
+        if prefix1[i] != "": 
+            if prefix1[i][-1] != root[i][0]:
+                prefixroot.append ("0")
+            else: 
+                prefixroot.append ("1")
+        # if there is no prefix1 then: 
+        else: 
+            prefixroot.append ("0")
+    
+    verification["Token"] = token
+    verification ["Prefix1"] = prefix1
+    verification ["Root"] = root 
+    verification ["P1RTest"] = prefixroot
+    
+    
+    # See if end of prefix1 and beginning of root make sense (Monomorpheme)
+    monoprefixroot = []
+    monoprefix1 = df["MonoPrefix1"].tolist()
+    monoroot = df["MonoRoot"].tolist()
+    monomorpheme = df["Monomorpheme"].tolist()
+    
+    for i in range (0, len(df)): 
+        # if there is a prefix 1 check how well it goes with the root 
+        if monoprefix1[i] != "": 
+            if monoprefix1[i][-1] != monoroot[i][0]:
+                monoprefixroot.append ("0")
+            else: 
+                monoprefixroot.append ("1")
+        # if there is no prefix1 then: 
+        else: 
+            monoprefixroot.append ("0")
+    
+    verification["Monomorpheme"] = monomorpheme
+    verification ["MonoPrefix1"] = monoprefix1
+    verification ["MonoRoot"] = monoroot 
+    verification ["MP1RTest"] = monoprefixroot
+    
+    
+    # See if end of root and beginning of sufffix 1 make sense (Polymorpheme)
+    suffixroot = []
+    suffix1 = df["Suffix1"].tolist()
+    root = df["Root"].tolist()
+    token = df["Token"].tolist()
+    
+    for i in range (0, len(df)): 
+        # if there is a prefix 1 check how well it goes with the root 
+        if suffix1[i] != "": 
+            if root[i][-1] != suffix1[i][0]:
+                suffixroot.append ("0")
+            else: 
+                suffixroot.append ("1")
+        # if there is no prefix1 then: 
+        else: 
+            suffixroot.append ("0")
+    
+    verification["Token"] = token
+    verification ["Suffix1"] = suffix1
+    verification ["Root"] = root 
+    verification ["S1RTest"] = suffixroot
+    
+    
+    # See if end of root and beginning of sufffix 1 make sense (Monomorpheme)
+    monosuffixroot = []
+    monosuffix1 = df["MonoSuffix1"].tolist()
+    monoroot = df["MonoRoot"].tolist()
+    monomorpheme = df["Monomorpheme"].tolist()
+    
+    for i in range (0, len(df)): 
+        # if there is a prefix 1 check how well it goes with the root 
+        if monosuffix1[i] != "": 
+            if monoroot[i][-1] != monosuffix1[i][0]:
+                monosuffixroot.append ("0")
+            else: 
+                monosuffixroot.append ("1")
+        # if there is no prefix1 then: 
+        else: 
+            monosuffixroot.append ("0")
+    
+    verification["Monomorpheme"] = monomorpheme
+    verification ["MonoSuffix1"] = monosuffix1
+    verification ["MonoRoot"] = monomorpheme 
+    verification ["MS1RTest"] = monosuffixroot
+    
+    
+    # Save all rows in which the same letters appear right after another in a list (these rows will be removed)
+    indexlist = []
+    for i in range (0, len(df)): 
+        if prefixroot[i] == "1" or monoprefixroot[i] == "1" or suffixroot[i] == "1" or monosuffixroot[i] == "1": 
+            indexlist.append (i)
+        
+    df.drop (df.index[indexlist], inplace = True)
+    
+    return df
