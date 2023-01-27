@@ -20,12 +20,12 @@ Date: 24.01.2023
 
 """
 #---- Preperation ----
-# load libraries
+# Load libraries
 import pandas as pd
 from Functions import (generateRoots, generatePolymorphemes, generateMonomorphemes, generateError, generateErrorMono)
 
 # Read in file 
-data = pd.read_excel("../Experimental Design/Design.xlsx", 
+data = pd.read_excel("../experimental_design/Design.xlsx", 
                      sheet_name =["Design", "Prefixes", "Roots", "Suffixes"])
 
 #---- Generate roots ----
@@ -49,4 +49,4 @@ df_complete = pd.concat([df_Polymorphemes, df_Monomorphemes, df_Error, df_ErrorP
 
 
 #---- Save experimental design as .xslx ----
-df_complete.to_csv("../Experimental Design/Pseudoword_English_Pool.csv", index = False)
+df_complete.to_csv("../experimental_design/Pseudoword_English_Pool.csv", index = False)
