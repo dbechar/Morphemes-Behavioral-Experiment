@@ -877,3 +877,6 @@ def verifyWords (df):
     df.drop (df.index[indexlist], inplace = True)
     
     return df
+
+
+
