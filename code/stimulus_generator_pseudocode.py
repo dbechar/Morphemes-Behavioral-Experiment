@@ -47,3 +47,33 @@ for target_word, affixes, condition in zip(target_words, affixess, conditions):
 
 rows = shuffle_rows(rows)
 to_csv(rows)
+
+#### TO Functions.py
+def generate_random_word(condition):
+    # condition = ['pp', 'r', 's']
+    morphemes = []
+    for morpheme_type in condition: #
+        morpheme = generate_morpheme(morpheme_type)
+        morphemes.append(morpheme)
+    word = ''.join(morphemes)
+    return word, morphemes
+
+
+def generate_morpheme(morpheme_type):
+    if morpheme.startswith('p'):
+        morpheme = sample_prefixes(morpheme_type)
+    elif morpheme == 'r':
+        morpheme = sample_root()
+    elif morphemne.startswith('s')
+        morpheme = sample_suffixes(morpheme_type)
+    return morpheme
+
+
+def sample_root():
+    .....
+    return root
+
+
+def sample_suffixes():
+
+    return suffixes
