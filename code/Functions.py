@@ -177,7 +177,6 @@ def generateRoots (value):
     # - Value: How many words should be created
     # - Output: Dataframe that includes infromation about the Polymorphemes
 
-
 def generatePolymorphemes (dfprefixes, dfroots, dfsuffixes, value):
     prefixes = dfprefixes ["Prefix"].tolist()
     prefixes_weights = dfprefixes["PrefixFrequency"].tolist()
@@ -390,8 +389,8 @@ def generateMonomorphemes (df):
     mono_suffix2 = []
     
     for i in range(0, len (root)):
-        monoprefix2 = prefix2[i]
-        mono_prefix2.append (monoprefix2 [::-1])
+        monoprefix2 = prefix2[i] [::-1]
+        mono_prefix2.append (monoprefix2)
 
         monoprefix1 = prefix1[i]
         mono_prefix1.append (monoprefix1[::-1])
@@ -402,21 +401,15 @@ def generateMonomorphemes (df):
             monoroot = list (root[i])
             monoroot = random.sample (monoroot, k = len (monoroot))
             monoroot = "".join(monoroot)
-    
         mono_root.append (monoroot)
 
-        monosuffix1 = suffix1[i]
-        mono_suffix1.append(monosuffix1[::-1])
+        monosuffix1 = suffix1[i] [::-1]
+        mono_suffix1.append(monosuffix1)
         
-        monosuffix2 = suffix2[i]
-        mono_suffix2.append (monosuffix2[::-1])
+        monosuffix2 = suffix2[i] [::-1]
+        mono_suffix2.append (monosuffix2)
         
-        
-        monomorphemes.append (monoprefix2 + 
-                              monoprefix1 + 
-                              monoroot + 
-                              monosuffix1 + 
-                              monosuffix2)
+        monomorphemes.append (monoprefix2 + monoprefix1 + monoroot + monosuffix1 + monosuffix2)
         
     df_Monomorpheme = pd.DataFrame ()
     df_Monomorpheme["Monomorpheme"] = monomorphemes

@@ -8,11 +8,7 @@
     # - randomly creates mono-morphemic words
     # - create all errorwords for created words
     # - generate a pool of English Pseudowords 
-    # - save pool as .csv (under Experimentdesign?)
-
--> Just change values in stimulus creater:
-    1. Create Roots and make sure that there are no accidental real words
-    2. Use updated roots to create all words and all additional information
+    # - save pool as .csv (under Experimentdesign)
 
 Author: Deliane Bechar
 
