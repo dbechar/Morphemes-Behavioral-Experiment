@@ -397,8 +397,6 @@ def generateMonomorphemes (df):
             while monoprefix2 == prefix2[i]: 
                 monoprefix2 = list (prefix2[i])
                 monoprefix2 = random.sample (monoprefix2, k = len (monoprefix2))
-                # Make sure that two same letters do not appear right after another:
-                
                 monoprefix2 = "".join(monoprefix2)
         mono_prefix2.append (monoprefix2)
 
@@ -416,12 +414,23 @@ def generateMonomorphemes (df):
         if root[i] == "": 
             monoroot = ""
         else: 
-            while monoroot == root[i]: 
-                monoroot = list (root[i])
-                monoroot = random.sample (monoroot, k = len (monoroot))
-                monoroot = "".join(monoroot)
+            if len(root[i]) == 3: 
+                while monoroot == root[i] or monoroot[0] == monoroot[1] or monoroot[1] == monoroot[2]: 
+                    monoroot = list (root[i])
+                    monoroot = random.sample (monoroot, k = len (monoroot))
+                    monoroot = "".join(monoroot)
+            elif len(root[i]) == 4: 
+                while monoroot == root[i] or monoroot[0] == monoroot[1] or monoroot[1] == monoroot[2] or monoroot[2] == monoroot[3]: 
+                    monoroot = list (root[i])
+                    monoroot = random.sample (monoroot, k = len (monoroot))
+                    monoroot = "".join(monoroot)
+            else: 
+                while monoroot == root[i] or monoroot[0] == monoroot[1] or monoroot[1] == monoroot[2] or monoroot[2] == monoroot[3] or monoroot[3] == monoroot[4]: 
+                    monoroot = list (root[i])
+                    monoroot = random.sample (monoroot, k = len (monoroot))
+                    monoroot = "".join(monoroot)
         mono_root.append (monoroot)
-        
+
         monosuffix1 = suffix1[i]
         if suffix1 [i] == "": 
             monosuffix1 = ""
