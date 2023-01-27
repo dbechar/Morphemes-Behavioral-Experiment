@@ -24,11 +24,8 @@ data = pd.read_csv("../experimental_design/pseudoword_english_pool.csv")
 random.seed(19)
 
 # Define file number
-<<<<<<< HEAD
-file_number = 11
-=======
 file_number = 1
->>>>>>> bbeab571ca7278cd80c4a3dcbe2f3603423183ee
+
 
 # Define number of trials per condition 
 condition = {}

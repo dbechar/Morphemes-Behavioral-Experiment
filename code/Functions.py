@@ -178,16 +178,16 @@ def generateRoots (value):
     # - Output: Dataframe that includes infromation about the Polymorphemes
 
 
-def generatePolymorphemes (data, value):
-    prefixes = data["Prefixes"]["Prefix"].tolist() 
-    prefixes_weights = data["Prefixes"]["PrefixFrequency"].tolist()
-    prefix_pos = data["Prefixes"]["PrefixPOS"].tolist()
-    prefix_pos2 = data["Prefixes"]["PrefixPOS2"].tolist()
-    roots = data["Roots"]["Root"].tolist()
-    suffixes = data["Suffixes"]["Suffix"].tolist() 
-    suffixes_weights = data["Suffixes"]["SuffixFrequency"].tolist() 
-    suffix_pos = data["Suffixes"]["SuffixPOS"].tolist()
-    suffix_pos2 = data["Suffixes"]["SuffixPOS2"].tolist()
+def generatePolymorphemes (dfprefixes, dfroots, dfsuffixes, value):
+    prefixes = dfprefixes ["Prefix"].tolist()
+    prefixes_weights = dfprefixes["PrefixFrequency"].tolist()
+    prefix_pos = dfprefixes["PrefixPOS"].tolist()
+    prefix_pos2 = dfprefixes["PrefixPOS2"].tolist()
+    roots = dfroots["Root"].tolist()
+    suffixes = dfsuffixes["Suffix"].tolist()
+    suffixes_weights = dfsuffixes["SuffixFrequency"].tolist ()
+    suffix_pos = dfsuffixes["SuffixPOS"].tolist()
+    suffix_pos2 = dfsuffixes["SuffixPOS2"].tolist()
     newword = []
     num_of_conditions = 8
     prefix2 = []
