@@ -54,3 +54,4 @@ with pd.ExcelWriter("C:/Users/delia/OneDrive/Desktop/Morphemes/Morphemes/experim
     data["Prefixes"].to_excel(writer, sheet_name="Prefixes", index= False)
     data["Roots"].to_excel(writer, sheet_name="Roots", index= False)
     data["Suffixes"].to_excel(writer, sheet_name="Suffixes", index= False)
+    
