@@ -14,8 +14,8 @@
 # Author: Deliane Bechar
 
 """
-
-#---- Load necessary libraries ----
+#---- Preperation ----
+#---- Load libraries ----
 import random 
 import pandas as pd
 
@@ -213,11 +213,11 @@ def generatePolymorphemes (data, value):
         root.append ("".join(random.choices(roots)))
         suffix1.append ("")
         suffix2.append ("")
-        newword.append (prefix2[x] + 
-                        prefix1[x] + 
-                        root[x] + 
-                        suffix1[x] + 
-                        suffix2[x])
+        newword.append (prefix2[x + end] +
+                        prefix1[x + end] + 
+                        root[x + end] + 
+                        suffix1[x + end] + 
+                        suffix2[x + end])
         num_of_mor.append (2)
         condition.append("pr")
     
@@ -228,11 +228,11 @@ def generatePolymorphemes (data, value):
         root.append ("".join(random.choices(roots)))
         suffix1.append ("".join(random.choices (suffixes, weights = suffixes_weights, cum_weights=(None), k = 1)))
         suffix2.append ("")
-        newword.append (prefix2[x + end] + 
-                        prefix1[x + end] + 
-                        root[x + end] + 
-                        suffix1[x + end] + 
-                        suffix2[x + end])
+        newword.append (prefix2[x + 2 * end] + 
+                        prefix1[x + 2 *  end] + 
+                        root[x + 2 * end] + 
+                        suffix1[x + 2 * end] + 
+                        suffix2[x + 2 * end])
         num_of_mor.append (2)
         condition.append("rs")
         
@@ -243,11 +243,11 @@ def generatePolymorphemes (data, value):
         root.append ("".join(random.choices(roots)))
         suffix1.append ("".join(random.choices (suffixes, weights = suffixes_weights, cum_weights=(None), k = 1)))
         suffix2.append ("")
-        newword.append (prefix2[x +2 *end] + 
-                        prefix1[x + 2 * end] + 
-                        root[x + 2 * end] + 
-                        suffix1[x + 2 * end] + 
-                        suffix2[x + 2 * end])
+        newword.append (prefix2[x +3 *end] + 
+                        prefix1[x + 3 * end] + 
+                        root[x + 3 * end] + 
+                        suffix1[x + 3 * end] + 
+                        suffix2[x + 3 * end])
         num_of_mor.append (3)
         condition.append("prs")
     
@@ -268,11 +268,11 @@ def generatePolymorphemes (data, value):
         root.append ("".join(random.choices(roots)))
         suffix1.append ("")
         suffix2.append ("")
-        newword.append (prefix2[x + 3 * end] + 
-                        prefix1[x + 3 * end] + 
-                        root[x + 3 * end] + 
-                        suffix1[x + 3 * end] + 
-                        suffix2[x + 3 * end])
+        newword.append (prefix2[x + 4 * end] + 
+                        prefix1[x + 4 * end] + 
+                        root[x + 4 * end] + 
+                        suffix1[x + 4 * end] + 
+                        suffix2[x + 4 * end])
         num_of_mor.append (3)
         condition.append("ppr")
     
@@ -293,11 +293,11 @@ def generatePolymorphemes (data, value):
         root.append ("".join((random.choices(roots))))
         suffix1.append (n_suffix1)
         suffix2.append (n_suffix2)
-        newword.append (prefix2[x + 4 * end] + 
-                        prefix1[x + 4 * end] + 
-                        root[x + 4 * end] + 
-                        suffix1[x + 4 * end] + 
-                        suffix2[x + 4 * end])
+        newword.append (prefix2[x + 5 * end] + 
+                        prefix1[x + 5 * end] + 
+                        root[x + 5 * end] + 
+                        suffix1[x + 5 * end] + 
+                        suffix2[x + 5 * end])
         num_of_mor.append (3)
         condition.append("rss")
         
@@ -318,11 +318,11 @@ def generatePolymorphemes (data, value):
         root.append ("".join(random.choices(roots)))
         suffix1.append (n_suffix1)
         suffix2.append (n_suffix2)
-        newword.append (prefix2[x + 5*end] + 
-                        prefix1[x + 5*end] + 
-                        root[x + 5 * end] + 
-                        suffix1[x + 5 * end] + 
-                        suffix2[x + 5 * end])
+        newword.append (prefix2[x + 6*end] + 
+                        prefix1[x + 6*end] + 
+                        root[x + 6 * end] + 
+                        suffix1[x + 6 * end] + 
+                        suffix2[x + 6 * end])
         num_of_mor.append (4)
         condition.append("prss")
         
@@ -343,11 +343,11 @@ def generatePolymorphemes (data, value):
         root.append ("".join(random.choices(roots)))
         suffix1.append ("".join(random.choices (suffixes, weights = suffixes_weights, cum_weights=(None), k = 1)))
         suffix2.append ("")
-        newword.append (prefix2[x + 6 * end] + 
-                        prefix1[x + 6 * end] + 
-                        root[x + 6 * end] + 
-                        suffix1[x + 6 * end] + 
-                        suffix2[x + 6 * end])
+        newword.append (prefix2[x + 7 * end] + 
+                        prefix1[x + 7 * end] + 
+                        root[x + 7 * end] + 
+                        suffix1[x + 7 * end] + 
+                        suffix2[x + 7 * end])
         num_of_mor.append (4)
         condition.append("pprs")
     
