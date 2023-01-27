@@ -43,7 +43,12 @@ df_Error = generateError(df = df_Polymorphemes)
 #---- Concate all dataframes ----
 df_complete = pd.concat([df_Polymorphemes, df_Monomorphemes, df_Error], axis = 1)
 
-#---- Save experimental design as .xslx ----
+#---- Save experimental design as .csv ----
+df_complete.to_csv("../experimental_design/design.csv", index = False)
+data["Prefixes"].to_csv("../experimental_design/prefixes.csv", index= False)
+data["Roots"].to_csv("../experimental_design/roots.csv", index= False)
+data["Suffixes"].to_csv("../experimental_design/suffixes.csv", index= False)
+
 with pd.ExcelWriter("C:/Users/delia/OneDrive/Desktop/Morphemes/Morphemes/experimental_design/Design.xlsx") as writer:
     df_complete.to_excel(writer, sheet_name="Design", index= False)
     data["Prefixes"].to_excel(writer, sheet_name="Prefixes", index= False)

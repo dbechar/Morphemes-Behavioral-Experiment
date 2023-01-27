@@ -17,12 +17,14 @@ from Functions import (generateParticipantFile, generateTriallist)
 import pandas as pd
 import random
 
-
 # Read in Stimuli Pool
-data = pd.read_csv("../experimental_design/Pseudoword_English_Pool.csv")
+data = pd.read_csv("../experimental_design/pseudoword_english_pool.csv")
 
 # Set seed
 random.seed(19)
+
+# Define file number
+file_number = 10
 
 # Define number of trials per condition 
 condition = {}
@@ -46,5 +48,6 @@ pardf = generateParticipantFile (data, condition, p_error, p_polymor)
 triallist = generateTriallist (df = pardf)
  
 # Save triallist as csv file in the Triallist folder
-triallist.to_csv ("../triallists/triallist.csv", index = False)
+path = "../triallists/" + str(file_number) + "triallist.csv"
+triallist.to_csv (path, index = False)
 

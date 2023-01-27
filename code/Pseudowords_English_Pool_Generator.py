@@ -22,7 +22,7 @@ Date: 24.01.2023
 #---- Preperation ----
 # Load libraries
 import pandas as pd
-from Functions import (generateRoots, generatePolymorphemes, generateMonomorphemes, generateError, generateErrorMono)
+from Functions import (generateRoots, generatePolymorphemes, generateMonomorphemes, generateError, generateErrorMono, verifyWords)
 
 # Read in file 
 data = pd.read_excel("../experimental_design/Design.xlsx", 
@@ -32,7 +32,7 @@ data = pd.read_excel("../experimental_design/Design.xlsx",
 data["Roots"]["Root"] = generateRoots(value = 10)
 
 #---- Generate morphologically complex pseudowords ----
-df_Polymorphemes = generatePolymorphemes(data, value = 5000)
+df_Polymorphemes = generatePolymorphemes(data, value = 1500)
 
 #---- Generate mono-morphemic pseudowords that are based on morphologically complex pseudowords ---- 
 df_Monomorphemes = generateMonomorphemes (df = df_Polymorphemes)
@@ -47,6 +47,8 @@ df_ErrorPoly = generateErrorMono (df = df_Monomorphemes)
 #---- Concate all dataframes ----
 df_complete = pd.concat([df_Polymorphemes, df_Monomorphemes, df_Error, df_ErrorPoly], axis = 1)
 
-
-#---- Save experimental design as .xslx ----
-df_complete.to_csv("../experimental_design/Pseudoword_English_Pool.csv", index = False)
+#---- Test readability of words ----
+df_verified = verifyWords (df_complete)
+    
+#---- Save stimuli pool as .csv ----
+df_verified.to_csv("../experimental_design/pseudoword_english_pool.csv", index = False)
