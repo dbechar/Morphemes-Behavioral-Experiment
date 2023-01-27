@@ -182,10 +182,12 @@ def generatePolymorphemes (data, value):
     prefixes = data["Prefixes"]["Prefix"].tolist() 
     prefixes_weights = data["Prefixes"]["PrefixFrequency"].tolist()
     prefix_pos = data["Prefixes"]["PrefixPOS"].tolist()
+    prefix_pos2 = data["Prefixes"]["PrefixPOS2"].tolist()
     roots = data["Roots"]["Root"].tolist()
     suffixes = data["Suffixes"]["Suffix"].tolist() 
     suffixes_weights = data["Suffixes"]["SuffixFrequency"].tolist() 
     suffix_pos = data["Suffixes"]["SuffixPOS"].tolist()
+    suffix_pos2 = data["Suffixes"]["SuffixPOS2"].tolist()
     newword = []
     num_of_conditions = 8
     prefix2 = []
@@ -265,7 +267,7 @@ def generatePolymorphemes (data, value):
         index_p1 = prefixes.index (n_prefix1)
         
         # Make sure that prefix1 and prefix2 are different
-        while n_prefix1 == n_prefix2 or prefix_pos[index_p1] != prefix_pos[index_p2]: 
+        while n_prefix1 == n_prefix2 or prefix_pos[index_p1] != prefix_pos2[index_p2]: 
             n_prefix2 = ("".join(random.choices (prefixes, weights = prefixes_weights, cum_weights=(None), k = 1)))
             index_p2 = prefixes.index (n_prefix2)
         
@@ -290,7 +292,7 @@ def generatePolymorphemes (data, value):
         index_s2 = suffixes.index (n_suffix2)
         
         # Make sure that suffix1 and suffix2 are different
-        while n_suffix1 == n_suffix2 or suffix_pos[index_s1] != suffix_pos[index_s2]: 
+        while n_suffix1 == n_suffix2 or suffix_pos[index_s1] != suffix_pos2[index_s2]: 
             n_suffix2 = ("".join(random.choices (suffixes, weights = suffixes_weights, cum_weights=(None), k = 1)))
             index_s2 = suffixes.index (n_suffix2)
         
@@ -315,7 +317,7 @@ def generatePolymorphemes (data, value):
         index_s2 = suffixes.index (n_suffix2)
         
         # Make sure that suffix1 and suffix2 are different
-        while n_suffix1 == n_suffix2 or suffix_pos[index_s1] != suffix_pos[index_s2]: 
+        while n_suffix1 == n_suffix2 or suffix_pos[index_s1] != suffix_pos2[index_s2]: 
             n_suffix2 = ("".join(random.choices (suffixes, weights = suffixes_weights, cum_weights=(None), k = 1)))
             index_s2 = suffixes.index (n_suffix2)
             
@@ -340,7 +342,7 @@ def generatePolymorphemes (data, value):
         index_p2 = prefixes.index (n_prefix2)
         
         # Make sure that prefix1 and prefix2 are different
-        while n_prefix1 == n_prefix2 or prefix_pos[index_p1] != prefix_pos[index_p2]: 
+        while n_prefix1 == n_prefix2 or prefix_pos[index_p1] != prefix_pos2[index_p2]: 
             n_prefix2 = ("".join(random.choices (prefixes, weights = prefixes_weights, cum_weights=(None), k = 1)))
             index_p2 = prefixes.index (n_prefix2)
     
@@ -371,12 +373,13 @@ def generatePolymorphemes (data, value):
     return df   
 
 #---- Generate random pseudowords ----
-
 # Input for function: 
-    # - dataframe that has all of the necessary information
-
+    # - dataframe that has all of the necessary information (Prefi2, Prefix1, Root, Suffix1, Suffix2)
 
 def generateMonomorphemes (df):
+    vowels=["a", "e", "i", "o", "u"]
+    consonants=["b", "c", "d", "f", "g", "h", "k",
+                "p", "q", "s", "t", "v", "x", "z"]
     prefix2 = df["Prefix2"].tolist()
     prefix1 = df["Prefix1"].tolist()
     root = df["Root"].tolist()                        
@@ -414,21 +417,55 @@ def generateMonomorphemes (df):
         if root[i] == "": 
             monoroot = ""
         else: 
+            wordtype = []
+            for index in range (0, len(monoroot)): 
+                if monoroot[index] in vowels: 
+                    wordtype.append ("vowel")
+                elif monoroot[index] in consonants: 
+                    wordtype.append ("consonant")
+                else: 
+                    wordtype.append ("sonorant")
+        
             if len(root[i]) == 3: 
-                while monoroot == root[i] or monoroot[0] == monoroot[1] or monoroot[1] == monoroot[2]: 
+                while monoroot == root[i] or monoroot[0] == monoroot[1] or monoroot[1] == monoroot[2] or wordtype[0] == wordtype[1] or wordtype[1] == wordtype[2]: 
                     monoroot = list (root[i])
                     monoroot = random.sample (monoroot, k = len (monoroot))
                     monoroot = "".join(monoroot)
+                    for index in range (0, len(monoroot)): 
+                        if monoroot[index] in vowels: 
+                            wordtype.append ("vowel")
+                        elif monoroot[index] in consonants: 
+                            wordtype.append ("consonant")
+                        else: 
+                            wordtype.append ("sonorant")
+                            
             elif len(root[i]) == 4: 
-                while monoroot == root[i] or monoroot[0] == monoroot[1] or monoroot[1] == monoroot[2] or monoroot[2] == monoroot[3]: 
+                while monoroot == root[i] or monoroot[0] == monoroot[1] or monoroot[1] == monoroot[2] or monoroot[2] == monoroot[3] or wordtype[0] == wordtype[1] or wordtype[1] == wordtype[2] or wordtype [2] == wordtype [3]: 
                     monoroot = list (root[i])
                     monoroot = random.sample (monoroot, k = len (monoroot))
                     monoroot = "".join(monoroot)
+                    for index in range (0, len(monoroot)): 
+                        if monoroot[index] in vowels: 
+                            wordtype.append ("vowel")
+                        elif monoroot[index] in consonants: 
+                            wordtype.append ("consonant")
+                        else: 
+                            wordtype.append ("sonorant")
+                            
+            elif len(root[i]) == 5: 
+                while monoroot == root[i] or monoroot[0] == monoroot[1] or monoroot[1] == monoroot[2] or monoroot[2] == monoroot[3] or monoroot[3] == monoroot[4] or wordtype[0] == wordtype[1] or wordtype[1] == wordtype[2] or wordtype [2] == wordtype [3] or wordtype [3] == wordtype [4]: 
+                    monoroot = list (root[i])
+                    monoroot = random.sample (monoroot, k = len (monoroot))
+                    monoroot = "".join(monoroot)
+                    for index in range (0, len(monoroot)): 
+                        if monoroot[index] in vowels: 
+                            wordtype.append ("vowel")
+                        elif monoroot[index] in consonants: 
+                            wordtype.append ("consonant")
+                        else: 
+                            wordtype.append ("sonorant")            
             else: 
-                while monoroot == root[i] or monoroot[0] == monoroot[1] or monoroot[1] == monoroot[2] or monoroot[2] == monoroot[3] or monoroot[3] == monoroot[4]: 
-                    monoroot = list (root[i])
-                    monoroot = random.sample (monoroot, k = len (monoroot))
-                    monoroot = "".join(monoroot)
+                print ("check wordlength")
         mono_root.append (monoroot)
 
         monosuffix1 = suffix1[i]
@@ -450,8 +487,6 @@ def generateMonomorphemes (df):
                 monosuffix2 = random.sample (monosuffix2, k = len (monosuffix2))
                 monosuffix2 = "".join(monosuffix2)
         mono_suffix2.append (monosuffix2)
-        
-        # condition.append ("r")
         monomorphemes.append (monoprefix2 + 
                               monoprefix1 + 
                               monoroot + 
@@ -467,6 +502,7 @@ def generateMonomorphemes (df):
     df_Monomorpheme["MonoSuffix2"] = mono_suffix2
         
     return df_Monomorpheme
+
 
 #---- Generate random errors ----
 # Input: 
@@ -805,12 +841,10 @@ def generateTriallist (df):
     return df
 
 def verifyWords (df):
-    # See if end of prefix1 and beginning of root make sense (Poylmorpheme)
+    # See if end of prefix1 and beginning of root make sense together (Poylmorpheme)
     prefixroot = []
-    verification = pd.DataFrame ()
     prefix1 = df["Prefix1"].tolist()
     root = df["Root"].tolist()
-    token = df["Token"].tolist()
     
     for i in range (0, len(df)): 
         # if there is a prefix 1 check how well it goes with the root 
@@ -823,17 +857,45 @@ def verifyWords (df):
         else: 
             prefixroot.append ("0")
     
-    verification["Token"] = token
-    verification ["Prefix1"] = prefix1
-    verification ["Root"] = root 
-    verification ["P1RTest"] = prefixroot
+    
+    # See if end of root and beginning of sufffix 1 make sense together (Polymorpheme)
+    suffixroot = []
+    suffix1 = df["Suffix1"].tolist()
+    root = df["Root"].tolist()
+
+    for i in range (0, len(df)): 
+        # if there is a prefix 1 check how well it goes with the root 
+        if suffix1[i] != "": 
+            if root[i][-1] != suffix1[i][0]:
+                suffixroot.append ("0")
+            else: 
+                suffixroot.append ("1")
+        # if there is no prefix1 then: 
+        else: 
+            suffixroot.append ("0")
+            
+            
+    # See if end of prefix2 and beginning of prefix1 make sense together (Monomorpheme)
+    monoprefixprefix = []
+    monoprefix1 = df["MonoPrefix1"].tolist()
+    monoprefix2 = df["MonoPrefix2"].tolist()
+    
+    for i in range (0, len(df)): 
+        # if there is a prefix 1 check how well it goes with the root 
+        if monoprefix1[i] != "" and monoprefix2[i] != "": 
+            if monoprefix1[i][-1] != monoprefix2[i][0]:
+                monoprefixprefix.append ("0")
+            else: 
+                monoprefixprefix.append ("1")
+        # if there is no prefix1 then: 
+        else: 
+            monoprefixprefix.append ("0")        
     
     
-    # See if end of prefix1 and beginning of root make sense (Monomorpheme)
+    # See if end of prefix1 and beginning of root make sense together (Monomorpheme)
     monoprefixroot = []
     monoprefix1 = df["MonoPrefix1"].tolist()
     monoroot = df["MonoRoot"].tolist()
-    monomorpheme = df["Monomorpheme"].tolist()
     
     for i in range (0, len(df)): 
         # if there is a prefix 1 check how well it goes with the root 
@@ -846,40 +908,11 @@ def verifyWords (df):
         else: 
             monoprefixroot.append ("0")
     
-    verification["Monomorpheme"] = monomorpheme
-    verification ["MonoPrefix1"] = monoprefix1
-    verification ["MonoRoot"] = monoroot 
-    verification ["MP1RTest"] = monoprefixroot
     
-    
-    # See if end of root and beginning of sufffix 1 make sense (Polymorpheme)
-    suffixroot = []
-    suffix1 = df["Suffix1"].tolist()
-    root = df["Root"].tolist()
-    token = df["Token"].tolist()
-    
-    for i in range (0, len(df)): 
-        # if there is a prefix 1 check how well it goes with the root 
-        if suffix1[i] != "": 
-            if root[i][-1] != suffix1[i][0]:
-                suffixroot.append ("0")
-            else: 
-                suffixroot.append ("1")
-        # if there is no prefix1 then: 
-        else: 
-            suffixroot.append ("0")
-    
-    verification["Token"] = token
-    verification ["Suffix1"] = suffix1
-    verification ["Root"] = root 
-    verification ["S1RTest"] = suffixroot
-    
-    
-    # See if end of root and beginning of sufffix 1 make sense (Monomorpheme)
+    # See if end of root and beginning of sufffix 1 make sense together (Monomorpheme)
     monosuffixroot = []
     monosuffix1 = df["MonoSuffix1"].tolist()
     monoroot = df["MonoRoot"].tolist()
-    monomorpheme = df["Monomorpheme"].tolist()
     
     for i in range (0, len(df)): 
         # if there is a prefix 1 check how well it goes with the root 
@@ -891,17 +924,29 @@ def verifyWords (df):
         # if there is no prefix1 then: 
         else: 
             monosuffixroot.append ("0")
+
     
-    verification["Monomorpheme"] = monomorpheme
-    verification ["MonoSuffix1"] = monosuffix1
-    verification ["MonoRoot"] = monomorpheme 
-    verification ["MS1RTest"] = monosuffixroot
+    # See if end of suffix1 and beginning of suffix2 make sense together (Monomorpheme)
+    monosuffixsuffix = []
+    monosuffix1 = df["MonoSuffix1"].tolist()
+    monosuffix2 = df["MonoSuffix2"].tolist()
     
-    
+    for i in range (0, len(df)): 
+        # if there is a prefix 1 check how well it goes with the root 
+        if monosuffix1[i] != "" and monosuffix2[i] != "": 
+            if monosuffix1[i][-1] != monosuffix2[i][0]:
+                monosuffixsuffix.append ("0")
+            else: 
+                monosuffixsuffix.append ("1")
+        # if there is no prefix1 then: 
+        else: 
+            monosuffixsuffix.append ("0")
+
+
     # Save all rows in which the same letters appear right after another in a list (these rows will be removed)
     indexlist = []
     for i in range (0, len(df)): 
-        if prefixroot[i] == "1" or monoprefixroot[i] == "1" or suffixroot[i] == "1" or monosuffixroot[i] == "1": 
+        if prefixroot[i] == "1" or monoprefixroot[i] == "1" or suffixroot[i] == "1" or monosuffixroot[i] == "1" or monosuffixsuffix[i] == "1" or monoprefixprefix == "1": 
             indexlist.append (i)
         
     df.drop (df.index[indexlist], inplace = True)
