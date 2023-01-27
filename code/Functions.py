@@ -393,11 +393,12 @@ def generateMonomorphemes (df):
         monoprefix2 = prefix2[i]
         if prefix2[i] == "":
             monoprefix2 = ""
-            
         else: 
             while monoprefix2 == prefix2[i]: 
                 monoprefix2 = list (prefix2[i])
                 monoprefix2 = random.sample (monoprefix2, k = len (monoprefix2))
+                # Make sure that two same letters do not appear right after another:
+                
                 monoprefix2 = "".join(monoprefix2)
         mono_prefix2.append (monoprefix2)
 

@@ -1,0 +1,5 @@
+Prefix,PrefixPOS,PrefixPOS2,PrefixFrequency
+de,all,all,0.35
+pre,all,all,0.25
+in,all,all,0.2
+un,all,all,0.2

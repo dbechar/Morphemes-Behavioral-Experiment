@@ -32,7 +32,7 @@ data = pd.read_excel("../experimental_design/Design.xlsx",
 data["Roots"]["Root"] = generateRoots(value = 10)
 
 #---- Generate morphologically complex pseudowords ----
-df_Polymorphemes = generatePolymorphemes(data, value = 5000)
+df_Polymorphemes = generatePolymorphemes(data, value = 1500)
 
 #---- Generate mono-morphemic pseudowords that are based on morphologically complex pseudowords ---- 
 df_Monomorphemes = generateMonomorphemes (df = df_Polymorphemes)
@@ -51,4 +51,4 @@ df_complete = pd.concat([df_Polymorphemes, df_Monomorphemes, df_Error, df_ErrorP
 df_verified = verifyWords (df_complete)
     
 #---- Save stimuli pool as .csv ----
-df_verified.to_csv("../experimental_design/Pseudoword_English_Pool.csv", index = False)
+df_verified.to_csv("../experimental_design/pseudoword_english_pool.csv", index = False)

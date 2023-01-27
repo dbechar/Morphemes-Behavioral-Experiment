@@ -1,0 +1,9 @@
+Token,Condition,Prefix2,Prefix1,Root,Suffix1,Suffix2,Wordlength,Monomorpheme,MonoPrefix2,MonoPrefix1,MonoRoot,MonoSuffix1,MonoSuffix2,ErrorPrefix2,ErrorPrefix1,ErrorRoot,ErrorSuffix1,ErrorSuffix2,ChangedIndexP2,ChangedIndexP1,ChangedIndexR,ChangedIndexS1,ChangedIndexS2
+rerg,r,,,rerg,,,4,rreg,,,rreg,,,,,rirg,,,,,1,,
+unegah,pr,,un,egah,,,6,nuegha,,nu,egha,,,,ulegah,unegad,,,,1,3,,
+ehuable,rs,,,ehu,able,,7,uehleba,,,ueh,leba,,,,ihuable,ehuabla,,,,0,3,
+derergion,prs,,de,rerg,ion,,9,edrgreoin,,ed,rgre,oin,,,durergion,derercion,derergian,,,1,3,1,
+deprehidad,ppr,de,pre,hidad,,,10,ederpddhia,ed,erp,ddhia,,,seprehidad,deprohidad,deprehidid,,,0,2,3,,
+gagefulable,rss,,,gage,ful,able,11,ggaelfuelba,,,ggae,lfu,elba,,,gigefulable,gagegulable,gagefulabla,,,1,0,3
+insopioner,prss,,in,sop,ion,er,10,niospoinre,,ni,osp,oin,re,,onsopioner,ingopioner,insopianer,insopionem,,0,0,1,1
+deinegahable,pprs,de,in,egah,able,,12,edniaheglabe,ed,ni,aheg,labe,,dainegahable,deanegahable,deinogahable,deinegahablu,,1,0,0,3,
