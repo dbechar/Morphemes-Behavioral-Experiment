@@ -1,5 +1,5 @@
 Suffix,SuffixFrequency,2Suffixes,Suffix1,Suffix2,2SuffixFrequency
-ion,0.35,fully,fully,fully,fully
-ful,0.25,lyness,lyness,lyness,lyness
-able,0.2,fully,fully,fully,fully
-er,0.2,lyness,lyness,lyness,lyness
+ion,0.35,fully,ful,ly,0.25
+ful,0.25,lyness,ly,ness,0.25
+able,0.2,fully,ful,ly,0.25
+er,0.2,lyness,ly,ness,0.25
