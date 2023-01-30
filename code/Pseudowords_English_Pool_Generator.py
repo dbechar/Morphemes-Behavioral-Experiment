@@ -8,7 +8,11 @@
     # - randomly creates mono-morphemic words
     # - create all errorwords for created words
     # - generate a pool of English Pseudowords 
-    # - save pool as .csv (under Experimentdesign)
+    # - save pool as .csv (under Experimentdesign?)
+
+-> Just change values in stimulus creater:
+    1. Create Roots and make sure that there are no accidental real words
+    2. Use updated roots to create all words and all additional information
 
 Author: Deliane Bechar
 
@@ -28,7 +32,7 @@ roots = pd.read_csv("../experimental_design/roots.csv")
 suffixes = pd.read_csv("../experimental_design/suffixes.csv")
 
 #---- Generate roots ----
-roots["Root"] = generateRoots(value = 10)
+#root = generateRoots(value = 10)
 
 #---- Generate morphologically complex pseudowords ----
 df_Polymorphemes = generatePolymorphemes(prefixes, roots, suffixes, value = 1500)
@@ -52,4 +56,5 @@ df_verified = verifyWords (df_complete)
     
 #---- Save stimuli pool as .csv ----
 df_verified.to_csv("../experimental_design/pseudoword_english_pool.csv", index = False)
+
 

@@ -180,13 +180,17 @@ def generateRoots (value):
 def generatePolymorphemes (dfprefixes, dfroots, dfsuffixes, value):
     prefixes = dfprefixes ["Prefix"].tolist()
     prefixes_weights = dfprefixes["PrefixFrequency"].tolist()
-    prefix_pos = dfprefixes["PrefixPOS"].tolist()
-    prefix_pos2 = dfprefixes["PrefixPOS2"].tolist()
+    twoprefixes = dfprefixes["2Prefixes"].tolist ()
+    twoprefixes_weights = dfprefixes["2PrefixFrequency"]
+    tp_prefix2 = dfprefixes["Prefix2"]
+    tp_prefix1 = dfprefixes["Prefix1"]
     roots = dfroots["Root"].tolist()
     suffixes = dfsuffixes["Suffix"].tolist()
     suffixes_weights = dfsuffixes["SuffixFrequency"].tolist ()
-    suffix_pos = dfsuffixes["SuffixPOS"].tolist()
-    suffix_pos2 = dfsuffixes["SuffixPOS2"].tolist()
+    twosuffixes = dfsuffixes ["2Suffixes"].tolist ()
+    twosuffixes_weights = dfsuffixes["2SuffixFrequency"].tolist ()
+    ts_suffix1 = dfsuffixes ["Suffix1"]
+    ts_suffix2 = dfsuffixes ["Suffix2"]
     newword = []
     num_of_conditions = 8
     prefix2 = []
@@ -194,6 +198,8 @@ def generatePolymorphemes (dfprefixes, dfroots, dfsuffixes, value):
     root = []
     suffix1 = []
     suffix2 = []
+    tprefix = []
+    tsuffix = []
     num_of_mor = []
     condition = []
     end = round (value/num_of_conditions)
@@ -260,18 +266,10 @@ def generatePolymorphemes (dfprefixes, dfroots, dfsuffixes, value):
     
     # condition 5: prefix + prefix + root
     for x in range (0, end):
-        n_prefix2 = ("".join(random.choices (prefixes, weights = prefixes_weights, cum_weights=(None), k = 1)))
-        n_prefix1 = ("".join(random.choices (prefixes, weights = prefixes_weights, cum_weights=(None), k = 1)))
-        index_p2 = prefixes.index (n_prefix2)
-        index_p1 = prefixes.index (n_prefix1)
-        
-        # Make sure that prefix1 and prefix2 are different
-        while n_prefix1 == n_prefix2 or prefix_pos[index_p1] != prefix_pos2[index_p2]: 
-            n_prefix2 = ("".join(random.choices (prefixes, weights = prefixes_weights, cum_weights=(None), k = 1)))
-            index_p2 = prefixes.index (n_prefix2)
-        
-        prefix2.append (n_prefix2)
-        prefix1.append (n_prefix1)
+        tprefix = ("".join(random.choices (twoprefixes, weights = twoprefixes_weights, cum_weights=(None), k = 1)))
+        index = twoprefixes.index (tprefix)
+        prefix2.append (tp_prefix2[index])
+        prefix1.append (tp_prefix1[index])
         root.append ("".join(random.choices(roots)))
         suffix1.append ("")
         suffix2.append ("")
@@ -285,21 +283,13 @@ def generatePolymorphemes (dfprefixes, dfroots, dfsuffixes, value):
     
     # condition 6: root + suffix + suffix
     for x in range (0, end):
-        n_suffix1 = ("".join(random.choices (suffixes, weights = suffixes_weights, cum_weights=(None), k = 1)))
-        n_suffix2 = ("".join(random.choices (suffixes, weights = suffixes_weights, cum_weights=(None), k = 1)))
-        index_s1 = suffixes.index (n_suffix1)
-        index_s2 = suffixes.index (n_suffix2)
-        
-        # Make sure that suffix1 and suffix2 are different
-        while n_suffix1 == n_suffix2 or suffix_pos[index_s1] != suffix_pos2[index_s2]: 
-            n_suffix2 = ("".join(random.choices (suffixes, weights = suffixes_weights, cum_weights=(None), k = 1)))
-            index_s2 = suffixes.index (n_suffix2)
-        
+        tsuffix = ("".join(random.choices (twosuffixes, weights = twosuffixes_weights, cum_weights=(None), k = 1)))
+        index = twosuffixes.index (tsuffix)
         prefix2.append ("")
         prefix1.append ("")
         root.append ("".join((random.choices(roots))))
-        suffix1.append (n_suffix1)
-        suffix2.append (n_suffix2)
+        suffix1.append (ts_suffix1[index])
+        suffix2.append (ts_suffix2[index])
         newword.append (prefix2[x + 5 * end] + 
                         prefix1[x + 5 * end] + 
                         root[x + 5 * end] + 
@@ -310,21 +300,13 @@ def generatePolymorphemes (dfprefixes, dfroots, dfsuffixes, value):
         
     # condition 7: prefix + root + suffix + suffix
     for x in range (0, end):
-        n_suffix1 = ("".join(random.choices (suffixes, weights = suffixes_weights, cum_weights=(None), k = 1)))
-        n_suffix2 = ("".join(random.choices (suffixes, weights = suffixes_weights, cum_weights=(None), k = 1)))
-        index_s1 = suffixes.index (n_suffix1)
-        index_s2 = suffixes.index (n_suffix2)
-        
-        # Make sure that suffix1 and suffix2 are different
-        while n_suffix1 == n_suffix2 or suffix_pos[index_s1] != suffix_pos2[index_s2]: 
-            n_suffix2 = ("".join(random.choices (suffixes, weights = suffixes_weights, cum_weights=(None), k = 1)))
-            index_s2 = suffixes.index (n_suffix2)
-            
+        tsuffix = ("".join(random.choices (twosuffixes, weights = twosuffixes_weights, cum_weights=(None), k = 1)))
+        index = twosuffixes.index (tsuffix)
         prefix2.append ("")
         prefix1.append ("".join(random.choices (prefixes, weights = prefixes_weights, cum_weights=(None), k = 1)))
         root.append ("".join(random.choices(roots)))
-        suffix1.append (n_suffix1)
-        suffix2.append (n_suffix2)
+        suffix1.append (ts_suffix1[index])
+        suffix2.append (ts_suffix2[index])
         newword.append (prefix2[x + 6*end] + 
                         prefix1[x + 6*end] + 
                         root[x + 6 * end] + 
@@ -335,18 +317,10 @@ def generatePolymorphemes (dfprefixes, dfroots, dfsuffixes, value):
         
     # condition 8: prefix + prefix + root + suffix
     for x in range (0, end):
-        n_prefix1 = ("".join(random.choices (prefixes, weights = prefixes_weights, cum_weights=(None), k = 1)))
-        n_prefix2 = ("".join(random.choices (prefixes, weights = prefixes_weights, cum_weights=(None), k = 1)))
-        index_p1 = prefixes.index (n_prefix1)
-        index_p2 = prefixes.index (n_prefix2)
-        
-        # Make sure that prefix1 and prefix2 are different
-        while n_prefix1 == n_prefix2 or prefix_pos[index_p1] != prefix_pos2[index_p2]: 
-            n_prefix2 = ("".join(random.choices (prefixes, weights = prefixes_weights, cum_weights=(None), k = 1)))
-            index_p2 = prefixes.index (n_prefix2)
-    
-        prefix2.append (n_prefix2)
-        prefix1.append (n_prefix1) 
+        tprefix = ("".join(random.choices (twoprefixes, weights = twoprefixes_weights, cum_weights=(None), k = 1)))
+        index = twoprefixes.index (tprefix)
+        prefix2.append (tp_prefix2[index])
+        prefix1.append (tp_prefix1[index])
         root.append ("".join(random.choices(roots)))
         suffix1.append ("".join(random.choices (suffixes, weights = suffixes_weights, cum_weights=(None), k = 1)))
         suffix2.append ("")
