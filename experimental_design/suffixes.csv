@@ -1,5 +1,5 @@
-Suffix,SuffixPOS,SuffixPOS2,SuffixFrequency
-ion,noun,noun,0.35
-ful,adjective,adjective,0.25
-able,adjective,adjective,0.2
-er,noun,noun,0.2
+Suffix,SuffixFrequency,2Suffixes,Suffix1,Suffix2,2SuffixFrequency
+ion,0.35,fully,full,ly,0.5
+ful,0.25,lyness,ly,ness,0.5
+able,0.2,,,,
+er,0.2,,,,
