@@ -1,9 +1,9 @@
 Token,Condition,Prefix2,Prefix1,Root,Suffix1,Suffix2,Wordlength,Monomorpheme,MonoPrefix2,MonoPrefix1,MonoRoot,MonoSuffix1,MonoSuffix2,ErrorPrefix2,ErrorPrefix1,ErrorRoot,ErrorSuffix1,ErrorSuffix2,ChangedIndexP2,ChangedIndexP1,ChangedIndexR,ChangedIndexS1,ChangedIndexS2
-rerg,r,,,rerg,,,4,grer,,,grer,,,,,yerg,,,,,0,,
-unegah,pr,,un,egah,,,6,nuhage,,nu,hage,,,,enegah,unegoh,,,,0,2,,
-ehuable,rs,,,ehu,able,,7,uheelba,,,uhe,elba,,,,ehoable,ehueble,,,,2,0,
-derergion,prs,,de,rerg,ion,,9,edgrernoi,,ed,grer,noi,,,verergion,deremgion,derergior,,,0,2,2,
-deprehidad,ppr,de,pre,hidad,,,10,ederpdadih,ed,erp,dadih,,,diprehidad,deprahidad,deprehadad,,,1,2,1,,
-gagefulable,rss,,,gage,ful,able,11,egaglufelba,,,egag,luf,elba,,,gagofulable,gagepulable,gagefuleble,,,3,0,0
-insopioner,prss,,in,sop,ion,er,10,niposnoire,,ni,pos,noi,re,,irsopioner,insohioner,insopianer,insopioney,,1,2,1,1
-deinegahable,pprs,de,in,egah,able,,12,ednihageelba,ed,ni,hage,elba,,seinegahable,deimegahable,deinogahable,deinegaheble,,0,1,0,0,
+ber,r,,,ber,,,3,reb,,,reb,,,,,her,,,,,0,,
+preaybu,pr,,pre,aybu,,,7,erpubya,,erp,ubya,,,,treaybu,preambu,,,,0,1,,
+gecetful,rs,,,gecet,ful,,8,tecegluf,,,teceg,luf,,,,gecutful,gecetfur,,,,3,2,
+precudion,prs,,pre,cud,ion,,9,erpducnoi,,erp,duc,noi,,,srecudion,precadion,precudiin,,,0,1,1,
+depreveta,ppr,de,pre,veta,,,9,ederpatev,ed,erp,atev,,,dipreveta,depraveta,depreveha,,,1,2,2,,
+memgerion,rss,,,memg,er,ion,9,gmemrenoi,,,gmem,re,noi,,,mergerion,memgirion,memgerien,,,2,0,1
+incudfulable,prss,,in,cud,ful,able,12,niduclufelba,,ni,duc,luf,elba,,imcudfulable,incadfulable,incudtulable,incudfulabwe,,1,1,0,2
+indevetaer,pprs,in,de,veta,er,,10,niedatevre,ni,ed,atev,re,,endevetaer,intevetaer,indevataer,indevetaur,,0,0,1,0,
