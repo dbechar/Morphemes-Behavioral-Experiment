@@ -1,5 +1,5 @@
-Prefix,PrefixPOS,PrefixPOS2,PrefixFrequency
-de,all,all,0.35
-pre,all,all,0.25
-in,all,all,0.2
-un,all,all,0.2
+Prefix,PrefixFrequency,2Prefixes,Prefix2,Prefix1,2PrefixFrequency
+de,0.35,unde,un,de,0.5
+pre,0.25,redis,re,dis,0.5
+in,0.2,,,,
+un,0.2,,,,
