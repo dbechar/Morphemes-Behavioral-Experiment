@@ -239,7 +239,7 @@ def generateError (df):
         else: 
             randomlyChangeNChar(word = prefix3[i], value = 1, changed_index = changed_index_p3, error_word = eprefix3)
             error_prefix3.append (eprefix3[i] + prefix2[i] + prefix1[i] + root [i] + suffix1[i] + suffix2[i] + suffix3[i])
-            monoerror_prefix3.append (eprefix3[i] + prefix2[i] + prefix1[i] + root [i] + suffix1[i] + suffix2[i] + suffix3[i])
+            monoerror_prefix3.append (eprefix3[i][::-1] + prefix2[i][::-1] + prefix1[i][::-1] + root [i][::-1] + suffix1[i][::-1] + suffix2[i][::-1] + suffix3[i][::-1])
        
         if prefix2[i] == "": 
             error_prefix2.append("")
@@ -249,7 +249,7 @@ def generateError (df):
         else: 
             randomlyChangeNChar(word = prefix2[i], value = 1, changed_index = changed_index_p2, error_word = eprefix2)
             error_prefix2.append (prefix3[i] + eprefix2[i] + prefix1[i] + root [i] + suffix1[i] + suffix2[i]+ suffix3[i])
-            monoerror_prefix2.append (prefix3[i] + eprefix2[i] + prefix1[i] + root [i] + suffix1[i] + suffix2[i]+ suffix3[i])
+            monoerror_prefix2.append (prefix3[i][::-1] + eprefix2[i][::-1] + prefix1[i][::-1] + root [i][::-1] + suffix1[i][::-1] + suffix2[i][::-1]+ suffix3[i][::-1])
         
         if prefix1[i] == "": 
             error_prefix1.append("")
@@ -259,7 +259,7 @@ def generateError (df):
         else: 
             randomlyChangeNChar(word = prefix1[i], value = 1, changed_index = changed_index_p1, error_word = eprefix1)
             error_prefix1.append (prefix3[i] + prefix2[i] + eprefix1[i] + root [i] + suffix1[i] + suffix2[i] + suffix3[i]) 
-            monoerror_prefix1.append (prefix3[i] + prefix2[i] + eprefix1[i] + root [i] + suffix1[i] + suffix2[i] + suffix3[i]) 
+            monoerror_prefix1.append (prefix3[i][::-1] + prefix2[i][::-1] + eprefix1[i][::-1] + root [i][::-1] + suffix1[i][::-1] + suffix2[i][::-1] + suffix3[i][::-1]) 
         
         if root[i] == "": 
             error_root.append("")
@@ -269,7 +269,7 @@ def generateError (df):
         else: 
             randomlyChangeNChar(word = root[i], value = 1, changed_index=changed_index_r, error_word = eroot)
             error_root.append (prefix3[i] + prefix2[i] + prefix1[i] + eroot [i] + suffix1[i] + suffix2[i] + suffix3[i])
-            monoerror_root.append (prefix3[i] + prefix2[i] + prefix1[i] + eroot [i] + suffix1[i] + suffix2[i] + suffix3[i])
+            monoerror_root.append (prefix3[i][::-1] + prefix2[i][::-1] + prefix1[i][::-1] + eroot [i][::-1] + suffix1[i][::-1] + suffix2[i][::-1] + suffix3[i][::-1])
         
         if suffix1[i] == "": 
             error_suffix1.append("")
@@ -279,7 +279,7 @@ def generateError (df):
         else: 
             randomlyChangeNChar(word = suffix1[i], value = 1, changed_index = changed_index_s1, error_word = esuffix1)
             error_suffix1.append (prefix3[i] + prefix2[i] + prefix1[i] + root [i] + esuffix1[i] + suffix2[i] + suffix3[i])
-            monoerror_suffix1.append (prefix3[i] + prefix2[i] + prefix1[i] + root [i] + esuffix1[i] + suffix2[i] + suffix3[i])
+            monoerror_suffix1.append (prefix3[i][::-1] + prefix2[i][::-1] + prefix1[i][::-1] + root [i][::-1] + esuffix1[i][::-1] + suffix2[i][::-1] + suffix3[i][::-1])
         
         if suffix2[i] == "": 
             error_suffix2.append("")
@@ -289,7 +289,7 @@ def generateError (df):
         else: 
             randomlyChangeNChar(word = suffix2[i], value = 1, changed_index = changed_index_s2, error_word = esuffix2)
             error_suffix2.append (prefix3[i] + prefix2[i] + prefix1[i] + root[i] + suffix1[i] + esuffix2[i] + suffix3[i])
-            monoerror_suffix2.append (prefix3[i] + prefix2[i] + prefix1[i] + root[i] + suffix1[i] + esuffix2[i] + suffix3[i])
+            monoerror_suffix2.append (prefix3[i][::-1] + prefix2[i][::-1] + prefix1[i][::-1] + root[i][::-1] + suffix1[i][::-1] + esuffix2[i][::-1] + suffix3[i][::-1])
         
         if suffix3[i] == "": 
             error_suffix3.append("")
@@ -299,7 +299,7 @@ def generateError (df):
         else: 
             randomlyChangeNChar(word = suffix3[i], value = 1, changed_index = changed_index_s3, error_word = esuffix3)
             error_suffix3.append (prefix3[i] + prefix2[i] + prefix1[i] + root[i] + suffix1[i] + suffix2[i] + esuffix3[i])
-            monoerror_suffix3.append (prefix3[i] + prefix2[i] + prefix1[i] + root[i] + suffix1[i] + suffix2[i] + esuffix3[i])
+            monoerror_suffix3.append (prefix3[i][::-1] + prefix2[i][::-1] + prefix1[i][::-1] + root[i][::-1] + suffix1[i][::-1] + suffix2[i][::-1] + esuffix3[i][::-1])
         
     df_Error = pd.DataFrame()
     df_Error["ErrorPrefix3"] = error_prefix3
