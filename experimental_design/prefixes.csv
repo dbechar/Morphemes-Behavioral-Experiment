@@ -1,5 +1,11 @@
-Prefix,PrefixFrequency,2Prefixes,Prefix2,Prefix1,2PrefixFrequency
-de,0.35,unde,un,de,0.5
-pre,0.25,redis,re,dis,0.5
-in,0.2,unde,un,de,0.5
-un,0.2,redis,re,dis,0.5
+Prefix3,Prefix2,Prefix1,PrefixFrequency,Condition
+,,de,0.2,p
+,,pre,0.2,p
+,,in,0.25,p
+,,un,0.2,p
+,,mis,0.15,p
+,un,de,0.3,pp
+,re,dis,0.1,pp
+,re,be,0.18,pp
+re,mis,de,0.4,ppp
+re,un,mis,0.1,ppp

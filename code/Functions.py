@@ -2,9 +2,7 @@
 #---- Functions----#
 
 # This script does: 
-    # - define vocals/consonants/sonorants and their frequencies
-    # - create a function that generates random roots based on letter frequency
-    # - create polymorphemic words using previously defined morphemes 
+    # - create polymorphemic words based on the given stimulus pool
     # - create a function that generates mono-morphemic words based 
         on the polymorphemic words
     # - create a function that generates random errors for monomorphemes
@@ -17,358 +15,117 @@
 # Author: Deliane Bechar
 
 """
-#---- Preperation ----
-#---- Load libraries ----
-import random 
+# LOAD LIBRARIES
 import pandas as pd
+import random
 
-# Set seed
-random.seed(19)
+# GENERATE REVERSED ROOTS
+def generateReverseRoot (dfroot):
+    root = dfroot["Root"]
+    reverseroot = []
+    for i in range(0, len (root)):
+        rr = root[i][::-1]
+        reverseroot.append (rr)
+    dfroot ["ReverseRoot"] = reverseroot
+    return dfroot
 
-#---- Generate random roots based on letter frequency ----
-# source for weights: https://www.sttmedia.com/characterfrequency-english
+# GENERATE POLYMORPHEMES
+def generatePolymorphemes (prefixes, roots, suffixes):
+   prefixes = prefixes.fillna("")
+   suffixes = suffixes.fillna("")
+   prefix3 = prefixes["Prefix3"].tolist ()
+   prefix2 =  prefixes["Prefix2"].tolist ()
+   prefix1 =  prefixes["Prefix1"].tolist ()
+   root = roots["Root"].tolist ()
+   suffix1 = suffixes["Suffix1"].tolist ()
+   suffix2 = suffixes["Suffix2"].tolist ()
+   suffix3 =  suffixes["Suffix3"].tolist ()
+   condition_prefix = prefixes["Condition"].tolist ()
+   condition_suffix = suffixes["Condition"].tolist ()
+   token = []
+   condition = []
+   prefix1_list = []
+   prefix2_list = []
+   prefix3_list = []
+   root_list = []
+   suffix1_list = []
+   suffix2_list = []
+   suffix3_list = []
 
-# Input: List in which words are supposed to be saved and number of new words that are supposed to be created (only creates a multiples of 10)
-# Output: List full of words   
+   for i in range (0, len(root)):
+       token.append (root[i])
+       prefix3_list.append ("")
+       prefix2_list.append ("")
+       prefix1_list.append ("")
+       root_list.append (root[i])
+       suffix1_list.append ("")
+       suffix2_list.append ("")
+       suffix3_list.append ("")
+       condition.append ("r")
+       for prefix in range (0, len (prefix1)): 
+           prefix3_list.append (prefix3[prefix])
+           prefix2_list.append (prefix2[prefix])
+           prefix1_list.append (prefix1[prefix])
+           root_list.append (root[i])
+           suffix1_list.append ("")
+           suffix2_list.append ("")
+           suffix3_list.append ("")
+           token.append (prefix3[prefix] + prefix2[prefix] + prefix1[prefix]+ root[i])
+           condition.append (str (condition_prefix [prefix]) + "r") 
 
-def generateRoots (value):
-    root = []
-    vowels=["a", "e", "i", "o", "u"]
-    vowel_weights=[8.34, 12.60, 6.71, 7.7, 2.85]
-    consonants=["b", "c", "d", "f", "g", "h", "k",
-                "p", "q", "s", "t", "v", "x", "z"]
-    consonant_weights=[1.54, 2.73, 4.14, 2.03, 1.92, 6.11, 0.87, 
-                       4.24,  0.09, 6.11, 9.37, 1.06, 0.20, 0.06]
-    sonorants = ["j", "l", "m", "n", "r", "w", "y"]
-    sonorants_weights = [0.23, 2.53, 6.8, 1.66, 5.68, 2.34, 2.04]
-    num_of_patterns = 10
-    
-    # pattern 1 = cvc
-    for index in range (0, round (value/num_of_patterns)): 
-        word = []
-        word = (random.choices(consonants, weights = consonant_weights, cum_weights=(None), k = 1) + 
-                random.choices(vowels, weights = vowel_weights, cum_weights=(None), k = 1) + 
-                random.choices(consonants, weights = consonant_weights, cum_weights=(None), k = 1))
-        while word in root: 
-            word = (random.choices(consonants, weights = consonant_weights, cum_weights=(None), k = 1) + 
-                    random.choices(vowels, weights = vowel_weights, cum_weights=(None), k = 1) + 
-                    random.choices(consonants, weights = consonant_weights, cum_weights=(None), k = 1))
-        root.append ("".join(word))
-    # pattern 2 = vcv
-    for index in range (0, round (value/num_of_patterns)): 
-        word = []
-        word = (random.choices(vowels, weights = vowel_weights, cum_weights=(None), k = 1) + 
-                random.choices(consonants, weights = consonant_weights, cum_weights=(None), k = 1) + 
-                random.choices(vowels, weights = vowel_weights, cum_weights=(None), k = 1))
-        while word in root: 
-            word = (random.choices(vowels, weights = vowel_weights, cum_weights=(None), k = 1) + 
-                    random.choices(consonants, weights = consonant_weights, cum_weights=(None), k = 1) + 
-                    random.choices(vowels, weights = vowel_weights, cum_weights=(None), k = 1))
-        root.append ("".join(word))
-    # pattern 3 = cvcv
-    for index in range (0, round (value/num_of_patterns)): 
-        word = []
-        word = (random.choices(consonants, weights = consonant_weights, cum_weights=(None), k = 1) +
-                random.choices(vowels, weights = vowel_weights, cum_weights=(None), k = 1) + 
-                random.choices(consonants, weights = consonant_weights, cum_weights=(None), k = 1) +
-                random.choices(vowels, weights = vowel_weights, cum_weights=(None), k = 1))
-        while word in root: 
-            word = (random.choices(consonants, weights = consonant_weights, cum_weights=(None), k = 1) +
-                    random.choices(vowels, weights = vowel_weights, cum_weights=(None), k = 1) + 
-                    random.choices(consonants, weights = consonant_weights, cum_weights=(None), k = 1) +
-                    random.choices(vowels, weights = vowel_weights, cum_weights=(None), k = 1))
-        root.append ("".join(word))
-    # pattern 4: vcvc
-    for index in range (0, round (value/num_of_patterns)): 
-        word = []
-        word = (random.choices(vowels, weights = vowel_weights, cum_weights=(None), k = 1) + 
-                random.choices(consonants, weights = consonant_weights, cum_weights=(None), k = 1) +
-                random.choices(vowels, weights = vowel_weights, cum_weights=(None), k = 1) + 
-                random.choices(consonants, weights = consonant_weights, cum_weights=(None), k = 1))
-        while word in root: 
-            word = (random.choices(vowels, weights = vowel_weights, cum_weights=(None), k = 1) + 
-                    random.choices(consonants, weights = consonant_weights, cum_weights=(None), k = 1) +
-                    random.choices(vowels, weights = vowel_weights, cum_weights=(None), k = 1) + 
-                    random.choices(consonants, weights = consonant_weights, cum_weights=(None), k = 1))
-        root.append ("".join(word))
-    # pattern 5: cvcvc
-    for index in range (0, round (value/num_of_patterns)): 
-        word = []
-        word = (random.choices(consonants, weights = consonant_weights, cum_weights=(None), k = 1) +
-                random.choices(vowels, weights = vowel_weights, cum_weights=(None), k = 1) + 
-                random.choices(consonants, weights = consonant_weights, cum_weights=(None), k = 1) +
-                random.choices(vowels, weights = vowel_weights, cum_weights=(None), k = 1) + 
-                random.choices(consonants, weights = consonant_weights, cum_weights=(None), k = 1))
-        while word in root: 
-            word = (random.choices(consonants, weights = consonant_weights, cum_weights=(None), k = 1) +
-                    random.choices(vowels, weights = vowel_weights, cum_weights=(None), k = 1) + 
-                    random.choices(consonants, weights = consonant_weights, cum_weights=(None), k = 1) +
-                    random.choices(vowels, weights = vowel_weights, cum_weights=(None), k = 1) + 
-                    random.choices(consonants, weights = consonant_weights, cum_weights=(None), k = 1))
-        root.append ("".join(word))
-    # pattern 6: vscv
-    for index in range (0, round (value/num_of_patterns)): 
-        word = []
-        word = (random.choices(vowels, weights = vowel_weights, cum_weights=(None), k = 1) +
-                random.choices(sonorants, weights = sonorants_weights, cum_weights=(None), k = 1) + 
-                random.choices(consonants, weights = consonant_weights, cum_weights=(None), k = 1) +
-                random.choices(vowels, weights = vowel_weights, cum_weights=(None), k = 1))
-        while word in root: 
-            word = (random.choices(vowels, weights = vowel_weights, cum_weights=(None), k = 1) +
-                    random.choices(sonorants, weights = sonorants_weights, cum_weights=(None), k = 1) + 
-                    random.choices(consonants, weights = consonant_weights, cum_weights=(None), k = 1) +
-                    random.choices(vowels, weights = vowel_weights, cum_weights=(None), k = 1))
-        root.append ("".join(word))
-    # pattern 7: vsc
-    for index in range (0, round (value/num_of_patterns)): 
-         word = []
-         word = (random.choices(vowels, weights = vowel_weights, cum_weights=(None), k = 1) +
-                 random.choices(sonorants, weights = sonorants_weights, cum_weights=(None), k = 1) + 
-                 random.choices(consonants, weights = consonant_weights, cum_weights=(None), k = 1))
-         while word in root: 
-             word = (random.choices(vowels, weights = vowel_weights, cum_weights=(None), k = 1) +
-                     random.choices(sonorants, weights = sonorants_weights, cum_weights=(None), k = 1) + 
-                     random.choices(consonants, weights = consonant_weights, cum_weights=(None), k = 1))
-         root.append ("".join(word))    
-    # pattern 8: svsc
-    for index in range (0, round (value/num_of_patterns)): 
-        word = []
-        word = (random.choices(sonorants, weights = sonorants_weights, cum_weights=(None), k = 1) + 
-                random.choices(vowels, weights = vowel_weights, cum_weights=(None), k = 1) +
-                random.choices(sonorants, weights = sonorants_weights, cum_weights=(None), k = 1) + 
-                random.choices(consonants, weights = consonant_weights, cum_weights=(None), k = 1))
-        while word in root:
-            word = (random.choices(sonorants, weights = sonorants_weights, cum_weights=(None), k = 1) + 
-                    random.choices(vowels, weights = vowel_weights, cum_weights=(None), k = 1) +
-                    random.choices(sonorants, weights = sonorants_weights, cum_weights=(None), k = 1) + 
-                    random.choices(consonants, weights = consonant_weights, cum_weights=(None), k = 1))
-        root.append ("".join(word))
-    # pattern 9: svc
-    for index in range (0, round (value/num_of_patterns)): 
-        word = []
-        word = (random.choices(sonorants, weights = sonorants_weights, cum_weights=(None), k = 1) + 
-                random.choices(vowels, weights = vowel_weights, cum_weights=(None), k = 1) + 
-                random.choices(consonants, weights = consonant_weights, cum_weights=(None), k = 1))
-        while word in root:
-            word = (random.choices(sonorants, weights = sonorants_weights, cum_weights=(None), k = 1) + 
-                    random.choices(vowels, weights = vowel_weights, cum_weights=(None), k = 1) + 
-                    random.choices(consonants, weights = consonant_weights, cum_weights=(None), k = 1))
-        root.append ("".join(word))
-    # pattern 10: cvs
-    for index in range (0, round (value/num_of_patterns)): 
-        word = []
-        word = (random.choices(consonants, weights = consonant_weights, cum_weights=(None), k = 1) + 
-                random.choices(vowels, weights = vowel_weights, cum_weights=(None), k = 1) + 
-                random.choices(sonorants, weights = sonorants_weights, cum_weights=(None), k = 1))
-        while word in root:
-            word = (random.choices(consonants, weights = consonant_weights, cum_weights=(None), k = 1) + 
-                    random.choices(vowels, weights = vowel_weights, cum_weights=(None), k = 1) + 
-                    random.choices(sonorants, weights = sonorants_weights, cum_weights=(None), k = 1))
-        root.append ("".join(word))
-    return root
+   for i in range (0, len(token)):
+       for suffix in range (0, len(suffix1)): 
+           token.append  (token[i] + suffix1[suffix] + suffix2[suffix] + suffix3[suffix])
+           prefix3_list.append (prefix3_list[i])
+           prefix2_list.append (prefix2_list[i])
+           prefix1_list.append (prefix1_list[i])
+           root_list.append(root_list[i])
+           suffix1_list.append (suffix1[suffix])
+           suffix2_list.append (suffix2[suffix])
+           suffix3_list.append (suffix3[suffix])
+           condition.append (str (condition[i]) + condition_suffix [suffix])
+
+       
+   df = pd.DataFrame({"Token": 5*token, 
+                      "Condition": 5*condition,
+                      "Prefix3": 5*prefix3_list, 
+                      "Prefix2": 5*prefix2_list,
+                      "Prefix1": 5*prefix1_list,
+                      "Root": 5*root_list, 
+                      "Suffix1": 5*suffix1_list, 
+                      "Suffix2": 5*suffix2_list, 
+                      "Suffix3": 5*suffix3_list
+       })
+
+   df["Wordlength"] = df["Token"].str.len()
+   return df
 
 
-
-#---- Generate polymorphemic words ----
-# 1. If there are two prefixes or suffixes make sure that they are of the same or the same type
-# Input for function: 
-    # - List of all prefixes, suffixes, and roots
-    # - List of frequency of prefix and suffix (to be used as weights)
-    # - Value: How many words should be created
-    # - Output: Dataframe that includes infromation about the Polymorphemes
-
-def generatePolymorphemes (dfprefixes, dfroots, dfsuffixes, value):
-    prefixes = dfprefixes ["Prefix"].tolist()
-    prefixes_weights = dfprefixes["PrefixFrequency"].tolist()
-    twoprefixes = dfprefixes["2Prefixes"].tolist ()
-    twoprefixes_weights = dfprefixes["2PrefixFrequency"]
-    tp_prefix2 = dfprefixes["Prefix2"]
-    tp_prefix1 = dfprefixes["Prefix1"]
-    roots = dfroots["Root"].tolist()
-    suffixes = dfsuffixes["Suffix"].tolist()
-    suffixes_weights = dfsuffixes["SuffixFrequency"].tolist ()
-    twosuffixes = dfsuffixes ["2Suffixes"].tolist ()
-    twosuffixes_weights = dfsuffixes["2SuffixFrequency"].tolist ()
-    ts_suffix1 = dfsuffixes ["Suffix1"]
-    ts_suffix2 = dfsuffixes ["Suffix2"]
-    newword = []
-    num_of_conditions = 8
-    prefix2 = []
-    prefix1 = []
-    root = []
-    suffix1 = []
-    suffix2 = []
-    tprefix = []
-    tsuffix = []
-    num_of_mor = []
-    condition = []
-    end = round (value/num_of_conditions)
-    
-    # condition 1: root
-    for x in range (0, end):
-        prefix2.append ("")
-        prefix1.append ("")
-        root.append ("".join(random.choices(roots)))
-        suffix1.append ("")
-        suffix2.append ("")
-        newword.append (prefix2[x] + 
-                        prefix1[x] + 
-                        root[x] + 
-                        suffix1[x] + 
-                        suffix2[x])
-        num_of_mor.append (1)
-        condition.append("r")
-        
-    # condition 2: prefix + root (pr)
-    for x in range (0, end):
-        prefix2.append ("")
-        prefix1.append ("".join (random.choices (prefixes, weights = prefixes_weights, cum_weights=(None), k = 1)))
-        root.append ("".join(random.choices(roots)))
-        suffix1.append ("")
-        suffix2.append ("")
-        newword.append (prefix2[x + end] +
-                        prefix1[x + end] + 
-                        root[x + end] + 
-                        suffix1[x + end] + 
-                        suffix2[x + end])
-        num_of_mor.append (2)
-        condition.append("pr")
-    
-    # condition 3: root + suffix
-    for x in range (0, end):
-        prefix2.append ("")
-        prefix1.append ("")
-        root.append ("".join(random.choices(roots)))
-        suffix1.append ("".join(random.choices (suffixes, weights = suffixes_weights, cum_weights=(None), k = 1)))
-        suffix2.append ("")
-        newword.append (prefix2[x + 2 * end] + 
-                        prefix1[x + 2 *  end] + 
-                        root[x + 2 * end] + 
-                        suffix1[x + 2 * end] + 
-                        suffix2[x + 2 * end])
-        num_of_mor.append (2)
-        condition.append("rs")
-        
-    # condition 4: prefix + root + suffix
-    for x in range (0, end):
-        prefix2.append ("")
-        prefix1.append ("".join(random.choices (prefixes, weights = prefixes_weights, cum_weights=(None), k = 1)))
-        root.append ("".join(random.choices(roots)))
-        suffix1.append ("".join(random.choices (suffixes, weights = suffixes_weights, cum_weights=(None), k = 1)))
-        suffix2.append ("")
-        newword.append (prefix2[x +3 *end] + 
-                        prefix1[x + 3 * end] + 
-                        root[x + 3 * end] + 
-                        suffix1[x + 3 * end] + 
-                        suffix2[x + 3 * end])
-        num_of_mor.append (3)
-        condition.append("prs")
-    
-    # condition 5: prefix + prefix + root
-    for x in range (0, end):
-        tprefix = ("".join(random.choices (twoprefixes, weights = twoprefixes_weights, cum_weights=(None), k = 1)))
-        index = twoprefixes.index (tprefix)
-        prefix2.append (tp_prefix2[index])
-        prefix1.append (tp_prefix1[index])
-        root.append ("".join(random.choices(roots)))
-        suffix1.append ("")
-        suffix2.append ("")
-        newword.append (prefix2[x + 4 * end] + 
-                        prefix1[x + 4 * end] + 
-                        root[x + 4 * end] + 
-                        suffix1[x + 4 * end] + 
-                        suffix2[x + 4 * end])
-        num_of_mor.append (3)
-        condition.append("ppr")
-    
-    # condition 6: root + suffix + suffix
-    for x in range (0, end):
-        tsuffix = ("".join(random.choices (twosuffixes, weights = twosuffixes_weights, cum_weights=(None), k = 1)))
-        index = twosuffixes.index (tsuffix)
-        prefix2.append ("")
-        prefix1.append ("")
-        root.append ("".join((random.choices(roots))))
-        suffix1.append (ts_suffix1[index])
-        suffix2.append (ts_suffix2[index])
-        newword.append (prefix2[x + 5 * end] + 
-                        prefix1[x + 5 * end] + 
-                        root[x + 5 * end] + 
-                        suffix1[x + 5 * end] + 
-                        suffix2[x + 5 * end])
-        num_of_mor.append (3)
-        condition.append("rss")
-        
-    # condition 7: prefix + root + suffix + suffix
-    for x in range (0, end):
-        tsuffix = ("".join(random.choices (twosuffixes, weights = twosuffixes_weights, cum_weights=(None), k = 1)))
-        index = twosuffixes.index (tsuffix)
-        prefix2.append ("")
-        prefix1.append ("".join(random.choices (prefixes, weights = prefixes_weights, cum_weights=(None), k = 1)))
-        root.append ("".join(random.choices(roots)))
-        suffix1.append (ts_suffix1[index])
-        suffix2.append (ts_suffix2[index])
-        newword.append (prefix2[x + 6*end] + 
-                        prefix1[x + 6*end] + 
-                        root[x + 6 * end] + 
-                        suffix1[x + 6 * end] + 
-                        suffix2[x + 6 * end])
-        num_of_mor.append (4)
-        condition.append("prss")
-        
-    # condition 8: prefix + prefix + root + suffix
-    for x in range (0, end):
-        tprefix = ("".join(random.choices (twoprefixes, weights = twoprefixes_weights, cum_weights=(None), k = 1)))
-        index = twoprefixes.index (tprefix)
-        prefix2.append (tp_prefix2[index])
-        prefix1.append (tp_prefix1[index])
-        root.append ("".join(random.choices(roots)))
-        suffix1.append ("".join(random.choices (suffixes, weights = suffixes_weights, cum_weights=(None), k = 1)))
-        suffix2.append ("")
-        newword.append (prefix2[x + 7 * end] + 
-                        prefix1[x + 7 * end] + 
-                        root[x + 7 * end] + 
-                        suffix1[x + 7 * end] + 
-                        suffix2[x + 7 * end])
-        num_of_mor.append (4)
-        condition.append("pprs")
-    
-            
-    df = pd.DataFrame()  
-    df["Token"] = newword
-    # df["Num_of_mor"] = num_of_mor
-    df["Condition"] = condition
-    df["Prefix2"] = prefix2
-    df["Prefix1"] = prefix1
-    df["Root"] = root 
-    df["Suffix1"] = suffix1
-    df["Suffix2"] = suffix2
-    df["Wordlength"] = df["Token"].str.len()
-    return df   
-
-#---- Generate pseudowords (by reversing affixes) ----
-# Input for function: 
-    # - dataframe that has all of the necessary information (Prefi2, Prefix1, Root, Suffix1, Suffix2)
-
+# GENERATE POLYMORPHEMES
 def generateMonomorphemes (df):
+    prefix3 = df["Prefix3"].tolist()
     prefix2 = df["Prefix2"].tolist()
     prefix1 = df["Prefix1"].tolist()
     root = df["Root"].tolist()                        
     suffix1 = df["Suffix1"].tolist()
     suffix2 = df["Suffix2"].tolist()
+    suffix3 = df["Suffix3"].tolist()
     monomorphemes = []
+    mono_prefix3 = []
     mono_prefix2 = []
     mono_prefix1 = []
     mono_root = []
     mono_suffix1 = []
     mono_suffix2 = []
+    mono_suffix3 = []
     
     for i in range(0, len (root)):
+        monoprefix3 = prefix3[i] [::-1]
+        mono_prefix3.append (monoprefix3)
         monoprefix2 = prefix2[i] [::-1]
         mono_prefix2.append (monoprefix2)
-
         monoprefix1 = prefix1[i][::-1]
         mono_prefix1.append (monoprefix1)
-        
         monoroot = root[i]
         monoroot = monoroot [::-1]
         while monoroot == root[i]: 
@@ -376,65 +133,47 @@ def generateMonomorphemes (df):
             monoroot = random.sample (monoroot, k = len (monoroot))
             monoroot = "".join(monoroot)
         mono_root.append (monoroot)
-
         monosuffix1 = suffix1[i] [::-1]
         mono_suffix1.append(monosuffix1)
-        
         monosuffix2 = suffix2[i] [::-1]
         mono_suffix2.append (monosuffix2)
-        
-        monomorphemes.append (monoprefix2 + monoprefix1 + monoroot + monosuffix1 + monosuffix2)
+        monosuffix3 = suffix3[i] [::-1]
+        mono_suffix3.append (monosuffix3)
+        monomorphemes.append (monoprefix3 + monoprefix2 + monoprefix1 + monoroot + monosuffix1 + monosuffix2 + monosuffix3)
         
     df_Monomorpheme = pd.DataFrame ()
     df_Monomorpheme["Monomorpheme"] = monomorphemes
+    df_Monomorpheme["MonoPrefix3"] = mono_prefix3
     df_Monomorpheme["MonoPrefix2"] = mono_prefix2
     df_Monomorpheme["MonoPrefix1"] = mono_prefix1
     df_Monomorpheme["MonoRoot"] = mono_root
     df_Monomorpheme["MonoSuffix1"] = mono_suffix1
     df_Monomorpheme["MonoSuffix2"] = mono_suffix2
-        
+    df_Monomorpheme["MonoSuffix3"] = mono_suffix3
+    
     return df_Monomorpheme
 
 
-#---- Generate random errors ----
-# Input: 
-    # - word: The word in which letters should change
-    # - value: the number of letters that change within word
-    # - list in which words with errors are supposed to be saved
-# Output:
-    # - list in which words with errors are saved
-    
-# Randomly chooses one letter of word to change with another letter 
+# RANDOMLY CHANGE N CHARACTERS
 def randomlyChangeNChar(word, value, changed_index, error_word):
-    # Define necessary variables for function
     vowels=["a", "e", "i", "o", "u"]
     vowel_weights=[8.34, 12.60, 6.71, 7.7, 2.85]
-    consonants=["b", "c", "d", "f", "g", "h", "k",
-                "p", "q", "s", "t", "v", "x", "z"]
-    consonant_weights=[1.54, 2.73, 4.14, 2.03, 1.92, 6.11, 0.87, 
-                       4.24,  0.09, 6.11, 9.37, 1.06, 0.20, 0.06]
+    consonants=["b", "c", "d", "f", "g", "h", "k", "p", "q", "s", "t", "v", "x", "z"]
+    consonant_weights=[1.54, 2.73, 4.14, 2.03, 1.92, 6.11, 0.87, 4.24,  0.09, 6.11, 9.37, 1.06, 0.20, 0.06]
     sonorants = ["j", "l", "m", "n", "r", "w", "y"]
     sonorants_weights = [0.23, 2.53, 6.8, 1.66, 5.68, 2.34, 2.04]
-    
     length = len(word)
     word = list(word)
-    
-    # This will select the distinct index for us to replace
     k = random.sample(range(0, length), value) 
     
     for index in k:
-        # This will replace the characters at the specified index with the generated characters
         char = word[index]
-        
-        # Save which index will change
         changed_index.append (index)
-        
         if char in vowels: 
             while char == word[index]:
                 char = random.choices(vowels, weights = vowel_weights, cum_weights=(None), k = value)
                 char = "".join(char)
             word[index] = "".join(char)
-            # Finally save the string in the modified format in a second list (error_word).
             word = "".join(word)
             error_word.append (word)
         elif char in sonorants: 
@@ -442,7 +181,6 @@ def randomlyChangeNChar(word, value, changed_index, error_word):
                 char = random.choices(sonorants, weights = sonorants_weights, cum_weights=(None), k = value)
                 char = "".join(char)
             word[index] = "".join(char)
-            # Finally save the string in the modified format in a second list (error_word).
             word = "".join(word)
             error_word.append (word)
         else: 
@@ -450,172 +188,145 @@ def randomlyChangeNChar(word, value, changed_index, error_word):
                 char = random.choices(consonants, weights = consonant_weights, cum_weights=(None), k = value)
                 char = "".join(char)
             word[index] = "".join(char)
-            # Finally save the string in the modified format in a second list (error_word).
             word = "".join(word)
             error_word.append (word)  
-            
 
-#---- Function that creates new errorwords, where errors are in a specific morpheme----
 
-# Input: either dataframe that includes all of that information OR list
-    # - Dataframe in which information is supposed to be saved in 
+# GENERATE ERROR
 def generateError (df): 
+    prefix3 = df["Prefix3"].tolist() 
     prefix2 = df["Prefix2"].tolist() 
     prefix1 = df["Prefix1"].tolist()
     root = df["Root"].tolist() 
     suffix1 = df["Suffix1"].tolist()
     suffix2 = df["Suffix2"].tolist()
+    suffix3 = df["Suffix3"].tolist()
     eprefix1 = []
     eprefix2 = []
+    eprefix3 = []
     eroot = []
     esuffix1 = []
     esuffix2 = []
+    esuffix3 = []
+    error_prefix3 = []
     error_prefix2 = []
     error_prefix1 = []
     error_root = []
     error_suffix1 = []
     error_suffix2 = []
+    error_suffix3 = []
+    changed_index_p3 = []
     changed_index_p2 = []
     changed_index_p1 = []
     changed_index_r = []
     changed_index_s1 = []
     changed_index_s2 = []
+    changed_index_s3 = []
+    monoerror_prefix3 = []
+    monoerror_prefix2 = []
+    monoerror_prefix1 = []
+    monoerror_root = []
+    monoerror_suffix1 = []
+    monoerror_suffix2 = []
+    monoerror_suffix3 = []
 
     for i in range (0, len (root)):
+        if prefix3[i] == "": 
+            error_prefix3.append("")
+            changed_index_p3.append ("")
+            eprefix3.append ("")
+            monoerror_prefix3.append ("")
+        else: 
+            randomlyChangeNChar(word = prefix3[i], value = 1, changed_index = changed_index_p3, error_word = eprefix3)
+            error_prefix3.append (eprefix3[i] + prefix2[i] + prefix1[i] + root [i] + suffix1[i] + suffix2[i] + suffix3[i])
+            monoerror_prefix3.append (eprefix3[i] + prefix2[i] + prefix1[i] + root [i] + suffix1[i] + suffix2[i] + suffix3[i])
+       
         if prefix2[i] == "": 
             error_prefix2.append("")
             changed_index_p2.append ("")
             eprefix2.append ("")
+            monoerror_prefix2.append ("")
         else: 
             randomlyChangeNChar(word = prefix2[i], value = 1, changed_index = changed_index_p2, error_word = eprefix2)
-            error_prefix2.append (eprefix2[i] + prefix1[i] + root [i] + suffix1[i] + suffix2[i])
+            error_prefix2.append (prefix3[i] + eprefix2[i] + prefix1[i] + root [i] + suffix1[i] + suffix2[i]+ suffix3[i])
+            monoerror_prefix2.append (prefix3[i] + eprefix2[i] + prefix1[i] + root [i] + suffix1[i] + suffix2[i]+ suffix3[i])
         
         if prefix1[i] == "": 
             error_prefix1.append("")
             changed_index_p1.append("")
             eprefix1.append("")
+            monoerror_prefix1.append ("")
         else: 
             randomlyChangeNChar(word = prefix1[i], value = 1, changed_index = changed_index_p1, error_word = eprefix1)
-            error_prefix1.append (prefix2[i] + eprefix1[i] + root [i] + suffix1[i] + suffix2[i])
-            
+            error_prefix1.append (prefix3[i] + prefix2[i] + eprefix1[i] + root [i] + suffix1[i] + suffix2[i] + suffix3[i]) 
+            monoerror_prefix1.append (prefix3[i] + prefix2[i] + eprefix1[i] + root [i] + suffix1[i] + suffix2[i] + suffix3[i]) 
+        
         if root[i] == "": 
             error_root.append("")
             changed_index_r.append ("")
             eroot.append ("")
+            monoerror_root.append ("")
         else: 
             randomlyChangeNChar(word = root[i], value = 1, changed_index=changed_index_r, error_word = eroot)
-            error_root.append (prefix2[i] + prefix1[i] + eroot [i] + suffix1[i] + suffix2[i])
+            error_root.append (prefix3[i] + prefix2[i] + prefix1[i] + eroot [i] + suffix1[i] + suffix2[i] + suffix3[i])
+            monoerror_root.append (prefix3[i] + prefix2[i] + prefix1[i] + eroot [i] + suffix1[i] + suffix2[i] + suffix3[i])
         
         if suffix1[i] == "": 
             error_suffix1.append("")
             changed_index_s1.append("")
             esuffix1.append("")
+            monoerror_suffix1.append ("")
         else: 
             randomlyChangeNChar(word = suffix1[i], value = 1, changed_index = changed_index_s1, error_word = esuffix1)
-            error_suffix1.append (prefix2[i] + prefix1[i] + root [i] + esuffix1[i] + suffix2[i])
+            error_suffix1.append (prefix3[i] + prefix2[i] + prefix1[i] + root [i] + esuffix1[i] + suffix2[i] + suffix3[i])
+            monoerror_suffix1.append (prefix3[i] + prefix2[i] + prefix1[i] + root [i] + esuffix1[i] + suffix2[i] + suffix3[i])
         
         if suffix2[i] == "": 
             error_suffix2.append("")
             changed_index_s2.append("")
             esuffix2.append("")
+            monoerror_suffix2.append ("")
         else: 
             randomlyChangeNChar(word = suffix2[i], value = 1, changed_index = changed_index_s2, error_word = esuffix2)
-            error_suffix2.append (prefix2[i] + prefix1[i] + root[i] + suffix1[i] + esuffix2[i])
+            error_suffix2.append (prefix3[i] + prefix2[i] + prefix1[i] + root[i] + suffix1[i] + esuffix2[i] + suffix3[i])
+            monoerror_suffix2.append (prefix3[i] + prefix2[i] + prefix1[i] + root[i] + suffix1[i] + esuffix2[i] + suffix3[i])
+        
+        if suffix3[i] == "": 
+            error_suffix3.append("")
+            changed_index_s3.append("")
+            esuffix3.append("")
+            monoerror_suffix3.append ("")
+        else: 
+            randomlyChangeNChar(word = suffix3[i], value = 1, changed_index = changed_index_s3, error_word = esuffix3)
+            error_suffix3.append (prefix3[i] + prefix2[i] + prefix1[i] + root[i] + suffix1[i] + suffix2[i] + esuffix3[i])
+            monoerror_suffix3.append (prefix3[i] + prefix2[i] + prefix1[i] + root[i] + suffix1[i] + suffix2[i] + esuffix3[i])
         
     df_Error = pd.DataFrame()
+    df_Error["ErrorPrefix3"] = error_prefix3
     df_Error["ErrorPrefix2"] = error_prefix2
     df_Error["ErrorPrefix1"] = error_prefix1
     df_Error["ErrorRoot"] = error_root
     df_Error["ErrorSuffix1"] = error_suffix1
     df_Error["ErrorSuffix2"] = error_suffix2
+    df_Error["ErrorSuffix3"] = error_suffix3
+    df_Error["MonoErrorPrefix3"] = monoerror_prefix3
+    df_Error["MonoErrorPrefix2"] = monoerror_prefix2
+    df_Error["MonoErrorPrefix1"] = monoerror_prefix1
+    df_Error["MonoErrorRoot"] = monoerror_root
+    df_Error["MonoErrorSuffix1"] = monoerror_suffix1
+    df_Error["MonoErrorSuffix2"] = monoerror_suffix2
+    df_Error["MonoErrorSuffix3"] = monoerror_suffix3
+    df_Error["ChangedIndexP2"] = changed_index_p3
     df_Error["ChangedIndexP2"] = changed_index_p2
     df_Error["ChangedIndexP1"] = changed_index_p1
     df_Error["ChangedIndexR"] = changed_index_r
     df_Error["ChangedIndexS1"] = changed_index_s1
     df_Error["ChangedIndexS2"] = changed_index_s2
+    df_Error["ChangedIndexS2"] = changed_index_s3
     
     return df_Error
 
-    
-def generateErrorMono (df): 
-    prefix2 = df["MonoPrefix2"].tolist()
-    prefix1 = df["MonoPrefix1"].tolist()
-    root = df["MonoRoot"].tolist()
-    suffix1 = df["MonoSuffix1"].tolist()
-    suffix2 = df["MonoSuffix2"].tolist() 
-    eprefix1 = []
-    eprefix2 = []
-    eroot = []
-    esuffix1 = []
-    esuffix2 = []
-    error_prefix2 = []
-    error_prefix1 = []
-    error_root = []
-    error_suffix1 = []
-    error_suffix2 = []
-    changed_index_p2 = []
-    changed_index_p1 = []
-    changed_index_r = []
-    changed_index_s1 = []
-    changed_index_s2 = []
-
-    for i in range (0, len (root)):
-        if prefix2[i] == "": 
-            error_prefix2.append("")
-            changed_index_p2.append ("")
-            eprefix2.append ("")
-        else: 
-            randomlyChangeNChar(word = prefix2[i], value = 1, changed_index = changed_index_p2, error_word = eprefix2)
-            error_prefix2.append (eprefix2[i] + prefix1[i] + root [i] + suffix1[i] + suffix2[i])
-        
-        if prefix1[i] == "": 
-            error_prefix1.append("")
-            changed_index_p1.append("")
-            eprefix1.append("")
-        else: 
-            randomlyChangeNChar(word = prefix1[i], value = 1, changed_index = changed_index_p1, error_word = eprefix1)
-            error_prefix1.append (prefix2[i] + eprefix1[i] + root [i] + suffix1[i] + suffix2[i])
-            
-        if root[i] == "": 
-            error_root.append("")
-            changed_index_r.append ("")
-            eroot.append ("")
-        else: 
-            randomlyChangeNChar(word = root[i], value = 1, changed_index=changed_index_r, error_word = eroot)
-            error_root.append (prefix2[i] + prefix1[i] + eroot [i] + suffix1[i] + suffix2[i])
-        
-        if suffix1[i] == "": 
-            error_suffix1.append("")
-            changed_index_s1.append("")
-            esuffix1.append("")
-        else: 
-            randomlyChangeNChar(word = suffix1[i], value = 1, changed_index = changed_index_s1, error_word = esuffix1)
-            error_suffix1.append (prefix2[i] + prefix1[i] + root [i] + esuffix1[i] + suffix2[i])
-        
-        if suffix2[i] == "": 
-            error_suffix2.append("")
-            changed_index_s2.append("")
-            esuffix2.append("")
-        else: 
-            randomlyChangeNChar(word = suffix2[i], value = 1, changed_index = changed_index_s2, error_word = esuffix2)
-            error_suffix2.append (prefix2[i] + prefix1[i] + root[i] + suffix1[i] + esuffix2[i])
-        
-    df_MonoError = pd.DataFrame()
-    df_MonoError["MonoErrorPrefix2"] = error_prefix2
-    df_MonoError["MonoErrorPrefix1"] = error_prefix1
-    df_MonoError["MonoErrorRoot"] = error_root
-    df_MonoError["MonoErrorSuffix1"] = error_suffix1
-    df_MonoError["MonoErrorSuffix2"] = error_suffix2
-    df_MonoError["MonoChangedIndexP2"] = changed_index_p2
-    df_MonoError["MonoChangedIndexP1"] = changed_index_p1
-    df_MonoError["MonoChangedIndexR"] = changed_index_r
-    df_MonoError["MonoChangedIndexS1"] = changed_index_s1
-    df_MonoError["MonoChangedIndexS2"] = changed_index_s2
-    
-    return df_MonoError
-
-
-
+# GENERATE PARTICIPANT FILES
 def generateParticipantFile (data, condition, p_error, p_polymor):
     # Define error distribution per condition (create function and put that all into function)
     errortype_r = ["NoErrorPoly"] * int (condition["r"] * 0.5) + ["Root"] * int (condition["r"] * 0.5)
@@ -661,9 +372,8 @@ def generateParticipantFile (data, condition, p_error, p_polymor):
     return pardf
 
 
-
+# GENERATE FINAL TRIALLIST FOR PARTICIPANT
 def generateTriallist (df):
-    # Define necessary variables
     word1 = []
     word2 = []
     token = df["Token"].tolist()
@@ -679,7 +389,6 @@ def generateTriallist (df):
     monoerrorroot = df["MonoErrorRoot"].tolist()
     monoerrorsuffix1 = df["MonoErrorSuffix1"].tolist()
     monoerrorsuffix2 = df["MonoErrorSuffix2"].tolist()
-    
     
     for i in range (0, len (df)): 
         # In case of errortrial (Polymorpheme)
@@ -725,124 +434,92 @@ def generateTriallist (df):
         else: 
             word1.append(monomorpheme[i])
             word2.append(monomorpheme[i])
-    df.insert(0, "Word1", word1)
-    df.insert(1, "Word2", word2)
-    
-    # randomize order
+            
+    df.insert(0, "First", word1)
+    df.insert(1, "Second", word2)
     df = df.sample (frac=1)
+    
     return df
 
+
+# VERIFICATION CODE
 def verifyWords (df):
-    # See if end of prefix1 and beginning of root make sense together (Poylmorpheme)
     prefixroot = []
     prefix1 = df["Prefix1"].tolist()
     root = df["Root"].tolist()
-    
     for i in range (0, len(df)): 
-        # if there is a prefix 1 check how well it goes with the root 
         if prefix1[i] != "": 
             if prefix1[i][-1] != root[i][0]:
                 prefixroot.append ("0")
             else: 
-                prefixroot.append ("1")
-        # if there is no prefix1 then: 
+                prefixroot.append ("1") 
         else: 
             prefixroot.append ("0")
     
-    
-    # See if end of root and beginning of sufffix 1 make sense together (Polymorpheme)
     suffixroot = []
     suffix1 = df["Suffix1"].tolist()
     root = df["Root"].tolist()
-
     for i in range (0, len(df)): 
-        # if there is a prefix 1 check how well it goes with the root 
         if suffix1[i] != "": 
             if root[i][-1] != suffix1[i][0]:
                 suffixroot.append ("0")
             else: 
                 suffixroot.append ("1")
-        # if there is no prefix1 then: 
         else: 
             suffixroot.append ("0")
             
-            
-    # See if end of prefix2 and beginning of prefix1 make sense together (Monomorpheme)
     monoprefixprefix = []
     monoprefix1 = df["MonoPrefix1"].tolist()
     monoprefix2 = df["MonoPrefix2"].tolist()
-    
     for i in range (0, len(df)): 
-        # if there is a prefix 1 check how well it goes with the root 
         if monoprefix1[i] != "" and monoprefix2[i] != "": 
             if monoprefix1[i][-1] != monoprefix2[i][0]:
                 monoprefixprefix.append ("0")
             else: 
                 monoprefixprefix.append ("1")
-        # if there is no prefix1 then: 
         else: 
             monoprefixprefix.append ("0")        
     
-    
-    # See if end of prefix1 and beginning of root make sense together (Monomorpheme)
     monoprefixroot = []
     monoprefix1 = df["MonoPrefix1"].tolist()
     monoroot = df["MonoRoot"].tolist()
-    
     for i in range (0, len(df)): 
-        # if there is a prefix 1 check how well it goes with the root 
         if monoprefix1[i] != "": 
             if monoprefix1[i][-1] != monoroot[i][0]:
                 monoprefixroot.append ("0")
             else: 
                 monoprefixroot.append ("1")
-        # if there is no prefix1 then: 
         else: 
             monoprefixroot.append ("0")
-    
-    
-    # See if end of root and beginning of sufffix 1 make sense together (Monomorpheme)
+ 
     monosuffixroot = []
     monosuffix1 = df["MonoSuffix1"].tolist()
     monoroot = df["MonoRoot"].tolist()
-    
     for i in range (0, len(df)): 
-        # if there is a prefix 1 check how well it goes with the root 
         if monosuffix1[i] != "": 
             if monoroot[i][-1] != monosuffix1[i][0]:
                 monosuffixroot.append ("0")
             else: 
-                monosuffixroot.append ("1")
-        # if there is no prefix1 then: 
+                monosuffixroot.append ("1") 
         else: 
             monosuffixroot.append ("0")
 
-    
-    # See if end of suffix1 and beginning of suffix2 make sense together (Monomorpheme)
     monosuffixsuffix = []
     monosuffix1 = df["MonoSuffix1"].tolist()
     monosuffix2 = df["MonoSuffix2"].tolist()
-    
     for i in range (0, len(df)): 
-        # if there is a prefix 1 check how well it goes with the root 
         if monosuffix1[i] != "" and monosuffix2[i] != "": 
             if monosuffix1[i][-1] != monosuffix2[i][0]:
                 monosuffixsuffix.append ("0")
             else: 
                 monosuffixsuffix.append ("1")
-        # if there is no prefix1 then: 
         else: 
             monosuffixsuffix.append ("0")
 
-
-    # Save all rows in which the same letters appear right after another in a list (these rows will be removed)
     indexlist = []
     for i in range (0, len(df)): 
         if prefixroot[i] == "1" or monoprefixroot[i] == "1" or suffixroot[i] == "1" or monosuffixroot[i] == "1" or monosuffixsuffix[i] == "1" or monoprefixprefix == "1": 
             indexlist.append (i)
-        
     df.drop (df.index[indexlist], inplace = True)
     
     return df
-
-

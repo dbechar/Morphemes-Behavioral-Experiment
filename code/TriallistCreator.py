@@ -1,33 +1,38 @@
 """
+
 #---- Triallist Creator ----#
 
 # This script does:
+        # - Read in and create all test words
         # - Creat one triallists that is based on certain prerequisits that 
             are set at the beginning 
         # - save triallists as .csv in the triallists folder
 
 # Author: Deliane Bechar
 
-# Date: 26.01.2023
+# Date: 30.01.2023
 
 """
-#---- Preperation ----
-# Load libraries
-from Functions import (generateParticipantFile, generateTriallist)
+# LOAD LIBRARIES AND FUNCTIONS
+import os
+os.chdir("C:/Users/delia/OneDrive/Desktop/Morphemes/Morphemes/Code")
 import pandas as pd
 import random
+from Functions import (generatePolymorphemes, generateMonomorphemes, generateError, verifyWords, generateParticipantFile, generateTriallist)
 
-# Read in Stimuli Pool
-data = pd.read_csv("../experimental_design/pseudoword_english_pool.csv")
 
-# Set seed
+# READ IN STIMULUS FILES
+prefixes = pd.read_csv("../experimental_design/prefixes.csv")
+roots = pd.read_csv("../experimental_design/roots.csv")
+suffixes = pd.read_csv("../experimental_design/suffixes.csv")
+
+# SET SEED
 random.seed(19)
 
-# Define file number
+# DEFINE FILE NUMBER
 file_number = 10
 
-
-# Define number of trials per condition 
+# DEFINE NUMBER OF TRIALS PER CONDITION
 condition = {}
 condition ["r"] = 24 
 condition ["pr"] = 48
@@ -38,17 +43,33 @@ condition ["rss"] = 48
 condition ["prss"] = 48 
 condition ["pprs"] = 48
  
-# Define errorrate and probabilty of using polymorphemes
+# DEFINE ERRORRATE
 p_error = 0.5
 p_polymor = 0.5
 
-# Randomly pick out trials based on specifications
-pardf = generateParticipantFile (data, condition, p_error, p_polymor)
+#---- GENERATE POLYMORPHEMES ----
+df_Polymorphemes = generatePolymorphemes(prefixes, roots, suffixes)
 
-# Define Word 1 and Word 2 for final participant triallist: 
+
+#---- GENERATE CONTROL (MONOMORPHEMES) ---- 
+df_Monomorphemes = generateMonomorphemes (df = df_Polymorphemes)
+
+# ---- ADD ERROR ----
+df_Error = generateError(df = df_Polymorphemes)
+
+#---- CONCATE DATAFRAMES----
+df_complete = pd.concat([df_Polymorphemes, df_Monomorphemes, df_Error], axis = 1)
+
+#---- VERIFICATION CODE ----
+df_verified = verifyWords (df_complete)
+
+
+# RANDOMIZE LIST WITH ERRORS
+pardf = generateParticipantFile (df_verified, condition, p_error, p_polymor)
+
+#---- GENERATE TRIALLIST ---- 
 triallist = generateTriallist (df = pardf)
  
-# Save triallist as csv file in the Triallist folder
+#---- SAVE TRIALLIST ----
 path = "../triallists/" + str(file_number) + "triallist.csv"
 triallist.to_csv (path, index = False)
-

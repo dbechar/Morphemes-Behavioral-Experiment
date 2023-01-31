@@ -1,9 +1,9 @@
 Token,Condition,Prefix2,Prefix1,Root,Suffix1,Suffix2,Wordlength,Monomorpheme,MonoPrefix2,MonoPrefix1,MonoRoot,MonoSuffix1,MonoSuffix2,ErrorPrefix2,ErrorPrefix1,ErrorRoot,ErrorSuffix1,ErrorSuffix2,ChangedIndexP2,ChangedIndexP1,ChangedIndexR,ChangedIndexS1,ChangedIndexS2
-ber,r,,,ber,,,3,reb,,,reb,,,,,her,,,,,0,,
-preaybu,pr,,pre,aybu,,,7,erpubya,,erp,ubya,,,,treaybu,preambu,,,,0,1,,
-gecetful,rs,,,gecet,ful,,8,tecegluf,,,teceg,luf,,,,gecutful,gecetfur,,,,3,2,
-precudion,prs,,pre,cud,ion,,9,erpducnoi,,erp,duc,noi,,,srecudion,precadion,precudiin,,,0,1,1,
-depreveta,ppr,de,pre,veta,,,9,ederpatev,ed,erp,atev,,,dipreveta,depraveta,depreveha,,,1,2,2,,
-memgerion,rss,,,memg,er,ion,9,gmemrenoi,,,gmem,re,noi,,,mergerion,memgirion,memgerien,,,2,0,1
-incudfulable,prss,,in,cud,ful,able,12,niduclufelba,,ni,duc,luf,elba,,imcudfulable,incadfulable,incudtulable,incudfulabwe,,1,1,0,2
-indevetaer,pprs,in,de,veta,er,,10,niedatevre,ni,ed,atev,re,,endevetaer,intevetaer,indevataer,indevetaur,,0,0,1,0,
+ramk,r,,,ramk,,,4,kmar,,,kmar,,,,,remk,,,,,1,,
+inneek,pr,,in,neek,,,6,nikeen,,ni,keen,,,,onneek,inneeb,,,,0,3,,
+neekful,rs,,,neek,ful,,7,keenluf,,,keen,luf,,,,neetful,neekfel,,,,3,1,
+unmonion,prs,,un,mon,ion,,8,nunomnoi,,nu,nom,noi,,,urmonion,unmowion,unmonioy,,,1,2,2,
+redismon,ppr,re,dis,mon,,,8,ersidnom,er,sid,nom,,,ledismon,rehismon,redisnon,,,0,0,0,,
+monlyness,rss,,,mon,ly,ness,9,nomylssen,,,nom,yl,ssen,,,morlyness,monyyness,monlynesp,,,2,0,3
+dekamdfully,prss,,de,kamd,ful,ly,11,eddmaklufyl,,ed,dmak,luf,yl,,dokamdfully,dekomdfully,dekamdcully,dekamdfullm,,1,1,0,1
+undemonion,pprs,un,de,mon,ion,,10,nuednomnoi,nu,ed,nom,noi,,indemonion,undumonion,undemenion,undemonien,,0,1,1,1,

@@ -1,5 +1,9 @@
-Suffix,SuffixFrequency,2Suffixes,Suffix1,Suffix2,2SuffixFrequency
-ion,0.35,fully,ful,ly,0.25
-ful,0.25,lyness,ly,ness,0.25
-able,0.2,fully,ful,ly,0.25
-er,0.2,lyness,ly,ness,0.25
+Suffix1,Suffix2,Suffix3,SuffixFrequency,Condition
+ion,,,0.23,s
+ful,,,0.25,s
+able,,,0.3,s
+er,,,0.4,s
+full,er,,0.2,ss
+full,ly,,0.5,ss
+ly,ness,,0.6,ss
+full,ly,ness,0.7,sss
