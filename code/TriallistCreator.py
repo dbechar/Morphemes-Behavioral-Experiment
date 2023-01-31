@@ -42,6 +42,8 @@ condition ["ppr"] = 48
 condition ["rss"] = 48 
 condition ["prss"] = 48 
 condition ["pprs"] = 48
+condition ["pppr"] = 48 
+condition ["rsss"] = 48
  
 # DEFINE ERRORRATE
 p_error = 0.5
