@@ -1,6 +1,7 @@
 ### Triallist Creator
 This script does:
-- Read in and create all test words
+- Read in all necessary functions and affixes
+- Create all words that will be used in the experiment
 - Creat one triallists that is based on certain prerequisits that are set at the beginning 
 - save triallists as .csv in the triallists folder
 
