@@ -101,7 +101,7 @@ def generatePolymorphemes (prefixes, roots, suffixes):
    return df
 
 
-# GENERATE POLYMORPHEMES
+# GENERATE MONOMORPHEMES
 def generateMonomorphemes (df):
     prefix3 = df["Prefix3"].tolist()
     prefix2 = df["Prefix2"].tolist()
