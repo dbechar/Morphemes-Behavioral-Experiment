@@ -459,8 +459,8 @@ def generateTriallist (df):
             word1.append(monomorpheme[i])
             word2.append(monomorpheme[i])
             
-    df.insert(0, "First", word1)
-    df.insert(1, "Second", word2)
+    df.insert(0, "first", word1)
+    df.insert(1, "second", word2)
     df = df.sample (frac=1)
     
     return df
