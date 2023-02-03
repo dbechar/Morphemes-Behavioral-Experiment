@@ -1,5 +1,11 @@
-Prefix,PrefixPOS,PrefixPOS2,PrefixFrequency
-de,all,all,0.35
-pre,all,all,0.25
-in,all,all,0.2
-un,all,all,0.2
+Prefix3,Prefix2,Prefix1,Frequency,Condition,n_affixes
+,,de,0.2,p,1
+,,pre,0.2,p,1
+,,in,0.25,p,1
+,,un,0.2,p,1
+,,mis,0.15,p,1
+,un,de,0.3,pp,2
+,re,dis,0.1,pp,2
+,re,be,0.18,pp,2
+re,mis,de,0.4,ppp,3
+re,un,mis,0.1,ppp,3
