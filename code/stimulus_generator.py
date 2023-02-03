@@ -4,12 +4,15 @@ from utils import generate_random_word_and_control
 from utils import add_errors
 
 random.seed(1)
+filenumber = 11
 
 df_design = pd.read_csv("../experimental_design/design.csv")
 df_prefix_pool = pd.read_csv("../experimental_design/prefixes.csv")
 df_root_pool = pd.read_csv("../experimental_design/roots.csv")
 df_suffix_pool = pd.read_csv("../experimental_design/suffixes.csv")
 
+# ERRORRATE
+errorrate = 0.5
 
 # GENERATE ALL TARGET WORDS
 target_words = []
@@ -44,3 +47,34 @@ df_control = pd.DataFrame(random.sample(ds_control_word, len(ds_control_word)))
 
 print(df_target)
 print(df_control)
+
+# ADD "IS_ERROR" 
+df_target["is_error"] = [1] * int(errorrate * len(df_target)) +  [0] * int(errorrate * len(df_target)) 
+df_control["is_error"] = [1] * int(errorrate * len(df_control)) +  [0] * int(errorrate * len(df_control)) 
+
+# CONCATE DATAFRAMES
+df_complete = pd.concat([df_target, df_control])
+
+
+# CREATE TRIALLIST
+first, second =  [], []
+word = df_complete["word"].tolist()
+error_word = df_complete["error_word"].tolist()
+is_error = df_complete["is_error"].tolist ()
+  
+for i in range (0, len (df_complete)):
+    first.append (word[i])
+    if is_error [i] == 1: 
+        second.append (error_word[i]) 
+    else: 
+        second.append (word[i])
+
+df_complete.insert (0, "first", first)
+df_complete.insert (1, "second", second)
+df_complete = df_complete.sample (frac=1)
+
+path = "../triallists/" + str(filenumber) + "triallist.csv"
+df_complete.to_csv (path, index = False)
+
+
+
