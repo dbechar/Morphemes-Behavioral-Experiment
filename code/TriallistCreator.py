@@ -65,7 +65,6 @@ df_complete = pd.concat([df_Polymorphemes, df_Monomorphemes, df_Error], axis = 1
 #---- VERIFICATION CODE ----
 df_verified = verifyWords (df_complete)
 
-
 # RANDOMIZE LIST WITH ERRORS
 pardf = generateParticipantFile (df_verified, condition, p_error, p_polymor)
 
