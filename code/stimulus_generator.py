@@ -73,6 +73,7 @@ df_complete.insert (0, "first", first)
 df_complete.insert (1, "second", second)
 df_complete = df_complete.sample (frac=1)
 
+# SAVE TRIALLIST
 path = "../triallists/" + str(filenumber) + "triallist.csv"
 df_complete.to_csv (path, index = False)
 
