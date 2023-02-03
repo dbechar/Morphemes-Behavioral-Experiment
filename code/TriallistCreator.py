@@ -30,7 +30,7 @@ suffixes = pd.read_csv("../experimental_design/suffixes.csv")
 random.seed(19)
 
 # DEFINE FILE NUMBER
-file_number = 10
+file_number = 1
 
 # DEFINE NUMBER OF TRIALS PER CONDITION
 condition = {}

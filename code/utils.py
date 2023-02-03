@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+ #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
 Created on Fri Feb  3 04:59:35 2023
@@ -30,6 +30,9 @@ def generate_random_word_and_control(condition, prefix_pool, root_pool, suffix_p
     d_target['word'] = ''.join(d_target['prefixes'] + [d_target['root']] + d_target['suffixes'])
     d_control['word'] = ''.join(d_control['prefixes'] + [d_control['root']] + d_control['suffixes'])
     
+    # ADD TYPE
+    d_target["type"] = "target"
+    d_control["type"] = "control"
     return d_target, d_control
 
 
