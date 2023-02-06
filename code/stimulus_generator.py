@@ -5,7 +5,7 @@ from utils import add_errors
 
 
 random.seed(1)
-filenumber = 11
+filenumber = 1
 
 df_design = pd.read_csv("../experimental_design/design.csv")
 df_prefix_pool = pd.read_csv("../experimental_design/prefixes.csv")
@@ -60,7 +60,6 @@ df_complete = pd.concat([df_target, df_control])
 #REMOVE LISTS
 df_complete["prefixes"] = df_complete["prefixes"].apply (lambda prefixes: "_".join(prefixes))
 df_complete["suffixes"] = df_complete["suffixes"].apply (lambda suffixes: "_".join(suffixes))
-
 
 # CREATE TRIALLIST
 first, second =  [], []
