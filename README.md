@@ -2,7 +2,7 @@
 
 ### Task
 Participants will be shown a string of letters that they will have to memorize. Afterward, a second string of letters will be shown and they will need to decided whether the two words are the same or not by pressing the "F" and "J" key. Which key stands for "same words" and which for "different words" changes across participants. 
-
+  
 ### Experimental Design
 We predefined roots that sound like English words, however cannot be found in a dictionary. For the prefixes and suffixes we limited ourselves to derivational affixes and also predefined combinations that do appear frequently in the English language (e.g., full + ness). Based on this affix pool we randomly created monomorphemic words (just the root) and polymorphemic words ( 0-3 prefixes + the root + 0-3 suffixes). The different word conditions therefore were: r, pr, rss, rs, prs, prss, pprs, pppr, rsss. These conditions are defined in the [design workbook](https://github.com/dbechar/Morphemes-Behavioral-Experiment/blob/main/experimental_design/design.csv). 
 <br><br>
