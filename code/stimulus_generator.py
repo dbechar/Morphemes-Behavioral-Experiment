@@ -3,6 +3,7 @@ import pandas as pd
 from utils import generate_random_word_and_control
 from utils import add_errors
 
+
 random.seed(1)
 filenumber = 11
 
@@ -13,6 +14,7 @@ df_suffix_pool = pd.read_csv("../experimental_design/suffixes.csv")
 
 # ERRORRATE
 errorrate = 0.5
+
 
 # GENERATE ALL TARGET WORDS
 target_words = []
@@ -54,6 +56,10 @@ df_control["is_error"] = [1] * int(errorrate * len(df_control)) +  [0] * int(err
 
 # CONCATE DATAFRAMES
 df_complete = pd.concat([df_target, df_control])
+
+#REMOVE LISTS
+df_complete["prefixes"] = df_complete["prefixes"].apply (lambda prefixes: "_".join(prefixes))
+df_complete["suffixes"] = df_complete["suffixes"].apply (lambda suffixes: "_".join(suffixes))
 
 
 # CREATE TRIALLIST

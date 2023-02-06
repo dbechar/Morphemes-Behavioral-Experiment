@@ -6,6 +6,8 @@ Created on Fri Feb  3 04:59:35 2023
 @author: yair
 """
 import random
+#import os
+#os.chdir("C:/Users/delia/OneDrive/Desktop/Morphemes/Morphemes/Code")
 
 def generate_random_word_and_control(condition, prefix_pool, root_pool, suffix_pool):
     
@@ -33,6 +35,7 @@ def generate_random_word_and_control(condition, prefix_pool, root_pool, suffix_p
     # ADD TYPE
     d_target["type"] = "target"
     d_control["type"] = "control"
+    
     return d_target, d_control
 
 
@@ -56,7 +59,8 @@ def sample_affixes(affix_pool, affix_template):
         elif 's' in affix_template:
             affixes = [a1, a2, a3]
         affixes = affixes[:n_affixes]
-        
+        if 's' in affix_template:
+            affixes = affixes[::-1]
         affixes_reversed = [a[::-1] for a in affixes]
         return affixes[::-1], affixes_reversed[::-1]
     else:
