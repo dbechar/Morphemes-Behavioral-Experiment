@@ -5,13 +5,14 @@ from utils import add_errors
 
 
 random.seed(1)
-filenumber = 1
-language = "english"
+filenumber = 10
+language = "english" # "english" or "french"
 
 df_design = pd.read_csv("../experimental_design/design.csv")
-df_prefix_pool = pd.read_csv("../experimental_design/prefixes_eng.csv")
-df_root_pool = pd.read_csv("../experimental_design/roots_eng.csv")
-df_suffix_pool = pd.read_csv("../experimental_design/suffixes_eng.csv")
+df_prefix_pool = pd.read_csv ("../experimental_design/prefixes_" + language + ".csv")
+df_root_pool = pd.read_csv("../experimental_design/roots_" + language + ".csv")
+df_suffix_pool = pd.read_csv("../experimental_design/suffixes_" + language + ".csv")
+
 
 # ERRORRATE
 errorrate = 0.5
