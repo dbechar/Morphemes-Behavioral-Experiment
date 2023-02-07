@@ -1,13 +1,11 @@
- #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
 Created on Fri Feb  3 04:59:35 2023
 
 @author: yair
 """
 import random
-import os
-os.chdir("C:/Users/delia/OneDrive/Desktop/Morphemes/Morphemes/Code")
+#import os
+#os.chdir("C:/Users/delia/OneDrive/Desktop/Morphemes/Morphemes/Code")
 
 def generate_random_word_and_control(condition, prefix_pool, root_pool, suffix_pool):
     
