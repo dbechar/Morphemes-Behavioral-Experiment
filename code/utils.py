@@ -67,7 +67,7 @@ def sample_affixes(affix_pool, affix_template):
         return [''], ['']
     
     
-def add_errors(d):
+def add_errors(d,language):
     prefixes, root, suffixes = d['prefixes'].copy(), d['root'], d['suffixes'].copy()
     
     morphemes_template = list(set(list(d['condition']))) # Remove redundancy in control template (e.g., pprs -> prs or rss -> rs)
@@ -82,7 +82,7 @@ def add_errors(d):
         
     i_within_morpheme, target_letter_before_error = random.choice(list(enumerate(list(target_morpheme))))
     
-    letter_after_error = substitute_letter(target_letter_before_error)
+    letter_after_error = substitute_letter(target_letter_before_error, language)
     
    
     d['error_to_which_morpheme'] = error_to_which_morpheme
@@ -109,18 +109,28 @@ def add_errors(d):
     return d
 
 
-def substitute_letter(letter):
+def substitute_letter(letter, language):
     
     d_letter_groups = {}
-    for group in ['vowels', 'consonants', 'sonorants']:
-        d_letter_groups[group] = {}
-    d_letter_groups['vowels']['letters'] = ["a", "e", "i", "o", "u"]
-    d_letter_groups['vowels']['weights'] = [8.34, 12.60, 6.71, 7.7, 2.85]
-    d_letter_groups['consonants']['letters'] = ["b", "c", "d", "f", "g", "h", "k", "p", "q", "s", "t", "v", "x", "z"]
-    d_letter_groups['consonants']['weights'] = [1.54, 2.73, 4.14, 2.03, 1.92, 6.11, 0.87, 4.24,  0.09, 6.11, 9.37, 1.06, 0.20, 0.06]
-    d_letter_groups['sonorants']['letters'] = ["j", "l", "m", "n", "r", "w", "y"]
-    d_letter_groups['sonorants']['weights'] = [0.23, 2.53, 6.8, 1.66, 5.68, 2.34, 2.04]
-    
+    if language == "english":
+        for group in ['vowels', 'consonants', 'sonorants']:
+            d_letter_groups[group] = {}
+        d_letter_groups['vowels']['letters'] = ["a", "e", "i", "o", "u"]
+        d_letter_groups['vowels']['weights'] = [8.34, 12.60, 6.71, 7.7, 2.85]
+        d_letter_groups['consonants']['letters'] = ["b", "c", "d", "f", "g", "h", "k", "p", "q", "s", "t", "v", "x", "z"]
+        d_letter_groups['consonants']['weights'] = [1.54, 2.73, 4.14, 2.03, 1.92, 6.11, 0.87, 4.24,  0.09, 6.11, 9.37, 1.06, 0.20, 0.06]
+        d_letter_groups['sonorants']['letters'] = ["j", "l", "m", "n", "r", "w", "y"]
+        d_letter_groups['sonorants']['weights'] = [0.23, 2.53, 6.8, 1.66, 5.68, 2.34, 2.04]
+    else: 
+        for group in ['vowels', 'consonants', 'sonorants']:
+            d_letter_groups[group] = {}
+        d_letter_groups['vowels']['letters'] = ["a", "â", "à", "e", "ê", "é", "è", "ë", "i", "ï", "î", "o", "ô", "œ", "u", "ü", "û", "ù"]
+        d_letter_groups['vowels']['weights'] = [8.13, 0.03, 0.54, 15.10, 0.24, 2.13, 0.35, 0.01, 6.94, 0.01, 0.03, 5.27, 0.07, 0.01, 6.05, 0.02, 0.05, 0.02]
+        d_letter_groups['consonants']['letters'] = ["b", "c", "ç", "d", "f", "g", "h", "k", "p", "q", "s", "t", "v", "x", "z"]
+        d_letter_groups['consonants']['weights'] = [0.93, 3.15, 0.01, 3.55, 0.96, 0.97, 1.08, 0.16, 3.03, 0.89, 7.91, 7.11, 1.83, 0.42, 0.21]
+        d_letter_groups['sonorants']['letters'] = ["j", "l", "m", "n", "r", "w", "y"]
+        d_letter_groups['sonorants']['weights'] = [0.71, 5.68, 3.23, 6.24, 6.43, 0.04, 0.19]
+        
     for group in d_letter_groups.keys():
         if letter in d_letter_groups[group]['letters']:
             letters, weights = d_letter_groups[group]['letters'], d_letter_groups[group]['weights']

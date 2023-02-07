@@ -25,3 +25,4 @@ df_triallists.groupby("condition")["i_within_morpheme"].plot(kind='hist', edgeco
 df5 = df_triallists.groupby("condition")["i_within_morpheme"].count ()
 print (df5)
 
+# Num of trials per condition: 

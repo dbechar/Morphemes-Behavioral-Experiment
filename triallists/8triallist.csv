@@ -1,349 +1,733 @@
 first,second,condition,prefix_template,suffix_template,root,prefixes,suffixes,word,type,error_to_which_morpheme,i_morpheme,i_within_morpheme,target_letter_before_error,letter_after_error,error_word,is_error
-uncunnessly,uncunnessll,prss,p,ss,cun,['un'],"['ness', 'ly']",uncunnessly,target,s,1.0,1,y,l,uncunnessll,1
-rebekam,rebekam,ppr,pp,,kam,"['re', 'be']",[''],rebekam,target,r,,1,a,e,rebekem,0
-makyllluf,makyllruf,rss,,ss,mak,[''],"['yl', 'lluf']",makyllluf,control,s,1.0,1,l,r,makyllruf,1
-nueddob,nueddob,ppr,pp,,dob,"['nu', 'ed']",[''],nueddob,control,p,1.0,0,e,u,nuuddob,0
-undeket,unpeket,ppr,pp,,ket,"['un', 'de']",[''],undeket,target,p,1.0,0,d,p,unpeket,1
-nucssenyl,nucpsenyl,rss,,ss,nuc,[''],"['ssen', 'yl']",nucssenyl,control,s,0.0,0,s,p,nucpsenyl,1
-nucssenyl,nucssinyl,rss,,ss,nuc,[''],"['ssen', 'yl']",nucssenyl,control,s,0.0,2,e,i,nucssinyl,1
-premon,premon,pr,p,,mon,['pre'],[''],premon,target,p,0.0,1,r,l,plemon,0
-edmak,edmak,pr,p,,mak,['ed'],[''],edmak,control,r,,2,k,t,edmat,0
-lan,lan,r,,,lan,[''],[''],lan,target,r,,2,n,w,law,0
-makyllluf,makyllluf,rss,,ss,mak,[''],"['yl', 'lluf']",makyllluf,control,s,0.0,1,l,r,makyrlluf,0
-inlanlyfull,inlanlyfull,prss,p,ss,lan,['in'],"['ly', 'full']",inlanlyfull,target,r,,1,a,e,inlenlyfull,0
-erebsirre,erebsirre,pprs,pp,s,sir,"['er', 'eb']",['re'],erebsirre,control,s,0.0,1,e,o,erebsirro,0
-neezlyfull,neezlyfull,rss,,ss,neez,[''],"['ly', 'full']",neezlyfull,target,s,0.0,1,y,m,neezlmfull,0
-rebebod,rebebod,ppr,pp,,bod,"['re', 'be']",[''],rebebod,target,p,1.0,1,e,a,rebabod,0
-misneezer,misneezer,prs,p,s,neez,['mis'],['er'],misneezer,target,s,0.0,1,r,m,misneezem,0
-preramful,preramful,prs,p,s,ram,['pre'],['ful'],preramful,target,r,,2,m,r,prerarful,0
-erebnef,erebneh,ppr,pp,,nef,"['er', 'eb']",[''],erebnef,control,r,,2,f,h,erebneh,1
-unkam,unkam,pr,p,,kam,['un'],[''],unkam,target,r,,2,m,n,unkan,0
-nueddobluf,nueddoblut,pprs,pp,s,dob,"['nu', 'ed']",['luf'],nueddobluf,control,s,0.0,2,f,t,nueddoblut,1
-undeneez,undeneez,ppr,pp,,neez,"['un', 'de']",[''],undeneez,target,r,,1,e,o,undenoez,0
-bodlyfull,bodmyfull,rss,,ss,bod,[''],"['ly', 'full']",bodlyfull,target,s,0.0,0,l,m,bodmyfull,1
-zeenyllluf,zeenyylluf,rss,,ss,zeen,[''],"['yl', 'lluf']",zeenyllluf,control,s,0.0,1,l,y,zeenyylluf,1
-unbod,unbed,pr,p,,bod,['un'],[''],unbod,target,r,,1,o,e,unbed,1
-misramer,misramer,prs,p,s,ram,['mis'],['er'],misramer,target,p,0.0,0,m,r,risramer,0
-simdob,gimdob,pr,p,,dob,['sim'],[''],simdob,control,p,0.0,0,s,g,gimdob,1
-lannessly,lonnessly,rss,,ss,lan,[''],"['ness', 'ly']",lannessly,target,r,,1,a,o,lonnessly,1
-underisable,underisoble,pprs,pp,s,ris,"['un', 'de']",['able'],underisable,target,s,0.0,0,a,o,underisoble,1
-bodful,bodful,rs,,s,bod,[''],['ful'],bodful,target,r,,0,b,s,sodful,0
-bodnessly,bodnesslr,rss,,ss,bod,[''],"['ness', 'ly']",bodnessly,target,s,1.0,1,y,r,bodnesslr,1
-premonful,premomful,prs,p,s,mon,['pre'],['ful'],premonful,target,r,,2,n,m,premomful,1
-erebnalre,erebnalri,pprs,pp,s,nal,"['er', 'eb']",['re'],erebnalre,control,s,0.0,1,e,i,erebnalri,1
-nuzeenluf,nuteenluf,prs,p,s,zeen,['nu'],['luf'],nuzeenluf,control,r,,0,z,t,nuteenluf,1
-inramlyfull,inramlyfull,prss,p,ss,ram,['in'],"['ly', 'full']",inramlyfull,target,p,0.0,0,i,e,enramlyfull,0
-debodnessly,decodnessly,prss,p,ss,bod,['de'],"['ness', 'ly']",debodnessly,target,r,,0,b,c,decodnessly,1
-deramful,deremful,prs,p,s,ram,['de'],['ful'],deramful,target,r,,1,a,e,deremful,1
-erpmarelba,erpyarelba,prs,p,s,mar,['erp'],['elba'],erpmarelba,control,r,,0,m,y,erpyarelba,1
-nuc,nic,r,,,nuc,[''],[''],nuc,control,r,,1,u,i,nic,1
-infenful,imfenful,prs,p,s,fen,['in'],['ful'],infenful,target,p,0.0,1,n,m,imfenful,1
-erpdobssenyl,erpdobssenyl,prss,p,ss,dob,['erp'],"['ssen', 'yl']",erpdobssenyl,control,s,1.0,1,l,w,erpdobssenyw,0
-undemoner,undemonen,pprs,pp,s,mon,"['un', 'de']",['er'],undemoner,target,s,0.0,1,r,n,undemonen,1
-bod,bov,r,,,bod,[''],[''],bod,target,r,,2,d,v,bov,1
-miscunion,miscunion,prs,p,s,cun,['mis'],['ion'],miscunion,target,p,0.0,1,i,o,moscunion,0
-rebeneezful,rebeneezful,pprs,pp,s,neez,"['re', 'be']",['ful'],rebeneezful,target,r,,2,e,i,rebeneizful,0
-nucelba,nucelba,rs,,s,nuc,[''],['elba'],nucelba,control,r,,2,c,t,nutelba,0
-rediscunion,rediscunion,pprs,pp,s,cun,"['re', 'dis']",['ion'],rediscunion,target,p,1.0,2,s,b,redibcunion,0
-cunerfull,cunerfull,rss,,ss,cun,[''],"['er', 'full']",cunerfull,target,s,1.0,1,u,e,cunerfell,0
-undebod,unhebod,ppr,pp,,bod,"['un', 'de']",[''],undebod,target,p,1.0,0,d,h,unhebod,1
-nizeenrelluf,nizeenrelluf,prss,p,ss,zeen,['ni'],"['re', 'lluf']",nizeenrelluf,control,p,0.0,0,n,l,lizeenrelluf,0
-simtek,samtek,pr,p,,tek,['sim'],[''],simtek,control,p,0.0,1,i,a,samtek,1
-erpnefluf,arpnefluf,prs,p,s,nef,['erp'],['luf'],erpnefluf,control,p,0.0,0,e,a,arpnefluf,1
-riserfull,riselfull,rss,,ss,ris,[''],"['er', 'full']",riserfull,target,s,0.0,1,r,l,riselfull,1
-ersidnefre,ersidnefra,pprs,pp,s,nef,"['er', 'sid']",['re'],ersidnefre,control,s,0.0,1,e,a,ersidnefra,1
-nef,nef,r,,,nef,[''],[''],nef,control,r,,1,e,a,naf,0
-erpdobssenyl,erpdobssenyl,prss,p,ss,dob,['erp'],"['ssen', 'yl']",erpdobssenyl,control,s,0.0,2,e,a,erpdobssanyl,0
-makre,mikre,rs,,s,mak,[''],['re'],makre,control,r,,1,a,i,mikre,1
-nucssenyl,mucssenyl,rss,,ss,nuc,[''],"['ssen', 'yl']",nucssenyl,control,r,,0,n,m,mucssenyl,1
-marnoi,marnoi,rs,,s,mar,[''],['noi'],marnoi,control,r,,1,a,i,mirnoi,0
-risable,risable,rs,,s,ris,[''],['able'],risable,target,s,0.0,0,a,e,riseble,0
-nisir,nisir,pr,p,,sir,['ni'],[''],nisir,control,r,,1,i,a,nisar,0
-boder,bober,rs,,s,bod,[''],['er'],boder,target,r,,2,d,b,bober,1
-ketion,setion,rs,,s,ket,[''],['ion'],ketion,target,r,,0,k,s,setion,1
-erpnalyllluf,erpnalyllluf,prss,p,ss,nal,['erp'],"['yl', 'lluf']",erpnalyllluf,control,r,,0,n,l,erplalyllluf,0
-unrisnessly,unrisnessly,prss,p,ss,ris,['un'],"['ness', 'ly']",unrisnessly,target,s,1.0,1,y,m,unrisnesslm,0
-nusir,nesir,pr,p,,sir,['nu'],[''],nusir,control,p,0.0,1,u,e,nesir,1
-ednomre,ednoyre,prs,p,s,nom,['ed'],['re'],ednomre,control,r,,2,m,y,ednoyre,1
-prebodful,preboddul,prs,p,s,bod,['pre'],['ful'],prebodful,target,s,0.0,0,f,d,preboddul,1
-nefnoi,nefnoi,rs,,s,nef,[''],['noi'],nefnoi,control,s,0.0,1,o,i,nefnii,0
-redisramer,redisramer,pprs,pp,s,ram,"['re', 'dis']",['er'],redisramer,target,s,0.0,1,r,m,redisramem,0
-ninucnoi,nenucnoi,prs,p,s,nuc,['ni'],['noi'],ninucnoi,control,p,0.0,1,i,e,nenucnoi,1
-rebelan,rebelan,ppr,pp,,lan,"['re', 'be']",[''],rebelan,target,p,1.0,1,e,i,rebilan,0
-rebefener,ribefener,pprs,pp,s,fen,"['re', 'be']",['er'],rebefener,target,p,0.0,1,e,i,ribefener,1
-inrislyfull,inriflyfull,prss,p,ss,ris,['in'],"['ly', 'full']",inrislyfull,target,r,,2,s,f,inriflyfull,1
-nuednef,nuednef,ppr,pp,,nef,"['nu', 'ed']",[''],nuednef,control,r,,2,f,h,nuedneh,0
-unket,unhet,pr,p,,ket,['un'],[''],unket,target,r,,0,k,h,unhet,1
-erebnalre,erebnolre,pprs,pp,s,nal,"['er', 'eb']",['re'],erebnalre,control,r,,1,a,o,erebnolre,1
-nusirnoi,nusirnoe,prs,p,s,sir,['nu'],['noi'],nusirnoi,control,s,0.0,2,i,e,nusirnoe,1
-erebnefnoi,erebnefmoi,pprs,pp,s,nef,"['er', 'eb']",['noi'],erebnefnoi,control,s,0.0,0,n,m,erebnefmoi,1
-undecun,undebun,ppr,pp,,cun,"['un', 'de']",[''],undecun,target,r,,0,c,b,undebun,1
-kamlyfull,kamlyfull,rss,,ss,kam,[''],"['ly', 'full']",kamlyfull,target,s,1.0,0,f,p,kamlypull,0
-erpnucre,erpnucre,prs,p,s,nuc,['erp'],['re'],erpnucre,control,s,0.0,0,r,w,erpnucwe,0
-sir,sir,r,,,sir,[''],[''],sir,control,r,,1,i,e,ser,0
-nucssenyl,nucssenyl,rss,,ss,nuc,[''],"['ssen', 'yl']",nucssenyl,control,s,1.0,0,y,n,nucssennl,0
-ersidnef,ersidnef,ppr,pp,,nef,"['er', 'sid']",[''],ersidnef,control,r,,1,e,a,ersidnaf,0
-numakyllluf,numakyllluf,prss,p,ss,mak,['nu'],"['yl', 'lluf']",numakyllluf,control,s,0.0,1,l,m,numakymlluf,0
-redisket,redisket,ppr,pp,,ket,"['re', 'dis']",[''],redisket,target,p,0.0,0,r,m,medisket,0
-ramlyfull,ramryfull,rss,,ss,ram,[''],"['ly', 'full']",ramlyfull,target,s,0.0,0,l,r,ramryfull,1
-fennessly,fennessly,rss,,ss,fen,[''],"['ness', 'ly']",fennessly,target,r,,1,e,i,finnessly,0
-tekre,tekre,rs,,s,tek,[''],['re'],tekre,control,r,,0,t,g,gekre,0
-nuednomre,nuehnomre,pprs,pp,s,nom,"['nu', 'ed']",['re'],nuednomre,control,p,1.0,1,d,h,nuehnomre,1
-ersidnefre,ersidnefru,pprs,pp,s,nef,"['er', 'sid']",['re'],ersidnefre,control,s,0.0,1,e,u,ersidnefru,1
-unkamlyfull,unkamlyfull,prss,p,ss,kam,['un'],"['ly', 'full']",unkamlyfull,target,r,,0,k,s,unsamlyfull,0
-nitekyllluf,nitekyllnuf,prss,p,ss,tek,['ni'],"['yl', 'lluf']",nitekyllluf,control,s,1.0,1,l,n,nitekyllnuf,1
-inramful,inramful,prs,p,s,ram,['in'],['ful'],inramful,target,p,0.0,1,n,m,imramful,0
-rebemon,rebemon,ppr,pp,,mon,"['re', 'be']",[''],rebemon,target,p,1.0,0,b,p,repemon,0
-kam,tam,r,,,kam,[''],[''],kam,target,r,,0,k,t,tam,1
-inriser,inriser,prs,p,s,ris,['in'],['er'],inriser,target,p,0.0,1,n,r,irriser,0
-premonerfull,sremonerfull,prss,p,ss,mon,['pre'],"['er', 'full']",premonerfull,target,p,0.0,0,p,s,sremonerfull,1
-monlyfull,monlyfulr,rss,,ss,mon,[''],"['ly', 'full']",monlyfull,target,s,1.0,3,l,r,monlyfulr,1
-erebzeen,erebheen,ppr,pp,,zeen,"['er', 'eb']",[''],erebzeen,control,r,,0,z,h,erebheen,1
-nuc,ruc,r,,,nuc,[''],[''],nuc,control,r,,0,n,r,ruc,1
-nunuc,nunuc,pr,p,,nuc,['nu'],[''],nunuc,control,r,,0,n,m,numuc,0
-prekamlyfull,prekarlyfull,prss,p,ss,kam,['pre'],"['ly', 'full']",prekamlyfull,target,r,,2,m,r,prekarlyfull,1
-undeneezable,undeneezable,pprs,pp,s,neez,"['un', 'de']",['able'],undeneezable,target,p,0.0,1,n,y,uydeneezable,0
-erpnef,erpnef,pr,p,,nef,['erp'],[''],erpnef,control,p,0.0,0,e,i,irpnef,0
-makyllluf,rakyllluf,rss,,ss,mak,[''],"['yl', 'lluf']",makyllluf,control,r,,0,m,r,rakyllluf,1
-nusirssenyl,nusirssenyl,prss,p,ss,sir,['nu'],"['ssen', 'yl']",nusirssenyl,control,p,0.0,0,n,r,rusirssenyl,0
-nuedmakelba,luedmakelba,pprs,pp,s,mak,"['nu', 'ed']",['elba'],nuedmakelba,control,p,0.0,0,n,l,luedmakelba,1
-erebdobluf,elebdobluf,pprs,pp,s,dob,"['er', 'eb']",['luf'],erebdobluf,control,p,0.0,1,r,l,elebdobluf,1
-riser,risem,rs,,s,ris,[''],['er'],riser,target,s,0.0,1,r,m,risem,1
-edmar,etmar,pr,p,,mar,['ed'],[''],edmar,control,p,0.0,1,d,t,etmar,1
-sirre,silre,rs,,s,sir,[''],['re'],sirre,control,r,,2,r,l,silre,1
-kamerfull,komerfull,rss,,ss,kam,[''],"['er', 'full']",kamerfull,target,r,,1,a,o,komerfull,1
-prebodlyfull,prebodlyfull,prss,p,ss,bod,['pre'],"['ly', 'full']",prebodlyfull,target,p,0.0,0,p,f,frebodlyfull,0
-rediscun,rediscun,ppr,pp,,cun,"['re', 'dis']",[''],rediscun,target,r,,0,c,h,redishun,0
-nuedsir,nuedsir,ppr,pp,,sir,"['nu', 'ed']",[''],nuedsir,control,p,0.0,1,u,i,niedsir,0
-ednalssenyl,ednalssenyl,prss,p,ss,nal,['ed'],"['ssen', 'yl']",ednalssenyl,control,p,0.0,0,e,u,udnalssenyl,0
-underis,urderis,ppr,pp,,ris,"['un', 'de']",[''],underis,target,p,0.0,1,n,r,urderis,1
-nuednomre,nuebnomre,pprs,pp,s,nom,"['nu', 'ed']",['re'],nuednomre,control,p,1.0,1,d,b,nuebnomre,1
-ketnessly,ketnessly,rss,,ss,ket,[''],"['ness', 'ly']",ketnessly,target,r,,1,e,i,kitnessly,0
-ersidtekelba,ersidtekelba,pprs,pp,s,tek,"['er', 'sid']",['elba'],ersidtekelba,control,s,0.0,3,a,e,ersidtekelbe,0
-prelan,preman,pr,p,,lan,['pre'],[''],prelan,target,r,,0,l,m,preman,1
-risnessly,risressly,rss,,ss,ris,[''],"['ness', 'ly']",risnessly,target,s,0.0,0,n,r,risressly,1
-tek,tak,r,,,tek,[''],[''],tek,control,r,,1,e,a,tak,1
-undekamable,undekayable,pprs,pp,s,kam,"['un', 'de']",['able'],undekamable,target,r,,2,m,y,undekayable,1
-nuednefluf,nuednefluf,pprs,pp,s,nef,"['nu', 'ed']",['luf'],nuednefluf,control,p,1.0,1,d,t,nuetnefluf,0
-redisriser,redisriser,pprs,pp,s,ris,"['re', 'dis']",['er'],redisriser,target,r,,0,r,m,redismiser,0
-erebtek,erebtet,ppr,pp,,tek,"['er', 'eb']",[''],erebtek,control,r,,2,k,t,erebtet,1
-nuedzeen,nuadzeen,ppr,pp,,zeen,"['nu', 'ed']",[''],nuedzeen,control,p,1.0,0,e,a,nuadzeen,1
-nizeen,nizeen,pr,p,,zeen,['ni'],[''],nizeen,control,p,0.0,0,n,m,mizeen,0
-ednefelba,ednefelba,prs,p,s,nef,['ed'],['elba'],ednefelba,control,r,,0,n,l,edlefelba,0
-prekam,prekam,pr,p,,kam,['pre'],[''],prekam,target,p,0.0,1,r,w,pwekam,0
-kamnessly,kamnessly,rss,,ss,kam,[''],"['ness', 'ly']",kamnessly,target,s,1.0,0,l,m,kamnessmy,0
-erpnef,erpnef,pr,p,,nef,['erp'],[''],erpnef,control,r,,2,f,p,erpnep,0
-nidob,nidob,pr,p,,dob,['ni'],[''],nidob,control,p,0.0,0,n,m,midob,0
-ersidmak,ersidmap,ppr,pp,,mak,"['er', 'sid']",[''],ersidmak,control,r,,2,k,p,ersidmap,1
-erebmak,erebmak,ppr,pp,,mak,"['er', 'eb']",[''],erebmak,control,p,1.0,0,e,o,erobmak,0
-ednal,ednel,pr,p,,nal,['ed'],[''],ednal,control,r,,1,a,e,ednel,1
-redisrisable,redismisable,pprs,pp,s,ris,"['re', 'dis']",['able'],redisrisable,target,r,,0,r,m,redismisable,1
-neezer,niezer,rs,,s,neez,[''],['er'],neezer,target,r,,1,e,i,niezer,1
-nusirssenyl,nusirssenyl,prss,p,ss,sir,['nu'],"['ssen', 'yl']",nusirssenyl,control,s,0.0,3,n,y,nusirsseyyl,0
-lanable,lanable,rs,,s,lan,[''],['able'],lanable,target,s,0.0,1,b,d,lanadle,0
-kamion,kameon,rs,,s,kam,[''],['ion'],kamion,target,s,0.0,0,i,e,kameon,1
-simmaknoi,simmuknoi,prs,p,s,mak,['sim'],['noi'],simmaknoi,control,r,,1,a,u,simmuknoi,1
-marluf,marluf,rs,,s,mar,[''],['luf'],marluf,control,r,,1,a,e,merluf,0
-undekamer,undukamer,pprs,pp,s,kam,"['un', 'de']",['er'],undekamer,target,p,1.0,1,e,u,undukamer,1
-dobre,dotre,rs,,s,dob,[''],['re'],dobre,control,r,,2,b,t,dotre,1
-sirrelluf,sirrelluf,rss,,ss,sir,[''],"['re', 'lluf']",sirrelluf,control,r,,1,i,u,surrelluf,0
-marssenyl,marssenyl,rss,,ss,mar,[''],"['ssen', 'yl']",marssenyl,control,s,0.0,3,n,r,marsseryl,0
-cunable,sunable,rs,,s,cun,[''],['able'],cunable,target,r,,0,c,s,sunable,1
-dobre,dobre,rs,,s,dob,[''],['re'],dobre,control,s,0.0,0,r,m,dobme,0
-undekam,uydekam,ppr,pp,,kam,"['un', 'de']",[''],undekam,target,p,0.0,1,n,y,uydekam,1
-tekyllluf,tekyllluf,rss,,ss,tek,[''],"['yl', 'lluf']",tekyllluf,control,s,0.0,0,y,r,tekrllluf,0
-moner,moner,rs,,s,mon,[''],['er'],moner,target,s,0.0,1,r,n,monen,0
-redisris,medisris,ppr,pp,,ris,"['re', 'dis']",[''],redisris,target,p,0.0,0,r,m,medisris,1
-erptekre,erptekre,prs,p,s,tek,['erp'],['re'],erptekre,control,p,0.0,1,r,m,emptekre,0
-undefen,undefen,ppr,pp,,fen,"['un', 'de']",[''],undefen,target,r,,0,f,s,undesen,0
-erpdobyllluf,erpdokyllluf,prss,p,ss,dob,['erp'],"['yl', 'lluf']",erpdobyllluf,control,r,,2,b,k,erpdokyllluf,1
-undelan,undelan,ppr,pp,,lan,"['un', 'de']",[''],undelan,target,r,,1,a,e,undelen,0
-nuednomelba,nuednomelba,pprs,pp,s,nom,"['nu', 'ed']",['elba'],nuednomelba,control,p,0.0,1,u,a,naednomelba,0
-cunnessly,cumnessly,rss,,ss,cun,[''],"['ness', 'ly']",cunnessly,target,r,,2,n,m,cumnessly,1
-nomluf,nomluf,rs,,s,nom,[''],['luf'],nomluf,control,s,0.0,0,l,r,nomruf,0
-infen,infen,pr,p,,fen,['in'],[''],infen,target,p,0.0,0,i,e,enfen,0
-zeennoi,zeenmoi,rs,,s,zeen,[''],['noi'],zeennoi,control,s,0.0,0,n,m,zeenmoi,1
-neezion,nuezion,rs,,s,neez,[''],['ion'],neezion,target,r,,1,e,u,nuezion,1
-erpsirssenyl,erpsirssenyr,prss,p,ss,sir,['erp'],"['ssen', 'yl']",erpsirssenyl,control,s,1.0,1,l,r,erpsirssenyr,1
-nitekssenyl,nitekssenyl,prss,p,ss,tek,['ni'],"['ssen', 'yl']",nitekssenyl,control,r,,1,e,a,nitakssenyl,0
-precun,precun,pr,p,,cun,['pre'],[''],precun,target,r,,0,c,s,presun,0
-nuedtekelba,nuedtekelba,pprs,pp,s,tek,"['nu', 'ed']",['elba'],nuedtekelba,control,r,,2,k,s,nuedteselba,0
-monful,menful,rs,,s,mon,[''],['ful'],monful,target,r,,1,o,e,menful,1
-sirelba,sirerba,rs,,s,sir,[''],['elba'],sirelba,control,s,0.0,1,l,r,sirerba,1
-edmakluf,epmakluf,prs,p,s,mak,['ed'],['luf'],edmakluf,control,p,0.0,1,d,p,epmakluf,1
-unrisful,unridful,prs,p,s,ris,['un'],['ful'],unrisful,target,r,,2,s,d,unridful,1
-decuner,pecuner,prs,p,s,cun,['de'],['er'],decuner,target,p,0.0,0,d,p,pecuner,1
-ersidnal,ersidnam,ppr,pp,,nal,"['er', 'sid']",[''],ersidnal,control,r,,2,l,m,ersidnam,1
-reberis,reberis,ppr,pp,,ris,"['re', 'be']",[''],reberis,target,r,,1,i,u,reberus,0
-ketful,ketful,rs,,s,ket,[''],['ful'],ketful,target,r,,2,t,h,kehful,0
-lanlyfull,lanlyfull,rss,,ss,lan,[''],"['ly', 'full']",lanlyfull,target,r,,1,a,o,lonlyfull,0
-erpzeenssenyl,erpzeanssenyl,prss,p,ss,zeen,['erp'],"['ssen', 'yl']",erpzeenssenyl,control,r,,2,e,a,erpzeanssenyl,1
-sirrelluf,sirrelluf,rss,,ss,sir,[''],"['re', 'lluf']",sirrelluf,control,s,0.0,0,r,m,sirmelluf,0
-ersiddob,ersiddob,ppr,pp,,dob,"['er', 'sid']",[''],ersiddob,control,r,,0,d,s,ersidsob,0
-uncunion,uncenion,prs,p,s,cun,['un'],['ion'],uncunion,target,r,,1,u,e,uncenion,1
-infennessly,infennessly,prss,p,ss,fen,['in'],"['ness', 'ly']",infennessly,target,p,0.0,1,n,r,irfennessly,0
-prebod,pribod,pr,p,,bod,['pre'],[''],prebod,target,p,0.0,2,e,i,pribod,1
-keter,keper,rs,,s,ket,[''],['er'],keter,target,r,,2,t,p,keper,1
-nucelba,nucelba,rs,,s,nuc,[''],['elba'],nucelba,control,s,0.0,2,b,t,nucelta,0
-nuedmakelba,nuedmakelba,pprs,pp,s,mak,"['nu', 'ed']",['elba'],nuedmakelba,control,p,0.0,0,n,m,muedmakelba,0
-redislan,resislan,ppr,pp,,lan,"['re', 'dis']",[''],redislan,target,p,1.0,0,d,s,resislan,1
-unmonlyfull,unmonlyfull,prss,p,ss,mon,['un'],"['ly', 'full']",unmonlyfull,target,r,,1,o,e,unmenlyfull,0
-makrelluf,makrelluf,rss,,ss,mak,[''],"['re', 'lluf']",makrelluf,control,s,0.0,1,e,i,makrilluf,0
-inlan,inlan,pr,p,,lan,['in'],[''],inlan,target,r,,1,a,e,inlen,0
-rediskam,rediskem,ppr,pp,,kam,"['re', 'dis']",[''],rediskam,target,r,,1,a,e,rediskem,1
-numar,numar,pr,p,,mar,['nu'],[''],numar,control,r,,0,m,r,nurar,0
-nucelba,nucelba,rs,,s,nuc,[''],['elba'],nucelba,control,s,0.0,1,l,y,nuceyba,0
-makssenyl,makssenyl,rss,,ss,mak,[''],"['ssen', 'yl']",makssenyl,control,s,1.0,1,l,n,makssenyn,0
-nisir,nisir,pr,p,,sir,['ni'],[''],nisir,control,p,0.0,1,i,e,nesir,0
-sirrelluf,sirrelluf,rss,,ss,sir,[''],"['re', 'lluf']",sirrelluf,control,s,1.0,2,u,i,sirrellif,0
-mislan,mihlan,pr,p,,lan,['mis'],[''],mislan,target,p,0.0,2,s,h,mihlan,1
-nuednomluf,nuednomluf,pprs,pp,s,nom,"['nu', 'ed']",['luf'],nuednomluf,control,r,,0,n,y,nuedyomluf,0
-nuednalluf,niednalluf,pprs,pp,s,nal,"['nu', 'ed']",['luf'],nuednalluf,control,p,0.0,1,u,i,niednalluf,1
-redisboder,redisboder,pprs,pp,s,bod,"['re', 'dis']",['er'],redisboder,target,r,,0,b,p,redispoder,0
-simmarssenyl,simmarssenyl,prss,p,ss,mar,['sim'],"['ssen', 'yl']",simmarssenyl,control,r,,0,m,r,simrarssenyl,0
-infenion,infeniom,prs,p,s,fen,['in'],['ion'],infenion,target,s,0.0,2,n,m,infeniom,1
-numakyllluf,numakyllluf,prss,p,ss,mak,['nu'],"['yl', 'lluf']",numakyllluf,control,r,,1,a,u,numukyllluf,0
-dobluf,dobluf,rs,,s,dob,[''],['luf'],dobluf,control,r,,1,o,i,dibluf,0
-derislyfull,derislyfull,prss,p,ss,ris,['de'],"['ly', 'full']",derislyfull,target,s,1.0,0,f,d,derislydull,0
-erebnuc,erebnuc,ppr,pp,,nuc,"['er', 'eb']",[''],erebnuc,control,r,,2,c,t,erebnut,0
-edmakssenyl,etmakssenyl,prss,p,ss,mak,['ed'],"['ssen', 'yl']",edmakssenyl,control,p,0.0,1,d,t,etmakssenyl,1
-inram,imram,pr,p,,ram,['in'],[''],inram,target,p,0.0,1,n,m,imram,1
-monable,monable,rs,,s,mon,[''],['able'],monable,target,r,,0,m,r,ronable,0
-ninuc,ninup,pr,p,,nuc,['ni'],[''],ninuc,control,r,,2,c,p,ninup,1
-erebnef,erebnef,ppr,pp,,nef,"['er', 'eb']",[''],erebnef,control,r,,2,f,g,erebneg,0
-simnomre,simnomre,prs,p,s,nom,['sim'],['re'],simnomre,control,r,,2,m,l,simnolre,0
-nunuc,munuc,pr,p,,nuc,['nu'],[''],nunuc,control,p,0.0,0,n,m,munuc,1
-prelaner,prelaner,prs,p,s,lan,['pre'],['er'],prelaner,target,r,,1,a,e,prelener,0
-nuednef,nuednet,ppr,pp,,nef,"['nu', 'ed']",[''],nuednef,control,r,,2,f,t,nuednet,1
-rebeboder,rebeboder,pprs,pp,s,bod,"['re', 'be']",['er'],rebeboder,target,s,0.0,0,e,i,rebebodir,0
-nuedsirre,nuedsorre,pprs,pp,s,sir,"['nu', 'ed']",['re'],nuedsirre,control,r,,1,i,o,nuedsorre,1
-undefenful,unhefenful,pprs,pp,s,fen,"['un', 'de']",['ful'],undefenful,target,p,1.0,0,d,h,unhefenful,1
-misram,misram,pr,p,,ram,['mis'],[''],misram,target,r,,2,m,n,misran,0
-simnalre,simnalre,prs,p,s,nal,['sim'],['re'],simnalre,control,r,,1,a,i,simnilre,0
-inris,unris,pr,p,,ris,['in'],[''],inris,target,p,0.0,0,i,u,unris,1
-numakyllluf,numakyllluf,prss,p,ss,mak,['nu'],"['yl', 'lluf']",numakyllluf,control,s,1.0,0,l,r,numakylrluf,0
-preriser,preriser,prs,p,s,ris,['pre'],['er'],preriser,target,p,0.0,0,p,d,dreriser,0
-inkam,inkam,pr,p,,kam,['in'],[''],inkam,target,p,0.0,1,n,l,ilkam,0
-erpnomre,erpmomre,prs,p,s,nom,['erp'],['re'],erpnomre,control,r,,0,n,m,erpmomre,1
-risful,risfun,rs,,s,ris,[''],['ful'],risful,target,s,0.0,2,l,n,risfun,1
-undebodable,undebodable,pprs,pp,s,bod,"['un', 'de']",['able'],undebodable,target,p,1.0,1,e,i,undibodable,0
-undemon,undemon,ppr,pp,,mon,"['un', 'de']",[''],undemon,target,p,0.0,1,n,m,umdemon,0
-nizeenelba,niseenelba,prs,p,s,zeen,['ni'],['elba'],nizeenelba,control,r,,0,z,s,niseenelba,1
-lanerfull,lanervull,rss,,ss,lan,[''],"['er', 'full']",lanerfull,target,s,1.0,0,f,v,lanervull,1
-monerfull,monerfull,rss,,ss,mon,[''],"['er', 'full']",monerfull,target,s,1.0,2,l,w,monerfuwl,0
-siryllluf,saryllluf,rss,,ss,sir,[''],"['yl', 'lluf']",siryllluf,control,r,,1,i,a,saryllluf,1
-mon,mon,r,,,mon,[''],[''],mon,target,r,,1,o,a,man,0
-ersidmar,ersidmar,ppr,pp,,mar,"['er', 'sid']",[''],ersidmar,control,r,,0,m,l,ersidlar,0
-maknoi,maknii,rs,,s,mak,[''],['noi'],maknoi,control,s,0.0,1,o,i,maknii,1
-unlanlyfull,unlanlyfull,prss,p,ss,lan,['un'],"['ly', 'full']",unlanlyfull,target,r,,2,n,l,unlallyfull,0
-ninalyllluf,nenalyllluf,prss,p,ss,nal,['ni'],"['yl', 'lluf']",ninalyllluf,control,p,0.0,1,i,e,nenalyllluf,1
-inneezable,inneezablu,prs,p,s,neez,['in'],['able'],inneezable,target,s,0.0,3,e,u,inneezablu,1
-unlannessly,unlennessly,prss,p,ss,lan,['un'],"['ness', 'ly']",unlannessly,target,r,,1,a,e,unlennessly,1
-undelanful,undelanful,pprs,pp,s,lan,"['un', 'de']",['ful'],undelanful,target,p,1.0,1,e,u,undulanful,0
-ket,kat,r,,,ket,[''],[''],ket,target,r,,1,e,a,kat,1
-nuedtek,nuodtek,ppr,pp,,tek,"['nu', 'ed']",[''],nuedtek,control,p,1.0,0,e,o,nuodtek,1
-zeenssenyl,zeenssenyl,rss,,ss,zeen,[''],"['ssen', 'yl']",zeenssenyl,control,r,,1,e,a,zaenssenyl,0
-ersidtekre,ersidtekme,pprs,pp,s,tek,"['er', 'sid']",['re'],ersidtekre,control,s,0.0,0,r,m,ersidtekme,1
-miscun,mascun,pr,p,,cun,['mis'],[''],miscun,target,p,0.0,1,i,a,mascun,1
-undemonable,undemonable,pprs,pp,s,mon,"['un', 'de']",['able'],undemonable,target,p,0.0,1,n,l,uldemonable,0
-ninefluf,ninefluf,prs,p,s,nef,['ni'],['luf'],ninefluf,control,r,,2,f,s,ninesluf,0
-erpdob,erpdob,pr,p,,dob,['erp'],[''],erpdob,control,p,0.0,0,e,a,arpdob,0
-edzeenelba,edzeenelda,prs,p,s,zeen,['ed'],['elba'],edzeenelba,control,s,0.0,2,b,d,edzeenelda,1
-ninom,minom,pr,p,,nom,['ni'],[''],ninom,control,p,0.0,0,n,m,minom,1
-redisfen,redisfen,ppr,pp,,fen,"['re', 'dis']",[''],redisfen,target,r,,2,n,w,redisfew,0
-simzeenre,simzeenle,prs,p,s,zeen,['sim'],['re'],simzeenre,control,s,0.0,0,r,l,simzeenle,1
-erebzeen,erebzeen,ppr,pp,,zeen,"['er', 'eb']",[''],erebzeen,control,r,,0,z,v,erebveen,0
-nuedmar,nuedmor,ppr,pp,,mar,"['nu', 'ed']",[''],nuedmar,control,r,,1,a,o,nuedmor,1
-fenion,feneon,rs,,s,fen,[''],['ion'],fenion,target,s,0.0,0,i,e,feneon,1
-maryllluf,maryllluf,rss,,ss,mar,[''],"['yl', 'lluf']",maryllluf,control,r,,0,m,r,raryllluf,0
-undefener,undefener,pprs,pp,s,fen,"['un', 'de']",['er'],undefener,target,r,,2,n,y,undefeyer,0
-makssenyl,makssenyl,rss,,ss,mak,[''],"['ssen', 'yl']",makssenyl,control,s,1.0,0,y,r,makssenrl,0
-cuner,cumer,rs,,s,cun,[''],['er'],cuner,target,r,,2,n,m,cumer,1
-cunlyfull,cunlyfull,rss,,ss,cun,[''],"['ly', 'full']",cunlyfull,target,r,,0,c,d,dunlyfull,0
-nuedsirnoi,nuedsirnoi,pprs,pp,s,sir,"['nu', 'ed']",['noi'],nuedsirnoi,control,s,0.0,0,n,r,nuedsirroi,0
-redisram,redislam,ppr,pp,,ram,"['re', 'dis']",[''],redisram,target,r,,0,r,l,redislam,1
-ednomssenyl,ednomssenwl,prss,p,ss,nom,['ed'],"['ssen', 'yl']",ednomssenyl,control,s,1.0,0,y,w,ednomssenwl,1
-prefennessly,prefennessly,prss,p,ss,fen,['pre'],"['ness', 'ly']",prefennessly,target,r,,0,f,t,pretennessly,0
-ninefluf,ninefluf,prs,p,s,nef,['ni'],['luf'],ninefluf,control,p,0.0,1,i,e,nenefluf,0
-cunion,cumion,rs,,s,cun,[''],['ion'],cunion,target,r,,2,n,m,cumion,1
-simsir,simsir,pr,p,,sir,['sim'],[''],simsir,control,r,,2,r,m,simsim,0
-inkamlyfull,inkemlyfull,prss,p,ss,kam,['in'],"['ly', 'full']",inkamlyfull,target,r,,1,a,e,inkemlyfull,1
-undekamful,undekalful,pprs,pp,s,kam,"['un', 'de']",['ful'],undekamful,target,r,,2,m,l,undekalful,1
-underamer,underamer,pprs,pp,s,ram,"['un', 'de']",['er'],underamer,target,s,0.0,0,e,o,underamor,0
-erpzeenluf,erkzeenluf,prs,p,s,zeen,['erp'],['luf'],erpzeenluf,control,p,0.0,2,p,k,erkzeenluf,1
-simdob,simdob,pr,p,,dob,['sim'],[''],simdob,control,r,,1,o,a,simdab,0
-reberam,raberam,ppr,pp,,ram,"['re', 'be']",[''],reberam,target,p,0.0,1,e,a,raberam,1
-ednucyllluf,ednucyllluf,prss,p,ss,nuc,['ed'],"['yl', 'lluf']",ednucyllluf,control,r,,2,c,s,ednusyllluf,0
-ninucyllluf,rinucyllluf,prss,p,ss,nuc,['ni'],"['yl', 'lluf']",ninucyllluf,control,p,0.0,0,n,r,rinucyllluf,1
-undebodful,undebodful,pprs,pp,s,bod,"['un', 'de']",['ful'],undebodful,target,s,0.0,2,l,r,undebodfur,0
-nuedtek,nuettek,ppr,pp,,tek,"['nu', 'ed']",[''],nuedtek,control,p,1.0,1,d,t,nuettek,1
-ersidzeen,ersidzeen,ppr,pp,,zeen,"['er', 'sid']",[''],ersidzeen,control,p,1.0,0,s,c,ercidzeen,0
-preram,preram,pr,p,,ram,['pre'],[''],preram,target,r,,2,m,n,preran,0
-kamer,kemer,rs,,s,kam,[''],['er'],kamer,target,r,,1,a,e,kemer,1
-prerisnessly,prerisnessly,prss,p,ss,ris,['pre'],"['ness', 'ly']",prerisnessly,target,r,,2,s,d,preridnessly,0
-ramnessly,rarnessly,rss,,ss,ram,[''],"['ness', 'ly']",ramnessly,target,r,,2,m,r,rarnessly,1
-erpdob,erpvob,pr,p,,dob,['erp'],[''],erpdob,control,r,,0,d,v,erpvob,1
-marre,marre,rs,,s,mar,[''],['re'],marre,control,r,,1,a,e,merre,0
-nuednom,nuednom,ppr,pp,,nom,"['nu', 'ed']",[''],nuednom,control,r,,1,o,u,nuednum,0
-nomluf,nolluf,rs,,s,nom,[''],['luf'],nomluf,control,r,,2,m,l,nolluf,1
-deketnessly,deketnessly,prss,p,ss,ket,['de'],"['ness', 'ly']",deketnessly,target,p,0.0,0,d,t,teketnessly,0
-erpmakluf,erpmaklif,prs,p,s,mak,['erp'],['luf'],erpmakluf,control,s,0.0,1,u,i,erpmaklif,1
-neezerfull,neezerfull,rss,,ss,neez,[''],"['er', 'full']",neezerfull,target,s,1.0,3,l,m,neezerfulm,0
-ersidnuc,emsidnuc,ppr,pp,,nuc,"['er', 'sid']",[''],ersidnuc,control,p,0.0,1,r,m,emsidnuc,1
-rebekamion,rebekamion,pprs,pp,s,kam,"['re', 'be']",['ion'],rebekamion,target,p,0.0,0,r,m,mebekamion,0
-erpnal,erpnam,pr,p,,nal,['erp'],[''],erpnal,control,r,,2,l,m,erpnam,1
-inneezerfull,inneezerfull,prss,p,ss,neez,['in'],"['er', 'full']",inneezerfull,target,p,0.0,0,i,a,anneezerfull,0
-misneez,misneez,pr,p,,neez,['mis'],[''],misneez,target,p,0.0,0,m,w,wisneez,0
-ketlyfull,ketlyfuwl,rss,,ss,ket,[''],"['ly', 'full']",ketlyfull,target,s,1.0,2,l,w,ketlyfuwl,1
-mismoner,mismoner,prs,p,s,mon,['mis'],['er'],mismoner,target,p,0.0,2,s,c,micmoner,0
-dob,dob,r,,,dob,[''],[''],dob,control,r,,1,o,u,dub,0
-nimakyllluf,ninakyllluf,prss,p,ss,mak,['ni'],"['yl', 'lluf']",nimakyllluf,control,r,,0,m,n,ninakyllluf,1
-neeznessly,neehnessly,rss,,ss,neez,[''],"['ness', 'ly']",neeznessly,target,r,,3,z,h,neehnessly,1
-sirre,sirle,rs,,s,sir,[''],['re'],sirre,control,s,0.0,0,r,l,sirle,1
-prerisable,crerisable,prs,p,s,ris,['pre'],['able'],prerisable,target,p,0.0,0,p,c,crerisable,1
-nefyllluf,nefyllluf,rss,,ss,nef,[''],"['yl', 'lluf']",nefyllluf,control,s,1.0,2,u,o,nefylllof,0
-marrelluf,marrelluf,rss,,ss,mar,[''],"['re', 'lluf']",marrelluf,control,s,0.0,0,r,y,maryelluf,0
-rebeneez,rebeneez,ppr,pp,,neez,"['re', 'be']",[''],rebeneez,target,p,0.0,1,e,o,robeneez,0
-undeketion,undeketion,pprs,pp,s,ket,"['un', 'de']",['ion'],undeketion,target,s,0.0,1,o,i,undeketiin,0
-nomssenyl,nomssenyl,rss,,ss,nom,[''],"['ssen', 'yl']",nomssenyl,control,r,,2,m,l,nolssenyl,0
-erpmakluf,erpmaklef,prs,p,s,mak,['erp'],['luf'],erpmakluf,control,s,0.0,1,u,e,erpmaklef,1
-fen,fen,r,,,fen,[''],[''],fen,target,r,,2,n,m,fem,0
-nusirssenyl,nusirssenyr,prss,p,ss,sir,['nu'],"['ssen', 'yl']",nusirssenyl,control,s,1.0,1,l,r,nusirssenyr,1
-nizeenelba,nizeewelba,prs,p,s,zeen,['ni'],['elba'],nizeenelba,control,r,,3,n,w,nizeewelba,1
-preneezer,pweneezer,prs,p,s,neez,['pre'],['er'],preneezer,target,p,0.0,1,r,w,pweneezer,1
-deneez,deneez,pr,p,,neez,['de'],[''],deneez,target,r,,2,e,i,deneiz,0
-delan,delan,pr,p,,lan,['de'],[''],delan,target,p,0.0,0,d,p,pelan,0
-inlanable,inlamable,prs,p,s,lan,['in'],['able'],inlanable,target,r,,2,n,m,inlamable,1
-prefen,plefen,pr,p,,fen,['pre'],[''],prefen,target,p,0.0,1,r,l,plefen,1
-redisbod,redisbos,ppr,pp,,bod,"['re', 'dis']",[''],redisbod,target,r,,2,d,s,redisbos,1
-ersidnal,ersidnar,ppr,pp,,nal,"['er', 'sid']",[''],ersidnal,control,r,,2,l,r,ersidnar,1
-deramable,deramable,prs,p,s,ram,['de'],['able'],deramable,target,s,0.0,0,a,i,deramible,0
-maknoi,raknoi,rs,,s,mak,[''],['noi'],maknoi,control,r,,0,m,r,raknoi,1
-nuedmarre,ruedmarre,pprs,pp,s,mar,"['nu', 'ed']",['re'],nuedmarre,control,p,0.0,0,n,r,ruedmarre,1
-makluf,makluf,rs,,s,mak,[''],['luf'],makluf,control,s,0.0,1,u,e,maklef,0
-prelannessly,prerannessly,prss,p,ss,lan,['pre'],"['ness', 'ly']",prelannessly,target,r,,0,l,r,prerannessly,1
-sirre,sorre,rs,,s,sir,[''],['re'],sirre,control,r,,1,i,o,sorre,1
-erpnomrelluf,erpnomlelluf,prss,p,ss,nom,['erp'],"['re', 'lluf']",erpnomrelluf,control,s,0.0,0,r,l,erpnomlelluf,1
-nalre,nalle,rs,,s,nal,[''],['re'],nalre,control,s,0.0,0,r,l,nalle,1
-dekamnessly,dekamnessly,prss,p,ss,kam,['de'],"['ness', 'ly']",dekamnessly,target,p,0.0,0,d,t,tekamnessly,0
-deris,denis,pr,p,,ris,['de'],[''],deris,target,r,,0,r,n,denis,1
-sirrelluf,sirrelluf,rss,,ss,sir,[''],"['re', 'lluf']",sirrelluf,control,s,0.0,0,r,w,sirwelluf,0
-prekamful,prekamful,prs,p,s,kam,['pre'],['ful'],prekamful,target,s,0.0,0,f,s,prekamsul,0
-sirnoi,hirnoi,rs,,s,sir,[''],['noi'],sirnoi,control,r,,0,s,h,hirnoi,1
-rebeneezer,reboneezer,pprs,pp,s,neez,"['re', 'be']",['er'],rebeneezer,target,p,1.0,1,e,o,reboneezer,1
-ramer,ramen,rs,,s,ram,[''],['er'],ramer,target,s,0.0,1,r,n,ramen,1
-ersidnomnoi,ewsidnomnoi,pprs,pp,s,nom,"['er', 'sid']",['noi'],ersidnomnoi,control,p,0.0,1,r,w,ewsidnomnoi,1
-zeenyllluf,zeenyllluf,rss,,ss,zeen,[''],"['yl', 'lluf']",zeenyllluf,control,s,1.0,3,f,h,zeenyllluh,0
-misramnessly,musramnessly,prss,p,ss,ram,['mis'],"['ness', 'ly']",misramnessly,target,p,0.0,1,i,u,musramnessly,1
-decunable,decunablo,prs,p,s,cun,['de'],['able'],decunable,target,s,0.0,3,e,o,decunablo,1
-inneez,inneet,pr,p,,neez,['in'],[''],inneez,target,r,,3,z,t,inneet,1
-erpmak,erpmak,pr,p,,mak,['erp'],[''],erpmak,control,p,0.0,2,p,t,ertmak,0
-unram,unray,pr,p,,ram,['un'],[''],unram,target,r,,2,m,y,unray,1
-fener,pener,rs,,s,fen,[''],['er'],fener,target,r,,0,f,p,pener,1
-precunnessly,precunnessly,prss,p,ss,cun,['pre'],"['ness', 'ly']",precunnessly,target,r,,2,n,y,precuynessly,0
-fenlyfull,fenlyfull,rss,,ss,fen,[''],"['ly', 'full']",fenlyfull,target,s,0.0,0,l,m,fenmyfull,0
-neezful,neezful,rs,,s,neez,[''],['ful'],neezful,target,s,0.0,2,l,m,neezfum,0
-nitekre,nitekre,prs,p,s,tek,['ni'],['re'],nitekre,control,p,0.0,1,i,e,netekre,0
-bodion,bocion,rs,,s,bod,[''],['ion'],bodion,target,r,,2,d,c,bocion,1
-nuedsirelba,nuedsirelba,pprs,pp,s,sir,"['nu', 'ed']",['elba'],nuedsirelba,control,p,0.0,1,u,o,noedsirelba,0
-erptek,erptes,pr,p,,tek,['erp'],[''],erptek,control,r,,2,k,s,erptes,1
+remisdebrasalableness,remisdebrasalablenehs,ppprsss,ppp,sss,bras,re_mis_de,al_able_ness,remisdebrasalableness,target,s,2.0,2,s,h,remisdebrasalablenehs,1
+undelan,undelan,ppr,pp,,lan,un_de,,undelan,target,p,1.0,1,e,o,undolan,0
+inmadorure,inmadowure,prs,p,s,mador,in,ure,inmadorure,target,r,,4,r,w,inmadowure,1
+klovre,clovre,rs,,s,klov,,re,klovre,control,r,,0,k,c,clovre,1
+misgorw,misgorw,pr,p,,gorw,mis,,misgorw,target,p,0.0,2,s,h,mihgorw,0
+gesureless,pesureless,rss,,ss,ges,,ure_less,gesureless,target,r,,0,g,p,pesureless,1
+ramice,ramice,rs,,s,ram,,ice,ramice,target,r,,2,m,y,rayice,0
+trupable,trucable,rs,,s,trup,,able,trupable,target,r,,3,p,c,trucable,1
+undetrup,undetrup,ppr,pp,,trup,un_de,,undetrup,target,r,,0,t,b,undebrup,0
+limless,limless,rs,,s,lim,,less,limless,target,s,0.0,3,s,p,limlesp,0
+remisdetaubation,remipdetaubation,ppprs,ppp,s,taub,re_mis_de,ation,remisdetaubation,target,p,1.0,2,s,p,remipdetaubation,1
+ersidsegyfi,ersidsegypi,pprs,pp,s,seg,er_sid,yfi,ersidsegyfi,control,s,0.0,1,f,p,ersidsegypi,1
+ersimedrebtnem,elsimedrebtnem,ppprs,ppp,s,reb,er_sim_ed,tnem,ersimedrebtnem,control,p,0.0,1,r,l,elsimedrebtnem,1
+rebelofice,rebemofice,pprs,pp,s,lof,re_be,ice,rebelofice,target,r,,0,l,m,rebemofice,1
+ersimednefciluf,ersimednefcilef,ppprss,ppp,ss,nef,er_sim_ed,ci_luf,ersimednefciluf,control,s,1.0,1,u,e,ersimednefcilef,1
+reunmiskotfullyness,reunmiskotfullynoss,ppprsss,ppp,sss,kot,re_un_mis,ful_ly_ness,reunmiskotfullyness,target,s,2.0,1,e,o,reunmiskotfullynoss,1
+truply,trupyy,rs,,s,trup,,ly,truply,target,s,0.0,0,l,y,trupyy,1
+gorwically,forwically,rsss,,sss,gorw,,ic_al_ly,gorwically,target,r,,0,g,f,forwically,1
+deberallyness,debemallyness,prsss,p,sss,ber,de,al_ly_ness,deberallyness,target,r,,2,r,m,debemallyness,1
+nicolglufylssen,micolglufylssen,prsss,p,sss,colg,ni,luf_yl_ssen,nicolglufylssen,control,p,0.0,0,n,m,micolglufylssen,1
+nuedriekllufre,nuedriekllufre,pprss,pp,ss,riek,nu_ed,lluf_re,nuedriekllufre,control,p,1.0,0,e,o,nuodriekllufre,0
+dewelicfulness,diwelicfulness,prsss,p,sss,wel,de,ic_ful_ness,dewelicfulness,target,p,0.0,1,e,i,diwelicfulness,1
+inresiouslyness,inresiousnyness,prsss,p,sss,res,in,ious_ly_ness,inresiouslyness,target,s,1.0,0,l,n,inresiousnyness,1
+remisdeyatryness,remisdeyatryness,ppprss,ppp,ss,yat,re_mis_de,ry_ness,remisdeyatryness,target,r,,2,t,b,remisdeyabryness,0
+ernusimkob,ernusimkob,pppr,ppp,,kob,er_nu_sim,,ernusimkob,control,r,,0,k,p,ernusimpob,0
+simtekcilufssen,simtekcilufssen,prsss,p,sss,tek,sim,ci_luf_ssen,simtekcilufssen,control,p,0.0,2,m,n,sintekcilufssen,0
+undefenious,endefenious,pprs,pp,s,fen,un_de,ious,undefenious,target,p,0.0,0,u,e,endefenious,1
+undegorwallyness,undegorwallyness,pprsss,pp,sss,gorw,un_de,al_ly_ness,undegorwallyness,target,s,2.0,0,n,y,undegorwallyyess,0
+hirtful,hirpful,rs,,s,hirt,,ful,hirtful,target,r,,3,t,p,hirpful,1
+niteksuoiylssen,nitetsuoiylssen,prsss,p,sss,tek,ni,suoi_yl_ssen,niteksuoiylssen,control,r,,2,k,t,nitetsuoiylssen,1
+degesion,degesoon,prs,p,s,ges,de,ion,degesion,target,s,0.0,0,i,o,degesoon,1
+nunahcnoissel,nunahcnoissel,prss,p,ss,nahc,nu,noi_ssel,nunahcnoissel,control,p,0.0,1,u,i,ninahcnoissel,0
+remisdekotsomeness,remisdekitsomeness,ppprss,ppp,ss,kot,re_mis_de,some_ness,remisdekotsomeness,target,r,,1,o,i,remisdekitsomeness,1
+ersidkobylssen,eysidkobylssen,pprss,pp,ss,kob,er_sid,yl_ssen,ersidkobylssen,control,p,0.0,1,r,y,eysidkobylssen,1
+premonryness,premenryness,prss,p,ss,mon,pre,ry_ness,premonryness,target,r,,1,o,e,premenryness,1
+trup,prup,r,,,trup,,,trup,target,r,,0,t,p,prup,1
+nuednurdsuoi,nuednurdsuoi,pprs,pp,s,nurd,nu_ed,suoi,nuednurdsuoi,control,r,,0,n,l,nuedlurdsuoi,0
+dewemalable,deremalable,prss,p,ss,wem,de,al_able,dewemalable,target,r,,0,w,r,deremalable,1
+edsercila,edsercila,prss,p,ss,ser,ed,ci_la,edsercila,control,p,0.0,1,d,v,evsercila,0
+ernusimnahcevi,ernusimnahcevi,ppprs,ppp,s,nahc,er_nu_sim,evi,ernusimnahcevi,control,r,,2,h,t,ernusimnatcevi,0
+redissanlessness,redistanlessness,pprss,pp,ss,san,re_dis,less_ness,redissanlessness,target,r,,0,s,t,redistanlessness,1
+nas,nos,r,,,nas,,,nas,control,r,,1,a,o,nos,1
+undegertful,undegertful,pprs,pp,s,gert,un_de,ful,undegertful,target,p,1.0,1,e,i,undigertful,0
+erebwrog,erepwrog,ppr,pp,,wrog,er_eb,,erebwrog,control,p,1.0,1,b,p,erepwrog,1
+ersimedmak,ersimedmak,pppr,ppp,,mak,er_sim_ed,,ersimedmak,control,r,,1,a,o,ersimedmok,0
+ersimedtoklaylssen,orsimedtoklaylssen,ppprsss,ppp,sss,tok,er_sim_ed,la_yl_ssen,ersimedtoklaylssen,control,p,0.0,0,e,o,orsimedtoklaylssen,1
+intaubfullyness,entaubfullyness,prsss,p,sss,taub,in,ful_ly_ness,intaubfullyness,target,p,0.0,0,i,e,entaubfullyness,1
+reunmiszucive,reunmiszuceve,ppprs,ppp,s,zuc,re_un_mis,ive,reunmiszucive,target,s,0.0,0,i,e,reunmiszuceve,1
+ersimeddanluf,emsimeddanluf,ppprs,ppp,s,dan,er_sim_ed,luf,ersimeddanluf,control,p,0.0,1,r,m,emsimeddanluf,1
+inhirtious,inhirtious,prs,p,s,hirt,in,ious,inhirtious,target,r,,1,i,o,inhortious,0
+mar,mar,r,,,mar,,,mar,control,r,,1,a,i,mir,0
+ersimeddanssel,ersimeddalssel,ppprs,ppp,s,dan,er_sim_ed,ssel,ersimeddanssel,control,r,,2,n,l,ersimeddalssel,1
+reunmiszuc,reunmiszuh,pppr,ppp,,zuc,re_un_mis,,reunmiszuc,target,r,,2,c,h,reunmiszuh,1
+trihegaelba,trehegaelba,rss,,ss,trih,,ega_elba,trihegaelba,control,r,,2,i,e,trehegaelba,1
+redislofageable,redislofaseable,pprss,pp,ss,lof,re_dis,age_able,redislofageable,target,s,0.0,1,g,s,redislofaseable,1
+nuednal,nuednal,ppr,pp,,nal,nu_ed,,nuednal,control,p,1.0,1,d,s,nuesnal,0
+bralluf,bralluf,rs,,s,bral,,luf,bralluf,control,r,,0,b,t,tralluf,0
+ersimednomyrssen,ersimednomyrssen,ppprss,ppp,ss,nom,er_sim_ed,yr_ssen,ersimednomyrssen,control,r,,0,n,y,ersimedyomyrssen,0
+ersimedyawipihssselssen,ersimedyawipihssselssen,ppprsss,ppp,sss,yawi,er_sim_ed,pihs_ssel_ssen,ersimedyawipihssselssen,control,s,0.0,1,i,a,ersimedyawipahssselssen,0
+nuedbraylufylssen,nuedbraylufylssen,pprsss,pp,sss,bray,nu_ed,luf_yl_ssen,nuedbraylufylssen,control,r,,0,b,c,nuedcraylufylssen,0
+klovyti,klovyti,rs,,s,klov,,yti,klovyti,control,s,0.0,2,i,o,klovyto,0
+erebkub,arebkub,ppr,pp,,kub,er_eb,,erebkub,control,p,0.0,0,e,a,arebkub,1
+ernusimtalcsselssen,ernusimtalcsselssen,ppprss,ppp,ss,talc,er_nu_sim,ssel_ssen,ernusimtalcsselssen,control,r,,3,c,g,ernusimtalgsselssen,0
+mislarb,midlarb,pr,p,,larb,mis,,mislarb,target,p,0.0,2,s,d,midlarb,1
+nibrayciyl,nibmayciyl,prss,p,ss,bray,ni,ci_yl,nibrayciyl,control,r,,1,r,m,nibmayciyl,1
+edzeenyl,edzeenyl,prs,p,s,zeen,ed,yl,edzeenyl,control,r,,2,e,o,edzeonyl,0
+nudobegaelba,nedobegaelba,prss,p,ss,dob,nu,ega_elba,nudobegaelba,control,p,0.0,1,u,e,nedobegaelba,1
+rebeberify,rebeburify,pprs,pp,s,ber,re_be,ify,rebeberify,target,r,,1,e,u,rebeburify,1
+ersimednofl,ersimednofl,pppr,ppp,,nofl,er_sim_ed,,ersimednofl,control,r,,2,f,d,ersimednodl,0
+remisdeglocly,remisdiglocly,ppprs,ppp,s,gloc,re_mis_de,ly,remisdeglocly,target,p,2.0,1,e,i,remisdiglocly,1
+tekegaelba,tekegaelba,rss,,ss,tek,,ega_elba,tekegaelba,control,s,0.0,2,a,e,tekegeelba,0
+unkeirer,unkeirer,prs,p,s,keir,un,er,unkeirer,target,p,0.0,1,n,r,urkeirer,0
+simmilcilufssen,simmilcilufssen,prsss,p,sss,mil,sim,ci_luf_ssen,simmilcilufssen,control,r,,0,m,w,simwilcilufssen,0
+redisbrasful,radisbrasful,pprs,pp,s,bras,re_dis,ful,redisbrasful,target,p,0.0,1,e,a,radisbrasful,1
+intrupically,intrutically,prsss,p,sss,trup,in,ic_al_ly,intrupically,target,r,,3,p,t,intrutically,1
+redislimiveness,redislimaveness,pprss,pp,ss,lim,re_dis,ive_ness,redislimiveness,target,s,0.0,0,i,a,redislimaveness,1
+erpnuc,erpnuc,pr,p,,nuc,erp,,erpnuc,control,r,,0,n,w,erpwuc,0
+unclatageable,unclatageable,prss,p,ss,clat,un,age_able,unclatageable,target,p,0.0,0,u,o,onclatageable,0
+remisdevolkryness,remisdevolkryness,ppprss,ppp,ss,volk,re_mis_de,ry_ness,remisdevolkryness,target,r,,3,k,s,remisdevolsryness,0
+undeflonful,undeflonfol,pprs,pp,s,flon,un_de,ful,undeflonful,target,s,0.0,1,u,o,undeflonfol,1
+leyically,leyically,rsss,,sss,ley,,ic_al_ly,leyically,target,r,,0,l,n,neyically,0
+undetrupsomeness,undetrupsomeness,pprss,pp,ss,trup,un_de,some_ness,undetrupsomeness,target,r,,3,p,t,undetrutsomeness,0
+nunalyre,numalyre,prs,p,s,nal,nu,yre,nunalyre,control,r,,0,n,m,numalyre,1
+remisdelanicful,remisdelamicful,ppprss,ppp,ss,lan,re_mis_de,ic_ful,remisdelanicful,target,r,,2,n,m,remisdelamicful,1
+miscarpfullyness,niscarpfullyness,prsss,p,sss,carp,mis,ful_ly_ness,miscarpfullyness,target,p,0.0,0,m,n,niscarpfullyness,1
+nurdcilufssen,nurhcilufssen,rsss,,sss,nurd,,ci_luf_ssen,nurdcilufssen,control,r,,3,d,h,nurhcilufssen,1
+nuednurdpihsssel,nuednurdpitsssel,pprss,pp,ss,nurd,nu_ed,pihs_ssel,nuednurdpihsssel,control,s,0.0,2,h,t,nuednurdpitsssel,1
+ersidmewsselssen,ersidmewsselssen,pprss,pp,ss,mew,er_sid,ssel_ssen,ersidmewsselssen,control,p,1.0,1,i,e,ersedmewsselssen,0
+iwayically,iwayically,rsss,,sss,iway,,ic_al_ly,iwayically,target,s,2.0,0,l,y,iwayicalyy,0
+bodshiplessness,bodshiplessness,rsss,,sss,bod,,ship_less_ness,bodshiplessness,target,s,1.0,1,e,a,bodshiplassness,0
+erpnoflnoissel,enpnoflnoissel,prss,p,ss,nofl,erp,noi_ssel,erpnoflnoissel,control,p,0.0,1,r,n,enpnoflnoissel,1
+ersidbuatcilufssen,ersitbuatcilufssen,pprsss,pp,sss,buat,er_sid,ci_luf_ssen,ersidbuatcilufssen,control,p,1.0,2,d,t,ersitbuatcilufssen,1
+remisdechanicfulness,remisdechanicfulness,ppprsss,ppp,sss,chan,re_mis_de,ic_ful_ness,remisdechanicfulness,target,p,0.0,1,e,a,ramisdechanicfulness,0
+ersimedwrogyl,ersimedwrogyl,ppprs,ppp,s,wrog,er_sim_ed,yl,ersimedwrogyl,control,r,,0,w,r,ersimedrrogyl,0
+ersimedyelpihssselssen,ersimedyelpihssselssen,ppprsss,ppp,sss,yel,er_sim_ed,pihs_ssel_ssen,ersimedyelpihssselssen,control,r,,1,e,o,ersimedyolpihssselssen,0
+ersimedklov,ersimedklov,pppr,ppp,,klov,er_sim_ed,,ersimedklov,control,p,2.0,0,e,a,ersimadklov,0
+undrun,urdrun,pr,p,,drun,un,,undrun,target,p,0.0,1,n,r,urdrun,1
+inyarbfully,inyarbfulmy,prss,p,ss,yarb,in,ful_ly,inyarbfully,target,s,1.0,0,l,m,inyarbfulmy,1
+marcilayl,mircilayl,rsss,,sss,mar,,ci_la_yl,marcilayl,control,r,,1,a,i,mircilayl,1
+loficness,loficness,rss,,ss,lof,,ic_ness,loficness,target,s,1.0,0,n,y,loficyess,0
+declatshiplessness,declacshiplessness,prsss,p,sss,clat,de,ship_less_ness,declatshiplessness,target,r,,3,t,c,declacshiplessness,1
+nimillufyl,nimillufyl,prss,p,ss,mil,ni,luf_yl,nimillufyl,control,p,0.0,1,i,o,nomillufyl,0
+ersidsal,ersidsal,ppr,pp,,sal,er_sid,,ersidsal,control,p,0.0,0,e,a,arsidsal,0
+nuednurdecna,nuednurdecna,pprs,pp,s,nurd,nu_ed,ecna,nuednurdecna,control,r,,3,d,c,nuednurcecna,0
+remisdesanicful,remisdecanicful,ppprss,ppp,ss,san,re_mis_de,ic_ful,remisdesanicful,target,r,,0,s,c,remisdecanicful,1
+ersimedyel,ersimedlel,pppr,ppp,,yel,er_sim_ed,,ersimedyel,control,r,,0,y,l,ersimedlel,1
+erebtay,erebtay,ppr,pp,,tay,er_eb,,erebtay,control,p,0.0,0,e,u,urebtay,0
+glocfullyness,grocfullyness,rsss,,sss,gloc,,ful_ly_ness,glocfullyness,target,r,,1,l,r,grocfullyness,1
+remisdecarp,remisducarp,pppr,ppp,,carp,re_mis_de,,remisdecarp,target,p,2.0,1,e,u,remisducarp,1
+prachsi,pracssi,rs,,s,prac,,hsi,prachsi,control,s,0.0,0,h,s,pracssi,1
+drunshiplessness,drunshiplessness,rsss,,sss,drun,,ship_less_ness,drunshiplessness,target,r,,1,r,m,dmunshiplessness,0
+remisdekotary,remisdekotary,ppprs,ppp,s,kot,re_mis_de,ary,remisdekotary,target,s,0.0,2,y,l,remisdekotarl,0
+undelanicfulness,undelanicfulness,pprsss,pp,sss,lan,un_de,ic_ful_ness,undelanicfulness,target,r,,2,n,y,undelayicfulness,0
+mruzsuoiylssen,mruzsuoiylssen,rsss,,sss,mruz,,suoi_yl_ssen,mruzsuoiylssen,control,s,0.0,2,o,e,mruzsueiylssen,0
+nuedwertsuoiylssen,nuedlertsuoiylssen,pprsss,pp,sss,wert,nu_ed,suoi_yl_ssen,nuedwertsuoiylssen,control,r,,0,w,l,nuedlertsuoiylssen,1
+reunmisheedant,riunmisheedant,ppprs,ppp,s,heed,re_un_mis,ant,reunmisheedant,target,p,0.0,1,e,i,riunmisheedant,1
+nuyawi,nuyawi,pr,p,,yawi,nu,,nuyawi,control,r,,1,a,o,nuyowi,0
+trihpihssselssen,trihpihssselssen,rsss,,sss,trih,,pihs_ssel_ssen,trihpihssselssen,control,r,,1,r,m,tmihpihssselssen,0
+remisdelanette,remisdelanette,ppprs,ppp,s,lan,re_mis_de,ette,remisdelanette,target,s,0.0,1,t,s,remisdelaneste,0
+remisdecarpiveness,remisdecarpiveyess,ppprss,ppp,ss,carp,re_mis_de,ive_ness,remisdecarpiveness,target,s,1.0,0,n,y,remisdecarpiveyess,1
+debukfullyness,debukfullynegs,prsss,p,sss,buk,de,ful_ly_ness,debukfullyness,target,s,2.0,2,s,g,debukfullynegs,1
+remisderamshipless,remisderamshipless,ppprss,ppp,ss,ram,re_mis_de,ship_less,remisderamshipless,target,r,,2,m,n,remisderanshipless,0
+purtnoita,pumtnoita,rs,,s,purt,,noita,purtnoita,control,r,,2,r,m,pumtnoita,1
+remisdewelicfulness,remisdewelicfulness,ppprsss,ppp,sss,wel,re_mis_de,ic_ful_ness,remisdewelicfulness,target,p,1.0,1,i,a,remasdewelicfulness,0
+nisarbssen,yisarbssen,prs,p,s,sarb,ni,ssen,nisarbssen,control,p,0.0,0,n,y,yisarbssen,1
+volkically,volkically,rsss,,sss,volk,,ic_al_ly,volkically,target,s,2.0,1,y,m,volkicallm,0
+edrieklufylssen,edrioklufylssen,prsss,p,sss,riek,ed,luf_yl_ssen,edrieklufylssen,control,r,,2,e,o,edrioklufylssen,1
+marpihsssel,merpihsssel,rss,,ss,mar,,pihs_ssel,marpihsssel,control,r,,1,a,e,merpihsssel,1
+nuedpurtssen,nuedpurtssen,pprs,pp,s,purt,nu_ed,ssen,nuedpurtssen,control,p,0.0,0,n,w,wuedpurtssen,0
+ersimednas,ersimednas,pppr,ppp,,nas,er_sim_ed,,ersimednas,control,p,2.0,1,d,t,ersimetnas,0
+pregloc,pregloc,pr,p,,gloc,pre,,pregloc,target,r,,3,c,g,preglog,0
+ersimednasyrssen,ersimednasyrssen,ppprss,ppp,ss,nas,er_sim_ed,yr_ssen,ersimednasyrssen,control,p,2.0,0,e,a,ersimadnasyrssen,0
+nefyl,nafyl,rs,,s,nef,,yl,nefyl,control,r,,1,e,a,nafyl,1
+ramicly,ramicwy,rss,,ss,ram,,ic_ly,ramicly,target,s,1.0,0,l,w,ramicwy,1
+trewshiplessness,trewshislessness,rsss,,sss,trew,,ship_less_ness,trewshiplessness,target,s,0.0,3,p,s,trewshislessness,1
+tayeci,tameci,rs,,s,tay,,eci,tayeci,control,r,,2,y,m,tameci,1
+erploremosssen,erplonemosssen,prss,p,ss,lor,erp,emos_ssen,erploremosssen,control,r,,2,r,n,erplonemosssen,1
+nuednalylssen,nuednalylssen,pprss,pp,ss,nal,nu_ed,yl_ssen,nuednalylssen,control,s,1.0,0,s,v,nuednalylvsen,0
+nuwertemos,nuwertemos,prs,p,s,wert,nu,emos,nuwertemos,control,p,0.0,0,n,m,muwertemos,0
+rebelba,rebelga,rs,,s,reb,,elba,rebelba,control,s,0.0,2,b,g,rebelga,1
+ernusimwert,ernusiwwert,pppr,ppp,,wert,er_nu_sim,,ernusimwert,control,p,2.0,2,m,w,ernusiwwert,1
+purtcila,pultcila,rss,,ss,purt,,ci_la,purtcila,control,r,,2,r,l,pultcila,1
+kobssel,kobssel,rs,,s,kob,,ssel,kobssel,control,s,0.0,2,e,a,kobssal,0
+nubuat,nubeat,pr,p,,buat,nu,,nubuat,control,r,,1,u,e,nubeat,1
+unres,unros,pr,p,,res,un,,unres,target,r,,1,e,o,unros,1
+berlessness,berlessness,rss,,ss,ber,,less_ness,berlessness,target,s,1.0,2,s,p,berlessneps,0
+nuedfolecnessel,nuetfolecnessel,pprss,pp,ss,fol,nu_ed,ecne_ssel,nuedfolecnessel,control,p,1.0,1,d,t,nuetfolecnessel,1
+bodicfulness,bodicfulneds,rsss,,sss,bod,,ic_ful_ness,bodicfulness,target,s,2.0,2,s,d,bodicfulneds,1
+rebeyarb,rebeyarb,ppr,pp,,yarb,re_be,,rebeyarb,target,p,0.0,1,e,o,robeyarb,0
+remisdebrasicfulness,lemisdebrasicfulness,ppprsss,ppp,sss,bras,re_mis_de,ic_ful_ness,remisdebrasicfulness,target,p,0.0,0,r,l,lemisdebrasicfulness,1
+nuedsarbpihssselssen,nuedsarspihssselssen,pprsss,pp,sss,sarb,nu_ed,pihs_ssel_ssen,nuedsarbpihssselssen,control,r,,3,b,s,nuedsarspihssselssen,1
+ersimedkobpihs,ersimedkohpihs,ppprs,ppp,s,kob,er_sim_ed,pihs,ersimedkobpihs,control,r,,2,b,h,ersimedkohpihs,1
+undeberance,undeberance,pprs,pp,s,ber,un_de,ance,undeberance,target,s,0.0,1,n,y,undeberayce,0
+erebsalnai,erebsalnai,pprs,pp,s,sal,er_eb,nai,erebsalnai,control,s,0.0,0,n,r,erebsalrai,0
+rebeket,rebevet,ppr,pp,,ket,re_be,,rebeket,target,r,,0,k,v,rebevet,1
+ersimedpraccilufssen,ersimedpraccilufssen,ppprsss,ppp,sss,prac,er_sim_ed,ci_luf_ssen,ersimedpraccilufssen,control,s,2.0,3,n,m,ersimedpraccilufssem,0
+erebseg,elebseg,ppr,pp,,seg,er_eb,,erebseg,control,p,0.0,1,r,l,elebseg,1
+ersimedprac,ersimedprac,pppr,ppp,,prac,er_sim_ed,,ersimedprac,control,r,,0,p,t,ersimedtrac,0
+ersimedprac,ersimedprac,pppr,ppp,,prac,er_sim_ed,,ersimedprac,control,p,1.0,1,i,a,ersamedprac,0
+neezshiplessness,neezshislessness,rsss,,sss,neez,,ship_less_ness,neezshiplessness,target,s,0.0,3,p,s,neezshislessness,1
+remisdecunly,remisdecunlm,ppprs,ppp,s,cun,re_mis_de,ly,remisdecunly,target,s,0.0,1,y,m,remisdecunlm,1
+ersidnurdpihssselssen,ersidnurdpisssselssen,pprsss,pp,sss,nurd,er_sid,pihs_ssel_ssen,ersidnurdpihssselssen,control,s,0.0,2,h,s,ersidnurdpisssselssen,1
+tekcilayl,tekcilayl,rsss,,sss,tek,,ci_la_yl,tekcilayl,control,r,,1,e,o,tokcilayl,0
+wertnoita,wertnoito,rs,,s,wert,,noita,wertnoita,control,s,0.0,4,a,o,wertnoito,1
+undechan,undechan,ppr,pp,,chan,un_de,,undechan,target,r,,2,a,e,undechen,0
+follayl,follayl,rss,,ss,fol,,la_yl,follayl,control,r,,1,o,a,fallayl,0
+deehcilufssen,deehcilufssen,rsss,,sss,deeh,,ci_luf_ssen,deehcilufssen,control,r,,3,h,p,deepcilufssen,0
+rodameru,rodameru,rs,,s,rodam,,eru,rodameru,control,s,0.0,2,u,o,rodamero,0
+nuedyelevi,nuedyelevi,pprs,pp,s,yel,nu_ed,evi,nuedyelevi,control,s,0.0,1,v,h,nuedyelehi,0
+erpfoltnem,erpfoltnem,prs,p,s,fol,erp,tnem,erpfoltnem,control,p,0.0,1,r,m,empfoltnem,0
+makcilayl,rakcilayl,rsss,,sss,mak,,ci_la_yl,makcilayl,control,r,,0,m,r,rakcilayl,1
+ersidmaksuoiylssen,ersidmaksuoiylssen,pprsss,pp,sss,mak,er_sid,suoi_yl_ssen,ersidmaksuoiylssen,control,s,2.0,0,s,b,ersidmaksuoiylbsen,0
+undeyarbshiplessness,undeyarbshiplessness,pprsss,pp,sss,yarb,un_de,ship_less_ness,undeyarbshiplessness,target,r,,2,r,y,undeyaybshiplessness,0
+nuedlornoissel,ruedlornoissel,pprss,pp,ss,lor,nu_ed,noi_ssel,nuedlornoissel,control,p,0.0,0,n,r,ruedlornoissel,1
+innadfullyness,innadfullyness,prsss,p,sss,nad,in,ful_ly_ness,innadfullyness,target,r,,0,n,r,inradfullyness,0
+buatnoila,buatnoala,rss,,ss,buat,,noi_la,buatnoila,control,s,0.0,2,i,a,buatnoala,1
+erebsalevi,erebsalesi,pprs,pp,s,sal,er_eb,evi,erebsalevi,control,s,0.0,1,v,s,erebsalesi,1
+nisarb,nisarb,pr,p,,sarb,ni,,nisarb,control,p,0.0,1,i,e,nesarb,0
+erebpurt,erespurt,ppr,pp,,purt,er_eb,,erebpurt,control,p,1.0,1,b,s,erespurt,1
+remisdeket,remisdeket,pppr,ppp,,ket,re_mis_de,,remisdeket,target,r,,0,k,t,remisdetet,0
+inbericly,unbericly,prss,p,ss,ber,in,ic_ly,inbericly,target,p,0.0,0,i,u,unbericly,1
+nunom,nunom,pr,p,,nom,nu,,nunom,control,p,0.0,1,u,a,nanom,0
+edwrogpihsssel,edwrogbihsssel,prss,p,ss,wrog,ed,pihs_ssel,edwrogpihsssel,control,s,0.0,0,p,b,edwrogbihsssel,1
+inkot,inkot,pr,p,,kot,in,,inkot,target,r,,2,t,h,inkoh,0
+inrolfuller,inrolfulmer,prss,p,ss,rol,in,full_er,inrolfuller,target,s,0.0,3,l,m,inrolfulmer,1
+zuclyness,zuclyness,rss,,ss,zuc,,ly_ness,zuclyness,target,s,0.0,1,y,l,zucllness,0
+delan,delan,pr,p,,lan,de,,delan,target,r,,1,a,i,delin,0
+rebetrewish,rebetrewish,pprs,pp,s,trew,re_be,ish,rebetrewish,target,s,0.0,0,i,o,rebetrewosh,0
+remisdekeirively,remisdekeirively,ppprss,ppp,ss,keir,re_mis_de,ive_ly,remisdekeirively,target,p,1.0,2,s,p,remipdekeirively,0
+remisdegesshiplessness,remisdegesshislessness,ppprsss,ppp,sss,ges,re_mis_de,ship_less_ness,remisdegesshiplessness,target,s,0.0,3,p,s,remisdegesshislessness,1
+ersimedrebpihs,ersimedrevpihs,ppprs,ppp,s,reb,er_sim_ed,pihs,ersimedrebpihs,control,r,,2,b,v,ersimedrevpihs,1
+remisdenadless,remisdenadless,ppprs,ppp,s,nad,re_mis_de,less,remisdenadless,target,s,0.0,3,s,t,remisdenadlest,0
+simwertciluf,simwerhciluf,prss,p,ss,wert,sim,ci_luf,simwertciluf,control,r,,3,t,h,simwerhciluf,1
+ersidkubegaelba,ervidkubegaelba,pprss,pp,ss,kub,er_sid,ega_elba,ersidkubegaelba,control,p,1.0,0,s,v,ervidkubegaelba,1
+chanlessness,chanlessnoss,rss,,ss,chan,,less_ness,chanlessness,target,s,1.0,1,e,o,chanlessnoss,1
+rebelof,rebelof,ppr,pp,,lof,re_be,,rebelof,target,p,0.0,1,e,o,robelof,0
+rebelan,rebelen,ppr,pp,,lan,re_be,,rebelan,target,r,,1,a,e,rebelen,1
+niriekcilufssen,neriekcilufssen,prsss,p,sss,riek,ni,ci_luf_ssen,niriekcilufssen,control,p,0.0,1,i,e,neriekcilufssen,1
+nuedtsaw,nuedtsaw,ppr,pp,,tsaw,nu_ed,,nuedtsaw,control,r,,1,s,t,nuedttaw,0
+ersimedbralpihsssel,ersimedbralpihspsel,ppprss,ppp,ss,bral,er_sim_ed,pihs_ssel,ersimedbralpihsssel,control,s,1.0,0,s,p,ersimedbralpihspsel,1
+trewful,trewful,rs,,s,trew,,ful,trewful,target,s,0.0,0,f,t,trewtul,0
+rebegesly,rebepesly,pprs,pp,s,ges,re_be,ly,rebegesly,target,r,,0,g,p,rebepesly,1
+nad,nod,r,,,nad,,,nad,target,r,,1,a,o,nod,1
+remisdeglocette,remisdeglocecte,ppprs,ppp,s,gloc,re_mis_de,ette,remisdeglocette,target,s,0.0,1,t,c,remisdeglocecte,1
+undehirtly,undehirtjy,pprs,pp,s,hirt,un_de,ly,undehirtly,target,s,0.0,0,l,j,undehirtjy,1
+simbray,simbray,pr,p,,bray,sim,,simbray,control,p,0.0,2,m,r,sirbray,0
+incunious,incunious,prs,p,s,cun,in,ious,incunious,target,s,0.0,1,o,a,incuniaus,0
+intrewation,intrewation,prs,p,s,trew,in,ation,intrewation,target,r,,3,w,m,intremation,0
+unbrasshipless,anbrasshipless,prss,p,ss,bras,un,ship_less,unbrasshipless,target,p,0.0,0,u,a,anbrasshipless,1
+rebeley,rebeloy,ppr,pp,,ley,re_be,,rebeley,target,r,,1,e,o,rebeloy,1
+yawipihssselssen,yawipihshselssen,rsss,,sss,yawi,,pihs_ssel_ssen,yawipihssselssen,control,s,1.0,0,s,h,yawipihshselssen,1
+undegoluriouslyness,undegoluriouslyness,pprsss,pp,sss,golur,un_de,ious_ly_ness,undegoluriouslyness,target,s,2.0,0,n,m,undegoluriouslymess,0
+remisdemador,remisdemador,pppr,ppp,,mador,re_mis_de,,remisdemador,target,p,1.0,1,i,o,remosdemador,0
+ersimedsegre,ersimedsetre,ppprs,ppp,s,seg,er_sim_ed,re,ersimedsegre,control,r,,2,g,t,ersimedsetre,1
+bralcila,bralcila,rss,,ss,bral,,ci_la,bralcila,control,r,,2,a,i,brilcila,0
+ernusimbraylaelbassen,ernusimbrallaelbassen,ppprsss,ppp,sss,bray,er_nu_sim,la_elba_ssen,ernusimbraylaelbassen,control,r,,3,y,l,ernusimbrallaelbassen,1
+remisdenadional,remisdenadiomal,ppprss,ppp,ss,nad,re_mis_de,ion_al,remisdenadional,target,s,0.0,2,n,m,remisdenadiomal,1
+simbuatlufylssen,simbuatlufylssen,prsss,p,sss,buat,sim,luf_yl_ssen,simbuatlufylssen,control,p,0.0,0,s,t,timbuatlufylssen,0
+remisdeges,remisdedes,pppr,ppp,,ges,re_mis_de,,remisdeges,target,r,,0,g,d,remisdedes,1
+hirtical,hirtical,rss,,ss,hirt,,ic_al,hirtical,target,s,0.0,0,i,a,hirtacal,0
+ersimedtayluf,ersemedtayluf,ppprs,ppp,s,tay,er_sim_ed,luf,ersimedtayluf,control,p,1.0,1,i,e,ersemedtayluf,1
+toklaelba,toklaelba,rss,,ss,tok,,la_elba,toklaelba,control,s,0.0,1,a,o,tokloelba,0
+reunmisres,reunmosres,pppr,ppp,,res,re_un_mis,,reunmisres,target,p,2.0,1,i,o,reunmosres,1
+yelcila,yelcila,rss,,ss,yel,,ci_la,yelcila,control,s,0.0,0,c,s,yelsila,0
+dobylssen,dobylssan,rss,,ss,dob,,yl_ssen,dobylssen,control,s,1.0,2,e,a,dobylssan,1
+nuednalyl,nuednalyl,pprs,pp,s,nal,nu_ed,yl,nuednalyl,control,s,0.0,0,y,w,nuednalwl,0
+deyat,deyag,pr,p,,yat,de,,deyat,target,r,,2,t,g,deyag,1
+reunmisclat,reunmisclat,pppr,ppp,,clat,re_un_mis,,reunmisclat,target,r,,2,a,o,reunmisclot,0
+numruzylssen,nummuzylssen,prss,p,ss,mruz,nu,yl_ssen,numruzylssen,control,r,,1,r,m,nummuzylssen,1
+nuedseremosssen,nuedseremosssen,pprss,pp,ss,ser,nu_ed,emos_ssen,nuedseremosssen,control,s,0.0,1,m,r,nuedsererosssen,0
+insaner,insamer,prs,p,s,san,in,er,insaner,target,r,,2,n,m,insamer,1
+unlanalableness,unlawalableness,prsss,p,sss,lan,un,al_able_ness,unlanalableness,target,r,,2,n,w,unlawalableness,1
+remisdemeinageable,remosdemeinageable,ppprss,ppp,ss,mein,re_mis_de,age_able,remisdemeinageable,target,p,1.0,1,i,o,remosdemeinageable,1
+zucically,zucically,rsss,,sss,zuc,,ic_al_ly,zucically,target,r,,2,c,t,zutically,0
+niyel,niyel,pr,p,,yel,ni,,niyel,control,p,0.0,1,i,a,nayel,0
+undetrewshiplessness,urdetrewshiplessness,pprsss,pp,sss,trew,un_de,ship_less_ness,undetrewshiplessness,target,p,0.0,1,n,r,urdetrewshiplessness,1
+wemally,wamally,rss,,ss,wem,,al_ly,wemally,target,r,,1,e,a,wamally,1
+ersimeddobyl,ersimeddobyl,ppprs,ppp,s,dob,er_sim_ed,yl,ersimeddobyl,control,r,,0,d,h,ersimedhobyl,0
+edkobcilufssen,edkobcilufssen,prsss,p,sss,kob,ed,ci_luf_ssen,edkobcilufssen,control,s,1.0,1,u,e,edkobcilefssen,0
+deramary,deramary,prs,p,s,ram,de,ary,deramary,target,s,0.0,2,y,l,deramarl,0
+edniem,edriem,pr,p,,niem,ed,,edniem,control,r,,0,n,r,edriem,1
+ernusimtay,ernesimtay,pppr,ppp,,tay,er_nu_sim,,ernusimtay,control,p,1.0,1,u,e,ernesimtay,1
+kotation,botation,rs,,s,kot,,ation,kotation,target,r,,0,k,b,botation,1
+remisdelarbshiplessness,rumisdelarbshiplessness,ppprsss,ppp,sss,larb,re_mis_de,ship_less_ness,remisdelarbshiplessness,target,p,0.0,1,e,u,rumisdelarbshiplessness,1
+undebericfulness,undebericfulness,pprsss,pp,sss,ber,un_de,ic_ful_ness,undebericfulness,target,p,1.0,1,e,u,undubericfulness,0
+remisdegolurically,remisdegoluricalry,ppprsss,ppp,sss,golur,re_mis_de,ic_al_ly,remisdegolurically,target,s,2.0,0,l,r,remisdegoluricalry,1
+mishirtiveness,mishirtiveness,prss,p,ss,hirt,mis,ive_ness,mishirtiveness,target,s,0.0,1,v,t,mishirtiteness,0
+undeheedenceless,undeheedenceless,pprss,pp,ss,heed,un_de,ence_less,undeheedenceless,target,p,0.0,1,n,y,uydeheedenceless,0
+ersimedtaylaelbassen,ersimodtaylaelbassen,ppprsss,ppp,sss,tay,er_sim_ed,la_elba_ssen,ersimedtaylaelbassen,control,p,2.0,0,e,o,ersimodtaylaelbassen,1
+miszurmicful,miszurmicful,prss,p,ss,zurm,mis,ic_ful,miszurmicful,target,s,0.0,1,c,s,miszurmisful,0
+mistaubalableness,mistaubalableness,prsss,p,sss,taub,mis,al_able_ness,mistaubalableness,target,s,0.0,0,a,e,mistaubelableness,0
+ersimedrodampihssselssen,ersimedrodampihssselssen,ppprsss,ppp,sss,rodam,er_sim_ed,pihs_ssel_ssen,ersimedrodampihssselssen,control,p,0.0,0,e,o,orsimedrodampihssselssen,0
+nuednahclaelbassen,nuednahclaelbassen,pprsss,pp,sss,nahc,nu_ed,la_elba_ssen,nuednahclaelbassen,control,p,1.0,1,d,h,nuehnahclaelbassen,0
+monful,monful,rs,,s,mon,,ful,monful,target,r,,0,m,l,lonful,0
+inbokness,inbokness,prs,p,s,bok,in,ness,inbokness,target,s,0.0,2,s,g,inboknegs,0
+unberify,unberify,prs,p,s,ber,un,ify,unberify,target,s,0.0,0,i,o,unberofy,0
+bukation,bukation,rs,,s,buk,,ation,bukation,target,r,,0,b,f,fukation,0
+ernusimnalsuoiylssen,ernusimnolsuoiylssen,ppprsss,ppp,sss,nal,er_nu_sim,suoi_yl_ssen,ernusimnalsuoiylssen,control,r,,1,a,o,ernusimnolsuoiylssen,1
+ersimednucnoita,ersimecnucnoita,ppprs,ppp,s,nuc,er_sim_ed,noita,ersimednucnoita,control,p,2.0,1,d,c,ersimecnucnoita,1
+remisderes,remisderes,pppr,ppp,,res,re_mis_de,,remisderes,target,p,1.0,0,m,r,rerisderes,0
+makciluf,makceluf,rss,,ss,mak,,ci_luf,makciluf,control,s,0.0,1,i,e,makceluf,1
+edkobre,edkebre,prs,p,s,kob,ed,re,edkobre,control,r,,1,o,e,edkebre,1
+erpkub,erpkug,pr,p,,kub,erp,,erpkub,control,r,,2,b,g,erpkug,1
+dobcilayl,dobcilayl,rsss,,sss,dob,,ci_la_yl,dobcilayl,control,r,,2,b,h,dohcilayl,0
+eddan,esdan,pr,p,,dan,ed,,eddan,control,p,0.0,1,d,s,esdan,1
+unneezish,unneezish,prs,p,s,neez,un,ish,unneezish,target,s,0.0,2,h,c,unneezisc,0
+nunom,nunom,pr,p,,nom,nu,,nunom,control,r,,1,o,a,nunam,0
+mewecna,mewecna,rs,,s,mew,,ecna,mewecna,control,r,,2,w,m,memecna,0
+nuedpracluf,ruedpracluf,pprs,pp,s,prac,nu_ed,luf,nuedpracluf,control,p,0.0,0,n,r,ruedpracluf,1
+chanful,chanfuy,rs,,s,chan,,ful,chanful,target,s,0.0,2,l,y,chanfuy,1
+inber,inbar,pr,p,,ber,in,,inber,target,r,,1,e,a,inbar,1
+heedallyness,heedallyness,rsss,,sss,heed,,al_ly_ness,heedallyness,target,r,,3,d,p,heepallyness,0
+trupicfulness,trupicfulness,rsss,,sss,trup,,ic_ful_ness,trupicfulness,target,r,,2,u,o,tropicfulness,0
+rebewastallyness,rebewestallyness,pprsss,pp,sss,wast,re_be,al_ly_ness,rebewastallyness,target,r,,1,a,e,rebewestallyness,1
+erebnomyl,erebnomyl,pprs,pp,s,nom,er_eb,yl,erebnomyl,control,s,0.0,1,l,r,erebnomyr,0
+ersidtregevissen,ersidtregevissen,pprss,pp,ss,treg,er_sid,evi_ssen,ersidtregevissen,control,s,0.0,2,i,o,ersidtregevossen,0
+milerussel,milerussel,rss,,ss,mil,,eru_ssel,milerussel,control,r,,0,m,l,lilerussel,0
+nubraylaelbassen,nubraylaelbassen,prsss,p,sss,bray,nu,la_elba_ssen,nubraylaelbassen,control,p,0.0,0,n,l,lubraylaelbassen,0
+remisdezurm,rumisdezurm,pppr,ppp,,zurm,re_mis_de,,remisdezurm,target,p,0.0,1,e,u,rumisdezurm,1
+erppurtsuoiylssen,erpturtsuoiylssen,prsss,p,sss,purt,erp,suoi_yl_ssen,erppurtsuoiylssen,control,r,,0,p,t,erpturtsuoiylssen,1
+nuedloryfi,nuedloryfi,pprs,pp,s,lor,nu_ed,yfi,nuedloryfi,control,p,0.0,1,u,a,naedloryfi,0
+prewemionless,priwemionless,prss,p,ss,wem,pre,ion_less,prewemionless,target,p,0.0,2,e,i,priwemionless,1
+deber,deber,pr,p,,ber,de,,deber,target,r,,1,e,o,debor,0
+taycissen,taycissen,rss,,ss,tay,,ci_ssen,taycissen,control,r,,0,t,h,haycissen,0
+inwemful,inwemful,prs,p,s,wem,in,ful,inwemful,target,p,0.0,1,n,m,imwemful,0
+remisdelarbalable,remisdelarbalable,ppprss,ppp,ss,larb,re_mis_de,al_able,remisdelarbalable,target,r,,1,a,e,remisdelerbalable,0
+ernusimcolgci,ernusimcomgci,ppprs,ppp,s,colg,er_nu_sim,ci,ernusimcolgci,control,r,,2,l,m,ernusimcomgci,1
+undemadoricful,undemadoricful,pprss,pp,ss,mador,un_de,ic_ful,undemadoricful,target,p,1.0,1,e,o,undomadoricful,0
+rediszurmify,rediszurmify,pprs,pp,s,zurm,re_dis,ify,rediszurmify,target,r,,2,r,m,rediszummify,0
+delim,delim,pr,p,,lim,de,,delim,target,p,0.0,1,e,o,dolim,0
+misbodicfulness,misbodicfulness,prsss,p,sss,bod,mis,ic_ful_ness,misbodicfulness,target,s,1.0,1,u,a,misbodicfalness,0
+trupation,trupation,rs,,s,trup,,ation,trupation,target,r,,1,r,l,tlupation,0
+zucly,zucwy,rs,,s,zuc,,ly,zucly,target,s,0.0,0,l,w,zucwy,1
+rebelas,rebilas,ppr,pp,,las,re_be,,rebelas,target,p,1.0,1,e,i,rebilas,1
+inbokically,inbokically,prsss,p,sss,bok,in,ic_al_ly,inbokically,target,s,0.0,1,c,d,inbokidally,0
+wastiouslyness,wastiouslyness,rsss,,sss,wast,,ious_ly_ness,wastiouslyness,target,r,,2,s,t,wattiouslyness,0
+nuedlorylssen,nuedlorylssen,pprss,pp,ss,lor,nu_ed,yl_ssen,nuedlorylssen,control,p,1.0,1,d,h,nuehlorylssen,0
+reunmisrol,reunmisrol,pppr,ppp,,rol,re_un_mis,,reunmisrol,target,p,0.0,0,r,n,neunmisrol,0
+niserluf,neserluf,prs,p,s,ser,ni,luf,niserluf,control,p,0.0,1,i,e,neserluf,1
+lofical,loficar,rss,,ss,lof,,ic_al,lofical,target,s,1.0,1,l,r,loficar,1
+erebnucnoila,erebnucnoila,pprss,pp,ss,nuc,er_eb,noi_la,erebnucnoila,control,s,1.0,0,l,m,erebnucnoima,0
+prelarbsomeness,prelarbsomeness,prss,p,ss,larb,pre,some_ness,prelarbsomeness,target,p,0.0,2,e,o,prolarbsomeness,0
+ersimednascila,ersimednascila,ppprss,ppp,ss,nas,er_sim_ed,ci_la,ersimednascila,control,s,0.0,1,i,a,ersimednascala,0
+nusegpihsssel,nusegpihsssel,prss,p,ss,seg,nu,pihs_ssel,nusegpihsssel,control,p,0.0,0,n,r,rusegpihsssel,0
+ednef,ecnef,pr,p,,nef,ed,,ednef,control,p,0.0,1,d,c,ecnef,1
+reunmismeination,reunmismeination,ppprs,ppp,s,mein,re_un_mis,ation,reunmismeination,target,p,0.0,1,e,o,rounmismeination,0
+noflnoita,nofrnoita,rs,,s,nofl,,noita,noflnoita,control,r,,3,l,r,nofrnoita,1
+nuedfol,nuedfol,ppr,pp,,fol,nu_ed,,nuedfol,control,r,,2,l,m,nuedfom,0
+remisdelarber,remisdelarbar,ppprs,ppp,s,larb,re_mis_de,er,remisdelarber,target,s,0.0,0,e,a,remisdelarbar,1
+remisdelarbicness,remisdelirbicness,ppprss,ppp,ss,larb,re_mis_de,ic_ness,remisdelarbicness,target,r,,1,a,i,remisdelirbicness,1
+nuedkob,nuedkob,ppr,pp,,kob,nu_ed,,nuedkob,control,p,1.0,0,e,a,nuadkob,0
+bralsuoiylssen,bralsuoiylssen,rsss,,sss,bral,,suoi_yl_ssen,bralsuoiylssen,control,r,,1,r,l,blalsuoiylssen,0
+undebukence,undebukence,pprs,pp,s,buk,un_de,ence,undebukence,target,r,,2,k,h,undebuhence,0
+danyfi,danyfi,rs,,s,dan,,yfi,danyfi,control,r,,1,a,e,denyfi,0
+remisdegesary,remisdegevary,ppprs,ppp,s,ges,re_mis_de,ary,remisdegesary,target,r,,2,s,v,remisdegevary,1
+nuedmruzlaylssen,nuidmruzlaylssen,pprsss,pp,sss,mruz,nu_ed,la_yl_ssen,nuedmruzlaylssen,control,p,1.0,0,e,i,nuidmruzlaylssen,1
+misfen,misfen,pr,p,,fen,mis,,misfen,target,r,,0,f,h,mishen,0
+remisdezurmment,remisdezurrment,ppprs,ppp,s,zurm,re_mis_de,ment,remisdezurmment,target,r,,3,m,r,remisdezurrment,1
+remisdeyarb,remisdayarb,pppr,ppp,,yarb,re_mis_de,,remisdeyarb,target,p,2.0,1,e,a,remisdayarb,1
+remisdemeinical,remisdemeinical,ppprss,ppp,ss,mein,re_mis_de,ic_al,remisdemeinical,target,p,0.0,0,r,y,yemisdemeinical,0
+debokiouslyness,debohiouslyness,prsss,p,sss,bok,de,ious_ly_ness,debokiouslyness,target,r,,2,k,h,debohiouslyness,1
+tregluf,tregruf,rs,,s,treg,,luf,tregluf,control,s,0.0,0,l,r,tregruf,1
+inyatalableness,inyatalableness,prsss,p,sss,yat,in,al_able_ness,inyatalableness,target,r,,1,a,i,inyitalableness,0
+undekotness,undekotness,pprs,pp,s,kot,un_de,ness,undekotness,target,r,,0,k,s,undesotness,0
+rebeber,rebeber,ppr,pp,,ber,re_be,,rebeber,target,p,0.0,1,e,a,rabeber,0
+fenation,fenateon,rs,,s,fen,,ation,fenation,target,s,0.0,2,i,e,fenateon,1
+hirtfullyness,hirtfullyness,rsss,,sss,hirt,,ful_ly_ness,hirtfullyness,target,r,,3,t,s,hirsfullyness,0
+nuedneflaelbassen,nuedneflaelbassen,pprsss,pp,sss,nef,nu_ed,la_elba_ssen,nuedneflaelbassen,control,s,1.0,0,e,a,nuedneflaalbassen,0
+ernusimnahcnoita,ernusimnahcnoita,ppprs,ppp,s,nahc,er_nu_sim,noita,ernusimnahcnoita,control,p,0.0,1,r,m,emnusimnahcnoita,0
+deyatly,deyatly,prs,p,s,yat,de,ly,deyatly,target,s,0.0,0,l,r,deyatry,0
+unlof,unlof,pr,p,,lof,un,,unlof,target,p,0.0,0,u,o,onlof,0
+ersimedklovnoissel,ersimedkmovnoissel,ppprss,ppp,ss,klov,er_sim_ed,noi_ssel,ersimedklovnoissel,control,r,,1,l,m,ersimedkmovnoissel,1
+nuedmillufyl,nuedmellufyl,pprss,pp,ss,mil,nu_ed,luf_yl,nuedmillufyl,control,r,,1,i,e,nuedmellufyl,1
+ernusimriek,ernusimriep,pppr,ppp,,riek,er_nu_sim,,ernusimriek,control,r,,3,k,p,ernusimriep,1
+nuedtrihpihssselssen,muedtrihpihssselssen,pprsss,pp,sss,trih,nu_ed,pihs_ssel_ssen,nuedtrihpihssselssen,control,p,0.0,0,n,m,muedtrihpihssselssen,1
+demein,demein,pr,p,,mein,de,,demein,target,r,,3,n,l,demeil,0
+inchaniously,enchaniously,prss,p,ss,chan,in,ious_ly,inchaniously,target,p,0.0,0,i,e,enchaniously,1
+edmew,edmew,pr,p,,mew,ed,,edmew,control,r,,0,m,l,edlew,0
+undeber,undefer,ppr,pp,,ber,un_de,,undeber,target,r,,0,b,f,undefer,1
+welness,welnehs,rs,,s,wel,,ness,welness,target,s,0.0,2,s,h,welnehs,1
+undehirtless,undehirtless,pprs,pp,s,hirt,un_de,less,undehirtless,target,p,0.0,1,n,w,uwdehirtless,0
+undeheedlyness,undeheedlmness,pprss,pp,ss,heed,un_de,ly_ness,undeheedlyness,target,s,0.0,1,y,m,undeheedlmness,1
+erpwrognoissel,erpwrognoissal,prss,p,ss,wrog,erp,noi_ssel,erpwrognoissel,control,s,1.0,2,e,a,erpwrognoissal,1
+nitrihcilayl,nihrihcilayl,prsss,p,sss,trih,ni,ci_la_yl,nitrihcilayl,control,r,,0,t,h,nihrihcilayl,1
+yat,yat,r,,,yat,,,yat,target,r,,2,t,d,yad,0
+ersimedsalecnessel,ersimedsalecnessel,ppprss,ppp,ss,sal,er_sim_ed,ecne_ssel,ersimedsalecnessel,control,r,,2,l,m,ersimedsamecnessel,0
+nuedserssel,nuedsergsel,pprs,pp,s,ser,nu_ed,ssel,nuedserssel,control,s,0.0,0,s,g,nuedsergsel,1
+rebeyarbional,rebeyarbional,pprss,pp,ss,yarb,re_be,ion_al,rebeyarbional,target,r,,2,r,l,rebeyalbional,0
+rebeberically,rebeberically,pprsss,pp,sss,ber,re_be,ic_al_ly,rebeberically,target,s,1.0,0,a,i,rebebericilly,0
+mewciyl,mewciyl,rss,,ss,mew,,ci_yl,mewciyl,control,s,1.0,0,y,n,mewcinl,0
+preiway,preiway,pr,p,,iway,pre,,preiway,target,r,,1,w,m,preimay,0
+niyawisuoi,neyawisuoi,prs,p,s,yawi,ni,suoi,niyawisuoi,control,p,0.0,1,i,e,neyawisuoi,1
+ereblorlaylssen,eleblorlaylssen,pprsss,pp,sss,lor,er_eb,la_yl_ssen,ereblorlaylssen,control,p,0.0,1,r,l,eleblorlaylssen,1
+remisdeiwayalableness,remisdeiweyalableness,ppprsss,ppp,sss,iway,re_mis_de,al_able_ness,remisdeiwayalableness,target,r,,2,a,e,remisdeiweyalableness,1
+remisdecarpship,remisdecorpship,ppprs,ppp,s,carp,re_mis_de,ship,remisdecarpship,target,r,,1,a,o,remisdecorpship,1
+redisyat,retisyat,ppr,pp,,yat,re_dis,,redisyat,target,p,1.0,0,d,t,retisyat,1
+larbish,larbash,rs,,s,larb,,ish,larbish,target,s,0.0,0,i,a,larbash,1
+ersidtekevissen,ersidtebevissen,pprss,pp,ss,tek,er_sid,evi_ssen,ersidtekevissen,control,r,,2,k,b,ersidtebevissen,1
+debokshipless,debokshipless,prss,p,ss,bok,de,ship_less,debokshipless,target,p,0.0,0,d,s,sebokshipless,0
+preiwayiouslyness,preewayiouslyness,prsss,p,sss,iway,pre,ious_ly_ness,preiwayiouslyness,target,r,,0,i,e,preewayiouslyness,1
+rebeflonshipless,rebeflonshipless,pprss,pp,ss,flon,re_be,ship_less,rebeflonshipless,target,r,,2,o,e,rebeflenshipless,0
+edtrihlaylssen,edtrihlaylssen,prsss,p,sss,trih,ed,la_yl_ssen,edtrihlaylssen,control,s,1.0,1,l,w,edtrihlaywssen,0
+erpmruzyl,erpmruzyl,prs,p,s,mruz,erp,yl,erpmruzyl,control,p,0.0,1,r,m,empmruzyl,0
+ersimedbraypihssselssen,ersimedbmaypihssselssen,ppprsss,ppp,sss,bray,er_sim_ed,pihs_ssel_ssen,ersimedbraypihssselssen,control,r,,1,r,m,ersimedbmaypihssselssen,1
+edzeencilayl,edzeencilayr,prsss,p,sss,zeen,ed,ci_la_yl,edzeencilayl,control,s,2.0,1,l,r,edzeencilayr,1
+simmruzpihssselssen,simmruzpihssselssen,prsss,p,sss,mruz,sim,pihs_ssel_ssen,simmruzpihssselssen,control,p,0.0,2,m,w,siwmruzpihssselssen,0
+remisdezucly,remisdezocly,ppprs,ppp,s,zuc,re_mis_de,ly,remisdezucly,target,r,,1,u,o,remisdezocly,1
+ninurdcilayl,ninurdpilayl,prsss,p,sss,nurd,ni,ci_la_yl,ninurdcilayl,control,s,0.0,0,c,p,ninurdpilayl,1
+decunshiplessness,pecunshiplessness,prsss,p,sss,cun,de,ship_less_ness,decunshiplessness,target,p,0.0,0,d,p,pecunshiplessness,1
+serssen,serssen,rs,,s,ser,,ssen,serssen,control,r,,2,r,m,semssen,0
+ersimednalcissen,ersimednalcissen,ppprss,ppp,ss,nal,er_sim_ed,ci_ssen,ersimednalcissen,control,s,0.0,0,c,t,ersimednaltissen,0
+simtalclaelbassen,cimtalclaelbassen,prsss,p,sss,talc,sim,la_elba_ssen,simtalclaelbassen,control,p,0.0,0,s,c,cimtalclaelbassen,1
+ersimednas,ersimednas,pppr,ppp,,nas,er_sim_ed,,ersimednas,control,p,0.0,0,e,o,orsimednas,0
+ersimedyawilaelbassen,ersiredyawilaelbassen,ppprsss,ppp,sss,yawi,er_sim_ed,la_elba_ssen,ersimedyawilaelbassen,control,p,1.0,2,m,r,ersiredyawilaelbassen,1
+reunmisvolkiouslyness,reunmisvolkiouslyness,ppprsss,ppp,sss,volk,re_un_mis,ious_ly_ness,reunmisvolkiouslyness,target,r,,3,k,t,reunmisvoltiouslyness,0
+remisdegesical,remisdegisical,ppprss,ppp,ss,ges,re_mis_de,ic_al,remisdegesical,target,r,,1,e,i,remisdegisical,1
+ednalpihssselssen,ednalpihssselssun,prsss,p,sss,nal,ed,pihs_ssel_ssen,ednalpihssselssen,control,s,2.0,2,e,u,ednalpihssselssun,1
+brayyl,brayyl,rs,,s,bray,,yl,brayyl,control,s,0.0,0,y,w,braywl,0
+simtsawsuoiylssen,simtsawsuoiylssen,prsss,p,sss,tsaw,sim,suoi_yl_ssen,simtsawsuoiylssen,control,p,0.0,1,i,o,somtsawsuoiylssen,0
+colgciluf,colgcilud,rss,,ss,colg,,ci_luf,colgciluf,control,s,1.0,2,f,d,colgcilud,1
+edtalcpihssselssen,edtalcpihssdelssen,prsss,p,sss,talc,ed,pihs_ssel_ssen,edtalcpihssselssen,control,s,1.0,1,s,d,edtalcpihssdelssen,1
+edtokpihssselssen,idtokpihssselssen,prsss,p,sss,tok,ed,pihs_ssel_ssen,edtokpihssselssen,control,p,0.0,0,e,i,idtokpihssselssen,1
+deflonically,deflonically,prsss,p,sss,flon,de,ic_al_ly,deflonically,target,s,0.0,1,c,p,deflonipally,0
+degert,degert,pr,p,,gert,de,,degert,target,r,,3,t,s,degers,0
+redisroliveness,redisroliveness,pprss,pp,ss,rol,re_dis,ive_ness,redisroliveness,target,s,1.0,2,s,h,redisrolivenehs,0
+undekeir,undekeir,ppr,pp,,keir,un_de,,undekeir,target,p,1.0,0,d,t,untekeir,0
+undelofalableness,undolofalableness,pprsss,pp,sss,lof,un_de,al_able_ness,undelofalableness,target,p,1.0,1,e,o,undolofalableness,1
+nuednassuoiylssen,nuednassuoiylssen,pprsss,pp,sss,nas,nu_ed,suoi_yl_ssen,nuednassuoiylssen,control,p,1.0,0,e,u,nuudnassuoiylssen,0
+erebkobpihsssel,erebkobpihsssel,pprss,pp,ss,kob,er_eb,pihs_ssel,erebkobpihsssel,control,p,0.0,1,r,y,eyebkobpihsssel,0
+rebelim,rebelil,ppr,pp,,lim,re_be,,rebelim,target,r,,2,m,l,rebelil,1
+nuedrebcilayl,nuehrebcilayl,pprsss,pp,sss,reb,nu_ed,ci_la_yl,nuedrebcilayl,control,p,1.0,1,d,h,nuehrebcilayl,1
+remisdebukically,remisdebukically,ppprsss,ppp,sss,buk,re_mis_de,ic_al_ly,remisdebukically,target,s,0.0,0,i,a,remisdebukacally,0
+nuedmilcila,nuedmilcila,pprss,pp,ss,mil,nu_ed,ci_la,nuedmilcila,control,p,1.0,0,e,u,nuudmilcila,0
+erebnahcyfi,erebnahcyfi,pprs,pp,s,nahc,er_eb,yfi,erebnahcyfi,control,r,,0,n,r,erebrahcyfi,0
+reunmiswemation,reunmiswemation,ppprs,ppp,s,wem,re_un_mis,ation,reunmiswemation,target,s,0.0,0,a,i,reunmiswemition,0
+ernusimpracpihsssel,emnusimpracpihsssel,ppprss,ppp,ss,prac,er_nu_sim,pihs_ssel,ernusimpracpihsssel,control,p,0.0,1,r,m,emnusimpracpihsssel,1
+undezurmally,undezulmally,pprss,pp,ss,zurm,un_de,al_ly,undezurmally,target,r,,2,r,l,undezulmally,1
+undenadive,undenadeve,pprs,pp,s,nad,un_de,ive,undenadive,target,s,0.0,0,i,e,undenadeve,1
+leyicfulness,leyicfulness,rsss,,sss,ley,,ic_ful_ness,leyicfulness,target,r,,1,e,a,layicfulness,0
+gorwiously,gorwiously,rss,,ss,gorw,,ious_ly,gorwiously,target,r,,3,w,n,gorniously,0
+makylssen,makylssen,rss,,ss,mak,,yl_ssen,makylssen,control,s,1.0,2,e,o,makylsson,0
+rebewemshiplessness,rebewemshiplissness,pprsss,pp,sss,wem,re_be,ship_less_ness,rebewemshiplessness,target,s,1.0,1,e,i,rebewemshiplissness,1
+rebechanive,rebechanive,pprs,pp,s,chan,re_be,ive,rebechanive,target,r,,2,a,e,rebechenive,0
+dewel,dewel,pr,p,,wel,de,,dewel,target,r,,2,l,w,dewew,0
+ersidniemyr,ersidniemwr,pprs,pp,s,niem,er_sid,yr,ersidniemyr,control,s,0.0,0,y,w,ersidniemwr,1
+ersimedsalegaelba,ersimedsilegaelba,ppprss,ppp,ss,sal,er_sim_ed,ega_elba,ersimedsalegaelba,control,r,,1,a,i,ersimedsilegaelba,1
+bodional,bodiomal,rss,,ss,bod,,ion_al,bodional,target,s,0.0,2,n,m,bodiomal,1
+reunmisresic,reunmisrosic,ppprs,ppp,s,res,re_un_mis,ic,reunmisresic,target,r,,1,e,o,reunmisrosic,1
+ernusimwroglufylssen,ernusimwroglufjlssen,ppprsss,ppp,sss,wrog,er_nu_sim,luf_yl_ssen,ernusimwroglufylssen,control,s,1.0,0,y,j,ernusimwroglufjlssen,1
+lewluf,lewluf,rs,,s,lew,,luf,lewluf,control,s,0.0,2,f,t,lewlut,0
+deneez,deneez,pr,p,,neez,de,,deneez,target,r,,2,e,o,deneoz,0
+remisdebras,romisdebras,pppr,ppp,,bras,re_mis_de,,remisdebras,target,p,0.0,1,e,o,romisdebras,1
+simcolgevissen,simcolgevissen,prss,p,ss,colg,sim,evi_ssen,simcolgevissen,control,r,,1,o,e,simcelgevissen,0
+erebfolhsi,erebfolhsi,pprs,pp,s,fol,er_eb,hsi,erebfolhsi,control,s,0.0,1,s,d,erebfolhdi,0
+clatfullyness,clatfullyness,rsss,,sss,clat,,ful_ly_ness,clatfullyness,target,s,2.0,3,s,h,clatfullynesh,0
+nuednucssen,nuodnucssen,pprs,pp,s,nuc,nu_ed,ssen,nuednucssen,control,p,1.0,0,e,o,nuodnucssen,1
+rollyness,rollyness,rss,,ss,rol,,ly_ness,rollyness,target,s,0.0,0,l,w,rolwyness,0
+edmilciyl,edmilciyl,prss,p,ss,mil,ed,ci_yl,edmilciyl,control,p,0.0,1,d,h,ehmilciyl,0
+edrulognoi,ehrulognoi,prs,p,s,rulog,ed,noi,edrulognoi,control,p,0.0,1,d,h,ehrulognoi,1
+erebtalclaelba,eribtalclaelba,pprss,pp,ss,talc,er_eb,la_elba,erebtalclaelba,control,p,1.0,0,e,i,eribtalclaelba,1
+purtsselssen,purtsselssen,rss,,ss,purt,,ssel_ssen,purtsselssen,control,r,,3,t,c,purcsselssen,0
+reunmiszurmureless,reunmiszurmereless,ppprss,ppp,ss,zurm,re_un_mis,ure_less,reunmiszurmureless,target,s,0.0,0,u,e,reunmiszurmereless,1
+edriekpihssselssen,edrieksihssselssen,prsss,p,sss,riek,ed,pihs_ssel_ssen,edriekpihssselssen,control,s,0.0,0,p,s,edrieksihssselssen,1
+undeketfullyness,undekepfullyness,pprsss,pp,sss,ket,un_de,ful_ly_ness,undeketfullyness,target,r,,2,t,p,undekepfullyness,1
+precunional,precunioral,prss,p,ss,cun,pre,ion_al,precunional,target,s,0.0,2,n,r,precunioral,1
+cuzlaylssen,cuflaylssen,rsss,,sss,cuz,,la_yl_ssen,cuzlaylssen,control,r,,2,z,f,cuflaylssen,1
+simsalssen,simsalssen,prs,p,s,sal,sim,ssen,simsalssen,control,r,,2,l,m,simsamssen,0
+erpnalylssen,erpnarylssen,prss,p,ss,nal,erp,yl_ssen,erpnalylssen,control,r,,2,l,r,erpnarylssen,1
+ersimednalnoila,ersimednalnoila,ppprss,ppp,ss,nal,er_sim_ed,noi_la,ersimednalnoila,control,r,,2,l,n,ersimednannoila,0
+ersimednurd,ersimednurd,pppr,ppp,,nurd,er_sim_ed,,ersimednurd,control,p,0.0,0,e,o,orsimednurd,0
+undeiwayically,undeiwayically,pprsss,pp,sss,iway,un_de,ic_al_ly,undeiwayically,target,s,2.0,1,y,m,undeiwayicallm,0
+wert,werh,r,,,wert,,,wert,control,r,,3,t,h,werh,1
+rebegloc,ribegloc,ppr,pp,,gloc,re_be,,rebegloc,target,p,0.0,1,e,i,ribegloc,1
+nulorhsi,nulorhsi,prs,p,s,lor,nu,hsi,nulorhsi,control,s,0.0,1,s,t,nulorhti,0
+ersimedmruzette,ersimedmruzette,ppprs,ppp,s,mruz,er_sim_ed,ette,ersimedmruzette,control,s,0.0,3,e,a,ersimedmruzetta,0
+ernusimnef,ernusimref,pppr,ppp,,nef,er_nu_sim,,ernusimnef,control,r,,0,n,r,ernusimref,1
+ersimedserciluf,ersimedsersiluf,ppprss,ppp,ss,ser,er_sim_ed,ci_luf,ersimedserciluf,control,s,0.0,0,c,s,ersimedsersiluf,1
+remisdeley,remisdelay,pppr,ppp,,ley,re_mis_de,,remisdeley,target,r,,1,e,a,remisdelay,1
+wertluf,wertluf,rs,,s,wert,,luf,wertluf,control,s,0.0,1,u,e,wertlef,0
+drunure,drunure,rs,,s,drun,,ure,drunure,target,s,0.0,1,r,m,drunume,0
+remisdekotshiplessness,ramisdekotshiplessness,ppprsss,ppp,sss,kot,re_mis_de,ship_less_ness,remisdekotshiplessness,target,p,0.0,1,e,a,ramisdekotshiplessness,1
+miswelshiplessness,miswelshiplessness,prsss,p,sss,wel,mis,ship_less_ness,miswelshiplessness,target,r,,0,w,m,mismelshiplessness,0
+redismadorically,redismadorically,pprsss,pp,sss,mador,re_dis,ic_al_ly,redismadorically,target,r,,0,m,r,redisradorically,0
+ersimedlewcilayl,ersimedlewcilayl,ppprsss,ppp,sss,lew,er_sim_ed,ci_la_yl,ersimedlewcilayl,control,s,2.0,0,y,r,ersimedlewcilarl,0
+edkubyra,eskubyra,prs,p,s,kub,ed,yra,edkubyra,control,p,0.0,1,d,s,eskubyra,1
+ersimedbralyl,ersimedbralml,ppprs,ppp,s,bral,er_sim_ed,yl,ersimedbralyl,control,s,0.0,0,y,m,ersimedbralml,1
+nueddan,noeddan,ppr,pp,,dan,nu_ed,,nueddan,control,p,0.0,1,u,o,noeddan,1
+sarblufylssen,sarblufywssen,rsss,,sss,sarb,,luf_yl_ssen,sarblufylssen,control,s,1.0,1,l,w,sarblufywssen,1
+unchanless,unshanless,prs,p,s,chan,un,less,unchanless,target,r,,0,c,s,unshanless,1
+nomlaelbassen,romlaelbassen,rsss,,sss,nom,,la_elba_ssen,nomlaelbassen,control,r,,0,n,r,romlaelbassen,1
+madorally,madorally,rss,,ss,mador,,al_ly,madorally,target,r,,4,r,y,madoyally,0
+ersimednurdlaelba,ersimednurdlaelba,ppprss,ppp,ss,nurd,er_sim_ed,la_elba,ersimednurdlaelba,control,p,2.0,1,d,p,ersimepnurdlaelba,0
+nunofl,nunofl,pr,p,,nofl,nu,,nunofl,control,p,0.0,0,n,r,runofl,0
+remisdebuk,wemisdebuk,pppr,ppp,,buk,re_mis_de,,remisdebuk,target,p,0.0,0,r,w,wemisdebuk,1
+ernusimnomnoita,ernusimnomroita,ppprs,ppp,s,nom,er_nu_sim,noita,ernusimnomnoita,control,s,0.0,0,n,r,ernusimnomroita,1
+rebelimish,rebelimish,pprs,pp,s,lim,re_be,ish,rebelimish,target,r,,2,m,r,rebelirish,0
+bukicfulness,bukicfulwess,rsss,,sss,buk,,ic_ful_ness,bukicfulness,target,s,2.0,0,n,w,bukicfulwess,1
+ersimedsarbcissen,ersimedsarbcissen,ppprss,ppp,ss,sarb,er_sim_ed,ci_ssen,ersimedsarbcissen,control,r,,0,s,x,ersimedxarbcissen,0
+nuedsal,nuedsal,ppr,pp,,sal,nu_ed,,nuedsal,control,r,,2,l,w,nuedsaw,0
+ramenceless,ranenceless,rss,,ss,ram,,ence_less,ramenceless,target,r,,2,m,n,ranenceless,1
+ersidsalluf,ersidsalluf,pprs,pp,s,sal,er_sid,luf,ersidsalluf,control,r,,1,a,u,ersidsulluf,0
+ernusimneflaelbassen,ernusimneflaelbassen,ppprsss,ppp,sss,nef,er_nu_sim,la_elba_ssen,ernusimneflaelbassen,control,r,,2,f,t,ernusimnetlaelbassen,0
+niyellaelbassen,niyellaelbassen,prsss,p,sss,yel,ni,la_elba_ssen,niyellaelbassen,control,p,0.0,0,n,l,liyellaelbassen,0
+ersimednuceviyl,ersimednuceviyl,ppprss,ppp,ss,nuc,er_sim_ed,evi_yl,ersimednuceviyl,control,s,1.0,1,l,r,ersimednuceviyr,0
+erebtreg,erebtrag,ppr,pp,,treg,er_eb,,erebtreg,control,r,,2,e,a,erebtrag,1
+edsarb,edsamb,pr,p,,sarb,ed,,edsarb,control,r,,2,r,m,edsamb,1
+erprulogpihsssel,arprulogpihsssel,prss,p,ss,rulog,erp,pihs_ssel,erprulogpihsssel,control,p,0.0,0,e,a,arprulogpihsssel,1
+remisdewelshiplessness,remisdewelshiplessness,ppprsss,ppp,sss,wel,re_mis_de,ship_less_ness,remisdewelshiplessness,target,r,,1,e,a,remisdewalshiplessness,0
+berer,berer,rs,,s,ber,,er,berer,target,r,,0,b,t,terer,0
+remisdevolkenceless,remisdevolkenceless,ppprss,ppp,ss,volk,re_mis_de,ence_less,remisdevolkenceless,target,s,0.0,2,c,t,remisdevolkenteless,0
+debrasical,debrasical,prss,p,ss,bras,de,ic_al,debrasical,target,s,1.0,0,a,i,debrasicil,0
+nuedzeenciluf,nuedzeenciluf,pprss,pp,ss,zeen,nu_ed,ci_luf,nuedzeenciluf,control,s,1.0,2,f,c,nuedzeenciluc,0
+kobhsi,kobfsi,rs,,s,kob,,hsi,kobhsi,control,s,0.0,0,h,f,kobfsi,1
+niwerteru,niwerteru,prs,p,s,wert,ni,eru,niwerteru,control,r,,2,r,n,niwenteru,0
+nisegelba,nisehelba,prs,p,s,seg,ni,elba,nisegelba,control,r,,2,g,h,nisehelba,1
+zucation,zucatuon,rs,,s,zuc,,ation,zucation,target,s,0.0,2,i,u,zucatuon,1
+teksselssen,teksselssen,rss,,ss,tek,,ssel_ssen,teksselssen,control,s,0.0,1,s,h,tekshelssen,0
+wrogcilayl,wrogcilayl,rsss,,sss,wrog,,ci_la_yl,wrogcilayl,control,r,,1,r,m,wmogcilayl,0
+nal,nay,r,,,nal,,,nal,control,r,,2,l,y,nay,1
+bokance,bekance,rs,,s,bok,,ance,bokance,target,r,,1,o,e,bekance,1
+remisdesanic,remisdesanic,ppprs,ppp,s,san,re_mis_de,ic,remisdesanic,target,p,2.0,1,e,a,remisdasanic,0
+bod,bod,r,,,bod,,,bod,target,r,,1,o,a,bad,0
+ersimedcuzemosssen,ersimedguzemosssen,ppprss,ppp,ss,cuz,er_sim_ed,emos_ssen,ersimedcuzemosssen,control,r,,0,c,g,ersimedguzemosssen,1
+erptsawyrssen,erptsawyrssem,prss,p,ss,tsaw,erp,yr_ssen,erptsawyrssen,control,s,1.0,3,n,m,erptsawyrssem,1
+makeviyl,mapeviyl,rss,,ss,mak,,evi_yl,makeviyl,control,r,,2,k,p,mapeviyl,1
+rebeiwayshiplessness,rebiiwayshiplessness,pprsss,pp,sss,iway,re_be,ship_less_ness,rebeiwayshiplessness,target,p,1.0,1,e,i,rebiiwayshiplessness,1
+ersimedmilluf,ersimedmilluf,ppprs,ppp,s,mil,er_sim_ed,luf,ersimedmilluf,control,s,0.0,2,f,t,ersimedmillut,0
+rebekeir,rebekeor,ppr,pp,,keir,re_be,,rebekeir,target,r,,2,i,o,rebekeor,1
+ernusimnuc,errusimnuc,pppr,ppp,,nuc,er_nu_sim,,ernusimnuc,control,p,1.0,0,n,r,errusimnuc,1
+rebezurmfuller,rebezurmfuller,pprss,pp,ss,zurm,re_be,full_er,rebezurmfuller,target,r,,3,m,r,rebezurrfuller,0
+rebebrasful,rebebrasful,pprs,pp,s,bras,re_be,ful,rebebrasful,target,s,0.0,1,u,i,rebebrasfil,0
+rebeflonalable,rebeflonalable,pprss,pp,ss,flon,re_be,al_able,rebeflonalable,target,s,0.0,1,l,r,rebeflonarable,0
+unglociously,unglociously,prss,p,ss,gloc,un,ious_ly,unglociously,target,s,1.0,1,y,m,unglociouslm,0
+ersimedmaryra,ersimedmaryro,ppprs,ppp,s,mar,er_sim_ed,yra,ersimedmaryra,control,s,0.0,2,a,o,ersimedmaryro,1
+berageable,berageable,rss,,ss,ber,,age_able,berageable,target,r,,0,b,d,derageable,0
+underam,underom,ppr,pp,,ram,un_de,,underam,target,r,,1,a,o,underom,1
+undecunshipless,undecunshipless,pprss,pp,ss,cun,un_de,ship_less,undecunshipless,target,p,0.0,0,u,a,andecunshipless,0
+ersidwrog,ersidwmog,ppr,pp,,wrog,er_sid,,ersidwrog,control,r,,1,r,m,ersidwmog,1
+erebmak,erebmag,ppr,pp,,mak,er_eb,,erebmak,control,r,,2,k,g,erebmag,1
+redisramageable,redisramageable,pprss,pp,ss,ram,re_dis,age_able,redisramageable,target,r,,0,r,l,redislamageable,0
+undegolurfuller,undegolurfulrer,pprss,pp,ss,golur,un_de,full_er,undegolurfuller,target,s,0.0,3,l,r,undegolurfulrer,1
+zeensuoiylssen,zeensuoiylssen,rsss,,sss,zeen,,suoi_yl_ssen,zeensuoiylssen,control,r,,1,e,i,ziensuoiylssen,0
+ersimedpraccilufssen,ewsimedpraccilufssen,ppprsss,ppp,sss,prac,er_sim_ed,ci_luf_ssen,ersimedpraccilufssen,control,p,0.0,1,r,w,ewsimedpraccilufssen,1
+unneezionless,unmeezionless,prss,p,ss,neez,un,ion_less,unneezionless,target,r,,0,n,m,unmeezionless,1
+unramlyness,unramlyness,prss,p,ss,ram,un,ly_ness,unramlyness,target,p,0.0,1,n,r,urramlyness,0
+undeyat,undeyat,ppr,pp,,yat,un_de,,undeyat,target,r,,1,a,u,undeyut,0
+numarssel,numarssel,prs,p,s,mar,nu,ssel,numarssel,control,s,0.0,1,s,t,numarstel,0
+redisclat,redisclat,ppr,pp,,clat,re_dis,,redisclat,target,p,1.0,1,i,a,redasclat,0
+rieknoita,rieknoita,rs,,s,riek,,noita,rieknoita,control,r,,0,r,n,nieknoita,0
+remisdewastal,remisdewastal,ppprs,ppp,s,wast,re_mis_de,al,remisdewastal,target,p,0.0,1,e,a,ramisdewastal,0
+nuedtalcsuoiylssen,nuedtalcsuoiylssen,pprsss,pp,sss,talc,nu_ed,suoi_yl_ssen,nuedtalcsuoiylssen,control,r,,3,c,t,nuedtaltsuoiylssen,0
+reblaylssen,reblaylssen,rsss,,sss,reb,,la_yl_ssen,reblaylssen,control,r,,0,r,m,meblaylssen,0
+pregorwshipless,pregorwshipless,prss,p,ss,gorw,pre,ship_less,pregorwshipless,target,p,0.0,2,e,a,pragorwshipless,0
+niniemnoita,niniemnoita,prs,p,s,niem,ni,noita,niniemnoita,control,s,0.0,4,a,o,niniemnoito,0
+carpicful,cerpicful,rss,,ss,carp,,ic_ful,carpicful,target,r,,1,a,e,cerpicful,1
+nisersuoi,nusersuoi,prs,p,s,ser,ni,suoi,nisersuoi,control,p,0.0,1,i,u,nusersuoi,1
+carp,tarp,r,,,carp,,,carp,target,r,,0,c,t,tarp,1
+ersimednahc,ersimednahc,pppr,ppp,,nahc,er_sim_ed,,ersimednahc,control,r,,3,c,t,ersimednaht,0
+golurity,gomurity,rs,,s,golur,,ity,golurity,target,r,,2,l,m,gomurity,1
+sanureless,sinureless,rss,,ss,san,,ure_less,sanureless,target,r,,1,a,i,sinureless,1
+redisnadshiplessness,redisnadshiplessness,pprsss,pp,sss,nad,re_dis,ship_less_ness,redisnadshiplessness,target,r,,0,n,m,redismadshiplessness,0
+nuedtok,nuedtek,ppr,pp,,tok,nu_ed,,nuedtok,control,r,,1,o,e,nuedtek,1
+lofish,lofosh,rs,,s,lof,,ish,lofish,target,s,0.0,0,i,o,lofosh,1
+rebetrupian,rebetrupian,pprs,pp,s,trup,re_be,ian,rebetrupian,target,s,0.0,0,i,u,rebetrupuan,0
+simkobyrssen,simkobyrssen,prss,p,ss,kob,sim,yr_ssen,simkobyrssen,control,s,0.0,0,y,m,simkobmrssen,0
+nirebre,nirebre,prs,p,s,reb,ni,re,nirebre,control,s,0.0,0,r,w,nirebwe,0
+kamiouslyness,kamiouslynesd,rsss,,sss,kam,,ious_ly_ness,kamiouslyness,target,s,2.0,3,s,d,kamiouslynesd,1
+remisdeyatful,remisdeyatfum,ppprs,ppp,s,yat,re_mis_de,ful,remisdeyatful,target,s,0.0,2,l,m,remisdeyatfum,1
+ersimedseryrssen,ersimedseryrssen,ppprss,ppp,ss,ser,er_sim_ed,yr_ssen,ersimedseryrssen,control,r,,0,s,c,ersimedceryrssen,0
+reunmischanery,reunmischanery,ppprs,ppp,s,chan,re_un_mis,ery,reunmischanery,target,r,,3,n,r,reunmischarery,0
+lewcilufssen,lewcilufssen,rsss,,sss,lew,,ci_luf_ssen,lewcilufssen,control,s,2.0,1,s,h,lewcilufshen,0
+remisdebok,remisdebok,pppr,ppp,,bok,re_mis_de,,remisdebok,target,r,,1,o,i,remisdebik,0
+redisketlyness,redisketryness,pprss,pp,ss,ket,re_dis,ly_ness,redisketlyness,target,s,0.0,0,l,r,redisketryness,1
+ernusimriekerussel,ernusimriekerussel,ppprss,ppp,ss,riek,er_nu_sim,eru_ssel,ernusimriekerussel,control,p,1.0,1,u,i,ernisimriekerussel,0
+misbras,mikbras,pr,p,,bras,mis,,misbras,target,p,0.0,2,s,k,mikbras,1
+ersimedtok,ersimedtok,pppr,ppp,,tok,er_sim_ed,,ersimedtok,control,r,,0,t,g,ersimedgok,0
+deflonshiplessness,deflenshiplessness,prsss,p,sss,flon,de,ship_less_ness,deflonshiplessness,target,r,,2,o,e,deflenshiplessness,1
+nuednahcluf,nuednadcluf,pprs,pp,s,nahc,nu_ed,luf,nuednahcluf,control,r,,2,h,d,nuednadcluf,1
+ersimedpurtevissen,ersimefpurtevissen,ppprss,ppp,ss,purt,er_sim_ed,evi_ssen,ersimedpurtevissen,control,p,2.0,1,d,f,ersimefpurtevissen,1
+mislofryness,mislofryness,prss,p,ss,lof,mis,ry_ness,mislofryness,target,p,0.0,1,i,e,meslofryness,0
+edyawilaelba,odyawilaelba,prss,p,ss,yawi,ed,la_elba,edyawilaelba,control,p,0.0,0,e,o,odyawilaelba,1
+ersimeddanlaylssen,ersimedsanlaylssen,ppprsss,ppp,sss,dan,er_sim_ed,la_yl_ssen,ersimeddanlaylssen,control,r,,0,d,s,ersimedsanlaylssen,1
+undelof,undelof,ppr,pp,,lof,un_de,,undelof,target,p,0.0,1,n,r,urdelof,0
+redishirt,redistirt,ppr,pp,,hirt,re_dis,,redishirt,target,r,,0,h,t,redistirt,1
+nascilufssen,mascilufssen,rsss,,sss,nas,,ci_luf_ssen,nascilufssen,control,r,,0,n,m,mascilufssen,1
+ernusimnurdtna,ernusimnurdtna,ppprs,ppp,s,nurd,er_nu_sim,tna,ernusimnurdtna,control,p,0.0,0,e,a,arnusimnurdtna,0
+underol,underol,ppr,pp,,rol,un_de,,underol,target,p,0.0,0,u,o,onderol,0
+deberer,ceberer,prs,p,s,ber,de,er,deberer,target,p,0.0,0,d,c,ceberer,1
+bralpihssselssen,bralpihssseltsen,rsss,,sss,bral,,pihs_ssel_ssen,bralpihssselssen,control,s,2.0,0,s,t,bralpihssseltsen,1
+misnadicfulness,misnadicfulness,prsss,p,sss,nad,mis,ic_ful_ness,misnadicfulness,target,r,,2,d,t,misnaticfulness,0
+ersimedcuzlufylssen,ersimedcuzlufymssen,ppprsss,ppp,sss,cuz,er_sim_ed,luf_yl_ssen,ersimedcuzlufylssen,control,s,1.0,1,l,m,ersimedcuzlufymssen,1
+remisdenadiveness,remisdenadiveness,ppprss,ppp,ss,nad,re_mis_de,ive_ness,remisdenadiveness,target,s,1.0,0,n,m,remisdenadivemess,0
+ersimednef,ersimedneb,pppr,ppp,,nef,er_sim_ed,,ersimednef,control,r,,2,f,b,ersimedneb,1
+ednofl,esnofl,pr,p,,nofl,ed,,ednofl,control,p,0.0,1,d,s,esnofl,1
+ersimednascilufssen,ersimednasculufssen,ppprsss,ppp,sss,nas,er_sim_ed,ci_luf_ssen,ersimednascilufssen,control,s,0.0,1,i,u,ersimednasculufssen,1
+yawipihssselssen,yawipihssselssan,rsss,,sss,yawi,,pihs_ssel_ssen,yawipihssselssen,control,s,2.0,2,e,a,yawipihssselssan,1
+niyel,riyel,pr,p,,yel,ni,,niyel,control,p,0.0,0,n,r,riyel,1
+underamiouslyness,underamiouslmness,pprsss,pp,sss,ram,un_de,ious_ly_ness,underamiouslyness,target,s,1.0,1,y,m,underamiouslmness,1
+ersimedmew,elsimedmew,pppr,ppp,,mew,er_sim_ed,,ersimedmew,control,p,0.0,1,r,l,elsimedmew,1
+ersidnuc,ersidnuc,ppr,pp,,nuc,er_sid,,ersidnuc,control,p,0.0,1,r,m,emsidnuc,0
+prelanment,prelanment,prs,p,s,lan,pre,ment,prelanment,target,p,0.0,0,p,h,hrelanment,0
+undelanness,undelanness,pprs,pp,s,lan,un_de,ness,undelanness,target,s,0.0,0,n,m,undelanmess,0
+nuc,nuc,r,,,nuc,,,nuc,control,r,,1,u,i,nic,0
+brasness,brasness,rs,,s,bras,,ness,brasness,target,r,,2,a,i,brisness,0
+ernusimdobyre,ernusimdobyre,ppprs,ppp,s,dob,er_nu_sim,yre,ernusimdobyre,control,r,,2,b,h,ernusimdohyre,0
+undezucfully,undezucfulmy,pprss,pp,ss,zuc,un_de,ful_ly,undezucfully,target,s,1.0,0,l,m,undezucfulmy,1
+ersimedfolpihssselssen,ersimedfalpihssselssen,ppprsss,ppp,sss,fol,er_sim_ed,pihs_ssel_ssen,ersimedfolpihssselssen,control,r,,1,o,a,ersimedfalpihssselssen,1
+nuedlewecne,nuedlewicne,pprs,pp,s,lew,nu_ed,ecne,nuedlewecne,control,s,0.0,0,e,i,nuedlewicne,1
+ersimednahcevissen,ersimednahcevissen,ppprss,ppp,ss,nahc,er_sim_ed,evi_ssen,ersimednahcevissen,control,r,,3,c,d,ersimednahdevissen,0
+erebsalpihssselssen,erebsalpihssselssen,pprsss,pp,sss,sal,er_eb,pihs_ssel_ssen,erebsalpihssselssen,control,p,1.0,0,e,o,erobsalpihssselssen,0
+undebraslyness,undebraslyness,pprss,pp,ss,bras,un_de,ly_ness,undebraslyness,target,s,1.0,3,s,t,undebraslynest,0
+erpnahcnoila,erpnahcnoila,prss,p,ss,nahc,erp,noi_la,erpnahcnoila,control,p,0.0,0,e,i,irpnahcnoila,0
+ersimedlewcilayl,ersimedlewcilanl,ppprsss,ppp,sss,lew,er_sim_ed,ci_la_yl,ersimedlewcilayl,control,s,2.0,0,y,n,ersimedlewcilanl,1
+remisdeyat,remisdeyat,pppr,ppp,,yat,re_mis_de,,remisdeyat,target,p,1.0,1,i,e,remesdeyat,0
+remisdeclaticness,remisdeclaticness,ppprss,ppp,ss,clat,re_mis_de,ic_ness,remisdeclaticness,target,s,0.0,0,i,e,remisdeclatecness,0
+erebfolcilayl,orebfolcilayl,pprsss,pp,sss,fol,er_eb,ci_la_yl,erebfolcilayl,control,p,0.0,0,e,o,orebfolcilayl,1
+unmon,unmon,pr,p,,mon,un,,unmon,target,p,0.0,0,u,e,enmon,0
+nuedriekcilufssen,nuedriekcilufssen,pprsss,pp,sss,riek,nu_ed,ci_luf_ssen,nuedriekcilufssen,control,s,2.0,0,s,t,nuedriekciluftsen,0
+simzeen,simzeey,pr,p,,zeen,sim,,simzeen,control,r,,3,n,y,simzeey,1
+remisdelarb,remisdelarb,pppr,ppp,,larb,re_mis_de,,remisdelarb,target,r,,1,a,e,remisdelerb,0
+undekamify,undekamicy,pprs,pp,s,kam,un_de,ify,undekamify,target,s,0.0,1,f,c,undekamicy,1
+ersimedtalcette,ersimedtalcette,ppprs,ppp,s,talc,er_sim_ed,ette,ersimedtalcette,control,s,0.0,0,e,i,ersimedtalcitte,0
+ersimedrulog,ersimedmulog,pppr,ppp,,rulog,er_sim_ed,,ersimedrulog,control,r,,0,r,m,ersimedmulog,1
+ersiddobcilayl,ersiddobcilayl,pprsss,pp,sss,dob,er_sid,ci_la_yl,ersiddobcilayl,control,s,1.0,0,l,m,ersiddobcimayl,0
+inlimer,inlimir,prs,p,s,lim,in,er,inlimer,target,s,0.0,0,e,i,inlimir,1
+ersidyawipihssselssen,ersidyawipihssselssen,pprsss,pp,sss,yawi,er_sid,pihs_ssel_ssen,ersidyawipihssselssen,control,p,1.0,2,d,t,ersityawipihssselssen,0
+remisdesanship,remisdesonship,ppprs,ppp,s,san,re_mis_de,ship,remisdesanship,target,r,,1,a,o,remisdesonship,1
+remisdekeirshiplessness,rerisdekeirshiplessness,ppprsss,ppp,sss,keir,re_mis_de,ship_less_ness,remisdekeirshiplessness,target,p,1.0,0,m,r,rerisdekeirshiplessness,1
+intrewful,ontrewful,prs,p,s,trew,in,ful,intrewful,target,p,0.0,0,i,o,ontrewful,1
+nuednaslufyl,wuednaslufyl,pprss,pp,ss,nas,nu_ed,luf_yl,nuednaslufyl,control,p,0.0,0,n,w,wuednaslufyl,1
+nirulogluf,nerulogluf,prs,p,s,rulog,ni,luf,nirulogluf,control,p,0.0,1,i,e,nerulogluf,1
+ersimedwrogcila,irsimedwrogcila,ppprss,ppp,ss,wrog,er_sim_ed,ci_la,ersimedwrogcila,control,p,0.0,0,e,i,irsimedwrogcila,1
+gorwryness,gorwryness,rss,,ss,gorw,,ry_ness,gorwryness,target,r,,2,r,j,gojwryness,0
+remisdemeinicful,remisdemeinicful,ppprss,ppp,ss,mein,re_mis_de,ic_ful,remisdemeinicful,target,s,1.0,2,l,m,remisdemeinicfum,0
+trewically,trowically,rsss,,sss,trew,,ic_al_ly,trewically,target,r,,2,e,o,trowically,1
+nuedbray,nuidbray,ppr,pp,,bray,nu_ed,,nuedbray,control,p,1.0,0,e,i,nuidbray,1
+reunmisboklessness,reunmistoklessness,ppprss,ppp,ss,bok,re_un_mis,less_ness,reunmisboklessness,target,r,,0,b,t,reunmistoklessness,1
+bodify,bodify,rs,,s,bod,,ify,bodify,target,s,0.0,0,i,u,bodufy,0
+remisderesful,remisderesful,ppprs,ppp,s,res,re_mis_de,ful,remisderesful,target,p,1.0,2,s,c,remicderesful,0
+inwast,ilwast,pr,p,,wast,in,,inwast,target,p,0.0,1,n,l,ilwast,1
+undelofionless,undelohionless,pprss,pp,ss,lof,un_de,ion_less,undelofionless,target,r,,2,f,h,undelohionless,1
+undekamiouslyness,undekamiousllness,pprsss,pp,sss,kam,un_de,ious_ly_ness,undekamiouslyness,target,s,1.0,1,y,l,undekamiousllness,1
+remisdelofallyness,remisdelofallynass,ppprsss,ppp,sss,lof,re_mis_de,al_ly_ness,remisdelofallyness,target,s,2.0,1,e,a,remisdelofallynass,1
+undevolkicness,undevolkicness,pprss,pp,ss,volk,un_de,ic_ness,undevolkicness,target,s,1.0,0,n,l,undevolkicless,0
+simnef,simnef,pr,p,,nef,sim,,simnef,control,p,0.0,0,s,k,kimnef,0
+ersimedwertpihssselssen,ersimedwertpohssselssen,ppprsss,ppp,sss,wert,er_sim_ed,pihs_ssel_ssen,ersimedwertpihssselssen,control,s,0.0,1,i,o,ersimedwertpohssselssen,1
+nuyawire,nuyawire,prs,p,s,yawi,nu,re,nuyawire,control,r,,2,w,r,nuyarire,0
+nutrihyfi,nutrihyfi,prs,p,s,trih,nu,yfi,nutrihyfi,control,r,,0,t,c,nucrihyfi,0
+ersimedmil,ersimedmil,pppr,ppp,,mil,er_sim_ed,,ersimedmil,control,p,1.0,1,i,u,ersumedmil,0
+nuedwertsuoiylssen,nuedwertsuoiylssen,pprsss,pp,sss,wert,nu_ed,suoi_yl_ssen,nuedwertsuoiylssen,control,r,,2,r,w,nuedwewtsuoiylssen,0
+nofllufylssen,notllufylssen,rsss,,sss,nofl,,luf_yl_ssen,nofllufylssen,control,r,,2,f,t,notllufylssen,1
+redisglocness,redipglocness,pprs,pp,s,gloc,re_dis,ness,redisglocness,target,p,1.0,2,s,p,redipglocness,1
+erebfol,erebfol,ppr,pp,,fol,er_eb,,erebfol,control,p,1.0,0,e,a,erabfol,0
+redistrewiouslyness,ridistrewiouslyness,pprsss,pp,sss,trew,re_dis,ious_ly_ness,redistrewiouslyness,target,p,0.0,1,e,i,ridistrewiouslyness,1
+undevolk,undevalk,ppr,pp,,volk,un_de,,undevolk,target,r,,1,o,a,undevalk,1
+ersimedwrogcilayl,ersimedwrogtilayl,ppprsss,ppp,sss,wrog,er_sim_ed,ci_la_yl,ersimedwrogcilayl,control,s,0.0,0,c,t,ersimedwrogtilayl,1
+remisdegorwional,remisdehorwional,ppprss,ppp,ss,gorw,re_mis_de,ion_al,remisdegorwional,target,r,,0,g,h,remisdehorwional,1
+ernusimyelcilayl,ernusimmelcilayl,ppprsss,ppp,sss,yel,er_nu_sim,ci_la_yl,ernusimyelcilayl,control,r,,0,y,m,ernusimmelcilayl,1
+nuedmil,nuedmil,ppr,pp,,mil,nu_ed,,nuedmil,control,r,,0,m,l,nuedlil,0
+rebebukicfulness,rebebakicfulness,pprsss,pp,sss,buk,re_be,ic_ful_ness,rebebukicfulness,target,r,,1,u,a,rebebakicfulness,1
+erebrebllufre,eretrebllufre,pprss,pp,ss,reb,er_eb,lluf_re,erebrebllufre,control,p,1.0,1,b,t,eretrebllufre,1
+nuednomlayl,nuednomlayl,pprss,pp,ss,nom,nu_ed,la_yl,nuednomlayl,control,r,,2,m,w,nuednowlayl,0
+reunmiskam,riunmiskam,pppr,ppp,,kam,re_un_mis,,reunmiskam,target,p,0.0,1,e,i,riunmiskam,1
+undeyatical,undeyatital,pprss,pp,ss,yat,un_de,ic_al,undeyatical,target,s,0.0,1,c,t,undeyatital,1
+nuedmar,nuedmar,ppr,pp,,mar,nu_ed,,nuedmar,control,p,1.0,1,d,h,nuehmar,0
+nuedmruzcilufssen,nuedmruzcilufssen,pprsss,pp,sss,mruz,nu_ed,ci_luf_ssen,nuedmruzcilufssen,control,r,,3,z,h,nuedmruhcilufssen,0
+ersidbrayegaelba,ersidtrayegaelba,pprss,pp,ss,bray,er_sid,ega_elba,ersidbrayegaelba,control,r,,0,b,t,ersidtrayegaelba,1
+erebmew,eyebmew,ppr,pp,,mew,er_eb,,erebmew,control,p,0.0,1,r,y,eyebmew,1
+remisdemonryness,remisdemonryness,ppprss,ppp,ss,mon,re_mis_de,ry_ness,remisdemonryness,target,p,2.0,0,d,h,remishemonryness,0
+miswastness,miswastness,prs,p,s,wast,mis,ness,miswastness,target,s,0.0,2,s,h,miswastnehs,0
+simkob,simkob,pr,p,,kob,sim,,simkob,control,r,,1,o,a,simkab,0
+remisdekotalableness,remistekotalableness,ppprsss,ppp,sss,kot,re_mis_de,al_able_ness,remisdekotalableness,target,p,2.0,0,d,t,remistekotalableness,1
+remisdekeir,remisdekear,pppr,ppp,,keir,re_mis_de,,remisdekeir,target,r,,2,i,a,remisdekear,1
+underes,underes,ppr,pp,,res,un_de,,underes,target,r,,1,e,i,underis,0
+prehirtionless,prehirtionless,prss,p,ss,hirt,pre,ion_less,prehirtionless,target,p,0.0,0,p,t,trehirtionless,0
+erebsercilufssen,erebsercilufssen,pprsss,pp,sss,ser,er_eb,ci_luf_ssen,erebsercilufssen,control,p,1.0,0,e,a,erabsercilufssen,0
+detrupshiplessness,cetrupshiplessness,prsss,p,sss,trup,de,ship_less_ness,detrupshiplessness,target,p,0.0,0,d,c,cetrupshiplessness,1
+zeencilayl,zeencilayl,rsss,,sss,zeen,,ci_la_yl,zeencilayl,control,r,,0,z,v,veencilayl,0
+ersimedmewci,ersimedmewci,ppprs,ppp,s,mew,er_sim_ed,ci,ersimedmewci,control,p,2.0,0,e,i,ersimidmewci,0
+ersidtrihyfi,ersidtrihyfi,pprs,pp,s,trih,er_sid,yfi,ersidtrihyfi,control,p,1.0,0,s,t,ertidtrihyfi,0
+remisdenadfullyness,remisdenadfulryness,ppprsss,ppp,sss,nad,re_mis_de,ful_ly_ness,remisdenadfullyness,target,s,1.0,0,l,r,remisdenadfulryness,1
+nahcssen,nahcssen,rs,,s,nahc,,ssen,nahcssen,control,s,0.0,3,n,r,nahcsser,0
+follayl,follarl,rss,,ss,fol,,la_yl,follayl,control,s,1.0,0,y,r,follarl,1
+pregolur,tregolur,pr,p,,golur,pre,,pregolur,target,p,0.0,0,p,t,tregolur,1
+dedrun,dudrun,pr,p,,drun,de,,dedrun,target,p,0.0,1,e,u,dudrun,1
+unflonsome,unflonsome,prs,p,s,flon,un,some,unflonsome,target,s,0.0,1,o,e,unflonseme,0
+presanlessness,presanlessness,prss,p,ss,san,pre,less_ness,presanlessness,target,r,,2,n,m,presamlessness,0
+mruzyrssen,mruzyrscen,rss,,ss,mruz,,yr_ssen,mruzyrssen,control,s,1.0,1,s,c,mruzyrscen,1
+reunmisflonshipless,reunmisflolshipless,ppprss,ppp,ss,flon,re_un_mis,ship_less,reunmisflonshipless,target,r,,3,n,l,reunmisflolshipless,1
+nuedrodampihssselssen,nuedrodampihssselssem,pprsss,pp,sss,rodam,nu_ed,pihs_ssel_ssen,nuedrodampihssselssen,control,s,2.0,3,n,m,nuedrodampihssselssem,1
+preclatly,preclatly,prs,p,s,clat,pre,ly,preclatly,target,p,0.0,0,p,g,greclatly,0
+ersimedyawi,ersimedyawi,pppr,ppp,,yawi,er_sim_ed,,ersimedyawi,control,p,1.0,0,s,p,erpimedyawi,0
+yawisuoiyl,yawisuoiyl,rss,,ss,yawi,,suoi_yl,yawisuoiyl,control,r,,2,w,y,yayisuoiyl,0
+ersimeddeeh,ersimeddaeh,pppr,ppp,,deeh,er_sim_ed,,ersimeddeeh,control,r,,1,e,a,ersimeddaeh,1
+erebtalc,erebtanc,ppr,pp,,talc,er_eb,,erebtalc,control,r,,2,l,n,erebtanc,1
+erebnaleci,erebnaleci,pprs,pp,s,nal,er_eb,eci,erebnaleci,control,p,0.0,0,e,i,irebnaleci,0
+nitekllufre,nitekllufre,prss,p,ss,tek,ni,lluf_re,nitekllufre,control,p,0.0,0,n,l,litekllufre,0
+nitekre,nitekre,prs,p,s,tek,ni,re,nitekre,control,r,,0,t,v,nivekre,0
+undebukfully,undebukfully,pprss,pp,ss,buk,un_de,ful_ly,undebukfully,target,r,,0,b,k,undekukfully,0
+cuzcilayl,fuzcilayl,rsss,,sss,cuz,,ci_la_yl,cuzcilayl,control,r,,0,c,f,fuzcilayl,1
+drunshipless,drunshipless,rss,,ss,drun,,ship_less,drunshipless,target,r,,3,n,m,drumshipless,0
+nuednuccissen,nuednuccissen,pprss,pp,ss,nuc,nu_ed,ci_ssen,nuednuccissen,control,p,0.0,1,u,a,naednuccissen,0
+redisgertry,redihgertry,pprs,pp,s,gert,re_dis,ry,redisgertry,target,p,1.0,2,s,h,redihgertry,1
+unram,unrar,pr,p,,ram,un,,unram,target,r,,2,m,r,unrar,1
+preheedless,preheedless,prs,p,s,heed,pre,less,preheedless,target,s,0.0,3,s,d,preheedlesd,0
+wastively,wastively,rss,,ss,wast,,ive_ly,wastively,target,s,1.0,0,l,r,wastivery,0
+berallyness,berallyness,rsss,,sss,ber,,al_ly_ness,berallyness,target,s,1.0,1,y,m,berallmness,0
+reblufylssen,reblufylssen,rsss,,sss,reb,,luf_yl_ssen,reblufylssen,control,r,,0,r,w,weblufylssen,0
+erebniemhsi,erebniamhsi,pprs,pp,s,niem,er_eb,hsi,erebniemhsi,control,r,,2,e,a,erebniamhsi,1
+reunmismon,reunmismon,pppr,ppp,,mon,re_un_mis,,reunmismon,target,p,2.0,1,i,e,reunmesmon,0
+prereslyness,prereslyness,prss,p,ss,res,pre,ly_ness,prereslyness,target,s,0.0,0,l,n,preresnyness,0
+werterussel,wewterussel,rss,,ss,wert,,eru_ssel,werterussel,control,r,,2,r,w,wewterussel,1
+inzucable,inzupable,prs,p,s,zuc,in,able,inzucable,target,r,,2,c,p,inzupable,1
+nuedser,nuedsel,ppr,pp,,ser,nu_ed,,nuedser,control,r,,2,r,l,nuedsel,1
+erpnahc,erdnahc,pr,p,,nahc,erp,,erpnahc,control,p,0.0,2,p,d,erdnahc,1
+undedrunshiplessness,undedrundhiplessness,pprsss,pp,sss,drun,un_de,ship_less_ness,undedrunshiplessness,target,s,0.0,0,s,d,undedrundhiplessness,1
+rediscunicfulness,rediscunicfulness,pprsss,pp,sss,cun,re_dis,ic_ful_ness,rediscunicfulness,target,s,2.0,2,s,t,rediscunicfulnets,0
+ersimedcuzciluf,ersimedcuzciluf,ppprss,ppp,ss,cuz,er_sim_ed,ci_luf,ersimedcuzciluf,control,s,0.0,1,i,a,ersimedcuzcaluf,0
+redisneezionless,redisneezionless,pprss,pp,ss,neez,re_dis,ion_less,redisneezionless,target,s,1.0,2,s,f,redisneezionlefs,0
+drunageable,drunafeable,rss,,ss,drun,,age_able,drunageable,target,s,0.0,1,g,f,drunafeable,1
+remisdeflonfullyness,remisdeflonfullyness,ppprsss,ppp,sss,flon,re_mis_de,ful_ly_ness,remisdeflonfullyness,target,r,,0,f,t,remisdetlonfullyness,0
+edrulog,ehrulog,pr,p,,rulog,ed,,edrulog,control,p,0.0,1,d,h,ehrulog,1
+ersidlewssen,ersidlewssen,pprs,pp,s,lew,er_sid,ssen,ersidlewssen,control,p,1.0,2,d,p,ersiplewssen,0
+erebnurdluf,erebnurdwuf,pprs,pp,s,nurd,er_eb,luf,erebnurdluf,control,s,0.0,0,l,w,erebnurdwuf,1
+rulogluf,rulogluf,rs,,s,rulog,,luf,rulogluf,control,r,,1,u,e,relogluf,0
+remisdebod,memisdebod,pppr,ppp,,bod,re_mis_de,,remisdebod,target,p,0.0,0,r,m,memisdebod,1
+remisdeyationless,remisdeyationless,ppprss,ppp,ss,yat,re_mis_de,ion_less,remisdeyationless,target,s,1.0,2,s,h,remisdeyationlehs,0
+desanicly,desanicly,prss,p,ss,san,de,ic_ly,desanicly,target,p,0.0,1,e,u,dusanicly,0
+ersimedtayyra,ersimedtayyra,ppprs,ppp,s,tay,er_sim_ed,yra,ersimedtayyra,control,p,1.0,1,i,e,ersemedtayyra,0
+nasecnessel,nasecmessel,rss,,ss,nas,,ecne_ssel,nasecnessel,control,s,0.0,2,n,m,nasecmessel,1
+nurulogsuoiyl,nurulogsuoiyl,prss,p,ss,rulog,nu,suoi_yl,nurulogsuoiyl,control,s,1.0,1,l,w,nurulogsuoiyw,0
+edkobsuoiylssen,edkobsooiylssen,prsss,p,sss,kob,ed,suoi_yl_ssen,edkobsuoiylssen,control,s,0.0,1,u,o,edkobsooiylssen,1
+remisdewemful,remisdewemful,ppprs,ppp,s,wem,re_mis_de,ful,remisdewemful,target,s,0.0,2,l,r,remisdewemfur,0
+remisdeyatshiplessness,remisdiyatshiplessness,ppprsss,ppp,sss,yat,re_mis_de,ship_less_ness,remisdeyatshiplessness,target,p,2.0,1,e,i,remisdiyatshiplessness,1
+unmonery,unminery,prs,p,s,mon,un,ery,unmonery,target,r,,1,o,i,unminery,1
+redisleyify,rudisleyify,pprs,pp,s,ley,re_dis,ify,redisleyify,target,p,0.0,1,e,u,rudisleyify,1
+edwert,edwert,pr,p,,wert,ed,,edwert,control,r,,3,t,s,edwers,0
+erpmarsselssen,erhmarsselssen,prss,p,ss,mar,erp,ssel_ssen,erpmarsselssen,control,p,0.0,2,p,h,erhmarsselssen,1
+ersimedpraclaelbassen,irsimedpraclaelbassen,ppprsss,ppp,sss,prac,er_sim_ed,la_elba_ssen,ersimedpraclaelbassen,control,p,0.0,0,e,i,irsimedpraclaelbassen,1
+remisdefenallyness,remisdefenallyness,ppprsss,ppp,sss,fen,re_mis_de,al_ly_ness,remisdefenallyness,target,r,,0,f,h,remisdehenallyness,0
+eddob,eddob,pr,p,,dob,ed,,eddob,control,p,0.0,1,d,h,ehdob,0
+ersidtalcnoissel,ersidtalcnoissel,pprss,pp,ss,talc,er_sid,noi_ssel,ersidtalcnoissel,control,p,1.0,1,i,e,ersedtalcnoissel,0
+claticful,clatihful,rss,,ss,clat,,ic_ful,claticful,target,s,0.0,1,c,h,clatihful,1
+yawinoita,yawinoita,rs,,s,yawi,,noita,yawinoita,control,r,,3,i,u,yawunoita,0
+erpfolssel,erpfolpsel,prs,p,s,fol,erp,ssel,erpfolssel,control,s,0.0,0,s,p,erpfolpsel,1
+carpful,calpful,rs,,s,carp,,ful,carpful,target,r,,2,r,l,calpful,1
+ersimedser,orsimedser,pppr,ppp,,ser,er_sim_ed,,ersimedser,control,p,0.0,0,e,o,orsimedser,1
+ersimedtreglufylssen,ersimedtreglufylssen,ppprsss,ppp,sss,treg,er_sim_ed,luf_yl_ssen,ersimedtreglufylssen,control,s,0.0,2,f,s,ersimedtreglusylssen,0
+carpalable,carpalable,rss,,ss,carp,,al_able,carpalable,target,r,,2,r,y,caypalable,0
+chanical,chanical,rss,,ss,chan,,ic_al,chanical,target,s,0.0,1,c,s,chanisal,0
+madorically,madorically,rsss,,sss,mador,,ic_al_ly,madorically,target,r,,2,d,t,matorically,0
+wrog,wrog,r,,,wrog,,,wrog,control,r,,3,g,s,wros,0
+keiralableness,kiiralableness,rsss,,sss,keir,,al_able_ness,keiralableness,target,r,,1,e,i,kiiralableness,1
+ersimedsegnoila,ersimedsegnoila,ppprss,ppp,ss,seg,er_sim_ed,noi_la,ersimedsegnoila,control,s,0.0,1,o,e,ersimedsegneila,0
+remisdechan,memisdechan,pppr,ppp,,chan,re_mis_de,,remisdechan,target,p,0.0,0,r,m,memisdechan,1
+remisdeiway,remisdeiway,pppr,ppp,,iway,re_mis_de,,remisdeiway,target,p,0.0,1,e,o,romisdeiway,0
+remisdecun,remisdecun,pppr,ppp,,cun,re_mis_de,,remisdecun,target,r,,2,n,m,remisdecum,0
+ersimednalla,ersiyednalla,ppprs,ppp,s,nal,er_sim_ed,la,ersimednalla,control,p,1.0,2,m,y,ersiyednalla,1
+nisalsuoiyl,nisulsuoiyl,prss,p,ss,sal,ni,suoi_yl,nisalsuoiyl,control,r,,1,a,u,nisulsuoiyl,1
+erebnalpihssselssen,erebnalpahssselssen,pprsss,pp,sss,nal,er_eb,pihs_ssel_ssen,erebnalpihssselssen,control,s,0.0,1,i,a,erebnalpahssselssen,1
+remisdeleyically,remisdeneyically,ppprsss,ppp,sss,ley,re_mis_de,ic_al_ly,remisdeleyically,target,r,,0,l,n,remisdeneyically,1
+niklovlufylssen,miklovlufylssen,prsss,p,sss,klov,ni,luf_yl_ssen,niklovlufylssen,control,p,0.0,0,n,m,miklovlufylssen,1
+reunmiskamically,reunmeskamically,ppprsss,ppp,sss,kam,re_un_mis,ic_al_ly,reunmiskamically,target,p,2.0,1,i,e,reunmeskamically,1
+redisyarbshiplessness,redisyarbshiplessness,pprsss,pp,sss,yarb,re_dis,ship_less_ness,redisyarbshiplessness,target,p,1.0,0,d,h,rehisyarbshiplessness,0
+undezurmalableness,undezurmalableness,pprsss,pp,sss,zurm,un_de,al_able_ness,undezurmalableness,target,s,1.0,2,l,r,undezurmalabreness,0
+mismeiniouslyness,yismeiniouslyness,prsss,p,sss,mein,mis,ious_ly_ness,mismeiniouslyness,target,p,0.0,0,m,y,yismeiniouslyness,1
+undetrewiouslyness,undetrewiouslyness,pprsss,pp,sss,trew,un_de,ious_ly_ness,undetrewiouslyness,target,s,2.0,3,s,p,undetrewiouslynesp,0
+zuc,zoc,r,,,zuc,,,zuc,target,r,,1,u,o,zoc,1
+inkoticfulness,inkoticfulness,prsss,p,sss,kot,in,ic_ful_ness,inkoticfulness,target,s,2.0,3,s,h,inkoticfulnesh,0
+reunmismadoralableness,reunmismadoralablenest,ppprsss,ppp,sss,mador,re_un_mis,al_able_ness,reunmismadoralableness,target,s,2.0,3,s,t,reunmismadoralablenest,1
+taubiouslyness,taubiooslyness,rsss,,sss,taub,,ious_ly_ness,taubiouslyness,target,s,0.0,2,u,o,taubiooslyness,1
+reunmisbodalableness,reunmisbodalableness,ppprsss,ppp,sss,bod,re_un_mis,al_able_ness,reunmisbodalableness,target,s,2.0,3,s,d,reunmisbodalablenesd,0

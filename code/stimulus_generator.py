@@ -6,11 +6,12 @@ from utils import add_errors
 
 random.seed(1)
 filenumber = 1
+language = "english"
 
 df_design = pd.read_csv("../experimental_design/design.csv")
-df_prefix_pool = pd.read_csv("../experimental_design/prefixes.csv")
-df_root_pool = pd.read_csv("../experimental_design/roots.csv")
-df_suffix_pool = pd.read_csv("../experimental_design/suffixes.csv")
+df_prefix_pool = pd.read_csv("../experimental_design/prefixes_eng.csv")
+df_root_pool = pd.read_csv("../experimental_design/roots_eng.csv")
+df_suffix_pool = pd.read_csv("../experimental_design/suffixes_eng.csv")
 
 # ERRORRATE
 errorrate = 0.5
@@ -32,8 +33,8 @@ for i_row, row in df_design.iterrows(): # LOOP OVER CONDITIONS
                 target_words.append(d_target_word['word'])
                 
                 # ADD LETTER-SUBSTITUTION ERRORS
-                d_target_word = add_errors(d_target_word)
-                d_control_word = add_errors(d_control_word)
+                d_target_word = add_errors(d_target_word, language)
+                d_control_word = add_errors(d_control_word, language)
                 
                 ds_target_word.append(d_target_word)
                 ds_control_word.append(d_control_word)
