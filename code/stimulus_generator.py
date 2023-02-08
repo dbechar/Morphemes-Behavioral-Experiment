@@ -5,7 +5,7 @@ from utils import add_errors
 
 
 random.seed(1)
-filenumber = 1
+filenumber = 0
 
 # DEFINE LANGUAGE OF EXPERIMENT ("english" OR "french")
 language = "english" 
@@ -79,7 +79,7 @@ for i in range (0, len (df_complete)):
 
 df_complete.insert (0, "first", first)
 df_complete.insert (1, "second", second)
-df_complete = df_complete.sample (frac=1)
+df_complete = df_complete.sample (frac = 1)
 
 # SAVE TRIALLIST IN CORRECT FOLDER
 path = "../triallists/" + language + "/" + str(filenumber) + "triallist.csv"
