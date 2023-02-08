@@ -6,7 +6,9 @@ from utils import add_errors
 
 random.seed(1)
 filenumber = 10
-language = "english" # "english" or "french"
+
+# DEFINE LANGUAGE OF EXPERIMENT ("english" OR "french")
+language = "english" 
 
 df_design = pd.read_csv("../experimental_design/design.csv")
 df_prefix_pool = pd.read_csv ("../experimental_design/prefixes_" + language + ".csv")
@@ -14,9 +16,8 @@ df_root_pool = pd.read_csv("../experimental_design/roots_" + language + ".csv")
 df_suffix_pool = pd.read_csv("../experimental_design/suffixes_" + language + ".csv")
 
 
-# ERRORRATE
+# SET ERRORRATE
 errorrate = 0.5
-
 
 # GENERATE ALL TARGET WORDS
 target_words = []
@@ -59,7 +60,7 @@ df_control["is_error"] = [1] * int(errorrate * len(df_control)) +  [0] * int(err
 # CONCATE DATAFRAMES
 df_complete = pd.concat([df_target, df_control])
 
-#REMOVE LISTS
+# REMOVE LISTS
 df_complete["prefixes"] = df_complete["prefixes"].apply (lambda prefixes: "_".join(prefixes))
 df_complete["suffixes"] = df_complete["suffixes"].apply (lambda suffixes: "_".join(suffixes))
 
@@ -80,8 +81,8 @@ df_complete.insert (0, "first", first)
 df_complete.insert (1, "second", second)
 df_complete = df_complete.sample (frac=1)
 
-# SAVE TRIALLIST
-path = "../triallists/" + str(filenumber) + "triallist.csv"
+# SAVE TRIALLIST IN CORRECT FOLDER
+path = "../triallists/" + language + "/" + str(filenumber) + "triallist.csv"
 df_complete.to_csv (path, index = False)
 
 
