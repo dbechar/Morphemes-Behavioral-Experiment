@@ -5,7 +5,7 @@ from utils import add_errors
 
 
 random.seed(1)
-filenumber = 10
+filenumber = 1
 
 # DEFINE LANGUAGE OF EXPERIMENT ("english" OR "french")
 language = "english" 
