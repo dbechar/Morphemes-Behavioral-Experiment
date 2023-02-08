@@ -8,7 +8,7 @@ random.seed(1)
 filenumber = 0
 
 # DEFINE LANGUAGE OF EXPERIMENT ("english" OR "french")
-language = "english" 
+language = "french" 
 
 df_design = pd.read_csv("../experimental_design/design.csv")
 df_prefix_pool = pd.read_csv ("../experimental_design/prefixes_" + language + ".csv")
@@ -79,7 +79,7 @@ for i in range (0, len (df_complete)):
 
 df_complete.insert (0, "first", first)
 df_complete.insert (1, "second", second)
-df_complete = df_complete.sample (frac = 1)
+df_complete = df_complete.sample (frac = 0.05)
 
 # SAVE TRIALLIST IN CORRECT FOLDER
 path = "../triallists/" + language + "/" + str(filenumber) + "triallist.csv"
