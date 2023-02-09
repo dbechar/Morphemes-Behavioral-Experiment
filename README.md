@@ -21,11 +21,11 @@ In most cases, we opted to simply reverse every affix of the initial target word
 ### Other Languages
 We created a similar design for French. 
 ## French
-[roots](https://github.com/dbechar/Morphemes-Behavioral-Experiment/blob/main/experimental_design/prefixes_english.csv) and [suffixes](https://github.com/dbechar/Morphemes-Behavioral-Experiment/blob/main/experimental_design/roots_french.csv)
+[roots](https://github.com/dbechar/Morphemes-Behavioral-Experiment/blob/main/experimental_design/roots_french.csv)
 
-[prefixes](https://github.com/dbechar/Morphemes-Behavioral-Experiment/blob/main/experimental_design/prefixes_english.csv)
+[prefixes](https://github.com/dbechar/Morphemes-Behavioral-Experiment/blob/main/experimental_design/prefixes_french.csv)
 
-[suffixes](https://github.com/dbechar/Morphemes-Behavioral-Experiment/blob/main/experimental_design/suffixes_english.csv)
+[suffixes](https://github.com/dbechar/Morphemes-Behavioral-Experiment/blob/main/experimental_design/suffixes_french.csv)
 
 [real words (target)]
 
