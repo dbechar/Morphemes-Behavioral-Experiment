@@ -65,7 +65,7 @@ def sample_affixes(affix_pool, affix_template):
         return [''], ['']
     
     
-def add_errors(d,language):
+def add_errors(d, language):
     prefixes, root, suffixes = d['prefixes'].copy(), d['root'], d['suffixes'].copy()
     
     morphemes_template = list(set(list(d['condition']))) # Remove redundancy in control template (e.g., pprs -> prs or rss -> rs)
@@ -108,7 +108,6 @@ def add_errors(d,language):
 
 
 def substitute_letter(letter, language):
-    
     d_letter_groups = {}
     if language == "english":
         for group in ['vowels', 'consonants', 'sonorants']:
