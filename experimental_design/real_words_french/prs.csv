@@ -1,1 +1,7 @@
-﻿Word,Frequency,Root,Prefixes,Suffixes,Condition
+﻿Word,Frequency,Root,Prefix,Suffix,Condition
+inopérable,0.02,opér,[in],[able],prs
+inoubliable,5.07,oubli,[in],[able],prs
+innovateur,0.1,nova,[in],[teur],prs
+insatisfaction,0.21,satisfact,[in],[ion],prs
+superposable,0.1,pos,[super],[able],prs
+déconstruction,0.08,construct,[dé],[ion],prs

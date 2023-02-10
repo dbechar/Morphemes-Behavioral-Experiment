@@ -1,34 +1,40 @@
 """
-Created on Fri Feb  3 04:59:35 2023
+# Functions for real words: 
+xx    1. File with words from each condition
+xx    2. Load in all files
+    3. Chose a random number of words from these files (basis is the design sheet)
+    4. Pick monomorphemic control words that have the same length and frequency as target words
+xx    5. add errrors to target and control words (see utils)
 
-@author: yair
+# Date: 09.02.2023
+
+# Author: Deliane Bechar
+
 """
 import random
 
 
-def generate_random_word_and_control(condition, prefix_pool, root_pool, suffix_pool):
-    
+def choose_targets_and_control (condition, df_realwords):  
     d_target, d_control = {}, {}
-    d_target['condition'], d_control['condition'] = condition, condition
-    
-    n_prefixes, n_suffixes = condition.count('p'), condition.count('s')
-    d_target['prefix_template'], d_target['suffix_template'] = 'p' * n_prefixes, 's' * n_suffixes
-    d_control['prefix_template'], d_control['suffix_template'] = 'p' * n_prefixes, 's' * n_suffixes
-    
-    # GENERATE ROOT
-    d_target['root'], d_control['root'] = sample_root(root_pool)
-    
-    # GENERATE PREFIXES
-    d_target['prefixes'], d_control['prefixes'] = sample_affixes(prefix_pool,
-                                                           d_target['prefix_template'])
-    # GENERATE SUFFIXES
-    d_target['suffixes'], d_control['suffixes'] = sample_affixes(suffix_pool,
-                                                           d_target['suffix_template'])
-    
-    # COMBINE AFFIXES
-    d_target['word'] = ''.join(d_target['prefixes'] + [d_target['root']] + d_target['suffixes'])
-    d_control['word'] = ''.join(d_control['prefixes'] + [d_control['root']] + d_control['suffixes'])
-    
+
+    # TARGET
+    words, freq = df_realwords["Word"].loc[df_realwords["Condition"] == condition].tolist(), df_realwords["Frequency"].loc[df_realwords["Condition"] == condition].tolist()
+    d_target["word"] = random.choices(words, weights= freq)
+
+    index =  (df_realwords[df_realwords["Word"]== d_target["word"][0]].index)
+
+#    d_target["root"] = df_realwords["Root"][index[0]]
+#    d_target["prefix"] = df_realwords["Prefix"][index[0]]
+#    d_target["suffix"] = df_realwords["Suffix"][index[0]]
+
+    # CONTROL
+    # Randomly choose corersponding control word that same word length
+    words, freq = df_realwords["Word"].loc[df_realwords["Condition"] == "r"].tolist(), df_realwords["Frequency"].loc[df_realwords["Condition"] == "r"].tolist()
+    d_control["word"] = random.choices(words, weights= freq)
+#    while len(d_target["word"][0]) != len(d_control["word"][0]): 
+#        d_control["word"] = random.choices(words, weights= freq)
+
+    # Chose one random control word that has the same wordlength
     # ADD TYPE
     d_target["type"] = "target"
     d_control["type"] = "control"
@@ -36,34 +42,7 @@ def generate_random_word_and_control(condition, prefix_pool, root_pool, suffix_p
     return d_target, d_control
 
 
-def sample_root(root_pool):
-    root = random.choice(root_pool['Root'])
-    root_permuted = random.choice(root_pool['ReverseRoot'])
-    return root, root_permuted
 
-
-def sample_affixes(affix_pool, affix_template):
-    n_affixes = len(affix_template)
-    if n_affixes > 0:
-        df_pool = affix_pool[affix_pool['n_affixes']==n_affixes]
-        IX = random.choices(range(len(df_pool)),
-                            weights=df_pool['Frequency'],
-                            k=1)
-        
-        a1, a2, a3, _, _, _ = df_pool.iloc[IX].values[0]
-        if 'p' in affix_template:
-            affixes = [a3, a2, a1]
-        elif 's' in affix_template:
-            affixes = [a1, a2, a3]
-        affixes = affixes[:n_affixes]
-        if 's' in affix_template:
-            affixes = affixes[::-1]
-        affixes_reversed = [a[::-1] for a in affixes]
-        return affixes[::-1], affixes_reversed[::-1]
-    else:
-        return [''], ['']
-    
-    
 def add_errors(d, language):
     prefixes, root, suffixes = d['prefixes'].copy(), d['root'], d['suffixes'].copy()
     
