@@ -16,10 +16,13 @@ Since morphological complexity covaries with word length, as a control, we creat
 In most cases, we opted to simply reverse every affix of the initial target word and then add them back together (e.g., target word = unkamable turns into control = numakelba). Similarily to the target words, to create the error we randomly changed one letter. Here too, vowels replaced vowels, consonants replaced consonants, and sonorants replaced sonorants. Errors were divided equally across affixes. The morpheme and specific index within the morpheme in which the error occurs in is random but evens out across participants (see [verification code](https://github.com/dbechar/Morphemes-Behavioral-Experiment/blob/main/code/verification_code)).
 
 ### Experimental Design (real words/English)
-3-4 sentences, with links to the final pools.
+Participants are shown real words with a varying number of morphemes (all conditions included in this experiment can be found in [design]()). Our morphologically complex real words (target) were matched with real monomorphemic words (control) that have the same length and approximately the same frequency as the target word. To include the errors we used exactly the same procedure as in the pseudowords experiment. 
+<br><br> 
+The stimuli pool for the real words English experiment can be found in [english pool](https://github.com/dbechar/Morphemes-Behavioral-Experiment/tree/main/experimental_design/real_words_englisch).
 
 ### Other Languages
 We created a similar design for French. 
+
 ## French
 [roots](https://github.com/dbechar/Morphemes-Behavioral-Experiment/blob/main/experimental_design/roots_french.csv)
 
