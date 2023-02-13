@@ -26,6 +26,7 @@ def choose_targets_and_control (condition, df_realwords):
     d_target["suffixes"], d_control["suffixes"] = df_realwords["Suffix"][index[0]], ""
     d_target["condition"], d_control["condition"] = df_realwords ["Condition"][index[0]], "r"
     
+    
     return d_target, d_control
 
 

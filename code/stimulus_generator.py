@@ -5,15 +5,15 @@ from utils import add_errors
 
 
 random.seed(1)
-num_par = 1
+num_par = 50
 
 # DEFINE LANGUAGE OF EXPERIMENT ("english" OR "french")
-language = "french" 
+language = "english" 
 
 df_design = pd.read_csv("../experimental_design/design.csv")
-df_prefix_pool = pd.read_csv ("../experimental_design/prefixes_" + language + ".csv")
-df_root_pool = pd.read_csv("../experimental_design/roots_" + language + ".csv")
-df_suffix_pool = pd.read_csv("../experimental_design/suffixes_" + language + ".csv")
+df_prefix_pool = pd.read_csv ("../experimental_design/"+ language + "/prefixes_" + language + ".csv")
+df_root_pool = pd.read_csv("../experimental_design/" + language + "/roots_" + language + ".csv")
+df_suffix_pool = pd.read_csv("../experimental_design/" + language + "/suffixes_" + language + ".csv")
 
 
 # SET ERRORRATE
