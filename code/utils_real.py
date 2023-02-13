@@ -1,43 +1,30 @@
-"""
-# Functions for real words: 
-xx    1. File with words from each condition
-xx    2. Load in all files
-    3. Chose a random number of words from these files (basis is the design sheet)
-    4. Pick monomorphemic control words that have the same length and frequency as target words
-xx    5. add errrors to target and control words (see utils)
-
-# Date: 09.02.2023
-
-# Author: Deliane Bechar
-
-"""
 import random
 
 
 def choose_targets_and_control (condition, df_realwords):  
     d_target, d_control = {}, {}
-
+    
     # TARGET
     words, freq = df_realwords["Word"].loc[df_realwords["Condition"] == condition].tolist(), df_realwords["Frequency"].loc[df_realwords["Condition"] == condition].tolist()
     d_target["word"] = random.choices(words, weights= freq)
-
-    index =  (df_realwords[df_realwords["Word"]== d_target["word"][0]].index)
-
-#    d_target["root"] = df_realwords["Root"][index[0]]
-#    d_target["prefix"] = df_realwords["Prefix"][index[0]]
-#    d_target["suffix"] = df_realwords["Suffix"][index[0]]
-
+    
     # CONTROL
-    # Randomly choose corersponding control word that same word length
     words, freq = df_realwords["Word"].loc[df_realwords["Condition"] == "r"].tolist(), df_realwords["Frequency"].loc[df_realwords["Condition"] == "r"].tolist()
     d_control["word"] = random.choices(words, weights= freq)
-#    while len(d_target["word"][0]) != len(d_control["word"][0]): 
-#        d_control["word"] = random.choices(words, weights= freq)
-
-    # Chose one random control word that has the same wordlength
-    # ADD TYPE
-    d_target["type"] = "target"
-    d_control["type"] = "control"
+    
+    while len(d_target["word"][0]) != len(d_control["word"][0]): 
+        d_control["word"] = random.choices(words, weights= freq)
+    
+    # ADD CONTROL FOR FREQUENCY!
+    
+    # ADD TYPE, PREFIX, ROOT, AND SUFFIX
+    d_target["type"], d_control["type"] = "target", "control"
+    
+    index =  (df_realwords[df_realwords["Word"]== d_target["word"][0]].index)
+    d_target["root"], d_control["root"] = df_realwords["Root"][index[0]], "".join(d_control["word"])
+    d_target["prefixes"], d_control["prefixes"] = df_realwords["Prefix"][index[0]], ""
+    d_target["suffixes"], d_control["suffixes"] = df_realwords["Suffix"][index[0]], ""
+    d_target["condition"], d_control["condition"] = df_realwords ["Condition"][index[0]], "r"
     
     return d_target, d_control
 

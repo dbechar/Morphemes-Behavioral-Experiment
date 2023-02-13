@@ -1,7 +1,7 @@
 ﻿Word,Frequency,Root,Prefix,Suffix,Condition
-racisme,2.09,rac,,[ism],rs
-stagiaire,3.29,stag,,[iaire],rs
-tubulence,1.45,tubul,,[ence],rs
-portable,32.83,port,,[able],rs
-sommaire,0.67,somm,,[aire],rs
-vulgairement,0.4,vulgaire,,[ment],rs
+racisme,2.09,rac,,ism,rs
+stagiaire,3.29,stag,,iaire,rs
+tubulence,1.45,tubul,,ence,rs
+portable,32.83,port,,able,rs
+sommaire,0.67,somm,,aire,rs
+vulgairement,0.4,vulgaire,,ment,rs

@@ -30,8 +30,7 @@ def generate_random_word_and_control(condition, prefix_pool, root_pool, suffix_p
     d_control['word'] = ''.join(d_control['prefixes'] + [d_control['root']] + d_control['suffixes'])
     
     # ADD TYPE
-    d_target["type"] = "target"
-    d_control["type"] = "control"
+    d_target["type"], d_control["type"] = "target", "control"
     
     return d_target, d_control
 
