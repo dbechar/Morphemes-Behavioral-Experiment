@@ -13,8 +13,8 @@ num_par = 1
 language = "french" 
 
 # READ IN STIMULI FILES
-df_design = pd.read_csv("../experimental_design/" + language + "_real/design.csv") 
-path = "../experimental_design/real_words_" + language 
+df_design = pd.read_csv("../experimental_design/" + language + "_design.csv") 
+path = "../experimental_design/" + language + "_real"
 csv_files = glob.glob(path + "/*.csv")
 realword_files = (pd.read_csv (file) for file in csv_files) 
 df_realwords = pd.concat(realword_files, ignore_index = True) 
