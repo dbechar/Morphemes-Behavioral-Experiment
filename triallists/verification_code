@@ -1,29 +1,29 @@
 Number of trials per condition
 
-ppr        2400
-pprsss     2400
-rss        2400
-prs        2400
-ppprs      2400
-rs         2400
 ppprss     2400
-prss       2400
+prs        2400
 pprs       2400
-pr         2400
-pprss      2400
-pppr       2400
-prsss      2400
-ppprsss    2400
+pprsss     2400
 rsss       2400
+pr         2400
+ppprs      2400
+prss       2400
+rss        2400
+rs         2400
+pppr       2400
+ppprsss    2400
+ppr        2400
+pprss      2400
+prsss      2400
 r           600
 Name: condition, dtype: int64
 
 
 Error in which morpheme (overall)
 
-r    15057
-s    10796
-p    10747
+r    14967
+s    10898
+p    10735
 Name: error_to_which_morpheme, dtype: int64
 
 
@@ -31,131 +31,171 @@ Name: error_to_which_morpheme, dtype: int64
  Error in which morpheme (for each condition)
 
 condition  error_to_which_morpheme
-pppr       p                          1206
-           r                          1194
-ppprs      p                           813
-           r                           796
-           s                           791
-ppprss     s                           835
-           p                           811
-           r                           754
-ppprsss    r                           823
-           p                           809
-           s                           768
-ppr        r                          1213
-           p                          1187
-pprs       s                           832
+pppr       p                          1205
+           r                          1195
+ppprs      s                           817
+           r                           815
+           p                           768
+ppprss     s                           818
+           r                           798
            p                           784
-           r                           784
-pprss      s                           826
-           r                           814
-           p                           760
-pprsss     s                           828
-           p                           786
-           r                           786
-pr         r                          1201
-           p                          1199
-prs        r                           825
-           s                           821
-           p                           754
-prss       r                           830
-           p                           811
-           s                           759
-prsss      p                           827
-           r                           790
-           s                           783
+ppprsss    p                           822
+           r                           789
+           s                           789
+ppr        r                          1203
+           p                          1197
+pprs       s                           836
+           p                           783
+           r                           781
+pprss      s                           807
+           r                           803
+           p                           790
+pprsss     r                           809
+           s                           800
+           p                           791
+pr         r                          1206
+           p                          1194
+prs        s                           815
+           r                           804
+           p                           781
+prss       p                           824
+           s                           809
+           r                           767
+prsss      s                           825
+           p                           796
+           r                           779
 r          r                           600
-rs         r                          1233
-           s                          1167
-rss        s                          1201
-           r                          1199
-rsss       r                          1215
-           s                          1185
+rs         r                          1212
+           s                          1188
+rss        r                          1205
+           s                          1195
+rsss       r                          1201
+           s                          1199
 Name: error_to_which_morpheme, dtype: int64
 
 
 Index of error within morpheme (overall)
 
-0    13285
-1    13250
-2     6547
-3     3256
-4      262
+1    13420
+0    13243
+2     6416
+3     3240
+4      281
 Name: i_within_morpheme, dtype: int64
 
 
 Index of error within morpheme (for each condition)
 
 condition  i_within_morpheme
-pppr       1                    861
-           0                    823
-           2                    505
-           3                    211
-ppprs      0                    875
+pppr       1                    887
+           0                    844
+           2                    449
+           3                    220
+ppprs      0                    870
                                ... 
-rss        4                     27
-rsss       1                    891
-           0                    835
-           2                    417
-           3                    257
+rss        4                     22
+rsss       1                    893
+           0                    829
+           2                    404
+           3                    274
 Name: i_within_morpheme, Length: 74, dtype: int64
 
 
 If error in prefix, then in which prefix exactly
 
 condition  i_morpheme
-pppr       2.0            416
-           0.0            401
-           1.0            389
-ppprs      1.0            293
-           2.0            270
-           0.0            250
-ppprss     0.0            277
-           1.0            268
-           2.0            266
-ppprsss    0.0            283
-           1.0            272
-           2.0            254
-ppr        0.0            603
-           1.0            584
-pprs       1.0            407
-           0.0            377
-pprss      0.0            381
-           1.0            379
-pprsss     0.0            401
-           1.0            385
-pr         0.0           1199
-prs        0.0            754
-prss       0.0            811
-prsss      0.0            827
+pppr       0.0            416
+           1.0            408
+           2.0            381
+ppprs      2.0            261
+           0.0            255
+           1.0            252
+ppprss     0.0            281
+           1.0            264
+           2.0            239
+ppprsss    0.0            289
+           2.0            275
+           1.0            258
+ppr        1.0            626
+           0.0            571
+pprs       1.0            411
+           0.0            372
+pprss      0.0            395
+           1.0            395
+pprsss     1.0            419
+           0.0            372
+pr         0.0           1194
+prs        0.0            781
+prss       0.0            824
+prsss      0.0            796
 Name: i_morpheme, dtype: int64
 
 
 If error in suffix, then in which suffix exactly
 
 condition  i_morpheme
-ppprs      0.0            791
-ppprss     1.0            434
-           0.0            401
-ppprsss    0.0            287
-           2.0            251
-           1.0            230
-pprs       0.0            832
-pprss      1.0            422
-           0.0            404
-pprsss     0.0            286
-           2.0            281
-           1.0            261
-prs        0.0            821
-prss       0.0            388
-           1.0            371
-prsss      1.0            272
-           0.0            258
-           2.0            253
-rs         0.0           1167
-rss        0.0            630
-           1.0            571
-rsss       2.0            426
-           0.0            386
-           1.0            373
+ppprs      0.0            817
+ppprss     1.0            415
+           0.0            403
+ppprsss    1.0            268
+           0.0            265
+           2.0            256
+pprs       0.0            836
+pprss      1.0            415
+           0.0            392
+pprsss     2.0            275
+           1.0            269
+           0.0            256
+prs        0.0            815
+prss       1.0            411
+           0.0            398
+prsss      0.0            291
+           1.0            274
+           2.0            260
+rs         0.0           1188
+rss        0.0            626
+           1.0            569
+rsss       0.0            412
+           2.0            397
+           1.0            390
 Name: i_morpheme, dtype: int64
+
+
+Wordlength overall:
+
+11    4472
+10    3670
+13    3271
+9     2973
+12    2910
+8     2800
+15    2775
+14    2583
+16    2142
+6     2043
+17    1883
+7     1590
+18    1271
+5      873
+19     565
+4      378
+3      222
+20     179
+Name: Wordlength, dtype: int64
+
+
+Wordlength per condition
+
+condition  Wordlength
+pppr       11            1544
+           10             821
+           9               35
+ppprs      13             741
+           15             515
+                         ... 
+rsss       11             746
+           10             724
+           12             526
+           13             206
+           9              198
+Name: Wordlength, Length: 94, dtype: int64
