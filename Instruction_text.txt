@@ -1,0 +1,5 @@
+In this experiment, you will first see and need to memorize a string of letters. Afterward, you will see a second string of letters: 
+1. If the two words are the same press the J key. 
+2. If the two words are different press the F key. 
+Thank you for your participation and please remain concentrated. 
+
