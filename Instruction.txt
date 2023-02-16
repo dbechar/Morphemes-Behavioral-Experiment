@@ -1,9 +1,0 @@
-In this experiment, you will be presented with letter strings on the screen, for example, 'rekagable'. Your task is to memorize these strings. You have whatever time needed for memorization. You can control this time by HOLDING THE SPACEBAR for as much long as you need. Once you RELEASE THE SPACEBAR the string will disappear from the screen, and after a short delay another string will appear. The new string will be either IDENTICAL OR DIFFERENT from the one you memorized. 
-
-1. If the two strings are the SAME press the J KEY. 
-2. If the two strings are DIFFERENT press the F key. 
-
-J and F are the two keys on your keyboard, both marked with a small bumpy ridge on them.
-
-Thank you for your participation and please remain concentrated. 
-
