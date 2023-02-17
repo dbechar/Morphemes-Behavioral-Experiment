@@ -10,9 +10,8 @@ num_par = 50
 # DEFINE LANGUAGE OF EXPERIMENT ("english" OR "french")
 language = "english" 
 
-df_design = pd.read_csv("../experimental_design/design_" + language + ".csv")
-df_root_pool = pd.read_csv("../experimental_design/" + language + "_pseudo/r.csv")
-
+df_design = pd.read_csv(f'../experimental_design/design_{language}.csv')
+df_roots = pd.read_csv(f'../experimental_design/{language}_pseudo/r.csv')
 
 # SET ERRORRATE
 errorrate = 0.5
@@ -26,9 +25,7 @@ for par in range (num_par):
         for i_word in range(n_trials): # LOOP OVER TRIALS PER CONDITION
             # GENERATE A TARGET WORD AND VERIFIES THAT IT DOES NOT ALREADY EXIST
             while True:
-                d_target_word, d_control_word = generate_random_word_and_control(condition, 
-                                                                                 df_root_pool, 
-                                                                                 language)
+                d_target_word, d_control_word = generate_random_word_and_control(condition, df_roots, language)
                 if d_target_word['word'] not in target_words:
                     target_words.append(d_target_word['word'])
                     
@@ -44,7 +41,7 @@ for par in range (num_par):
                           d_control_word['word'], d_control_word['error_word'])
                     
                     break
- 
+    
     df_target = pd.DataFrame(random.sample(ds_target_word, len(ds_target_word)))
     df_control = pd.DataFrame(random.sample(ds_control_word, len(ds_control_word)))
     
@@ -82,4 +79,5 @@ for par in range (num_par):
     # SAVE TRIALLIST IN CORRECT FOLDER
     path = "../triallists/" + language + "/" + str(par) + "triallist.csv"
     df_complete.to_csv (path, index = False)
+
 

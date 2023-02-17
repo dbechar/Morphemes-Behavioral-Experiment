@@ -5,7 +5,6 @@ Created on Fri Feb  3 04:59:35 2023
 """
 import random
 import pandas as pd
-import numpy as np
 import os
 os.chdir("C:/Users/delia/OneDrive/Desktop/Morphemes/Morphemes/code")
 
@@ -18,51 +17,39 @@ def generate_random_word_and_control(condition, root_pool, language):
     d_target['root'], d_control['root'] = sample_root(root_pool)
     
     # GENERATE AFFIXES
-    target_affix_list, control_affix_list = sample_affixes(condition, language)
-    target_affix_list[2] = d_target['root']
-    control_affix_list[2] = d_control['root']
-    
-    # GENERATE PREFIXES
-    d_target['prefixes'], d_control['prefixes'] = target_affix_list[0:2], control_affix_list[0:2]
-    
-    # GENERATE SUFFIXES
-    d_target['suffixes'], d_control['suffixes'] = target_affix_list[3:], control_affix_list[3:]
+    d_target['prefixes'], d_control['prefixes'], d_target['suffixes'], d_control['suffixes'] = sample_affixes(condition, language)
 
     # COMBINE AFFIXES
-    d_target['word'] = ''.join(target_affix_list)
-    d_control['word'] = ''.join(control_affix_list)
+    d_target['word'] = ''.join(d_target['prefixes'] + [d_target['root']] + d_target['suffixes'])
+    d_control['word'] = ''.join(d_control['prefixes'] + [d_control['root']] + d_control['suffixes'])
     
     # ADD TYPE
-    d_target['type'], d_control['type'] = 'target', 'contrl'
+    d_target['type'], d_control['type'] = 'target', 'control'
     
     return d_target, d_control
 
 
 def sample_root(root_pool):
     root = random.choice(root_pool['Root'])
-    root_permuted = random.choice(root_pool['ReverseRoot'])
+    root_permuted = random.choice(root_pool['PermutedRoot'])
     return root, root_permuted
 
 
 def sample_affixes(condition, language):
-    affix_pool = pd.read_csv ("../experimental_design/" + language + "_pseudo/" + condition + ".csv")
-    affix_pool = affix_pool.replace(np.nan, '', regex=True)
+    affix_pool = pd.read_csv (f'../experimental_design/{language}_pseudo/{condition}.csv')
     n_affixes = len(condition)
-    
-    if condition == "r": 
-        affixes = ["", "", "r", "", ""]
-        affixes_reversed = [a[::-1] for a in affixes]
-        return affixes, affixes_reversed
-    elif n_affixes > 0:
-        IX = random.choices(range(len(affix_pool)),
-                            weights=affix_pool['Frequency'],
-                            k=1)
-
-        affixes = affix_pool.iloc[IX, 0:7].values.flatten().tolist()
-        affixes_reversed = [a[::-1] for a in affixes]
-        return affixes, affixes_reversed
+    if n_affixes > 1:
+        IX = random.choices(range(len(affix_pool)), k=1)
+        # NORMAL
+        prefixes = affix_pool.iloc[IX, affix_pool.columns.str.startswith('Prefix')].values.flatten().tolist()
+        suffixes = affix_pool.iloc[IX, affix_pool.columns.str.startswith('Suffix')].values.flatten().tolist()
+        
+        # PERMUTED
+        permuted_prefixes = affix_pool.iloc[IX, affix_pool.columns.str.startswith('PermutedPrefix')].values.flatten().tolist()
+        permuted_suffixes = affix_pool.iloc[IX, affix_pool.columns.str.startswith('PermutedSuffix')].values.flatten().tolist()
+        return prefixes, permuted_prefixes, suffixes, permuted_suffixes
     else:
-        return [''], ['']
+        return [''], [''], [''], ['']
     
     
 def add_errors(d, language):
