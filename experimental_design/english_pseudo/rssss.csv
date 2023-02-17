@@ -1,6 +1,6 @@
-﻿Prefix2,Prefix1,Suffix1,Suffix2,Suffix3,Suffix4,Frequency,n_affixes,Example1,Example2
-,,ist,ic,al,ly,99,4,futuristically,
-,,at,ion,al,ist,99,4,sensationalist,
-,,at,ion,al,ly,99,4,sensationally,
-,,at,ion,al,ism,99,4,sensationalism,
-,,al,ist,ic,ly,99,4,naturalisticly,spiritualisticly
+﻿Prefix2,Prefix1,Root,Suffix1,Suffix2,Suffix3,Suffix4,Frequency,n_affixes,Example1,Example2
+,,r,ist,ic,al,ly,99,4,futuristically,
+,,r,at,ion,al,ist,99,4,sensationalist,
+,,r,at,ion,al,ly,99,4,sensationally,
+,,r,at,ion,al,ism,99,4,sensationalism,
+,,r,al,ist,ic,ly,99,4,naturalisticly,spiritualisticly

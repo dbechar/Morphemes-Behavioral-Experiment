@@ -1,8 +1,8 @@
-﻿Prefix2,Prefix1,Suffix1,Suffix2,Suffix3,Suffix4,Frequency,n_affixes,Example1,Example2
-,,ic,al,ly,,10035527,3,historically,allegorically
-,,ment,al,ly,,9986419,3,developmentally,temperamentally
-,,al,ist,ic,,6560444,3,naturalistic,spiritualistic
-,,ist,ic,ly,,5713712,3,stylisticly,statisticly
-,,ful,ly,ness,,4469113,3,beautyfullyness,pitifullyness
-,,ist,ic,ate,,99,3,sophisticate,
-,,ment,al,ism,,99,3,sentimentalism,
+﻿Prefix2,Prefix1,Root,Suffix1,Suffix2,Suffix3,Suffix4,Frequency,n_affixes,Example1,Example2
+,,r,ic,al,ly,,10035527,3,historically,allegorically
+,,r,ment,al,ly,,9986419,3,developmentally,temperamentally
+,,r,al,ist,ic,,6560444,3,naturalistic,spiritualistic
+,,r,ist,ic,ly,,5713712,3,stylisticly,statisticly
+,,r,ful,ly,ness,,4469113,3,beautyfullyness,pitifullyness
+,,r,ist,ic,ate,,99,3,sophisticate,
+,,r,ment,al,ism,,99,3,sentimentalism,

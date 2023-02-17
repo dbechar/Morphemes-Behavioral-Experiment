@@ -4,34 +4,36 @@ Created on Fri Feb  3 04:59:35 2023
 @author: yair
 """
 import random
-#import os
-#os.chdir("C:/Users/delia/OneDrive/Desktop/Morphemes/Morphemes/code")
+import pandas as pd
+import numpy as np
+import os
+os.chdir("C:/Users/delia/OneDrive/Desktop/Morphemes/Morphemes/code")
 
-def generate_random_word_and_control(condition, prefix_pool, root_pool, suffix_pool):
+def generate_random_word_and_control(condition, root_pool, language):
     
     d_target, d_control = {}, {}
     d_target['condition'], d_control['condition'] = condition, condition
     
-    n_prefixes, n_suffixes = condition.count('p'), condition.count('s')
-    d_target['prefix_template'], d_target['suffix_template'] = 'p' * n_prefixes, 's' * n_suffixes
-    d_control['prefix_template'], d_control['suffix_template'] = 'p' * n_prefixes, 's' * n_suffixes
-    
     # GENERATE ROOT
     d_target['root'], d_control['root'] = sample_root(root_pool)
     
-    # GENERATE PREFIXES
-    d_target['prefixes'], d_control['prefixes'] = sample_affixes(prefix_pool,
-                                                           d_target['prefix_template'])
-    # GENERATE SUFFIXES
-    d_target['suffixes'], d_control['suffixes'] = sample_affixes(suffix_pool,
-                                                           d_target['suffix_template'])
+    # GENERATE AFFIXES
+    target_affix_list, control_affix_list = sample_affixes(condition, language)
+    target_affix_list[2] = d_target['root']
+    control_affix_list[2] = d_control['root']
     
+    # GENERATE PREFIXES
+    d_target['prefixes'], d_control['prefixes'] = target_affix_list[0:2], control_affix_list[0:2]
+    
+    # GENERATE SUFFIXES
+    d_target['suffixes'], d_control['suffixes'] = target_affix_list[3:], control_affix_list[3:]
+
     # COMBINE AFFIXES
-    d_target['word'] = ''.join(d_target['prefixes'] + [d_target['root']] + d_target['suffixes'])
-    d_control['word'] = ''.join(d_control['prefixes'] + [d_control['root']] + d_control['suffixes'])
+    d_target['word'] = ''.join(target_affix_list)
+    d_control['word'] = ''.join(control_affix_list)
     
     # ADD TYPE
-    d_target["type"], d_control["type"] = "target", "control"
+    d_target['type'], d_control['type'] = 'target', 'contrl'
     
     return d_target, d_control
 
@@ -42,24 +44,23 @@ def sample_root(root_pool):
     return root, root_permuted
 
 
-def sample_affixes(affix_pool, affix_template):
-    n_affixes = len(affix_template)
-    if n_affixes > 0:
-        df_pool = affix_pool[affix_pool['n_affixes']==n_affixes]
-        IX = random.choices(range(len(df_pool)),
-                            weights=df_pool['Frequency'],
-                            k=1)
-        
-        a1, a2, a3, _, _, _ = df_pool.iloc[IX].values[0]
-        if 'p' in affix_template:
-            affixes = [a3, a2, a1]
-        elif 's' in affix_template:
-            affixes = [a1, a2, a3]
-        affixes = affixes[:n_affixes]
-        if 's' in affix_template:
-            affixes = affixes[::-1]
+def sample_affixes(condition, language):
+    affix_pool = pd.read_csv ("../experimental_design/" + language + "_pseudo/" + condition + ".csv")
+    affix_pool = affix_pool.replace(np.nan, '', regex=True)
+    n_affixes = len(condition)
+    
+    if condition == "r": 
+        affixes = ["", "", "r", "", ""]
         affixes_reversed = [a[::-1] for a in affixes]
-        return affixes[::-1], affixes_reversed[::-1]
+        return affixes, affixes_reversed
+    elif n_affixes > 0:
+        IX = random.choices(range(len(affix_pool)),
+                            weights=affix_pool['Frequency'],
+                            k=1)
+
+        affixes = affix_pool.iloc[IX, 0:7].values.flatten().tolist()
+        affixes_reversed = [a[::-1] for a in affixes]
+        return affixes, affixes_reversed
     else:
         return [''], ['']
     

@@ -1,2 +1,6 @@
-Prefix2,Prefix1,Suffix1,Suffix2,Suffix3,Suffix4,Frequency,n_affixes,Example1,Example2
-,,,,,,99,4,,
+Prefix2,Prefix1,Root,Suffix1,Suffix2,Suffix3,Suffix4,Frequency,n_affixes,Example1,Example2
+non,re,r,iv,ity,,,99,4,nonreactivity,
+dis,in,r,ion,ary,,,99,4,disinflationary,
+dis,in,r,ious,ly,,,99,4,disingeniously,
+dis,in,r,ious,ness,,,99,4,disingeniousness,
+un,mis,r,abl,y,,,99,4,unmistakebly,

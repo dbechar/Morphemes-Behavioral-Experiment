@@ -1,8 +1,8 @@
-﻿Prefix2,Prefix1,Suffix1,Suffix2,Suffix3,Suffix4,Frequency,n_affixes,Example1,Example2
-,im,ion,is,ic,ly,,5,impressionisticly,
-,un,at,ion,al,ly,,5,unsensationally,
-,de,at,ion,al,ism,,5,desensationalism,
-,un,al,ist,ic,ly,,5,unnaturalisticly,unspiritualisticly
-,ne,al,iz,at,ion,,5,denationalization,
-,un,ist,ic,al,ly,,5,unrealistically,
-,de,al,iz,at,ion,,5,decentralization,depersonalization
+﻿Prefix2,Prefix1,Root,Suffix1,Suffix2,Suffix3,Suffix4,Frequency,n_affixes,Example1,Example2
+,im,r,ion,is,ic,ly,99,5,impressionisticly,
+,un,r,at,ion,al,ly,99,5,unsensationally,
+,de,r,at,ion,al,ism,99,5,desensationalism,
+,un,r,al,ist,ic,ly,99,5,unnaturalisticly,unspiritualisticly
+,ne,r,al,iz,at,ion,99,5,denationalization,
+,un,r,ist,ic,al,ly,99,5,unrealistically,
+,de,r,al,iz,at,ion,99,5,decentralization,depersonalization
