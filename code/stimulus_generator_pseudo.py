@@ -5,7 +5,7 @@ from utils_pseudo import add_errors
 
 
 random.seed(1)
-num_par = 50
+num_par = 2
 
 # DEFINE LANGUAGE OF EXPERIMENT ("english" OR "french")
 language = 'english' 
@@ -36,17 +36,11 @@ for par in range (num_par):
                     ds_target_word.append(d_target_word)
                     ds_control_word.append(d_control_word)
                     
-                    print(condition, i_word,
-                          d_target_word['word'], d_target_word['error_word'],
-                          d_control_word['word'], d_control_word['error_word'])
-                    
                     break
     
     df_target = pd.DataFrame(random.sample(ds_target_word, len(ds_target_word)))
     df_control = pd.DataFrame(random.sample(ds_control_word, len(ds_control_word)))
     
-    print(df_target)
-    print(df_control)
     
     # ADD "IS_ERROR" 
     df_target['is_error'] = [1] * round(errorrate * len(df_target)) +  [0] * round(errorrate * len(df_target)) 
