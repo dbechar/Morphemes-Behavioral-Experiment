@@ -1,12 +1,5 @@
-"""
-Created on Fri Feb  3 04:59:35 2023
-
-@author: yair
-"""
 import random
 import pandas as pd
-import os
-os.chdir("C:/Users/delia/OneDrive/Desktop/Morphemes/Morphemes/code")
 
 def generate_random_word_and_control(condition, root_pool, language):
     
@@ -96,7 +89,7 @@ def add_errors(d, language):
 
 def substitute_letter(letter, language):
     d_letter_groups = {}
-    if language == "english":
+    if language == 'english':
         for group in ['vowels', 'consonants', 'sonorants']:
             d_letter_groups[group] = {}
         d_letter_groups['vowels']['letters'] = ["a", "e", "i", "o", "u"]

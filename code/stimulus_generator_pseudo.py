@@ -1,14 +1,14 @@
 import random
 import pandas as pd
-from utils import generate_random_word_and_control
-from utils import add_errors
+from utils_pseudo import generate_random_word_and_control
+from utils_pseudo import add_errors
 
 
 random.seed(1)
-num_par = 1
+num_par = 50
 
 # DEFINE LANGUAGE OF EXPERIMENT ("english" OR "french")
-language = "english" 
+language = 'english' 
 
 df_design = pd.read_csv(f'../experimental_design/design_{language}.csv')
 df_roots = pd.read_csv(f'../experimental_design/{language}_pseudo/r.csv')
@@ -49,8 +49,8 @@ for par in range (num_par):
     print(df_control)
     
     # ADD "IS_ERROR" 
-    df_target["is_error"] = [1] * round(errorrate * len(df_target)) +  [0] * round(errorrate * len(df_target)) 
-    df_control["is_error"] = [1] * round(errorrate * len(df_control)) +  [0] * round(errorrate * len(df_control)) 
+    df_target['is_error'] = [1] * round(errorrate * len(df_target)) +  [0] * round(errorrate * len(df_target)) 
+    df_control['is_error'] = [1] * round(errorrate * len(df_control)) +  [0] * round(errorrate * len(df_control)) 
 
     
    
@@ -58,14 +58,14 @@ for par in range (num_par):
     df_complete = pd.concat([df_target, df_control])
     
     # REMOVE LISTS
-    df_complete["prefixes"] = df_complete["prefixes"].apply (lambda prefixes: "_".join(prefixes))
-    df_complete["suffixes"] = df_complete["suffixes"].apply (lambda suffixes: "_".join(suffixes))
+    df_complete['prefixes'] = df_complete['prefixes'].apply (lambda prefixes: "_".join(prefixes))
+    df_complete['suffixes'] = df_complete['suffixes'].apply (lambda suffixes: "_".join(suffixes))
     
     # CREATE TRIALLIST
     first, second =  [], []
-    word = df_complete["word"].tolist()
-    error_word = df_complete["error_word"].tolist()
-    is_error = df_complete["is_error"].tolist ()
+    word = df_complete['word'].tolist()
+    error_word = df_complete['error_word'].tolist()
+    is_error = df_complete['is_error'].tolist ()
       
     for i in range (0, len (df_complete)):
         first.append (word[i])
@@ -74,11 +74,11 @@ for par in range (num_par):
         else: 
             second.append (word[i])
     
-    df_complete.insert (0, "first", first)
-    df_complete.insert (1, "second", second)
+    df_complete.insert (0, 'first', first)
+    df_complete.insert (1, 'second', second)
     df_complete = df_complete.sample (frac = 1)
     
     # SAVE TRIALLIST IN CORRECT FOLDER
-    path = "../triallists/" + language + "/" + str(par) + "triallist.csv"
+    path = f'../triallists/{language}_pseudo/{str(par)}triallist.csv'
     df_complete.to_csv (path, index = False)
 
