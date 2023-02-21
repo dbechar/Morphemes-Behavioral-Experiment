@@ -33,11 +33,10 @@ def sample_affixes(condition, language):
     n_affixes = len(condition)
     if n_affixes > 1:
         IX = random.choices(range(len(affix_pool)), k=1)
-        # NORMAL
+        
         prefixes = affix_pool.iloc[IX, affix_pool.columns.str.startswith('Prefix')].values.flatten().tolist()
         suffixes = affix_pool.iloc[IX, affix_pool.columns.str.startswith('Suffix')].values.flatten().tolist()
         
-        # PERMUTED
         permuted_prefixes = affix_pool.iloc[IX, affix_pool.columns.str.startswith('PermutedPrefix')].values.flatten().tolist()
         permuted_suffixes = affix_pool.iloc[IX, affix_pool.columns.str.startswith('PermutedSuffix')].values.flatten().tolist()
         return prefixes, permuted_prefixes, suffixes, permuted_suffixes

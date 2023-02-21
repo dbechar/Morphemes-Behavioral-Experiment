@@ -1,6 +1,6 @@
 ﻿Suffix1,Suffix2,Suffix3,Suffix4,PermutedSuffix1,PermutedSuffix2,PermutedSuffix3,PermutedSuffix4,Frequency,Example1,Example2
 ist,ic,al,ly,sit,ci,la,yl,99,futuristically,
-at,ion,al,ist,ta,noi,la,sit,99,sensationalist,
-at,ion,al,ly,ta,noi,la,yl,99,sensationally,
-at,ion,al,ism,ta,noi,la,sim,99,sensationalism,
+at,ion,al,ist,ta,ino,la,sit,99,sensationalist,
+at,ion,al,ly,ta,ino,la,yl,99,sensationally,
+at,ion,al,ism,ta,ino,la,sim,99,sensationalism,
 al,ist,ic,ly,la,sit,ci,yl,99,naturalisticly,spiritualisticly

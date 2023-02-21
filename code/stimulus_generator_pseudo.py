@@ -5,12 +5,12 @@ from utils_pseudo import add_errors
 
 
 random.seed(1)
-num_par = 2
+num_par = 50
 
 # DEFINE LANGUAGE OF EXPERIMENT ("english" OR "french")
 language = 'english' 
 
-df_design = pd.read_csv(f'../experimental_design/design_{language}.csv')
+df_design = pd.read_csv(f'../experimental_design/{language}_pseudo/design_{language}.csv')
 df_roots = pd.read_csv(f'../experimental_design/{language}_pseudo/r.csv')
 
 # SET ERRORRATE
@@ -47,7 +47,6 @@ for par in range (num_par):
     df_control['is_error'] = [1] * round(errorrate * len(df_control)) +  [0] * round(errorrate * len(df_control)) 
 
     
-   
     # CONCATE DATAFRAMES
     df_complete = pd.concat([df_target, df_control])
     
