@@ -2,9 +2,7 @@ Prefix1,Suffix1,PermutedPrefix1,PermutedSuffix1,Frequency,Example1,Example2
 in,ly,ni,yl,99,inefficiently,inelegantly
 in,ate,ni,eta,99,invalidate,invigorate
 in,ity,ni,yti,99,invincability,invisibility
-in,ness,ni,ssen,99,indistinctness,
 in,able,ni,elba,99,indistructable,indistinctuable
-in,ion,ni,oni,99,infliction,
 re,ize,er,zie,99,remilitarize,reorganize
 re,al,er,la,99,removal,renewal
 re,able,er,elba,99,retractable,reversable
@@ -33,17 +31,11 @@ dis,ment,sid,nemt,99,disagreement,disappointment
 dis,er,sid,re,99,disbeliever,disapprover
 dis,al,sid,la,99,disapproval,disposal
 uni,ly,inu,yl,99,uniformly,universally
-sub,able,bus,elba,99,submersible,
-out,ious,otu,isou,99,outrageous,
 over,ive,vero,evi,99,overactive,overprotective
 mis,ion,sim,oni,99,misapplication,misinterpretation
 mis,ment,sim,nemt,99,misjudgement,mismanagement
-mis,ful,sim,luf,99,mistrustful,
-mis,ance,sim,ecna,99,misalliance,
 mis,our,sim,rou,99,misbehaviour,misdemeanour
 non,ic,onn,ci,99,nonspecific,nonsystemic
 non,ive,onn,evi,99,nonassertive,nonaggressive
 non,al,onn,la,99,nonracial,noncommital
 en,ment,ne,nemt,99,enjoyment,enlistment
-up,er,pu,re,99,upholder,upholster
-ab,al,ba,la,99,abnormal,

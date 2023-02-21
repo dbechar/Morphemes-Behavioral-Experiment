@@ -56,11 +56,9 @@ for par in range (num_par):
     
     # CREATE TRIALLIST
     first, second =  [], []
-    word = df_complete['word'].tolist()
-    error_word = df_complete['error_word'].tolist()
-    is_error = df_complete['is_error'].tolist ()
+    word, error_word, is_error = df_complete['word'].tolist(), df_complete['error_word'].tolist(), df_complete['is_error'].tolist ()
       
-    for i in range (0, len (df_complete)):
+    for i in range (len(df_complete)):
         first.append (word[i])
         if is_error [i] == 1: 
             second.append (error_word[i]) 
@@ -69,6 +67,8 @@ for par in range (num_par):
     
     df_complete.insert (0, 'first', first)
     df_complete.insert (1, 'second', second)
+    
+    # RANDOMIZE ORDER
     df_complete = df_complete.sample (frac = 1)
     
     # SAVE TRIALLIST IN CORRECT FOLDER
