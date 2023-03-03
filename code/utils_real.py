@@ -1,35 +1,47 @@
 import random
+import pandas as pd
 
-
-def choose_targets_and_control (condition, df_realwords):  
+# depending on condition read in correct file chose. randomly chose
+def choose_targets_and_control (condition, language):  
     d_target, d_control = {}, {}
+    d_target['condition'], d_control['condition'] = condition, "r"
     
-    # TARGET
-    words, freq = df_realwords["Word"].loc[df_realwords["Condition"] == condition].tolist(), df_realwords["Frequency"].loc[df_realwords["Condition"] == condition].tolist()
-    d_target["word"] = random.choices(words, weights= freq)
+    # GENERATE AFFIXES
+    d_target['prefixes'], d_target['root'], d_target['suffixes'] = sample_affixes(condition, language)
+    d_target['word'] = ''.join(d_target['prefixes'] + [d_target['root']] + d_target['suffixes'])
     
-    # CONTROL
-    words, freq = df_realwords["Word"].loc[df_realwords["Condition"] == "r"].tolist(), df_realwords["Frequency"].loc[df_realwords["Condition"] == "r"].tolist()
-    d_control["word"] = random.choices(words, weights= freq)
+    # GENERATE CORRESPONDING MONOMORPHEMES
+    d_control['prefixes'], d_control['root'], d_target['suffixes'] = sample_monomorphemes(language, d_target['word'][0])
+    d_control['word'] = ''.join(d_control['prefixes'] + [d_control['root']] + d_control['suffixes'])
     
-    while len(d_target["word"][0]) != len(d_control["word"][0]): 
-        d_control["word"] = random.choices(words, weights= freq)
-    
-    # ADD CONTROL FOR FREQUENCY!
-    
-    # ADD TYPE, PREFIX, ROOT, AND SUFFIX
-    d_target["type"], d_control["type"] = "target", "control"
-    
-    index =  (df_realwords[df_realwords["Word"]== d_target["word"][0]].index)
-    d_target["root"], d_control["root"] = df_realwords["Root"][index[0]], "".join(d_control["word"])
-    d_target["prefixes"], d_control["prefixes"] = df_realwords["Prefix"][index[0]], ""
-    d_target["suffixes"], d_control["suffixes"] = df_realwords["Suffix"][index[0]], ""
-    d_target["condition"], d_control["condition"] = df_realwords ["Condition"][index[0]], "r"
-    
+    # ADD TYPE
+    d_target['type'], d_control['type'] = 'target', 'control'
     
     return d_target, d_control
 
 
+def sample_monomorphemes(language, target_word):
+    r_pool = pd.read.csv (f'../experiment_design/{language}_real/r.csv')
+    word = ""
+    
+    while len(target_word) != len(word): 
+        IX = random.choices(range(len(r_pool)), k=1)
+        word = r_pool.iloc[IX, r_pool.columns.str.startswith('Root')].values.flatten().tolist()
+        
+    return [''], word, ['']
+
+
+def sample_affixes (condition, language):
+    affix_pool = pd.read_csv (f'../experimental_design/{language}_real/{condition}.csv')
+    n_affixes = len(condition)
+    if n_affixes > 1:
+        IX = random.choices(range(len(affix_pool)), k=1)
+        prefixes = affix_pool.iloc[IX, affix_pool.columns.str.startswith('Prefix')].values.flatten().tolist()
+        root = affix_pool.iloc[IX, affix_pool.columns.str.startswith('Root')].values.flatten().tolist()
+        suffixes = affix_pool.iloc[IX, affix_pool.columns.str.startswith('Suffix')].values.flatten().tolist()
+        return prefixes, root, suffixes
+    else:
+        return [''], [''], ['']
 
 def add_errors(d, language):
     prefixes, root, suffixes = d['prefixes'].copy(), d['root'], d['suffixes'].copy()
@@ -71,6 +83,7 @@ def add_errors(d, language):
     d['error_word'] = ''.join(prefixes + [root] + suffixes)
     
     return d
+    
 
 
 def substitute_letter(letter, language):

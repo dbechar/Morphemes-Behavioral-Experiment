@@ -113,5 +113,5 @@ def substitute_letter(letter, language):
             i_vowel = letters.index(letter)
             del letters[i_vowel], weights[i_vowel]
             error_letter = random.choices(letters, weights)
-    
+
     return error_letter[0]

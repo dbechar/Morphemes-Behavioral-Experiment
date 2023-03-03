@@ -10,15 +10,10 @@ random.seed(1)
 num_par = 1
 
 # DEFINE LANGUAGE OF EXPERIMENT ("english" OR "french")
-language = "french" 
+language = "english" 
 
 # READ IN STIMULI FILES
-df_design = pd.read_csv("../experimental_design/" + language + "_design.csv") 
-path = "../experimental_design/" + language + "_real"
-csv_files = glob.glob(path + "/*.csv")
-realword_files = (pd.read_csv (file) for file in csv_files) 
-df_realwords = pd.concat(realword_files, ignore_index = True) 
-df_realwords = df_realwords.replace(np.nan, '', regex=True)
+df_design = pd.read_csv(f'../experimental_design/{language}_real/design_{language}.csv')
 
 # SET ERRORRATE
 errorrate = 0.5
@@ -32,7 +27,7 @@ for par in range (num_par):
         for i_word in range(n_trials): # LOOP OVER TRIALS PER CONDITION
             # GENERATE A TARGET WORD AND VERIFIES THAT IT DOES NOT ALREADY EXIST
              while True:
-                d_target_word, d_control_word = choose_targets_and_control(condition, df_realwords)
+                d_target_word, d_control_word = choose_targets_and_control(condition)
                 if d_target_word['word'] not in target_words:
                     target_words.append(d_target_word['word'])
                 
