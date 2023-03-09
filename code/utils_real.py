@@ -7,7 +7,7 @@ def choose_targets_and_control (condition, language):
     d_target['condition'], d_control['condition'] = condition, "r"
     
     # GENERATE AFFIXES
-    d_target['prefixes'], d_target['root'], d_target['suffixes'] = sample_affixes(condition, language)
+    d_target['prefixes'], d_target['root'], d_target['suffixes'] = sample_words(condition, language)
     d_target['word'] = ''.join(d_target['prefixes'] + [d_target['root']] + d_target['suffixes'])
     
     # GENERATE CORRESPONDING MONOMORPHEMES
@@ -31,7 +31,7 @@ def sample_monomorphemes(language, target_word):
     return [''], word, ['']
 
 
-def sample_affixes (condition, language):
+def sample_words (condition, language):
     affix_pool = pd.read_csv (f'../experimental_design/{language}_real/{condition}.csv')
     n_affixes = len(condition)
     if n_affixes > 1:

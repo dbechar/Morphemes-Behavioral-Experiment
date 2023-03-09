@@ -1,8 +1,6 @@
 # STIMULUS GENERATOR: REAL WORDS
 import random
-import glob 
 import pandas as pd
-import numpy as np
 from utils_real import choose_targets_and_control
 from utils_real import add_errors
 

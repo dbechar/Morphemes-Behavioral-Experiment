@@ -1,24 +1,17 @@
-"""
-# VERIFICATION CODE
-
-
-# Date: 09.02.2023
-# Author: Deliane Bechar
-
-"""
 import glob 
 import pandas as pd
 
 # DEFINE LANGUAGE OF EXPERIMENT ("english" OR "french")
 language = "english"
+condition = "pseudo"
 
 # READ IN TRIALLISTS
-path = "../triallists/" + language 
+path = f'../triallists/{language}_{condition}'
 csv_files = glob.glob(path + "/*.csv")
 df_list = (pd.read_csv(file) for file in csv_files)
 
-df_triallists = pd.concat (df_list, ignore_index = True)
 
+df_triallists = pd.concat (df_list, ignore_index = True)
 
 # SAVE EVERYTHING TO TEXT FILE
 f = open('verification_code', 'w')
@@ -97,9 +90,9 @@ word_lencon = df_triallists.groupby("condition")["Wordlength"].value_counts()
 print ("Wordlength per condition", file = f) 
 f.write('\n')
 print (word_lencon, file = f)
+print (word_lencon)
 
 f.close()
-    
     
     
     

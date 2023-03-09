@@ -5,18 +5,18 @@ from utils_pseudo import add_errors
 
 
 random.seed(1)
-num_par = 50
+num_par = 2
 
 # DEFINE LANGUAGE OF EXPERIMENT ("english" OR "french")
 language = 'english' 
 
-df_design = pd.read_csv(f'../experimental_design/{language}_pseudo/design_{language}.csv')
+df_design = pd.read_csv(f'../experimental_design/{language}_pseudo/design_{language}_pseudo.csv')
 df_roots = pd.read_csv(f'../experimental_design/{language}_pseudo/r.csv')
 
 # SET ERRORRATE
 errorrate = 0.5
 
-for par in range (num_par): 
+for par in range (num_par):
     # GENERATE ALL TARGET WORDS
     target_words = []
     ds_target_word, ds_control_word = [], []
@@ -46,6 +46,9 @@ for par in range (num_par):
     df_target['is_error'] = [1] * round(errorrate * len(df_target)) +  [0] * round(errorrate * len(df_target)) 
     df_control['is_error'] = [1] * round(errorrate * len(df_control)) +  [0] * round(errorrate * len(df_control)) 
 
+    # ADD WORDLENGTH
+    df_target['wordlength'] = df_target['word'].str.len()
+    df_control['wordlength'] = df_control['word'].str.len()
     
     # CONCATE DATAFRAMES
     df_complete = pd.concat([df_target, df_control])
@@ -74,4 +77,3 @@ for par in range (num_par):
     # SAVE TRIALLIST IN CORRECT FOLDER
     path = f'../triallists/{language}_pseudo/{str(par)}triallist.csv'
     df_complete.to_csv (path, index = False)
-

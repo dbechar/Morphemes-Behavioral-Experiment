@@ -1,0 +1,260 @@
+Number of trials per condition
+
+pprss     2400
+ppr       2400
+pr        2400
+prssss    2400
+rsss      2400
+rss       2400
+pprs      2400
+rssss     2400
+prs       2400
+rs        2400
+prss      2400
+prsss     2400
+r          600
+Name: condition, dtype: int64
+
+
+Error in which morpheme (overall)
+
+r    12763
+s     9493
+p     7144
+Name: error_to_which_morpheme, dtype: int64
+
+
+
+ Error in which morpheme (for each condition)
+
+condition  error_to_which_morpheme
+ppr        r                          1216
+           p                          1184
+pprs       r                           824
+           p                           807
+           s                           769
+pprss      r                           824
+           s                           800
+           p                           776
+pr         r                          1216
+           p                          1184
+prs        s                           850
+           r                           782
+           p                           768
+prss       p                           807
+           s                           801
+           r                           792
+prsss      r                           810
+           p                           797
+           s                           793
+prssss     p                           821
+           r                           811
+           s                           768
+r          r                           600
+rs         r                          1242
+           s                          1158
+rss        r                          1231
+           s                          1169
+rsss       s                          1209
+           r                          1191
+rssss      r                          1224
+           s                          1176
+Name: error_to_which_morpheme, dtype: int64
+
+
+Index of error within morpheme (overall)
+
+0    10563
+1    10306
+2     5821
+3     2693
+4       17
+Name: i_within_morpheme, dtype: int64
+
+
+Index of error within morpheme (for each condition)
+
+condition  i_within_morpheme
+ppr        1                     868
+           0                     838
+           2                     495
+           3                     199
+pprs       0                     838
+           1                     777
+           2                     519
+           3                     266
+pprss      0                     914
+           1                     772
+           2                     519
+           3                     195
+pr         0                     832
+           1                     791
+           2                     528
+           3                     232
+           4                      17
+prs        0                     886
+           1                     817
+           2                     508
+           3                     189
+prss       1                     902
+           0                     851
+           2                     462
+           3                     185
+prsss      1                     972
+           0                     963
+           2                     324
+           3                     141
+prssss     0                    1001
+           1                     942
+           2                     303
+           3                     154
+r          0                     192
+           2                     163
+           1                     154
+           3                      91
+rs         1                     774
+           0                     754
+           2                     575
+           3                     297
+rss        0                     804
+           1                     798
+           2                     536
+           3                     262
+rsss       1                     866
+           0                     836
+           2                     429
+           3                     269
+rssss      1                     873
+           0                     854
+           2                     460
+           3                     213
+Name: i_within_morpheme, dtype: int64
+
+
+If error in prefix, then in which prefix exactly
+
+condition  i_morpheme
+ppr        0.0            614
+           1.0            570
+pprs       0.0            406
+           1.0            401
+pprss      1.0            399
+           0.0            377
+pr         0.0           1184
+prs        0.0            768
+prss       0.0            807
+prsss      0.0            797
+prssss     0.0            821
+Name: i_morpheme, dtype: int64
+
+
+If error in suffix, then in which suffix exactly
+
+condition  i_morpheme
+pprs       0.0            769
+pprss      0.0            400
+           1.0            400
+prs        0.0            850
+prss       1.0            416
+           0.0            385
+prsss      1.0            269
+           2.0            264
+           0.0            260
+prssss     3.0            198
+           1.0            197
+           0.0            196
+           2.0            177
+rs         0.0           1158
+rss        0.0            597
+           1.0            572
+rsss       2.0            430
+           0.0            395
+           1.0            384
+rssss      1.0            304
+           3.0            304
+           0.0            290
+           2.0            278
+Name: i_morpheme, dtype: int64
+
+
+Wordlength overall:
+
+12    4427
+13    4147
+9     2944
+8     2776
+11    2486
+10    2419
+14    2242
+7     2145
+15    2143
+6     1743
+5      585
+16     421
+4      397
+17     322
+3      203
+Name: Wordlength, dtype: int64
+
+
+Wordlength per condition
+
+condition  Wordlength
+ppr        8              871
+           9              812
+           10             430
+           7              287
+pprs       12            1482
+           11             648
+           13             270
+pprss      15             637
+           14             618
+           13             507
+           17             322
+           12             160
+           16             156
+pr         6             1060
+           7              737
+           5              363
+           8              130
+           9              110
+prs        9              890
+           10             678
+           8              580
+           7              137
+           11             115
+prss       12             756
+           11             666
+           13             391
+           10             315
+           14             188
+           9               42
+           15              42
+prsss      13            1258
+           12             857
+           14             144
+           11             141
+prssss     15            1464
+           14             671
+           16             265
+r          4              397
+           3              203
+rs         7              889
+           6              683
+           8              606
+           5              222
+rss        9              889
+           8              589
+           10             449
+           11             279
+           12              99
+           7               95
+rsss       11             637
+           12             618
+           10             547
+           13             397
+           9              201
+rssss      13            1324
+           14             621
+           12             455
+Name: Wordlength, dtype: int64
