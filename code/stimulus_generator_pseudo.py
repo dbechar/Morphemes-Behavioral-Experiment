@@ -5,7 +5,7 @@ from utils_pseudo import add_errors
 
 
 random.seed(1)
-num_par = 2
+num_par = 50
 
 # DEFINE LANGUAGE OF EXPERIMENT ("english" OR "french")
 language = 'english' 

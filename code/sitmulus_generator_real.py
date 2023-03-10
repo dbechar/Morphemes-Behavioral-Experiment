@@ -8,7 +8,7 @@ random.seed(1)
 num_par = 1
 
 # DEFINE LANGUAGE OF EXPERIMENT ("english" OR "french")
-language = "english" 
+language = 'english' 
 
 # READ IN STIMULI FILES
 df_design = pd.read_csv(f'../experimental_design/{language}_real/design_{language}.csv')
@@ -29,13 +29,13 @@ for par in range (num_par):
                 if d_target_word['word'] not in target_words:
                     target_words.append(d_target_word['word'])
                 
-                d_target_word["prefixes"] = d_target_word["prefixes"].split()
-                d_target_word["suffixes"] = d_target_word["suffixes"].split()
-                d_target_word["word"] = "".join (d_target_word["word"])
+                d_target_word['prefixes'] = d_target_word['prefixes'].split()
+                d_target_word['suffixes'] = d_target_word['suffixes'].split()
+                d_target_word['word'] = ''.join (d_target_word['word'])
                 
-                d_control_word["prefixes"] = d_control_word["prefixes"].split()
-                d_control_word["suffixes"] = d_control_word["suffixes"].split()
-                d_control_word["word"] = "".join (d_control_word["word"])
+                d_control_word['prefixes'] = d_control_word['prefixes'].split()
+                d_control_word['suffixes'] = d_control_word['suffixes'].split()
+                d_control_word['word'] = ''.join (d_control_word['word'])
                 
                 # ADD LETTER-SUBSTITUTION ERRORS
                 d_target_word = add_errors(d_target_word, language)
@@ -52,21 +52,21 @@ for par in range (num_par):
     
     
     # ADD "IS_ERROR" 
-    df_target["is_error"] = [1] * int(errorrate * len(df_target)) +  [0] * int(errorrate * len(df_target)) 
-    df_control["is_error"] = [1] * int(errorrate * len(df_control)) +  [0] * int(errorrate * len(df_control)) 
+    df_target['is_error'] = [1] * int(errorrate * len(df_target)) +  [0] * int(errorrate * len(df_target)) 
+    df_control['is_error'] = [1] * int(errorrate * len(df_control)) +  [0] * int(errorrate * len(df_control)) 
     
     # CONCATE DATAFRAMES
     df_complete = pd.concat([df_target, df_control])
     
     # REMOVE LISTS
-    df_complete["prefixes"] = df_complete["prefixes"].apply (lambda prefixes: "_".join(prefixes))
-    df_complete["suffixes"] = df_complete["suffixes"].apply (lambda suffixes: "_".join(suffixes))
+    df_complete['prefixes'] = df_complete['prefixes'].apply (lambda prefixes: "_".join(prefixes))
+    df_complete['suffixes'] = df_complete['suffixes'].apply (lambda suffixes: "_".join(suffixes))
     
     # CREATE TRIALLIST
     first, second =  [], []
-    word = df_complete["word"].tolist()
-    error_word = df_complete["error_word"].tolist()
-    is_error = df_complete["is_error"].tolist ()
+    word = df_complete['word'].tolist()
+    error_word = df_complete['error_word'].tolist()
+    is_error = df_complete['is_error'].tolist ()
       
     for i in range (0, len (df_complete)):
         first.append (word[i])
@@ -75,8 +75,8 @@ for par in range (num_par):
         else: 
             second.append (word[i])
     
-    df_complete.insert (0, "first", first)
-    df_complete.insert (1, "second", second)
+    df_complete.insert (0, 'first', first)
+    df_complete.insert (1, 'second', second)
     df_complete = df_complete.sample (frac = 1)
     
     # SAVE TRIALLIST IN CORRECT FOLDER
