@@ -1,5 +1,5 @@
-﻿Suffix1,Suffix2,Suffix3,PermutedSuffix1,PermutedSuffix2,PermutedSuffix3,Frequency,Example1,Example2
-ic,al,ly,ci,la,yl,10035527,historically,allegorically
-ment,al,ly,nemt,la,yl,9986419,developmentally,temperamentally
-al,ist,ic,la,sit,ci,6560444,naturalistic,spiritualistic
-ment,al,ism,nemt,la,sim,99,sentimentalism,fundamentalism
+﻿Suffix1,Suffix2,Suffix3,PermutedSuffix1,PermutedSuffix2,PermutedSuffix3,Example1,Example2
+ic,al,ly,ci,la,yl,historically,allegorically
+ment,al,ly,nemt,la,yl,developmentally,temperamentally
+al,ist,ic,la,sit,ci,naturalistic,spiritualistic
+ment,al,ism,nemt,la,sim,sentimentalism,fundamentalism

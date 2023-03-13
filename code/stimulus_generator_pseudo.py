@@ -3,7 +3,6 @@ import pandas as pd
 from utils_pseudo import generate_random_word_and_control
 from utils_pseudo import add_errors
 
-
 random.seed(1)
 num_par = 50
 
@@ -12,6 +11,7 @@ language = 'english'
 
 df_design = pd.read_csv(f'../experimental_design/{language}_pseudo/design_{language}_pseudo.csv')
 df_roots = pd.read_csv(f'../experimental_design/{language}_pseudo/r.csv')
+df_roots_long = pd.read_csv(f'../experimental_design/{language}_pseudo/r_long.csv')
 
 # SET ERRORRATE
 errorrate = 0.5
@@ -25,7 +25,7 @@ for par in range (num_par):
         for i_word in range(n_trials): # LOOP OVER TRIALS PER CONDITION
             # GENERATE A TARGET WORD AND VERIFIES THAT IT DOES NOT ALREADY EXIST
             while True:
-                d_target_word, d_control_word = generate_random_word_and_control(condition, df_roots, language)
+                d_target_word, d_control_word = generate_random_word_and_control(condition, df_roots, df_roots_long, language)
                 if d_target_word['word'] not in target_words:
                     target_words.append(d_target_word['word'])
                     

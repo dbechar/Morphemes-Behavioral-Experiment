@@ -62,6 +62,10 @@ for par in range (num_par):
     df_complete['prefixes'] = df_complete['prefixes'].apply (lambda prefixes: "_".join(prefixes))
     df_complete['suffixes'] = df_complete['suffixes'].apply (lambda suffixes: "_".join(suffixes))
     
+    # ADD WORDLENGTH
+    df_target['wordlength'] = df_target['word'].str.len()
+    df_control['wordlength'] = df_control['word'].str.len()
+    
     # CREATE TRIALLIST
     first, second =  [], []
     word = df_complete['word'].tolist()

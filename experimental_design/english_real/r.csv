@@ -1,5 +1,4 @@
 ﻿Root,Frequency,Wordlength,Pseudo-morpheme
-methamphetamine,16,15,1
 Constantinople,45,14,0
 schizophrenia,69,13,0
 circumference,38,13,0
@@ -8,12 +7,12 @@ perpendicular,10,13,1
 mademoiselle,417,12,0
 Pennsylvania,239,12,0
 testosterone,83,12,0
-enyclopedia,81,12,0
+encylopedia,81,12,0
 entrepreneur,55,12,0
 tuberculosis,32,12,0
 hippopotamus,28,12,0
 frankincense,12,12,0
-nomenclature,10,12,0
+nomenclature,10,12,1
 Indianapolis,9,12,0
 philodendron,6,12,0
 mitochondria,2,12,0

@@ -15,7 +15,7 @@ def choose_targets_and_control (condition, language):
     d_control['word'] = ''.join(d_control['prefixes'] + [d_control['root']] + d_control['suffixes'])
     
     # ADD TYPE
-    d_target['type'], d_control['type'] = 'target', 'control'
+    d_target['target_type'], d_control['target_type'] = 'target', 'control'
     
     return d_target, d_control
 

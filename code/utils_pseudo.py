@@ -1,13 +1,13 @@
 import random
 import pandas as pd
 
-def generate_random_word_and_control(condition, root_pool, language):
+def generate_random_word_and_control(condition, root_pool, root_pool_long, language):
     
     d_target, d_control = {}, {}
     d_target['condition'], d_control['condition'] = condition, condition
     
     # GENERATE ROOT
-    d_target['root'], d_control['root'] = sample_root(root_pool)
+    d_target['root'], d_control['root'] = sample_root(condition, root_pool, root_pool_long)
     
     # GENERATE AFFIXES
     d_target['prefixes'], d_control['prefixes'], d_target['suffixes'], d_control['suffixes'] = sample_affixes(condition, language)
@@ -17,14 +17,18 @@ def generate_random_word_and_control(condition, root_pool, language):
     d_control['word'] = ''.join(d_control['prefixes'] + [d_control['root']] + d_control['suffixes'])
     
     # ADD TYPE
-    d_target['type'], d_control['type'] = 'target', 'control'
+    d_target['target_type'], d_control['target_type'] = 'target', 'control'
     
     return d_target, d_control
 
 
-def sample_root(root_pool):
-    root = random.choice(root_pool['Root'])
-    root_permuted = random.choice(root_pool['PermutedRoot'])
+def sample_root(condition, root_pool, root_pool_long):
+    if condition.endswith('long'): 
+        root = random.choice(root_pool_long['Root'])
+        root_permuted = random.choice(root_pool_long['PermutedRoot'])
+    else:
+        root = random.choice(root_pool['Root'])
+        root_permuted = random.choice(root_pool['PermutedRoot'])
     return root, root_permuted
 
 
@@ -46,8 +50,12 @@ def sample_affixes(condition, language):
     
 def add_errors(d, language):
     prefixes, root, suffixes = d['prefixes'].copy(), d['root'], d['suffixes'].copy()
+    if d['condition'].endswith ('long'):    
+        condition = d['condition'][:d['condition'].find('_')]
+        morphemes_template = list(set(list(condition)))
+    else:
+        morphemes_template = list(set(list(d['condition']))) # Remove redundancy in control template (e.g., pprs -> prs or rss -> rs)
     
-    morphemes_template = list(set(list(d['condition']))) # Remove redundancy in control template (e.g., pprs -> prs or rss -> rs)
     error_to_which_morpheme = random.choice(morphemes_template)
     
     if error_to_which_morpheme == 'r':
