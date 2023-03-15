@@ -75,5 +75,5 @@ for par in range (num_par):
     df_complete = df_complete.sample (frac = 1)
     
     # SAVE TRIALLIST IN CORRECT FOLDER
-    path = f'../triallists/{language}_pseudo/{str(par)}triallist.csv'
+    path = f'../triallists/{language}_pseudo/{str(par)}.csv'
     df_complete.to_csv (path, index = False)
