@@ -1,73 +1,86 @@
 import glob 
 import pandas as pd
-import seaborn as sns
+import scipy.stats as stats
+import statsmodels.formula.api as smf
+from utils_analysis import ttest
+from utils_analysis import count_morphemes
+from utils_analysis import create_pointplot, create_boxplot
 
-# DEFINE LANGUAGE OF EXPERIMENT ("english" OR "french")
-language = 'english'
-condition = 'pseudo'
+# DEFINE LANGUAGE AND CONDITION OF EXPERIMENT ('english' OR 'french'; 'pseudo' OR 'real')
+language, condition = 'english', 'pseudo'
 
 # READ IN TRIALLISTS
 df_roots = pd.read_csv(f'../experimental_design/{language}_{condition}/r.csv')
 path = f'../subject_data/{language}_{condition}'
 csv_files = glob.glob(path + '/*.csv')
-df_list = (pd.read_csv(file) for file in csv_files)
+df_pilot = pd.concat((pd.read_csv(file) for file in csv_files), ignore_index = True)[5:-1]
 
-subjectdata = pd.concat (df_list, ignore_index = True)
-subjectdata['wordlength'] = subjectdata['first'].str.len()
-subjectdata = subjectdata[5:-1]
+# ADD WORDLENGTH AND NUMBER OF MORPHEMES
+df_pilot['wordlength'] = df_pilot['first'].str.len()
+df_pilot['num_morphemes'] = df_pilot['condition'].apply(count_morphemes)
 
-# ADD NUMBER OF MORPHEMES
-def count_morphemes(condition):
-    return len(condition.replace('_long', ''))
+# ADD TYPE ('TARGET' OR 'CONTROL') 
+root_list, permuted_root_list = [list(df_roots[col]) for col in ['Root', 'PermutedRoot']]
+df_pilot['type'] = df_pilot['root'].apply(lambda x: 'target' if x in root_list else 'control' if x in permuted_root_list else None)
 
-subjectdata['number_of_morphemes'] = subjectdata['condition'].apply(count_morphemes)
-
-# ADD TYPE ('TARGET' OR 'CONTROL')
-root_list, permuted_root_list = list(df_roots['Root']), list(df_roots['PermutedRoot'])
-subjectdata['type'] = subjectdata['root'].apply(lambda x: 'target' if x in root_list else 'control' if x in permuted_root_list else None)
+# CALCULATE ERROR RATE
+df_pilot['error_rate'] = 1 - df_pilot['correct']
+n = len(df_pilot)
 
 # FILTER DATAFRAME (ONLY USE CORRECT TRIALS)
-df_correct = subjectdata.copy().loc[subjectdata['correct'] == True]
-false_count = subjectdata['correct'].value_counts()[False]
+df_correct = df_pilot.query('correct == True')
+
+# REMOVE OUTLIERS
+z_score_columns = ['encoding_time', 'rt']
+for col in z_score_columns:
+    df_pilot = df_pilot[abs(stats.zscore(df_pilot[col])) <= 3]
+
+# FILTER OUT PARTICIPANTS WITH <0.5 ACCURACY
+df_accuracy = df_pilot.groupby('ID')['correct'].mean().reset_index()
+df_accuracy = df_accuracy[df_accuracy['correct'] >= 0.5]
+df_pilot_filtered = pd.merge(df_pilot, df_accuracy[['ID']], on='ID')
+
+num_outliers_removed = n - len(df_pilot)
+print(f'Number of outliers removed: {num_outliers_removed}')
+
+# PLOTS
+for plot_info in [('type', 'error_rate', df_pilot_filtered, 'Type', 'Error Rate'), 
+                  ('type', 'rt', df_correct, 'Type', 'Reaction Time'), 
+                  ('type', 'encoding_time', df_correct, 'Type', 'Encoding Time')]:
+    create_boxplot(*plot_info)
+
+for plot_info in [('wordlength', 'rt', 'Number of Characters', 'Reaction Time', (0, 4000)), 
+                  ('num_morphemes', 'rt', 'Number of Morphemes', 'Reaction Time', (0, 4000)), 
+                  ('wordlength', 'encoding_time', 'Number of Characters', 'Encoding Time', (0, 4000)), 
+                  ('num_morphemes', 'encoding_time', 'Number of Morphemes', 'Encoding Time', (0, 4000)), 
+                  ('wordlength', 'error_rate', 'Number of Characters', 'Error Rate', None), 
+                  ('num_morphemes', 'error_rate', 'Number of Morphemes', 'Error Rate', None)]:
+    create_pointplot(df_pilot_filtered, *plot_info)
+
+# ENCODING TIME, RT, AND ERROR-RATE AS A FUNCTION OF WORDLENGTH AND NUMBER OF MORPHEMES (MEANS & MEDIANS)
+for variable in ['encoding_time', 'rt']:
+    for grouping_variable in ['wordlength', 'num_morphemes']:
+        df_grouped = df_correct.groupby(grouping_variable)[variable].agg(['median', 'mean'])
+        print(df_grouped)
 
 
-# ENCODING TIME AS A FUNCTION OF WORDLENGTH
-# CALCULATE MEAN AND MEDIAN
-et_wl_stats = df_correct.groupby('wordlength')['encoding_time'].agg(['median', 'mean'])
-print(et_wl_stats)
-# PLOT
-sns.pointplot(data = df_correct, x = 'wordlength', y = 'encoding_time', hue= 'type')
-
-
-# ENCODING TIME AS A FUNCTION OF NUMBER OF MORPHEMES
-df_correct_target = df_correct.loc[df_correct['type'] == 'target']
-et_nom_stats = df_correct_target.groupby('number_of_morphemes')['encoding_time'].agg(['median', 'mean'])
-print (et_nom_stats)
-# PLOT
-sns.pointplot (data = df_correct_target, x = 'number_of_morphemes', y = 'encoding_time')
-
-
-# REACTION TIME AS A FUNCTION OF WORDLENGTH
-rt_wl_stats = df_correct.groupby('wordlength')['rt'].agg(['median', 'mean'])
-print(rt_wl_stats)
-# PLOT
-
-# REACTION TIME AS A FUNCTION OF NUMBER OF MORPHEMES
-rt_nom_stats = df_correct.groupby('number_of_morphemes')['rt'].agg(['median', 'mean'])
-print(rt_nom_stats)
-# PLOT
-
-
-# ERROR-RATE AS A FUCNTION OF WORDLENGTH
-er_wl = subjectdata.groupby('wordlength')['correct'].mean()
-print (er_wl)
-# PLOT 
-
-
-# ERROR-RATE AS A FUNCTION OF NUMBER OF MORPHEMES
-er_nom = subjectdata.groupby('number_of_morphemes')['correct'].mean()
-print (er_nom)
-# PLOT 
+# ERROR RATE AS A FUNCTION OF NUMBER OF CHARACTERS AND NUMBER OF MORPHEMES (MEANS & MEDIANS)
+for grouping_variable in ['wordlength', 'num_morphemes']:
+    df_grouped = df_pilot.groupby(grouping_variable)['error_rate'].agg(['median', 'mean'])
+    print(df_grouped)
 
 
 # T-TEST (EQUAL WORDLENGTH, DIFFERENT NUMBER OF MORPHEMES)
+ttest_args = [(8, 2, 3), (10, 3, 4), (9, 2, 4)] # wl, n_morph1, n_morph2
+
+for args in ttest_args:
+    ttest(df_pilot, wl=args[0], n_morph1=args[1], n_morph2=args[2])
+    
+
+# REGRESSION MODELS
+# CHECK PREREQUISITS
+
+
+# CREATE MODEL
+model = smf.ols(formula = 'rt ~ num_morphemes + wordlength + C(trial_type)', data=df_correct).fit()
+print(model.summary())
