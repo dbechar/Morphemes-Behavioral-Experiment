@@ -5,7 +5,7 @@ from utils_real import choose_targets_and_control
 from utils_real import add_errors
 
 random.seed(1)
-num_par = 1
+num_par = 50
 
 # DEFINE LANGUAGE OF EXPERIMENT ("english" OR "french")
 language = 'english' 
@@ -76,5 +76,5 @@ for par in range (num_par):
     df_complete = df_complete.sample (frac = 1)
     
     # SAVE TRIALLIST IN CORRECT FOLDER
-    path = f'../triallists/{language}_real/{str(num_par)}.csv'
+    path = f'../triallists/{language}_real/{str(par)}.csv'
     df_complete.to_csv (path, index = False)
