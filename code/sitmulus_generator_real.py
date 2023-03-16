@@ -11,7 +11,7 @@ num_par = 1
 language = 'english' 
 
 # READ IN STIMULI FILES
-df_design = pd.read_csv(f'../experimental_design/{language}_real/design_{language}.csv')
+df_design = pd.read_csv(f'../experimental_design/{language}_real/design_{language}_real.csv')
 
 # SET ERRORRATE
 errorrate = 0.5
@@ -25,18 +25,10 @@ for par in range (num_par):
         for i_word in range(n_trials): # LOOP OVER TRIALS PER CONDITION
             # GENERATE A TARGET WORD AND VERIFIES THAT IT DOES NOT ALREADY EXIST
              while True:
-                d_target_word, d_control_word = choose_targets_and_control(condition)
+                d_target_word, d_control_word = choose_targets_and_control(condition, language)
                 if d_target_word['word'] not in target_words:
                     target_words.append(d_target_word['word'])
-                
-                d_target_word['prefixes'] = d_target_word['prefixes'].split()
-                d_target_word['suffixes'] = d_target_word['suffixes'].split()
-                d_target_word['word'] = ''.join (d_target_word['word'])
-                
-                d_control_word['prefixes'] = d_control_word['prefixes'].split()
-                d_control_word['suffixes'] = d_control_word['suffixes'].split()
-                d_control_word['word'] = ''.join (d_control_word['word'])
-                
+                                
                 # ADD LETTER-SUBSTITUTION ERRORS
                 d_target_word = add_errors(d_target_word, language)
                 d_control_word = add_errors(d_control_word, language)
@@ -46,7 +38,7 @@ for par in range (num_par):
        
                 break
     
-    
+
     df_target = pd.DataFrame(random.sample(ds_target_word, len(ds_target_word)))
     df_control = pd.DataFrame(random.sample(ds_control_word, len(ds_control_word)))
     

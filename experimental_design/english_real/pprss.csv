@@ -1,8 +1,6 @@
-Word,Prefix2,Prefix1,Root,Suffix1,Suffix2,Frequency,wordlength
-nonreactivity,non,re,react,iv,ity,99,13
-disinflationary,dis,in,inflat,ion,ary,99,15
-disingeniously,dis,in,gen,ious,ly,99,14
-disingeniousness,dis,in,gen,ious,ness,99,16
-unmistakebly,un,mis,take,abl,y,99,12
-disproportionately,dis,pro,portion,ate,ly,99,18
-redeactivate,re,de,act,iv,ate,99,12
+Word,Prefix2,Prefix1,Root,Suffix1,Suffix2,Wordlength
+unbeknownst,un,be,know,n,st,11
+unmistakably,un,mis,take,abl,y,12
+redeactivate,re,de,act,iv,ate,12
+nonreactivity,non,re,react,iv,ity,13
+disingeniously,dis,in,gen,ious,ly,14

@@ -11,8 +11,8 @@ def choose_targets_and_control (condition, language):
     d_target['word'] = ''.join(d_target['prefixes'] + [d_target['root']] + d_target['suffixes'])
     
     # GENERATE CORRESPONDING MONOMORPHEMES
-    d_control['prefixes'], d_control['root'], d_target['suffixes'] = sample_monomorphemes(language, d_target['word'][0])
-    d_control['word'] = ''.join(d_control['prefixes'] + [d_control['root']] + d_control['suffixes'])
+    d_control['prefixes'], d_control['root'], d_control['suffixes'] = sample_control(language, d_target['word'][0])
+    d_control['word'] = d_control['root']
     
     # ADD TYPE
     d_target['target_type'], d_control['target_type'] = 'target', 'control'
@@ -20,15 +20,15 @@ def choose_targets_and_control (condition, language):
     return d_target, d_control
 
 
-def sample_monomorphemes(language, target_word):
-    r_pool = pd.read.csv (f'../experiment_design/{language}_real/r.csv')
+def sample_control(language, target_word):
+    r_pool = pd.read_csv (f'../experimental_design/{language}_real/r.csv')
     word = ""
     
     while len(target_word) != len(word): 
         IX = random.choices(range(len(r_pool)), k=1)
         word = r_pool.iloc[IX, r_pool.columns.str.startswith('Root')].values.flatten().tolist()
-        
-    return [''], word, ['']
+
+    return [''], str (word[0]), ['']
 
 
 def sample_words (condition, language):
@@ -37,7 +37,7 @@ def sample_words (condition, language):
     if n_affixes > 1:
         IX = random.choices(range(len(affix_pool)), k=1)
         prefixes = affix_pool.iloc[IX, affix_pool.columns.str.startswith('Prefix')].values.flatten().tolist()
-        root = affix_pool.iloc[IX, affix_pool.columns.str.startswith('Root')].values.flatten().tolist()
+        root = str(affix_pool.iloc[IX, affix_pool.columns.str.startswith('Root')].values.flatten()[0])
         suffixes = affix_pool.iloc[IX, affix_pool.columns.str.startswith('Suffix')].values.flatten().tolist()
         return prefixes, root, suffixes
     else:
@@ -85,9 +85,9 @@ def add_errors(d, language):
     return d
     
 
-
 def substitute_letter(letter, language):
     d_letter_groups = {}
+    error_letter = ''
     if language == "english":
         for group in ['vowels', 'consonants', 'sonorants']:
             d_letter_groups[group] = {}
