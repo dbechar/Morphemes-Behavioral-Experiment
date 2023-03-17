@@ -45,8 +45,12 @@ def sample_words (condition, language):
 
 def add_errors(d, language):
     prefixes, root, suffixes = d['prefixes'].copy(), d['root'], d['suffixes'].copy()
+    if d['condition'].endswith ('long'):    
+        condition = d['condition'][:d['condition'].find('_')]
+        morphemes_template = list(set(list(condition)))
+    else:
+        morphemes_template = list(set(list(d['condition']))) # Remove redundancy in control template (e.g., pprs -> prs or rss -> rs)
     
-    morphemes_template = list(set(list(d['condition']))) # Remove redundancy in control template (e.g., pprs -> prs or rss -> rs)
     error_to_which_morpheme = random.choice(morphemes_template)
     
     if error_to_which_morpheme == 'r':
