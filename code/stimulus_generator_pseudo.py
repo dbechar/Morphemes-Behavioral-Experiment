@@ -7,7 +7,7 @@ random.seed(1)
 num_par = 50
 
 # DEFINE LANGUAGE OF EXPERIMENT ("english" OR "french")
-language = 'english' 
+language = 'french' 
 
 df_design = pd.read_csv(f'../experimental_design/{language}_pseudo/design_{language}_pseudo.csv')
 df_roots = pd.read_csv(f'../experimental_design/{language}_pseudo/r.csv')
@@ -37,7 +37,7 @@ for par in range (num_par):
                     ds_control_word.append(d_control_word)
                     
                     break
-"""    
+    
     df_target = pd.DataFrame(random.sample(ds_target_word, len(ds_target_word)))
     df_control = pd.DataFrame(random.sample(ds_control_word, len(ds_control_word)))
     
@@ -77,4 +77,3 @@ for par in range (num_par):
     # SAVE TRIALLIST IN CORRECT FOLDER
     path = f'../triallists/{language}_pseudo/{str(par)}.csv'
     df_complete.to_csv (path, index = False)
-"""
