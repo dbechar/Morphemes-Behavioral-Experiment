@@ -9,7 +9,7 @@ def count_morphemes(condition):
     return len(condition.replace('_long', ''))
 
 def create_boxplot(x, y, data, xlabel, ylabel, hue = None):
-    sns.boxplot(x = x, y = y, data = data, hue = hue)
+    sns.boxplot(x = x, y = y, data = data, hue = hue, palette = ['r', 'g'])
     sns.despine()
     plt.xlabel(xlabel, fontdict={'size': 14, 'weight': 'bold'})
     plt.ylabel(ylabel, fontdict={'size': 14, 'weight': 'bold'})
