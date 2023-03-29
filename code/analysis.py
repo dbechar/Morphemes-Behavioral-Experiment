@@ -59,7 +59,7 @@ for plot_info in [('wordlength', 'rt', 'Number of Characters', 'Reaction Time', 
 # ENCODING TIME, RT, AND ERROR-RATE AS A FUNCTION OF TYPE (TARGET VS CONTROL)
 # MEDIAN, MEAN, AND SD
 for variable in ['encoding_time', 'rt']:
-    df_grouped = df_correct.groupby('target_type')['encoding_time'].agg(['median', 'mean', 'std'])
+    df_grouped = df_correct.groupby('target_type')[variable].agg(['median', 'mean', 'std'])
     print(df_grouped)
 
 # ERROR RATE
@@ -109,7 +109,7 @@ df_pilot_outliers ['error_rate'] = error_rate.astype(int)
 
 # CREATE REGRESSION MODELS
 model_rt = ols('rt ~ target_type', data=df_correct).fit()
-model_encoding_time = ols('encoding_time ~ target_type', data=df_correct).fit()
+model_encoding_time = ols('encoding_time ~ wordlength * target_type', data=df_correct).fit()
 model_error_rate = ols('error_rate ~ target_type', data=df_pilot_outliers).fit()
 
 # PRINT SUMMARY OF THE MODELS
