@@ -1,9 +1,6 @@
-# PERFORMANCE VS WORDLENGTH/NUMBER OF MORPHEMES (S2)
-import glob 
 import pandas as pd
-import scipy.stats as stats
 from statsmodels.formula.api import ols
-from utils_analysis import count_morphemes
+from utils_analysis import load_df, remove_outliers
 from utils_analysis import create_pointplot, create_boxplot
 from utils_analysis import ttest
 
@@ -11,26 +8,10 @@ from utils_analysis import ttest
 language, condition = 'english', 'pseudo'
 
 # READ IN TRIALLISTS
-path = f'../subject_data/{language}_{condition}'
-csv_files = glob.glob(path + '/*.csv')
-df = pd.concat((pd.read_csv(file) for file in csv_files), ignore_index = True)
-df = df.dropna(subset = ['condition'])
-
-# ADD NUMBER OF MORPHEMES
-df['num_morphemes'] = df['condition'].apply(count_morphemes)
-
-# CALCULATE ERROR RATE
-df['error_rate'] = 1 - df['correct']
-df['wordlength'] = df['wordlength'].astype(int)
+df = load_df (language, condition)
 
 # REMOVE OUTLIERS
-df_filtered = df[(abs(stats.zscore(df[['encoding_time', 'rt']])) <= 3).all(axis=1)]
-df_filtered = df.groupby('ID').filter(lambda x: x['correct'].mean() >= 0.5)
-rt_mean = df_filtered.query('correct == True')['rt'].mean()
-rt_std = df_filtered.query('correct == True')['rt'].std()
-df_filtered = df_filtered.groupby('ID').filter(lambda x: x['correct'].mean() >= 0.5 and x['rt'].mean() >= rt_mean - 3*rt_std)
-
-print(f'Number of outliers removed: {len(df) - len(df_filtered)}')
+df_filtered = remove_outliers(df)
 
 # PLOT 
 for plot_info in [(df_filtered.query('correct == True'),'wordlength', 'rt', 'Number of Characters', 'Reaction Time', (0, 6000)), 
@@ -58,19 +39,27 @@ for grouping_variable in ['wordlength', 'num_morphemes']:
 word_lencon = df_filtered.query('correct == True').groupby("num_morphemes")["wordlength"].value_counts()
 print (word_lencon)
 
-ttest_rt = [(12, 3, 5), (14, 4, 6), (12,2,4)] # wl, n_morph1, n_morph2
-for args in ttest_rt:
-    ttest(df_filtered, wl=args[0], n_morph1=args[1], n_morph2=args[2], variable = 'rt')
-    df_plot = df_filtered.query('correct == True')[(df_filtered.query('correct == True')['wordlength'] == args[0]) & ((df_filtered.query('correct == True')['num_morphemes'] == args[1]) | (df_filtered.query('correct == True')['num_morphemes'] == args[2]))]
-    create_boxplot (x = 'num_morphemes', y = 'rt', data = df_plot, xlabel = f'Number of Morphemes (Wordlength:{args[0]})', ylabel = 'Reaction Time', ylim = (0,3000))
-
-ttest_et = [(10, 2, 4), (10, 3, 4), (7,2,3)]
-for args in ttest_et: 
-    ttest(df_filtered, wl=args[0], n_morph1=args[1], n_morph2=args[2], variable = 'encoding_time')
-    df_plot = df_filtered.query('correct == True')[(df_filtered.query('correct == True')['wordlength'] == args[0]) & ((df_filtered.query('correct == True')['num_morphemes'] == args[1]) | (df_filtered.query('correct == True')['num_morphemes'] == args[2]))]
-    create_boxplot (x = 'num_morphemes', y = 'encoding_time', data = df_plot, xlabel = f'Number of Morphemes (Wordlength:{args[0]})', ylabel = 'Encoding Time', ylim = (0,3000))
+# DATAFRAME WITH MEAN ERRORRATE PER PARTICIPANT
+mean_error_rate = df_filtered.groupby(['ID', 'wordlength', 'num_morphemes'])['error_rate'].mean()
+df_mean_error_rate = pd.DataFrame({'ID': mean_error_rate.index.get_level_values('ID'), 
+                                   'mean_error_rate': mean_error_rate.values,
+                                   'wordlength': mean_error_rate.index.get_level_values ('wordlength'),
+                                   'num_morphemes': mean_error_rate.index.get_level_values ('num_morphemes')
+                                   })
 
 
+ttest_args = [(11, 2, 5), (12,3,5), (10,3,4)] # wl, n_morph1, n_morph2
+for args in ttest_args:
+    for var in ['rt', 'encoding_time']:
+        ttest(df_filtered.query('correct == True'), wl=args[0], n_morph1=args[1], n_morph2=args[2], variable = var)
+        df_plot = df_filtered.query('correct == True')[(df_filtered.query('correct == True')['wordlength'] == args[0]) & ((df_filtered.query('correct == True')['num_morphemes'] == args[1]) | (df_filtered.query('correct == True')['num_morphemes'] == args[2]))]
+        create_boxplot (x = 'num_morphemes', y = var, data = df_plot, xlabel = f'Number of Morphemes (Wordlength:{args[0]})', ylabel = f'{var.capitalize()}', ylim = (0,4000))
+""" 
+for args in ttest_args: 
+        ttest(df_filtered, wl=args[0], n_morph1=args[1], n_morph2=args[2], variable = 'error_rate')
+        df_plot = df_mean_error_rate[(df_mean_error_rate['wordlength'] == args[0]) & ((df_mean_error_rate['num_morphemes'] == args[1]) | (df_mean_error_rate['num_morphemes'] == args[2]))]
+        create_boxplot (x = 'num_morphemes', y = 'mean_error_rate', data = df_plot, xlabel = f'Number of Morphemes (Wordlength:{args[0]})', ylabel = 'Mean Error Rate', ylim = (0, 1))
+"""       
 
 # CREATE REGRESSION MODELS 
 mod_rt = ols('rt ~ wordlength * target_type', data=df_filtered.query('correct == True')).fit()

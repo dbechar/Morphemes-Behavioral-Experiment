@@ -1,34 +1,16 @@
-# BACIC MEASURES FIGURE + T-TEST (S1)
-import glob 
 import pandas as pd
 import scipy.stats as stats
-from utils_analysis import count_morphemes
 from utils_analysis import create_boxplot
+from utils_analysis import load_df, remove_outliers
 
 # DEFINE LANGUAGE AND CONDITION OF EXPERIMENT ('english' OR 'french'; 'pseudo' OR 'real')
 language, condition = 'english', 'pseudo'
 
 # READ IN TRIALLISTS
-path = f'../subject_data/{language}_{condition}'
-csv_files = glob.glob(path + '/*.csv')
-df = pd.concat((pd.read_csv(file) for file in csv_files), ignore_index = True)
-df = df.dropna(subset = ['condition'])
-
-# ADD NUMBER OF MORPHEMES
-df['num_morphemes'] = df['condition'].apply(count_morphemes)
-
-# CALCULATE ERROR RATE
-df['error_rate'] = 1 - df['correct']
+df = load_df (language, condition)
 
 # REMOVE OUTLIERS
-df_filtered = df[(abs(stats.zscore(df[['encoding_time', 'rt']])) <= 3).all(axis=1)]
-df_filtered = df.groupby('ID').filter(lambda x: x['correct'].mean() >= 0.5)
-rt_mean = df_filtered.query('correct == True')['rt'].mean()
-rt_std = df_filtered.query('correct == True')['rt'].std()
-df_filtered = df_filtered.groupby('ID').filter(lambda x: x['correct'].mean() >= 0.5 and x['rt'].mean() >= rt_mean - 3*rt_std)
-
-print(f'Number of outliers removed: {len(df) - len(df_filtered)}')
-
+df_filtered = remove_outliers(df)
 
 # DATAFRAME WITH MEAN ERRORRATE PER PARTICIPANT
 mean_error_rate = df_filtered.groupby(['ID', 'target_type'])['error_rate'].mean()
@@ -47,7 +29,6 @@ for plot_info in [('target_type', 'mean_error_rate', df_mean_error_rate, 'Type',
 # MEDIAN, MEAN, AND SD
 for variable in ['encoding_time', 'rt']:
     print(f"{variable}: {df_filtered.query('correct == True').groupby('target_type')[variable].agg(['median', 'mean', 'std'])}")
-
 print(f"Error Rate: {df_filtered.groupby('target_type')['error_rate'].agg(['median', 'mean', 'std'])}")
 
 

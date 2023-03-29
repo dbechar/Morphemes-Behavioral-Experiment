@@ -1,8 +1,31 @@
+import glob 
 import pandas as pd
 import scipy.stats as stats
 import seaborn as sns
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
+
+def load_df (language, condition):
+    # READ IN TRIALLISTS
+    path = f'../subject_data/{language}_{condition}'
+    csv_files = glob.glob(path + '/*.csv')
+    df = pd.concat((pd.read_csv(file) for file in csv_files), ignore_index = True)
+    df = df.dropna(subset = ['condition'])
+    # ADD NUMBER OF MORPHEMES
+    df['num_morphemes'] = df['condition'].apply(count_morphemes)
+    # CALCULATE ERROR RATE
+    df['error_rate'] = 1 - df['correct']
+    df['wordlength'] = df['wordlength'].astype(int)
+    return df
+
+def remove_outliers (df):
+    df_filtered = df[(abs(stats.zscore(df[['encoding_time', 'rt']])) <= 3).all(axis=1)]
+    df_filtered = df.groupby('ID').filter(lambda x: x['correct'].mean() >= 0.5)
+    rt_mean = df_filtered.query('correct == True')['rt'].mean()
+    rt_std = df_filtered.query('correct == True')['rt'].std()
+    df_filtered = df_filtered.groupby('ID').filter(lambda x: x['correct'].mean() >= 0.5 and x['rt'].mean() >= rt_mean - 3*rt_std)
+    print(f'Number of outliers removed: {len(df) - len(df_filtered)}')
+    return df_filtered
 
 
 def count_morphemes(condition):
@@ -46,106 +69,53 @@ def ttest (df, wl, n_morph1, n_morph2, variable):
     print(f"T-test results for {variable} with wordlength {wl} and number of morphemes {n_morph1} vs. {n_morph2}: t = {t:.4f}, p = {p:.4f}")
     
 
-def error_position (df):
+def error_position(df):
     df_error = df.copy().query('is_error == 1')
     
-    """
-    # Drop rows with prefix or suffix less than 3 characters
     for index, error_row in df_error.iterrows():
         if error_row['error_to_which_morpheme'] == 'p':
-            prefix_num = int(error_row['i_morpheme'])
-            if prefix_num == 0:
-                prefix_index = 1
-            else:
-                prefix_index = 0
+            prefix_index = 1 if int(error_row['i_morpheme']) == 0 else 0
             prefix_str = error_row['prefixes'].split('_')[prefix_index-1]
             if len(prefix_str) < 3:
                 df_error.drop(index, inplace=True)
-        elif error_row['error_to_which_morpheme'] == 's':
-            suffix_num = int(error_row['i_morpheme'])
-            suffix_str = error_row['suffixes'].split('_')[suffix_num]
-            if len(suffix_str) < 3:
-                df_error.drop(index, inplace=True)
-    """
-    # Determine position of error
-    for index, error_row in df_error.iterrows():
-        if error_row['error_to_which_morpheme'] == 'p':
-            prefix_num = int(error_row['i_morpheme'])
-            if prefix_num == 0:
-                prefix_index = 1
-            else:
-                prefix_index = 0
+                continue
                 
-            if int(error_row['i_morpheme']) == 0 and int(error_row['i_within_morpheme']) == 0: 
-                if error_row['i_within_morpheme'] == 0:
-                    position = 'word_boundary'
-                elif error_row['i_within_morpheme'] == len(error_row['prefixes'].split('_')[prefix_index-1])-1:
-                    position = 'morpheme_boundary'
-                else:
-                    position = 'within_morpheme'
+            if int(error_row['i_morpheme']) == 0 and int(error_row['i_within_morpheme']) == 0:
+                position = 'word_boundary' if error_row['i_within_morpheme'] == 0 else 'morpheme_boundary'
             else:
-                if error_row['i_within_morpheme'] == 0:
-                    position = 'morpheme_boundary'
-                elif error_row['i_within_morpheme'] == len(error_row['prefixes'].split('_')[prefix_index-1])-1:
-                    position = 'morpheme_boundary'
-                else:
-                    position = 'within_morpheme'
-        
+                position = 'morpheme_boundary' if error_row['i_within_morpheme'] == 0 or error_row['i_within_morpheme'] == len(prefix_str)-1 else 'within_morpheme'
+                
         elif error_row['error_to_which_morpheme'] == 'r':
+            count_prefix = error_row['condition'].count('p')
+            count_suffix = error_row['condition'].count('s')
             
-            count_prefix = 0
-            count_suffix = 0
-            for char in error_row['condition']:
-                if char == 'p':
-                    count_prefix += 1
-                for char in error_row ['condition']:
-                    if char == 's':
-                        count_suffix +=1
-            
-            if count_prefix != 0: 
-              if error_row['i_within_morpheme'] == 0:
-                  position = 'morpheme_boundary'
-                  
-              elif error_row['i_within_morpheme'] == len(error_row['root'])-1:
-                  if count_suffix == 0: 
-                      position = 'word_boundary'
-                  else: 
-                      position = 'morpheme_boundary'
-              else:
-                  position = 'within_morpheme'
-            
-            else: 
+            if count_prefix == 0:
                 if error_row['i_within_morpheme'] == 0:
                     position = 'word_boundary'
                 elif error_row['i_within_morpheme'] == len(error_row['root'])-1:
-                    if count_suffix == 0: 
-                        position = 'word_boundary'
-                    else: 
-                        position = 'morpheme_boundary' 
+                    position = 'word_boundary' if count_suffix == 0 else 'morpheme_boundary'
                 else:
                     position = 'within_morpheme'
-            
-
-        elif error_row['error_to_which_morpheme'] == 's':
-            count = 0
-            for char in error_row['condition']:
-                if char == 's':
-                    count += 1
-            if count == error_row['i_morpheme'] + 1: 
-                if error_row['i_within_morpheme'] == 0:
-                    position = 'morpheme_boundary' 
-                elif error_row['i_within_morpheme'] == len(error_row['suffixes'].split('_')[int(error_row['i_morpheme'])])-1: 
-                    position = 'word_boundary'
-                else:
-                    position = 'within_morpheme'
-            else: 
+            else:
                 if error_row['i_within_morpheme'] == 0:
                     position = 'morpheme_boundary'
-                elif error_row['i_within_morpheme'] == len(error_row['suffixes'].split('_')[int(error_row['i_morpheme'])])-1:
-                    position = 'morpheme_boundary'
+                elif error_row['i_within_morpheme'] == len(error_row['root'])-1:
+                    position = 'morpheme_boundary' if count_suffix != 0 else 'word_boundary'
                 else:
                     position = 'within_morpheme'
         
+        elif error_row['error_to_which_morpheme'] == 's':
+            suffix_str = error_row['suffixes'].split('_')[int(error_row['i_morpheme'])]
+            if len(suffix_str) < 3:
+                df_error.drop(index, inplace=True)
+                continue
+            
+            if error_row['condition'].count('s') == error_row['i_morpheme'] + 1:
+                position = 'word_boundary' if error_row['i_within_morpheme'] == len(suffix_str)-1 else ('morpheme_boundary'if error_row['i_within_morpheme'] == 0 else 'within_morpheme')
+            else: 
+                position = 'morpheme_boundary' if error_row['i_within_morpheme'] == 0 or error_row['i_within_morpheme'] == len(suffix_str)-1 else 'within_morpheme'
+                    
+
         df_error.loc[index, 'error_position'] = position
         
     return df_error
