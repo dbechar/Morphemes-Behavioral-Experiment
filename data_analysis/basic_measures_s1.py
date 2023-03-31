@@ -8,6 +8,7 @@ language, condition = 'english', 'pseudo'
 
 # READ IN TRIALLISTS
 df = load_df (language, condition)
+print (df['ID'].nunique()) # number of participants
 
 # REMOVE OUTLIERS
 df_filtered = remove_outliers(df)
