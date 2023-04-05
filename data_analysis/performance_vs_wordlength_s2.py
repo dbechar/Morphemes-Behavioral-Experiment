@@ -40,33 +40,93 @@ word_lencon = df_filtered.query('correct == True').groupby("num_morphemes")["wor
 print (word_lencon)
 
 # DATAFRAME WITH MEAN ERRORRATE PER PARTICIPANT
-mean_error_rate = df_filtered.groupby(['ID', 'wordlength', 'num_morphemes'])['error_rate'].mean()
+mean_error_rate = df_filtered.groupby(['ID', 'wordlength', 'num_morphemes', 'target_type'])['error_rate'].mean()
 df_mean_error_rate = pd.DataFrame({'ID': mean_error_rate.index.get_level_values('ID'), 
+                                   'target_type': mean_error_rate.index.get_level_values('target_type'),
                                    'mean_error_rate': mean_error_rate.values,
                                    'wordlength': mean_error_rate.index.get_level_values ('wordlength'),
                                    'num_morphemes': mean_error_rate.index.get_level_values ('num_morphemes')
                                    })
 
 
-ttest_args = [(11, 2, 5), (12,3,5), (10,3,4)] # wl, n_morph1, n_morph2
+ttest_args = [(11, 2, 5),(10,3,4)] # wl, n_morph1, n_morph2
 for args in ttest_args:
     for var in ['rt', 'encoding_time']:
         ttest(df_filtered.query('correct == True'), wl=args[0], n_morph1=args[1], n_morph2=args[2], variable = var)
         df_plot = df_filtered.query('correct == True')[(df_filtered.query('correct == True')['wordlength'] == args[0]) & ((df_filtered.query('correct == True')['num_morphemes'] == args[1]) | (df_filtered.query('correct == True')['num_morphemes'] == args[2]))]
         create_boxplot (x = 'num_morphemes', y = var, data = df_plot, xlabel = f'Number of Morphemes (Wordlength:{args[0]})', ylabel = f'{var.capitalize()}', ylim = (0,4000))
-""" 
+
 for args in ttest_args: 
         ttest(df_filtered, wl=args[0], n_morph1=args[1], n_morph2=args[2], variable = 'error_rate')
         df_plot = df_mean_error_rate[(df_mean_error_rate['wordlength'] == args[0]) & ((df_mean_error_rate['num_morphemes'] == args[1]) | (df_mean_error_rate['num_morphemes'] == args[2]))]
         create_boxplot (x = 'num_morphemes', y = 'mean_error_rate', data = df_plot, xlabel = f'Number of Morphemes (Wordlength:{args[0]})', ylabel = 'Mean Error Rate', ylim = (0, 1))
-"""       
+      
 
 # CREATE REGRESSION MODELS 
-mod_rt = ols('rt ~ wordlength * target_type', data=df_filtered.query('correct == True')).fit()
-mod_encoding_time = ols('encoding_time ~ wordlength * target_type', data=df_filtered.query('correct == True')).fit()
-#mod_error_rate = ols('error_rate ~ wordlength * target_type', data=df_filtered).fit()
+mod_rt_wl = ols('rt ~ wordlength * target_type', data=df_filtered.query('correct == True')).fit()
+mod_encoding_time_wl = ols('encoding_time ~ wordlength * target_type', data=df_filtered.query('correct == True')).fit()
+mod_error_rate_wl = ols('mean_error_rate ~ wordlength * target_type', data=df_mean_error_rate).fit()
+
+mod_rt_nom = ols('rt ~ num_morphemes * target_type', data=df_filtered.query('correct == True')).fit()
+mod_encoding_time_nom = ols('encoding_time ~ num_morphemes * target_type', data=df_filtered.query('correct == True')).fit()
+mod_error_rate_nom = ols('mean_error_rate ~ num_morphemes * target_type', data=df_mean_error_rate).fit()
 
 # PRINT SUMMARY OF THE MODELS
-#print(mod_rt.summary())
-#print(mod_encoding_time.summary())
-#print(mod_error_rate.summary())
+# WORDLENGTH
+print(mod_rt_wl.summary())
+print(mod_encoding_time_wl.summary())
+print(mod_error_rate_wl.summary())
+
+# NUMBER OF MORPHEMES
+print(mod_rt_nom.summary())
+print(mod_encoding_time_nom.summary())
+print(mod_error_rate_nom.summary())
+
+
+create_pointplot(data=df_filtered.query('correct == True'), 
+                 x_var='wordlength', 
+                 y_var='rt', 
+                 x_label='Word Length', 
+                 y_label='Reaction Time', 
+                 y_lim=(0, 4000), 
+                 models=[mod_rt_wl])
+
+create_pointplot(data=df_filtered.query('correct == True'), 
+                 x_var='num_morphemes', 
+                 y_var='rt', 
+                 x_label='Number of Morphemes', 
+                 y_label='Reaction Time', 
+                 y_lim=(0, 4000), 
+                 models=[mod_rt_nom])
+
+create_pointplot(data=df_filtered.query('correct == True'), 
+                 x_var='wordlength', 
+                 y_var= 'encoding_time', 
+                 x_label='Word Length', 
+                 y_label='Encoding Time', 
+                 y_lim=(0, 4000), 
+                 models=[mod_encoding_time_wl])
+
+create_pointplot(data=df_filtered.query('correct == True'), 
+                 x_var='num_morphemes', 
+                 y_var='encoding_time', 
+                 x_label='Word Length', 
+                 y_label='Encoding Time', 
+                 y_lim=(0, 4000), 
+                 models=[mod_encoding_time_nom])
+
+create_pointplot(data=df_mean_error_rate, 
+                 x_var='wordlength', 
+                 y_var= 'mean_error_rate', 
+                 x_label='Word Length', 
+                 y_label='Mean Error Time', 
+                 y_lim=(0, 1), 
+                 models=[mod_error_rate_wl])
+
+create_pointplot(data=df_mean_error_rate, 
+                 x_var='num_morphemes', 
+                 y_var='mean_error_rate', 
+                 x_label='Word Length', 
+                 y_label='Mean Error Rate', 
+                 y_lim=(0, 1), 
+                 models=[mod_error_rate_nom])

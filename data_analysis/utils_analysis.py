@@ -41,18 +41,31 @@ def create_boxplot(x, y, data, xlabel, ylabel, ylim, xticks = None, hue=None):
         ax.set_xticklabels(xticks, fontsize = 10)
     plt.show()
     
-def create_pointplot(data, x_var, y_var, x_label, y_label, y_lim, xticks = None, order=None):
-    plot = sns.pointplot(data=data, x=x_var, y=y_var, hue='target_type', hue_order = ['target', 'control'], 
-                         palette=['g', 'r'], order=order, errorbar=('se'))
+
+def create_pointplot(data, x_var, y_var, x_label, y_label, y_lim, xticks=None, order=None, models=None):
+    plot = sns.pointplot(data=data, x=x_var, y=y_var, hue='target_type', hue_order=['target', 'control'], 
+                         palette=['g', 'r'], order=order, errorbar='se')
+    
+    if models is not None:
+        for i, model in enumerate(models):
+            x_range = data[x_var].unique()
+            y_range = model.params[0] + model.params[1] * x_range
+            
+            sns.lineplot(x=x_range, y=y_range, color='k', ax=plot, label=f'Model {i+1}')
+    
     plot.set_xlabel(x_label, fontdict={'size': 14, 'weight': 'bold'})
     plot.set_ylabel(y_label, fontdict={'size': 14, 'weight': 'bold'})
     plot.set(ylim=y_lim)
-    if xticks != None:
+    
+    if xticks is not None:
         plot.set_xticklabels(xticks, fontsize=10)
+    
     green_patch = mpatches.Patch(color='g', label='Label1')
     red_patch = mpatches.Patch(color='r', label='Label2')
     plot.legend(title='Type', labels=['Target', 'Control'], handles=[green_patch, red_patch])   
+    
     plt.show()
+
 
 def ttest (df, wl, n_morph1, n_morph2, variable):
     # Filter data for the given word length and numbers of morphemes
@@ -119,3 +132,4 @@ def error_position(df):
         df_error.loc[index, 'error_position'] = position
         
     return df_error
+

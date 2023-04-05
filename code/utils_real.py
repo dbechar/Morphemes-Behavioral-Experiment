@@ -11,7 +11,7 @@ def choose_targets_and_control (condition, language):
     d_target['word'] = ''.join(d_target['prefixes'] + [d_target['root']] + d_target['suffixes'])
     
     # GENERATE CORRESPONDING MONOMORPHEMES
-    d_control['prefixes'], d_control['root'], d_control['suffixes'] = sample_control(language, d_target['word'][0])
+    d_control['prefixes'], d_control['root'], d_control['suffixes'] = sample_control(language, d_target['word'])
     d_control['word'] = d_control['root']
     
     # ADD TYPE
@@ -22,12 +22,12 @@ def choose_targets_and_control (condition, language):
 
 def sample_control(language, target_word):
     r_pool = pd.read_csv (f'../experimental_design/{language}_real/r.csv')
-    word = ""
+    word = " "
     
-    while len(target_word) != len(word): 
+    while len(target_word) != len(word[0]): 
         IX = random.choices(range(len(r_pool)), k=1)
         word = r_pool.iloc[IX, r_pool.columns.str.startswith('Root')].values.flatten().tolist()
-
+      
     return [''], str (word[0]), ['']
 
 

@@ -16,9 +16,10 @@ df_design = pd.read_csv(f'../experimental_design/{language}_real/design_{languag
 # SET ERRORRATE
 errorrate = 0.5
 
-for par in range (num_par): 
+for par in range (num_par):
+    print (par)
     # GENERATE ALL TARGET WORDS
-    target_words = []
+    target_words, control_words = [], []
     ds_target_word, ds_control_word = [], []
     for i_row, row in df_design.iterrows(): # LOOP OVER CONDITIONS
         condition, n_trials = row['Condition'], row['n_trials']
@@ -26,17 +27,21 @@ for par in range (num_par):
             # GENERATE A TARGET WORD AND VERIFIES THAT IT DOES NOT ALREADY EXIST
              while True:
                 d_target_word, d_control_word = choose_targets_and_control(condition, language)
-                if d_target_word['word'] not in target_words:
+                if d_target_word['word'] not in target_words and d_control_word['word'] not in control_words:
+                    #print (len(d_target_word['word']),  len(d_control_word['word']))
                     target_words.append(d_target_word['word'])
-                                
-                # ADD LETTER-SUBSTITUTION ERRORS
-                d_target_word = add_errors(d_target_word, language)
-                d_control_word = add_errors(d_control_word, language)
+                    control_words.append(d_control_word['word'])
+               
+                    # ADD LETTER-SUBSTITUTION ERRORS
+                    d_target_word = add_errors(d_target_word, language)
+                    d_control_word = add_errors(d_control_word, language)
                 
-                ds_target_word.append(d_target_word)
-                ds_control_word.append(d_control_word)
-       
-                break
+                    ds_target_word.append(d_target_word)
+                    ds_control_word.append(d_control_word)
+                
+                    break
+                else: 
+                   d_target_word, d_control_word = choose_targets_and_control(condition, language) 
     
 
     df_target = pd.DataFrame(random.sample(ds_target_word, len(ds_target_word)))
@@ -46,6 +51,10 @@ for par in range (num_par):
     # ADD "IS_ERROR" 
     df_target['is_error'] = [1] * int(errorrate * len(df_target)) +  [0] * int(errorrate * len(df_target)) 
     df_control['is_error'] = [1] * int(errorrate * len(df_control)) +  [0] * int(errorrate * len(df_control)) 
+    
+    # ADD WORDLENGTH
+    df_target['wordlength'] = df_target['word'].str.len()
+    df_control['wordlength'] = df_control['word'].str.len()
     
     # CONCATE DATAFRAMES
     df_complete = pd.concat([df_target, df_control])

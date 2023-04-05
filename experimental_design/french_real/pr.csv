@@ -1,7 +1,1 @@
-﻿Word,Frequency,Root,Prefix,Suffix,Condition
-revue,33.09,vue,re,,pr
-surhomme,0.86,homme,sur,,pr
-contretemps,1.43,temps,contre,,pr
-déshonneur,3.28,honneur,dés,,pr
-désordre,13.64,ordre,dés,,pr
-invalide,4.14,valide,in,,pr
+﻿Word,Prefix1,Root,Wordlength
