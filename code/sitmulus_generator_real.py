@@ -4,7 +4,7 @@ import pandas as pd
 from utils_real import choose_targets_and_control
 from utils_real import add_errors
 
-random.seed(1)
+random.seed(22)
 num_par = 50
 
 # DEFINE LANGUAGE OF EXPERIMENT ("english" OR "french")
@@ -28,7 +28,7 @@ for par in range (num_par):
              while True:
                 d_target_word, d_control_word = choose_targets_and_control(condition, language)
                 if d_target_word['word'] not in target_words and d_control_word['word'] not in control_words:
-                    # print (len (d_target_word['word']), len (d_control_word['word']))
+                    print (len (d_target_word['word']), len (d_control_word['word']))
                     target_words.append(d_target_word['word'])
                     control_words.append(d_control_word['word'])
                

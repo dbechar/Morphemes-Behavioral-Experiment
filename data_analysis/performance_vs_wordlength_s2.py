@@ -49,7 +49,7 @@ df_mean_error_rate = pd.DataFrame({'ID': mean_error_rate.index.get_level_values(
                                    })
 
 
-ttest_args = [(11, 2, 5),(10,3,4)] # wl, n_morph1, n_morph2
+ttest_args = [(11, 2, 5),(10,3,4), (11, 2, 4)] # wl, n_morph1, n_morph2
 for args in ttest_args:
     for var in ['rt', 'encoding_time']:
         ttest(df_filtered.query('correct == True'), wl=args[0], n_morph1=args[1], n_morph2=args[2], variable = var)
