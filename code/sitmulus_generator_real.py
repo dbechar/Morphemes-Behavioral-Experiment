@@ -24,11 +24,11 @@ for par in range (num_par):
     for i_row, row in df_design.iterrows(): # LOOP OVER CONDITIONS
         condition, n_trials = row['Condition'], row['n_trials']
         for i_word in range(n_trials): # LOOP OVER TRIALS PER CONDITION
-            # GENERATE A TARGET WORD AND VERIFIES THAT IT DOES NOT ALREADY EXIST
+            # GENERATE A TARGET WORD AND VERIFY THAT IT DOES NOT ALREADY EXIST
              while True:
                 d_target_word, d_control_word = choose_targets_and_control(condition, language)
                 if d_target_word['word'] not in target_words and d_control_word['word'] not in control_words:
-                    #print (len(d_target_word['word']),  len(d_control_word['word']))
+                    # print (len (d_target_word['word']), len (d_control_word['word']))
                     target_words.append(d_target_word['word'])
                     control_words.append(d_control_word['word'])
                
