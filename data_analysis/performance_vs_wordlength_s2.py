@@ -1,11 +1,11 @@
 import pandas as pd
 from statsmodels.formula.api import ols
 from utils_analysis import load_df, remove_outliers
-from utils_analysis import create_pointplot, create_boxplot
+from utils_analysis import create_pointplot, create_boxplot, create_pointplot_morphemes
 from utils_analysis import ttest
 
 # DEFINE LANGUAGE AND CONDITION OF EXPERIMENT ('english' OR 'french'; 'pseudo' OR 'real')
-language, condition = 'english', 'pseudo'
+language, condition = 'french', 'pseudo'
 
 # READ IN TRIALLISTS
 df = load_df (language, condition)
@@ -22,6 +22,13 @@ for plot_info in [(df_filtered.query('correct == True'),'wordlength', 'rt', 'Num
                   (df_filtered, 'num_morphemes', 'error_rate', 'Number of Morphemes', 'Error Rate', (0, 0.9))]:
     create_pointplot(*plot_info)
     
+
+for plot_info in [(df_filtered.query('correct == True'),'wordlength', 'rt', 'Number of Characters', 'Reaction Time', (0, 3000)),
+                  (df_filtered.query('correct == True'), 'wordlength', 'encoding_time', 'Number of Characters', 'Encoding Time', (0,7000)), 
+                  (df_filtered, 'wordlength', 'error_rate', 'Number of Characters', 'Error Rate', (0, 1))]:
+    create_pointplot_morphemes (*plot_info)
+    
+
 # ENCODING TIME, RT, AND ERROR-RATE AS A FUNCTION OF WORDLENGTH AND NUMBER OF MORPHEMES (MEANS & MEDIANS)
 for variable in ['encoding_time', 'rt']:
     for grouping_variable in ['wordlength', 'num_morphemes']:
@@ -49,7 +56,7 @@ df_mean_error_rate = pd.DataFrame({'ID': mean_error_rate.index.get_level_values(
                                    })
 
 
-ttest_args = [(11, 2, 5),(10,3,4), (11, 2, 4)] # wl, n_morph1, n_morph2
+ttest_args = [(11, 2, 4), (10, 3, 4)] # wl, n_morph1, n_morph2
 for args in ttest_args:
     for var in ['rt', 'encoding_time']:
         ttest(df_filtered.query('correct == True'), wl=args[0], n_morph1=args[1], n_morph2=args[2], variable = var)
@@ -83,50 +90,10 @@ print(mod_encoding_time_nom.summary())
 print(mod_error_rate_nom.summary())
 
 
-create_pointplot(data=df_filtered.query('correct == True'), 
-                 x_var='wordlength', 
-                 y_var='rt', 
-                 x_label='Word Length', 
-                 y_label='Reaction Time', 
-                 y_lim=(0, 4000), 
-                 models=[mod_rt_wl])
-
-create_pointplot(data=df_filtered.query('correct == True'), 
-                 x_var='num_morphemes', 
-                 y_var='rt', 
-                 x_label='Number of Morphemes', 
-                 y_label='Reaction Time', 
-                 y_lim=(0, 4000), 
-                 models=[mod_rt_nom])
-
-create_pointplot(data=df_filtered.query('correct == True'), 
-                 x_var='wordlength', 
-                 y_var= 'encoding_time', 
-                 x_label='Word Length', 
-                 y_label='Encoding Time', 
-                 y_lim=(0, 4000), 
-                 models=[mod_encoding_time_wl])
-
-create_pointplot(data=df_filtered.query('correct == True'), 
-                 x_var='num_morphemes', 
-                 y_var='encoding_time', 
-                 x_label='Word Length', 
-                 y_label='Encoding Time', 
-                 y_lim=(0, 4000), 
-                 models=[mod_encoding_time_nom])
-
-create_pointplot(data=df_mean_error_rate, 
-                 x_var='wordlength', 
-                 y_var= 'mean_error_rate', 
-                 x_label='Word Length', 
-                 y_label='Mean Error Time', 
-                 y_lim=(0, 1), 
-                 models=[mod_error_rate_wl])
-
-create_pointplot(data=df_mean_error_rate, 
-                 x_var='num_morphemes', 
-                 y_var='mean_error_rate', 
-                 x_label='Word Length', 
-                 y_label='Mean Error Rate', 
-                 y_lim=(0, 1), 
-                 models=[mod_error_rate_nom])
+# PLOT NOT FILTERED FOR ACCURACY
+for plot_info in [(df_filtered,'wordlength', 'rt', 'Number of Characters', 'Reaction Time', (0, 6000)), 
+                  (df_filtered,'num_morphemes', 'rt', 'Number of Morphemes', 'Reaction Time', (0, 6000)), 
+                  (df_filtered, 'wordlength', 'encoding_time', 'Number of Characters', 'Encoding Time', (0,7000)), 
+                  (df_filtered, 'num_morphemes', 'encoding_time', 'Number of Morphemes', 'Encoding Time', (0, 7000))]:
+    create_pointplot(*plot_info)
+    

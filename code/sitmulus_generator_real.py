@@ -8,7 +8,7 @@ random.seed(22)
 num_par = 50
 
 # DEFINE LANGUAGE OF EXPERIMENT ("english" OR "french")
-language = 'english' 
+language = 'french' 
 
 # READ IN STIMULI FILES
 df_design = pd.read_csv(f'../experimental_design/{language}_real/design_{language}_real.csv')
@@ -28,7 +28,6 @@ for par in range (num_par):
              while True:
                 d_target_word, d_control_word = choose_targets_and_control(condition, language)
                 if d_target_word['word'] not in target_words and d_control_word['word'] not in control_words:
-                    print (len (d_target_word['word']), len (d_control_word['word']))
                     target_words.append(d_target_word['word'])
                     control_words.append(d_control_word['word'])
                

@@ -1,5 +1,6 @@
 import glob 
 import pandas as pd
+import numpy as np
 import scipy.stats as stats
 import seaborn as sns
 import matplotlib.pyplot as plt
@@ -16,6 +17,7 @@ def load_df (language, condition):
     # CALCULATE ERROR RATE
     df['error_rate'] = 1 - df['correct']
     df['wordlength'] = df['wordlength'].astype(int)
+    df = add_letter_type (df, language)
     return df
 
 def remove_outliers (df):
@@ -27,6 +29,24 @@ def remove_outliers (df):
     print(f'Number of outliers removed: {len(df) - len(df_filtered)}')
     return df_filtered
 
+def add_letter_type (df, language):
+    df['letter_type'] = np.nan
+    if language == 'english':
+        vowels = ["a", "e", "i", "o", "u"]
+        consonants = ["b", "c", "d", "f", "g", "h", "k", "p", "q", "s", "t", "v", "x", "z"]
+    else: 
+        vowels = ["a", "â", "à", "e", "ê", "é", "è", "ë", "i", "ï", "î", "o", "ô", "œ", "u", "ü", "û", "ù"]
+        consonants = ["b", "c", "ç", "d", "f", "g", "h", "k", "p", "q", "s", "t", "v", "x", "z"]
+    for i, row in df.iterrows (): 
+        if row ['target_letter_before_error'] in vowels: 
+            letter_type = 'Vowels'
+        elif row ['target_letter_before_error'] in consonants: 
+            letter_type = 'Consonants'
+        else: 
+            letter_type ='Sonorants'
+        df.loc[i, 'letter_type']= letter_type
+        
+    return df
 
 def count_morphemes(condition):
     return len(condition.replace('_long', ''))
@@ -66,6 +86,20 @@ def create_pointplot(data, x_var, y_var, x_label, y_label, y_lim, xticks=None, o
     
     plt.show()
 
+
+def create_pointplot_morphemes (data, x_var, y_var, x_label, y_label, y_lim, xticks=None, order=None, models=None):
+    custom_palette = sns.color_palette("Set2", 6)
+    plot = sns.lineplot(data=data, x=x_var, y=y_var, hue='num_morphemes', palette=custom_palette, marker='o', linestyle='',  err_style='bars')
+    
+    plot.set_xlabel(x_label, fontdict={'size': 14, 'weight': 'bold'})
+    plot.set_ylabel(y_label, fontdict={'size': 14, 'weight': 'bold'})
+    plot.set(ylim=y_lim)
+    
+    if xticks is not None:
+        plot.set_xticklabels(xticks, fontsize=10)
+        
+    plot.legend(title='Number of Morphemes') 
+    plt.show()
 
 def ttest (df, wl, n_morph1, n_morph2, variable):
     # Filter data for the given word length and numbers of morphemes
@@ -133,3 +167,37 @@ def error_position(df):
         
     return df_error
 
+
+
+def error_position_letter(df):
+    df_error_pos = df.copy().query('is_error == 1')
+    df_error_pos['error_index'] = np.nan
+    df_error_pos['prefixes'] = df_error_pos['prefixes'].fillna('')
+    error_index = 0
+    for i, row in df_error_pos.iterrows():
+        i_morpheme = pd.to_numeric(row['i_morpheme'], errors='coerce')
+        # check if word has any prefixes or suffixes
+        if row['error_to_which_morpheme'] == 'r':
+            # error is in root
+            if row ['prefixes'] == '':
+                error_index = row['i_within_morpheme']
+            else: 
+                error_index = row ['i_within_morpheme'] +  sum(len(m) for m in row['prefixes'].split('_'))
+        else:
+            # determine which affix the error is in
+            i_morpheme = int (i_morpheme)
+            if row['error_to_which_morpheme'] == 'p':
+                    error_index = + sum(len(m) for m in row['prefixes'].split('_')[:i_morpheme]) + row['i_within_morpheme']
+            
+
+            elif row['error_to_which_morpheme'] == 's':
+                i_morpheme = int (i_morpheme)
+                if row['prefixes'] == '': 
+                    error_index = len(row['root']) + sum(len(suffix) for suffix in row['suffixes'].split('_')[:i_morpheme]) + row['i_within_morpheme']
+                else: 
+                    error_index = sum(len(prefix) for prefix in row['prefixes'].split('_')) + len(row['root']) + sum(len(suffix) for suffix in row['suffixes'].split('_')[:i_morpheme]) + row['i_within_morpheme']
+      
+        df_error_pos.loc[i, 'error_index']= error_index
+    df_error_pos['error_index'] = df_error_pos['error_index'].astype(int)
+
+    return df_error_pos

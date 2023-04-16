@@ -4,7 +4,7 @@ from utils_analysis import create_boxplot
 from utils_analysis import load_df, remove_outliers
 
 # DEFINE LANGUAGE AND CONDITION OF EXPERIMENT ('english' OR 'french'; 'pseudo' OR 'real')
-language, condition = 'english', 'pseudo'
+language, condition = 'french', 'pseudo'
 
 # READ IN TRIALLISTS
 df = load_df (language, condition)
