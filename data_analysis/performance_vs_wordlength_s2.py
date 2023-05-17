@@ -140,3 +140,38 @@ legend_bbox = (1.02, 0.5)
 legend_pos = 'center left'
 plot.legend(bbox_to_anchor=legend_bbox, loc=legend_pos)
 plt.show()
+
+
+# NEW REGRESSION MODELS
+mod_rt_wl_morphemes = ols('rt ~ wordlength + num_morphemes', data=df_filtered.query('correct == True')).fit()
+mod_encoding_time_wl_morphemes = ols('encoding_time ~ wordlength + num_morphemes', data=df_filtered.query('correct == True')).fit()
+mod_error_rate_wl_morphemes = ols('error_rate ~ wordlength + num_morphemes', data=df_mean_er).fit()
+
+print("Word Length and Number of Morphemes Model:")
+print(mod_rt_wl_morphemes.summary())
+print(mod_encoding_time_wl_morphemes.summary())
+print(mod_error_rate_wl_morphemes.summary())
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
