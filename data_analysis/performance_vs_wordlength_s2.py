@@ -1,5 +1,6 @@
 import seaborn as sns
 import matplotlib.pyplot as plt
+import statsmodels.api as sm
 from statsmodels.formula.api import ols
 from utils_analysis import load_df, remove_outliers
 from utils_analysis import create_pointplot, create_boxplot
@@ -7,7 +8,7 @@ from utils_analysis import ttest
 
 
 # DEFINE LANGUAGE AND CONDITION OF EXPERIMENT ('english' OR 'french'; 'pseudo' OR 'real')
-language, condition = 'french', 'pseudo'
+language, condition = 'english', 'pseudo'
 
 # READ IN TRIALLISTS
 df = load_df (language, condition)
@@ -80,6 +81,204 @@ print(mod_encoding_time_nom.summary())
 print(mod_error_rate_nom.summary())
 
 
+# NEW REGRESSION MODELS
+mod_rt_wl_morphemes = ols('rt ~ wordlength + num_morphemes', data=df_filtered.query('correct == True')).fit()
+mod_encoding_time_wl_morphemes = ols('encoding_time ~ wordlength + num_morphemes', data=df_filtered.query('correct == True')).fit()
+mod_error_rate_wl_morphemes = ols('error_rate ~ wordlength + num_morphemes', data=df_mean_er).fit()
+
+#print("Word Length and Number of Morphemes Model:")
+print(mod_rt_wl_morphemes.summary())
+print(mod_encoding_time_wl_morphemes.summary())
+print(mod_error_rate_wl_morphemes.summary())
+
+
+### REACTION TIME
+# Model with both variables: word length and number of morphemes
+mod_both = ols('rt ~ wordlength + num_morphemes', data=df_filtered.query('correct == True')).fit()
+
+# Model without word length
+mod_no_wl = ols('rt ~ num_morphemes', data=df_filtered.query('correct == True')).fit()
+
+# Model without number of morphemes
+mod_no_morphemes = ols('rt ~ wordlength', data=df_filtered.query('correct == True')).fit()
+
+# Perform ANOVA to obtain F-statistic and p-value for each model
+anova_both = sm.stats.anova_lm(mod_both)
+anova_no_wl = sm.stats.anova_lm(mod_no_wl)
+anova_no_morphemes = sm.stats.anova_lm(mod_no_morphemes)
+
+# Extract the F-statistic and p-value for each model
+fstat_both = anova_both['F'][0]
+pval_both = anova_both['PR(>F)'][0]
+
+fstat_no_wl = anova_no_wl['F'][0]
+pval_no_wl = anova_no_wl['PR(>F)'][0]
+
+fstat_no_morphemes = anova_no_morphemes['F'][0]
+pval_no_morphemes = anova_no_morphemes['PR(>F)'][0]
+
+# Print the F-statistic and p-value for each model
+print("Model with both variables - F-statistic:", fstat_both)
+print("Model with both variables - p-value:", pval_both)
+
+print("Model without word length - F-statistic:", fstat_no_wl)
+print("Model without word length - p-value:", pval_no_wl)
+
+print("Model without number of morphemes - F-statistic:", fstat_no_morphemes)
+print("Model without number of morphemes - p-value:", pval_no_morphemes)
+
+
+### ENCODING TIME 
+# Model with both variables: word length and number of morphemes
+mod_both = ols('encoding_time ~ wordlength + num_morphemes', data=df_filtered.query('correct == True')).fit()
+
+# Model without word length
+mod_no_wl = ols('encoding_time ~ num_morphemes', data=df_filtered.query('correct == True')).fit()
+
+# Model without number of morphemes
+mod_no_morphemes = ols('encoding_time ~ wordlength', data=df_filtered.query('correct == True')).fit()
+
+# Perform ANOVA to obtain F-statistic and p-value for each model
+anova_both = sm.stats.anova_lm(mod_both)
+anova_no_wl = sm.stats.anova_lm(mod_no_wl)
+anova_no_morphemes = sm.stats.anova_lm(mod_no_morphemes)
+
+# Extract the F-statistic and p-value for each model
+fstat_both = anova_both['F'][0]
+pval_both = anova_both['PR(>F)'][0]
+
+fstat_no_wl = anova_no_wl['F'][0]
+pval_no_wl = anova_no_wl['PR(>F)'][0]
+
+fstat_no_morphemes = anova_no_morphemes['F'][0]
+pval_no_morphemes = anova_no_morphemes['PR(>F)'][0]
+
+# Print the F-statistic and p-value for each model
+print("Model with both variables - F-statistic:", fstat_both)
+print("Model with both variables - p-value:", pval_both)
+
+print("Model without word length - F-statistic:", fstat_no_wl)
+print("Model without word length - p-value:", pval_no_wl)
+
+print("Model without number of morphemes - F-statistic:", fstat_no_morphemes)
+print("Model without number of morphemes - p-value:", pval_no_morphemes)
+
+
+### ERROR RATE 
+# Model with both variables: word length and number of morphemes
+mod_both = ols('error_rate ~ wordlength + num_morphemes', data=df_mean_er).fit()
+
+# Model without word length
+mod_no_wl = ols('error_rate ~ num_morphemes', data=df_mean_er).fit()
+
+# Model without number of morphemes
+mod_no_morphemes = ols('error_rate ~ wordlength', data=df_mean_er).fit()
+
+# Perform ANOVA to obtain F-statistic and p-value for each model
+anova_both = sm.stats.anova_lm(mod_both)
+anova_no_wl = sm.stats.anova_lm(mod_no_wl)
+anova_no_morphemes = sm.stats.anova_lm(mod_no_morphemes)
+
+# Extract the F-statistic and p-value for each model
+fstat_both = anova_both['F'][0]
+pval_both = anova_both['PR(>F)'][0]
+
+fstat_no_wl = anova_no_wl['F'][0]
+pval_no_wl = anova_no_wl['PR(>F)'][0]
+
+fstat_no_morphemes = anova_no_morphemes['F'][0]
+pval_no_morphemes = anova_no_morphemes['PR(>F)'][0]
+
+# Print the F-statistic and p-value for each model
+print("Model with both variables - F-statistic:", fstat_both)
+print("Model with both variables - p-value:", pval_both)
+
+print("Model without word length - F-statistic:", fstat_no_wl)
+print("Model without word length - p-value:", pval_no_wl)
+
+print("Model without number of morphemes - F-statistic:", fstat_no_morphemes)
+print("Model without number of morphemes - p-value:", pval_no_morphemes)
+
+
+#### REACTION TIME
+
+# Model with both variables: word length and number of morphemes
+mod_both = ols('rt ~ wordlength + num_morphemes', data=df_filtered.query('correct == True')).fit()
+
+# Model without word length
+mod_no_wl = ols('rt ~ num_morphemes', data=df_filtered.query('correct == True')).fit()
+
+# Model without number of morphemes
+mod_no_morphemes = ols('rt ~ wordlength', data=df_filtered.query('correct == True')).fit()
+
+
+# Calculate R-squared for each model
+r2_both = mod_both.rsquared
+r2_no_wl = mod_no_wl.rsquared
+r2_no_morphemes = mod_no_morphemes.rsquared
+
+# Calculate the changes in R-squared
+delta_r2_wl = r2_both - r2_no_wl
+delta_r2_morphemes = r2_both - r2_no_morphemes
+
+# Print the changes in R-squared
+print("Change in R-squared for word length:", delta_r2_wl)
+print("Change in R-squared for number of morphemes:", delta_r2_morphemes)
+
+
+
+#### ENCODING TIME
+# Model with both variables: word length and number of morphemes
+mod_both = ols('encoding_time ~ wordlength + num_morphemes', data=df_filtered.query('correct == True')).fit()
+
+# Model without word length
+mod_no_wl = ols('encoding_time ~ num_morphemes', data=df_filtered.query('correct == True')).fit()
+
+# Model without number of morphemes
+mod_no_morphemes = ols('encoding_time ~ wordlength', data=df_filtered.query('correct == True')).fit()
+
+
+# Calculate R-squared for each model
+r2_both = mod_both.rsquared
+r2_no_wl = mod_no_wl.rsquared
+r2_no_morphemes = mod_no_morphemes.rsquared
+
+# Calculate the changes in R-squared
+delta_r2_wl = r2_both - r2_no_wl
+delta_r2_morphemes = r2_both - r2_no_morphemes
+
+# Print the changes in R-squared
+print("Change in R-squared for word length:", delta_r2_wl)
+print("Change in R-squared for number of morphemes:", delta_r2_morphemes)
+
+
+#### ERROR RATE
+# Model with both variables: word length and number of morphemes
+mod_both = ols('error_rate ~ wordlength + num_morphemes', data=df_mean_er).fit()
+
+# Model without word length
+mod_no_wl = ols('error_rate ~ num_morphemes', data=df_mean_er).fit()
+
+# Model without number of morphemes
+mod_no_morphemes = ols('error_rate ~ wordlength', data=df_mean_er).fit()
+
+# Calculate R-squared for each model
+r2_both = mod_both.rsquared
+r2_no_wl = mod_no_wl.rsquared
+r2_no_morphemes = mod_no_morphemes.rsquared
+
+# Calculate the changes in R-squared
+delta_r2_wl = r2_both - r2_no_wl # both - only wordlength
+delta_r2_morphemes = r2_both - r2_no_morphemes # both - only number of morphemes
+
+
+# Print the changes in R-squared
+print("Change in R-squared for word length:", delta_r2_wl)
+print("Change in R-squared for number of morphemes:", delta_r2_morphemes)
+
+"""
+
+
 # PLOT NOT FILTERED FOR ACCURACY
 for plot_info in [(df_filtered,'wordlength', 'rt', 'Number of Characters', 'Reaction Time', (0, 6000)), 
                   (df_filtered,'num_morphemes', 'rt', 'Number of Morphemes', 'Reaction Time', (0, 6000)), 
@@ -141,37 +340,6 @@ legend_pos = 'center left'
 plot.legend(bbox_to_anchor=legend_bbox, loc=legend_pos)
 plt.show()
 
-
-# NEW REGRESSION MODELS
-mod_rt_wl_morphemes = ols('rt ~ wordlength + num_morphemes', data=df_filtered.query('correct == True')).fit()
-mod_encoding_time_wl_morphemes = ols('encoding_time ~ wordlength + num_morphemes', data=df_filtered.query('correct == True')).fit()
-mod_error_rate_wl_morphemes = ols('error_rate ~ wordlength + num_morphemes', data=df_mean_er).fit()
-
-print("Word Length and Number of Morphemes Model:")
-print(mod_rt_wl_morphemes.summary())
-print(mod_encoding_time_wl_morphemes.summary())
-print(mod_error_rate_wl_morphemes.summary())
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+"""
 
 
