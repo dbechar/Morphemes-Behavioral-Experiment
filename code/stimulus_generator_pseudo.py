@@ -8,7 +8,7 @@ random.seed(1)
 num_par = 50
 
 # DEFINE LANGUAGE OF EXPERIMENT ("english" OR "french")
-language = 'english' 
+language = 'french' 
 
 df_design = pd.read_csv(f'../experimental_design/{language}_pseudo/design_{language}_pseudo.csv')
 df_roots = pd.read_csv(f'../experimental_design/{language}_pseudo/r.csv')
@@ -18,7 +18,6 @@ df_roots_long = pd.read_csv(f'../experimental_design/{language}_pseudo/r_long.cs
 errorrate = 0.25
 
 for par in range (num_par):
-    print (par)
     # GENERATE ALL TARGET WORDS
     target_words, control_words = [], []
     ds_target_word, ds_control_word = [], []
@@ -85,9 +84,26 @@ for par in range (num_par):
     df_complete.insert (0, 'first', first)
     df_complete.insert (1, 'second', second)
     
-    # RANDOMIZE ORDER
-    df_complete = df_complete.sample (frac = 1)
+    # REORDER TRIALS
+    conditions = df_design['Condition'].unique()
+    order = []
+    df_complete = df_complete.reset_index(drop=True)
+    
+    
+    for i in range (0, int(len(df_complete)/len (conditions))):
+        random.shuffle(conditions)
+        for condition in conditions: 
+            condition_rows = df_complete[df_complete['condition'] == condition].index
+            row_number = random.choice(condition_rows)
+            while row_number  in order:
+                condition_rows = df_complete[df_complete['condition'] == condition].index
+                row_number = random.choice(condition_rows)
+            order.append(row_number)
+                
+    df_reordered = df_complete.loc[order]
+    
     
     # SAVE TRIALLIST IN CORRECT FOLDER
     path = f'../triallists/{language}_pseudo/{str(par)}.csv'
-    df_complete.to_csv (path, index = False)
+    df_reordered.to_csv (path, index = False)
+    print (f'{par} finished')
