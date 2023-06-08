@@ -9,7 +9,7 @@ random.seed(1)
 num_par = 50
 
 # DEFINE LANGUAGE OF EXPERIMENT ("english" OR "french")
-language = 'french' 
+language = 'english' 
 
 # READ IN STIMULI FILES
 df_design = pd.read_csv(f'../experimental_design/{language}_real/design_{language}_real.csv')
@@ -18,7 +18,6 @@ df_design = pd.read_csv(f'../experimental_design/{language}_real/design_{languag
 errorrate = 0.25
 
 for par in range (num_par):
-    print (par)
     # GENERATE ALL TARGET WORDS
     target_words, control_words = [], []
     ds_target_word, ds_control_word = [], []
@@ -96,3 +95,4 @@ for par in range (num_par):
     # SAVE TRIALLIST IN CORRECT FOLDER
     path = f'../triallists/{language}_real/{str(par)}.csv'
     df_complete.to_csv (path, index = False)
+    print (f'participant {par} finished.')
