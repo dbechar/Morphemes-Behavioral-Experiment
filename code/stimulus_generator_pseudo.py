@@ -8,7 +8,7 @@ random.seed(1)
 num_par = 50
 
 # DEFINE LANGUAGE OF EXPERIMENT ("english" OR "french")
-language = 'french' 
+language = 'english' 
 
 df_design = pd.read_csv(f'../experimental_design/{language}_pseudo/design_{language}_pseudo.csv')
 df_roots = pd.read_csv(f'../experimental_design/{language}_pseudo/r.csv')
@@ -101,6 +101,9 @@ for par in range (num_par):
             order.append(row_number)
                 
     df_reordered = df_complete.loc[order]
+    
+    # Rename the column 'condition' to 'morphemes'
+    df_reordered.rename(columns={'condition': 'morphemes'}, inplace=True)
     
     
     # SAVE TRIALLIST IN CORRECT FOLDER

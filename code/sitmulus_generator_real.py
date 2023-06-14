@@ -9,7 +9,7 @@ random.seed(1)
 num_par = 50
 
 # DEFINE LANGUAGE OF EXPERIMENT ("english" OR "french")
-language = 'english' 
+language = 'french' 
 
 # READ IN STIMULI FILES
 df_design = pd.read_csv(f'../experimental_design/{language}_real/design_{language}_real.csv')
@@ -91,6 +91,9 @@ for par in range (num_par):
     df_complete.insert (0, 'first', first)
     df_complete.insert (1, 'second', second)
     df_complete = df_complete.sample (frac = 1)
+    
+    # Rename the column 'condition' to 'morphemes'
+    df_complete.rename(columns={'condition': 'morphemes'}, inplace=True)
     
     # SAVE TRIALLIST IN CORRECT FOLDER
     path = f'../triallists/{language}_real/{str(par)}.csv'
