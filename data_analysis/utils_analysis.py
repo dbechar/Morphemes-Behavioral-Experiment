@@ -16,7 +16,7 @@ def load_df (language, condition):
     df['num_morphemes'] = df['condition'].apply(count_morphemes)
     # CALCULATE ERROR RATE
     df['error_rate'] = 1 - df['correct']
-    df['wordlength'] = df['wordlength'].astype(int)
+    #df['wordlength'] = df['wordlength'].astype(int)
     df = add_letter_type (df, language)
     return df
 
